@@ -18,10 +18,10 @@ int CProtocolBagInfoRes::Decode(CStreamReadWrite *pStreamBuf)
 
 	int orgPos=pStreamBuf->GetHandlePos();
 
-	TRACE_OUTPUT(_T("½âÎöCProtocolBagInfoRes\n"));
+	TRACE_OUTPUT(_T("è§£æCProtocolBagInfoRes\n"));
 
 	bool bFinish=false;
-	int restBytes=m_packageLengthInRes-protocol_header_length;	//¶ÁÈ¡¹Ì¶¨³¤¶ÈµÄ×Ö½Ú¾Í½âÎöÍê
+	int restBytes=m_packageLengthInRes-protocol_header_length;	//è¯»å–å›ºå®šé•¿åº¦çš„å­—èŠ‚å°±è§£æå®Œ
 	pStreamBuf->SetHandlePos(orgPos+restBytes);
 
 	OutputDebugStr(_T("----------------CProtocolBagInfoRes----------------\n"));
@@ -32,6 +32,6 @@ int CProtocolBagInfoRes::Decode(CStreamReadWrite *pStreamBuf)
 	}
 EXT:
 	handleLength=pStreamBuf->GetHandlePos()-orgPos;
-	//TRACE_OUTPUT(_T("CProtocolBagInfoRes ½âÎö³¤¶È:%d\n"),handleLength);
+	//TRACE_OUTPUT(_T("CProtocolBagInfoRes è§£æé•¿åº¦:%d\n"),handleLength);
 	return handleLength;
 }

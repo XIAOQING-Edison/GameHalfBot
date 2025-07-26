@@ -11,7 +11,7 @@ public:
 	virtual bool Encode(CStreamReadWrite *pStreamBuf);
 	virtual int Decode(CStreamReadWrite *pStreamBuf);
 
-	void MakeDoGameOperationMessage(int protocolId,int paramLength,char *data);	//Ğ­Òéid,paramLengthÊÇ²ÎÊı³¤¶È,dataÊÇ²ÎÊıÄÚÈİ
+	void MakeDoGameOperationMessage(int protocolId,int paramLength,char *data);	//åè®®id,paramLengthæ˜¯å‚æ•°é•¿åº¦,dataæ˜¯å‚æ•°å†…å®¹
 
 	int GetGameOperationProtocolId(){return m_gameOperationProtocolId;}
 	int GetParamLength(){return m_paramLength;}
@@ -19,7 +19,7 @@ public:
 private:
 	int m_gameOperationProtocolId;
 	int m_paramLength;
-	char *m_data;	//ÕâÀïÄ¬ÈÏµÄ»º³å¾Í¿ÉÁË
+	char *m_data;	//è¿™é‡Œé»˜è®¤çš„ç¼“å†²å°±å¯äº†
 
 
 };

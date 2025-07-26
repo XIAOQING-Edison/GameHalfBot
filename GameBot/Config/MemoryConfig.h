@@ -3,16 +3,16 @@
 #include "ConfigStruct.h"
 
 
-//¶ÁĞ´ÄÚ´æµÄÅäÖÃÀà
-//¶Á¾Í´ÓÄÚ´æÀï¶Á£¬
-//Ğ´µÄ»°Ğ´ÏÈÄÚ´æÔÙĞ´ÎÄ¼ş
+//è¯»å†™å†…å­˜çš„é…ç½®ç±»
+//è¯»å°±ä»å†…å­˜é‡Œè¯»ï¼Œ
+//å†™çš„è¯å†™å…ˆå†…å­˜å†å†™æ–‡ä»¶
 class CMemoryConfig :
 	public CCommentConfig
 {
 public:
 	CMemoryConfig(void);
 	CMemoryConfig(const TCHAR *szFileName,const TCHAR *szComment,bool bUseEncryptDecrypt=true);
-	CMemoryConfig(const TCHAR *szPath,const TCHAR *szFileName,int gameVersion,const TCHAR *szComment,bool bUseEncryptDecrypt=true);	//Õâ¸öÓÃÒÔ¼ÓÔØÄ³ÌØ¶¨°æ±¾µÄini
+	CMemoryConfig(const TCHAR *szPath,const TCHAR *szFileName,int gameVersion,const TCHAR *szComment,bool bUseEncryptDecrypt=true);	//è¿™ä¸ªç”¨ä»¥åŠ è½½æŸç‰¹å®šç‰ˆæœ¬çš„ini
 
 	virtual ~CMemoryConfig(void);
 

@@ -2,7 +2,7 @@
 #include "../protocol.h"
 #include "InfoRoleBasic.h"
 
-//Íæ¼Ò»ù±¾Êı¾İ¸³Öµ
+//ç©å®¶åŸºæœ¬æ•°æ®èµ‹å€¼
 class CInfoPlayerBasicInfo :
 	public CProtocol
 {
@@ -18,8 +18,8 @@ public:
 	INT64 GetRoleId(){return basic.GetRoleId();}
 	STRING GetName(){return basic.GetName();};
 	int GetLevel(){return basic.GetLevel();;}
-	STRING GetUnionName(){return basic.GetUnionName();}	//Õ½ÃËÃû×Ö
-	int GetTotalFight(){return basic.GetTotalFight();}	//Õ½Á¦
+	STRING GetUnionName(){return basic.GetUnionName();}	//æˆ˜ç›Ÿåå­—
+	int GetTotalFight(){return basic.GetTotalFight();}	//æˆ˜åŠ›
 	int GetServerId(){return basic.GetServerId();}
 	int GetMapId(){return basic.GetMapId();}
 	int GetCareer(){return basic.GetCareer();}

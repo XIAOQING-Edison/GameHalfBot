@@ -5,18 +5,18 @@
 
 //
 enum TaskGoalType {
-	TaskGoalTypeLearnSkill=99,	//¹ºÂò²¢Ê¹ÓÃ¼¼ÄÜÊ¯£¬²ÅÄÜÑ§µ½¼¼ÄÜ
+	TaskGoalTypeLearnSkill=99,	//è´­ä¹°å¹¶ä½¿ç”¨æŠ€èƒ½çŸ³ï¼Œæ‰èƒ½å­¦åˆ°æŠ€èƒ½
 	TaskGoalTypeKillMonster = 101,
 	TaskGoalTypeAffiliationKill = 103,
 	TaskGoalTypeTeamAffiliationKill = 113,
 	TaskGoalTypeDialogue = 201,
 	TaskGoalTypeUpgrade = 301,
-	TaskGoalTypeTransferToDstMap=401,	//´«ËÍµØÍ¼
-	TaskGoalTypeKillMonsterGetItem=601,	//´ò¹Ö»ñÈ¡²ÄÁÏ£¬Èç×ªÖ°²ÄÁÏ
-	TaskGoalTypeWearEquipment=721,	//´©Ä³Ğ©Ì××°£¬Ò»°ãÊÇÖ§Ïß
-	TaskGoalTypeEnhance=803,	//Ç¿»¯
-	TaskGoalTypeRecycleEquipment=1001,		//»ØÊÕ×°±¸
-	TaskGoalTypeUpgradeDefence = 3101,		//Éı¼¶µ½Ä¿±ê·ÀÓù£¬´©´÷×°±¸»òÉıÊôĞÔ
+	TaskGoalTypeTransferToDstMap=401,	//ä¼ é€åœ°å›¾
+	TaskGoalTypeKillMonsterGetItem=601,	//æ‰“æ€ªè·å–ææ–™ï¼Œå¦‚è½¬èŒææ–™
+	TaskGoalTypeWearEquipment=721,	//ç©¿æŸäº›å¥—è£…ï¼Œä¸€èˆ¬æ˜¯æ”¯çº¿
+	TaskGoalTypeEnhance=803,	//å¼ºåŒ–
+	TaskGoalTypeRecycleEquipment=1001,		//å›æ”¶è£…å¤‡
+	TaskGoalTypeUpgradeDefence = 3101,		//å‡çº§åˆ°ç›®æ ‡é˜²å¾¡ï¼Œç©¿æˆ´è£…å¤‡æˆ–å‡å±æ€§
 
 };
 
@@ -56,7 +56,7 @@ enum RoleTaskType{
 };
 
 
-//¾­²éÕÒ£¬ÈÎÎñÀ¸µã»÷ÊÇºÍnaviÊôĞÔÏà¹ØµÄ
+//ç»æŸ¥æ‰¾ï¼Œä»»åŠ¡æ ç‚¹å‡»æ˜¯å’Œnaviå±æ€§ç›¸å…³çš„
 enum TaskNavigationType {
 	DirectlyOpen = 0,
 	FindNpc,
@@ -72,8 +72,8 @@ struct _MISSION_INFO_
 	int configId;
 	int type;
 	int subType;
-	int state;	//½ÓÊÕ£¬Íê³É£¬»¹ÊÇxxx
-	STRING name;	//ÈÎÎñÃû³Æ
+	int state;	//æ¥æ”¶ï¼Œå®Œæˆï¼Œè¿˜æ˜¯xxx
+	STRING name;	//ä»»åŠ¡åç§°
 	STRING param;
 	STRING condition;
 	STRING completeCondition;
@@ -94,11 +94,11 @@ struct _MISSION_INFO_
 #if (_GAME_VERSION_ == _YONG_HENG_LIAN_MENG_)
 static const int g_defGoldType=113;
 static const int g_defUpdateType=2;
-static const TCHAR* g_szDefGoalTips=_T("»÷É±µØÓüÁÔÈ®¹Ö");
+static const TCHAR* g_szDefGoalTips=_T("å‡»æ€åœ°ç‹±çŒçŠ¬æ€ª");
 #elif (_GAME_VERSION_ == _TIAN_SHI_SHEN_YU_) || (_GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_PC_) ||(_GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_MOBILE_)
 static const int g_defGoldType=603;
 static const int g_defUpdateType=2;
-static const TCHAR* g_szDefGoalTips=_T("½ñÈÕÀÛ¼Æ³äÖµ50Ôª");
+static const TCHAR* g_szDefGoalTips=_T("ä»Šæ—¥ç´¯è®¡å……å€¼50å…ƒ");
 
 #endif
 
@@ -107,16 +107,16 @@ struct _MISSION_GOAL_INFO_
 	int goldId;
 	int type;
 	int updateType;
-	STRING strTarget;	//Ä¿±ê£¬ÔİÊ±ÓÃ×Ö·û´®´æ
-	STRING strGoalParam;	//·ÖÎöºÃºóÔÙ·Ö½â
-	STRING strTips;	//ÌáÊ¾ÄÚÈİÏÈ´òÓ¡×÷·ÖÎö
-	int goalCount;//Ä¿±ê½ø¶È
+	STRING strTarget;	//ç›®æ ‡ï¼Œæš‚æ—¶ç”¨å­—ç¬¦ä¸²å­˜
+	STRING strGoalParam;	//åˆ†æå¥½åå†åˆ†è§£
+	STRING strTips;	//æç¤ºå†…å®¹å…ˆæ‰“å°ä½œåˆ†æ
+	int goalCount;//ç›®æ ‡è¿›åº¦
 	int transferId;
 	bool show;	//
-	vector<POINT> position;	//¹À¼ÆÊÇ¸öpointÊı×é£¬µ½Ê±ºò×ª³É×ø±ê
+	vector<POINT> position;	//ä¼°è®¡æ˜¯ä¸ªpointæ•°ç»„ï¼Œåˆ°æ—¶å€™è½¬æˆåæ ‡
 	int boxId;
-	int toNpc;	//´ı¶¨
-	int fromNpc;//´ı¶¨
+	int toNpc;	//å¾…å®š
+	int fromNpc;//å¾…å®š
 	_MISSION_GOAL_INFO_()
 	{
 		type=g_defGoldType;

@@ -16,7 +16,7 @@ int CInfoResLoginError::Decode(CStreamReadWrite *pStreamBuf)
 
 	int orgPos=pStreamBuf->GetHandlePos();
 
-	TRACE_OUTPUT(_T("解析CInfoResLoginError\n"));
+	TRACE_OUTPUT(_T("瑙ｆ瀽CInfoResLoginError\n"));
 	int count=0;
 
 	// 	bool bFinish=false;
@@ -43,6 +43,6 @@ int CInfoResLoginError::Decode(CStreamReadWrite *pStreamBuf)
 
 EXT:
 	handleLength=pStreamBuf->GetHandlePos()-orgPos;
-	//TRACE_OUTPUT(_T("CInfoResLoginError 解析长度:%d\n"),handleLength);
+	//TRACE_OUTPUT(_T("CInfoResLoginError 瑙ｆ瀽闀垮害:%d\n"),handleLength);
 	return handleLength;
 }

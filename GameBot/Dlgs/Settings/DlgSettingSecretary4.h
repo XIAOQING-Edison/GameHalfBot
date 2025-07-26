@@ -3,17 +3,17 @@
 #include "../../resource.h"
 #include "../../Config/ConfigSecretary4.h"
 
-// CDlgSettingSecret4 ¶Ô»°¿ò
+// CDlgSettingSecret4 å¯¹è¯æ¡†
 
 class CDlgSettingSecretary4 : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgSettingSecretary4)
 
 public:
-	CDlgSettingSecretary4(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgSettingSecretary4(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgSettingSecretary4();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_SETTING_SECRETARY4 };
 
 
@@ -73,7 +73,7 @@ private:
 private:
 	CConfigSecretary4 *m_pSecretary4Config;
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 

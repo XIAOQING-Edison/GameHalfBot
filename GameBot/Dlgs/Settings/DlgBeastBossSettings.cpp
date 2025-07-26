@@ -1,4 +1,4 @@
-// ./Dlgs/Settings/DlgBeastBossSettings.cpp : ÊµÏÖÎÄ¼þ
+// ./Dlgs/Settings/DlgBeastBossSettings.cpp : å®žçŽ°æ–‡ä»¶
 //
 
 #include "../../stdafx.h"
@@ -9,7 +9,7 @@
 // static const int max_boss_num=16;
 
 
-// CDlgBeastBossSetting ¶Ô»°¿ò
+// CDlgBeastBossSetting å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CDlgBeastBossSetting, CDialog)
 
@@ -36,26 +36,26 @@ BEGIN_MESSAGE_MAP(CDlgBeastBossSetting, CDialog)
 END_MESSAGE_MAP()
 
 
-// CDlgDailyTaskSettings ÏûÏ¢´¦Àí³ÌÐò
+// CDlgDailyTaskSettings æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CDlgBeastBossSetting::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// TODO:  ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯
+	// TODO:  åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–
 	m_brush.CreateSolidBrush(RGB(255,255,255));//while brush
 	InitCtrls();
 	return TRUE;  // return TRUE unless you set the focus to a control
-	// Òì³£: OCX ÊôÐÔÒ³Ó¦·µ»Ø FALSE
+	// å¼‚å¸¸: OCX å±žæ€§é¡µåº”è¿”å›ž FALSE
 }
 
 HBRUSH CDlgBeastBossSetting::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 {
 	HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
 
-	// TODO:  ÔÚ´Ë¸ü¸Ä DC µÄÈÎºÎÊôÐÔ
+	// TODO:  åœ¨æ­¤æ›´æ”¹ DC çš„ä»»ä½•å±žæ€§
 	hbr=(HBRUSH)m_brush;
-	// TODO:  Èç¹ûÄ¬ÈÏµÄ²»ÊÇËùÐè»­±Ê£¬Ôò·µ»ØÁíÒ»¸ö»­±Ê
+	// TODO:  å¦‚æžœé»˜è®¤çš„ä¸æ˜¯æ‰€éœ€ç”»ç¬”ï¼Œåˆ™è¿”å›žå¦ä¸€ä¸ªç”»ç¬”
 	return hbr;
 }
 
@@ -108,7 +108,7 @@ void CDlgBeastBossSetting::InitListBox()
 
 void CDlgBeastBossSetting::OnBnClickedBtnSelect()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	int selCount=m_pLstAllBoss->GetSelCount();
 
 
@@ -116,7 +116,7 @@ void CDlgBeastBossSetting::OnBnClickedBtnSelect()
 
 void CDlgBeastBossSetting::OnBnClickedBtnUnselect()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	int selCount=m_pLstSelectedBoss->GetSelCount();
 
 }

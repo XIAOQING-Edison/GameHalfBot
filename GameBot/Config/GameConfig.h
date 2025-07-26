@@ -27,7 +27,7 @@ class CGameConfig :public CConfig
 {
 public:
 	CGameConfig(STRING &accountName,bool bUseEncryptDecrypt);
-	CGameConfig(STRING &accountName,bool bUseParentDir,bool bUseEncryptDecrypt);	//这里用一个标志来决定是否使用parent目录
+	CGameConfig(STRING &accountName,bool bUseParentDir,bool bUseEncryptDecrypt);	//杩欓噷鐢ㄤ竴涓爣蹇楁潵鍐冲畾鏄惁浣跨敤parent鐩綍
 	~CGameConfig(void);
 	
 	void SetUserName(STRING &user){m_userName=user;m_sectionName=user;}
@@ -36,7 +36,7 @@ public:
 	vector<STRING> GetAllSectionNameFromConfig(STRING &fileName);
 
 	void InitConfigObjects(const TCHAR *szFileName);
-	void InitConfigObjectsBySetPath(const TCHAR *szFullPath);	//为其它配置对象设定一个全路径
+	void InitConfigObjectsBySetPath(const TCHAR *szFullPath);	//涓哄叾瀹冮厤缃璞¤瀹氫竴涓叏璺緞
 
 	void DeleteConfigObjects();
 
@@ -72,7 +72,7 @@ public:
 
 
 private:
-	STRING m_userName;	//作为sectionName
+	STRING m_userName;	//浣滀负sectionName
 	CConfigSecretary1 *m_pConfigSecreatry1;
 	CConfigSecretary2 *m_pConfigSecretary2;
 	CConfigSecretary3 *m_pConfigSecretary3;

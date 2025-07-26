@@ -1,13 +1,13 @@
 #ifndef _MACRO_H_
 #define _MACRO_H_
 
-#define ERROR_CODE_NO_ERROR	0	//��ȷ�ķ���ֵ
-#define ERROR_CODE_NONE	-1		//Ĭ�ϵĲ��Ǵ���Ҳû����ȷ
-#define ERROR_CODE_SOME_ERROR	-2	//���������д������
+#define ERROR_CODE_NO_ERROR	0	//正确的返回值
+#define ERROR_CODE_NONE	-1		//默认的不是错误也没有正确
+#define ERROR_CODE_SOME_ERROR	-2	//用来代替有错误产生
 
 
 /************************************************************************/
-/* һЩ��λ�����ĳЩλ�Ķ���                                                                     */
+/* 一些置位和清除某些位的定义                                                                     */
 /************************************************************************/
 #define  SET_BIT(a,b)	(a |=(1<<b))
 #define  CLR_BIT(a,b)	(a &=(~(1<<b)))

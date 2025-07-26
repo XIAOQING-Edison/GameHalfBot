@@ -20,10 +20,10 @@ int CProtocolEnterGameRes::Decode(CStreamReadWrite *pStreamBuf)
 	int orgPos=pStreamBuf->GetHandlePos();
 	
 
-	//m_pPlayer->SetInGameAlready(true);	//ÊÕµ½Õâ¸öÏûÏ¢ÈÏÎªÒÑ½øÈëÓÎÏ·,ÊÕµ½Õâ¸öĞ­Òéµ«×ÊÔ´»¹ÔÚ¼ÓÔØÖĞ£¬ÕâÀïÖ»½«½ÇÉ«Ñ¡ÔñÎªtrue,in gameÒªÁíÍâÅĞ¶Ï
-	m_pPlayer->SetChooseRoleAlreay(true);	//ÕâÀïÒ»Æğ´¦Àí½ÇÉ«Ñ¡Ôñ×´Ì¬
-	//m_pPlayer->ReadyForPlaying();	//½øÈëÓÎÏ·ºó¿ªÆôplayerÏß³Ì
-	TRACE_OUTPUT(_T("½âÎöEnter game res\n"));
+	//m_pPlayer->SetInGameAlready(true);	//æ”¶åˆ°è¿™ä¸ªæ¶ˆæ¯è®¤ä¸ºå·²è¿›å…¥æ¸¸æˆ,æ”¶åˆ°è¿™ä¸ªåè®®ä½†èµ„æºè¿˜åœ¨åŠ è½½ä¸­ï¼Œè¿™é‡Œåªå°†è§’è‰²é€‰æ‹©ä¸ºtrue,in gameè¦å¦å¤–åˆ¤æ–­
+	m_pPlayer->SetChooseRoleAlreay(true);	//è¿™é‡Œä¸€èµ·å¤„ç†è§’è‰²é€‰æ‹©çŠ¶æ€
+	//m_pPlayer->ReadyForPlaying();	//è¿›å…¥æ¸¸æˆåå¼€å¯playerçº¿ç¨‹
+	TRACE_OUTPUT(_T("è§£æEnter game res\n"));
 
 	bool bFinish=false;
 	int restBytes=m_packageLengthInRes-protocol_header_length;
@@ -50,7 +50,7 @@ int CProtocolEnterGameRes::Decode(CStreamReadWrite *pStreamBuf)
 #elif (_GAME_VERSION_ == _YONG_HENG_LIAN_MENG_)
 #elif (_GAME_VERSION_ == _TIAN_SHI_SHEN_YU_)
 #elif _GAME_VERSION_ == _YONG_HENG_ZHI_DIAN_
-			timeZone=pStreamBuf->ReadRawVarInt32();//=4;//Ê±Çø
+			timeZone=pStreamBuf->ReadRawVarInt32();//=4;//æ—¶åŒº
 #endif
 			break;
 		default:
@@ -61,6 +61,6 @@ int CProtocolEnterGameRes::Decode(CStreamReadWrite *pStreamBuf)
 	//TRACE_OUTPUT(_T("GameEnterRes strRoleId:%s,serverTime:%I64d\n"),m_strRoleId.c_str(),m_serverTime);
 EXT:
 	handleLength=pStreamBuf->GetHandlePos()-orgPos;
-	TRACE_OUTPUT(_T("GameEnterRes ½âÎö³¤¶È:%d\n"),handleLength);
+	TRACE_OUTPUT(_T("GameEnterRes è§£æé•¿åº¦:%d\n"),handleLength);
 	return handleLength;
 }

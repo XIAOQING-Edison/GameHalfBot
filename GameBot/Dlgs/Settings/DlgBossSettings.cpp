@@ -1,4 +1,4 @@
-// ./Dlgs/Settings/DlgBossSettings.cpp : ÊµÏÖÎÄ¼þ
+// ./Dlgs/Settings/DlgBossSettings.cpp : å®žçŽ°æ–‡ä»¶
 //
 
 #include "../../StdAfx.h"
@@ -8,15 +8,15 @@
 
 static int g_tabCount=5;
 #if _GAME_VERSION_ == _YONG_HENG_LIAN_MENG_
-	static const TCHAR *g_szTabString[]={_T("Ò°ÍâBOSS"),_T("ÃØ¾³boss"),_T("×ªÉúBOSS"),_T("ÊÔÁ¶Ö®µØ"),_T("¿àÄÑÁ¶Óü"),_T("¿¨ÀûÂê"),_T("¸öÈË¿¨ÀûÂê")};
+	static const TCHAR *g_szTabString[]={_T("é‡Žå¤–BOSS"),_T("ç§˜å¢ƒboss"),_T("è½¬ç”ŸBOSS"),_T("è¯•ç‚¼ä¹‹åœ°"),_T("è‹¦éš¾ç‚¼ç‹±"),_T("å¡åˆ©çŽ›"),_T("ä¸ªäººå¡åˆ©çŽ›")};
 #elif _GAME_VERSION_ == _TIAN_SHI_SHEN_YU_
-	static const TCHAR *g_szTabString[]={_T("Ò°ÍâBOSS"),_T("ÃØ¾³boss"),_T("»Æ½ð¹Ö"),_T("ÊÔÁ¶Ö®µØ"),_T("¿àÄÑÁ¶Óü"),_T("¿¨ÀûÂê"),_T("¸öÈË¿¨ÀûÂê")};
+	static const TCHAR *g_szTabString[]={_T("é‡Žå¤–BOSS"),_T("ç§˜å¢ƒboss"),_T("é»„é‡‘æ€ª"),_T("è¯•ç‚¼ä¹‹åœ°"),_T("è‹¦éš¾ç‚¼ç‹±"),_T("å¡åˆ©çŽ›"),_T("ä¸ªäººå¡åˆ©çŽ›")};
 #elif (_GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_PC_)
-	static const TCHAR *g_szTabString[]={_T("Ò°ÍâBOSS"),_T("ÃØ¾³boss"),_T("»Æ½ð¹Ö"),_T("Ê¾Àý"),_T("Ê¾Àý"),_T("Ê¾Àý"),_T("Ê¾Àý")};
+	static const TCHAR *g_szTabString[]={_T("é‡Žå¤–BOSS"),_T("ç§˜å¢ƒboss"),_T("é»„é‡‘æ€ª"),_T("ç¤ºä¾‹"),_T("ç¤ºä¾‹"),_T("ç¤ºä¾‹"),_T("ç¤ºä¾‹")};
 #else
-	static const TCHAR *g_szTabString[]={_T("Ò°ÍâBOSS"),_T("ÃØ¾³boss"),_T("×ªÉúBOSS"),_T("ÊÔÁ¶Ö®µØ"),_T("¿àÄÑÁ¶Óü"),_T("¿¨ÀûÂê"),_T("¸öÈË¿¨ÀûÂê")};
+	static const TCHAR *g_szTabString[]={_T("é‡Žå¤–BOSS"),_T("ç§˜å¢ƒboss"),_T("è½¬ç”ŸBOSS"),_T("è¯•ç‚¼ä¹‹åœ°"),_T("è‹¦éš¾ç‚¼ç‹±"),_T("å¡åˆ©çŽ›"),_T("ä¸ªäººå¡åˆ©çŽ›")};
 #endif
-// CDlgBossSettings ¶Ô»°¿ò
+// CDlgBossSettings å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CDlgBossSettings, CDialog)
 
@@ -44,13 +44,13 @@ BEGIN_MESSAGE_MAP(CDlgBossSettings, CDialog)
 END_MESSAGE_MAP()
 
 
-// CDlgBossSettings ÏûÏ¢´¦Àí³ÌÐò
+// CDlgBossSettings æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CDlgBossSettings::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// TODO:  ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯
+	// TODO:  åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–
 	InitCtrls();
 	CRect rc;
 	m_pTab->GetClientRect(&rc);
@@ -79,16 +79,16 @@ BOOL CDlgBossSettings::OnInitDialog()
 
 	ReadIniToCtrls();
 	return TRUE;  // return TRUE unless you set the focus to a control
-	// Òì³£: OCX ÊôÐÔÒ³Ó¦·µ»Ø FALSE
+	// å¼‚å¸¸: OCX å±žæ€§é¡µåº”è¿”å›ž FALSE
 }
 
 HBRUSH CDlgBossSettings::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 {
 	HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
 
-	// TODO:  ÔÚ´Ë¸ü¸Ä DC µÄÈÎºÎÊôÐÔ
+	// TODO:  åœ¨æ­¤æ›´æ”¹ DC çš„ä»»ä½•å±žæ€§
 		
-	// TODO:  Èç¹ûÄ¬ÈÏµÄ²»ÊÇËùÐè»­±Ê£¬Ôò·µ»ØÁíÒ»¸ö»­±Ê
+	// TODO:  å¦‚æžœé»˜è®¤çš„ä¸æ˜¯æ‰€éœ€ç”»ç¬”ï¼Œåˆ™è¿”å›žå¦ä¸€ä¸ªç”»ç¬”
 	return hbr;
 }
 
@@ -167,11 +167,11 @@ void CDlgBossSettings::ReadIniToCtrls()
 	CString str;
 	CGameConfig gameCfg(m_accountName,false);
 
-	m_dlgNeutralBossSettings.SetConfigObjectAndReadToCtrls(gameCfg.GetNeutralBossConfig());	//Ò°Íâ
-	m_dlgWorldBossSettings.SetConfigObjectAndReadToCtrls(gameCfg.GetWorldBossConfig());	//ÃØ¾³
-	m_dlgCrossBossSettings.SetConfigObjectAndReadToCtrls(gameCfg.GetCrossBossConfig());	//×ªÉú/»Æ½ð¹Ö
-	m_dlgLocalCorpsBossSettings.SetConfigObjectAndReadToCtrls(gameCfg.GetLocalCorpsBossConfig());//ÊÔÁ¶Ö®µØ
-	m_dlgCrossCorpsBossSettings.SetConfigObjectAndReadToCtrls(gameCfg.GetCrossCorpsBossConfig());//¿àÄÑÁ¶Óü
+	m_dlgNeutralBossSettings.SetConfigObjectAndReadToCtrls(gameCfg.GetNeutralBossConfig());	//é‡Žå¤–
+	m_dlgWorldBossSettings.SetConfigObjectAndReadToCtrls(gameCfg.GetWorldBossConfig());	//ç§˜å¢ƒ
+	m_dlgCrossBossSettings.SetConfigObjectAndReadToCtrls(gameCfg.GetCrossBossConfig());	//è½¬ç”Ÿ/é»„é‡‘æ€ª
+	m_dlgLocalCorpsBossSettings.SetConfigObjectAndReadToCtrls(gameCfg.GetLocalCorpsBossConfig());//è¯•ç‚¼ä¹‹åœ°
+	m_dlgCrossCorpsBossSettings.SetConfigObjectAndReadToCtrls(gameCfg.GetCrossCorpsBossConfig());//è‹¦éš¾ç‚¼ç‹±
 // 	m_dlgBeastBossSettings.SetConfigObjectAndReadToCtrls(gameCfg.GetBeastBossConfig());
 // 	m_dlgBossAssistSettings.SetConfigObjectAndReadToCtrls(gameCfg.GetBossAssistConfig());
 
@@ -183,11 +183,11 @@ void CDlgBossSettings::SaveCtrlsToIni()
 	CString str;
 	
 	CGameConfig gameCfg(m_accountName,false);
-	m_dlgNeutralBossSettings.SetConfigObjectAndSaveCtrlsToIni(gameCfg.GetNeutralBossConfig());//Ò°Íâ
-	m_dlgWorldBossSettings.SetConfigObjectAndSaveCtrlsToIni(gameCfg.GetWorldBossConfig());//ÃØ¾³
-	m_dlgCrossBossSettings.SetConfigObjectAndSaveCtrlsToIni(gameCfg.GetCrossBossConfig());//×ªÉú
-	m_dlgLocalCorpsBossSettings.SetConfigObjectAndSaveCtrlsToIni(gameCfg.GetLocalCorpsBossConfig());//ÊÔÁ¶Ö®µØ
-	m_dlgCrossCorpsBossSettings.SetConfigObjectAndSaveCtrlsToIni(gameCfg.GetCrossCorpsBossConfig());//¿àÄÑÁ¶Óü
+	m_dlgNeutralBossSettings.SetConfigObjectAndSaveCtrlsToIni(gameCfg.GetNeutralBossConfig());//é‡Žå¤–
+	m_dlgWorldBossSettings.SetConfigObjectAndSaveCtrlsToIni(gameCfg.GetWorldBossConfig());//ç§˜å¢ƒ
+	m_dlgCrossBossSettings.SetConfigObjectAndSaveCtrlsToIni(gameCfg.GetCrossBossConfig());//è½¬ç”Ÿ
+	m_dlgLocalCorpsBossSettings.SetConfigObjectAndSaveCtrlsToIni(gameCfg.GetLocalCorpsBossConfig());//è¯•ç‚¼ä¹‹åœ°
+	m_dlgCrossCorpsBossSettings.SetConfigObjectAndSaveCtrlsToIni(gameCfg.GetCrossCorpsBossConfig());//è‹¦éš¾ç‚¼ç‹±
 // 	m_dlgBeastBossSettings.SetConfigObjectAndSaveCtrlsToIni(gameCfg.GetBeastBossConfig());
 // 	m_dlgBossAssistSettings.SetConfigObjectAndSaveCtrlsToIni(gameCfg.GetBossAssistConfig());
 }
@@ -196,7 +196,7 @@ void CDlgBossSettings::SaveCtrlsToIni()
 
 void CDlgBossSettings::OnClose()
 {
-	// TODO: ÔÚ´ËÌí¼ÓÏûÏ¢´¦Àí³ÌÐò´úÂëºÍ/»òµ÷ÓÃÄ¬ÈÏÖµ
+	// TODO: åœ¨æ­¤æ·»åŠ æ¶ˆæ¯å¤„ç†ç¨‹åºä»£ç å’Œ/æˆ–è°ƒç”¨é»˜è®¤å€¼
 	DestroyAllChildDlgs();
 	CDialog::OnCancel();
 	CDialog::OnClose();
@@ -204,15 +204,15 @@ void CDlgBossSettings::OnClose()
 
 void CDlgBossSettings::OnBnClickedBtnSave()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	SaveCtrlsToIni();
-	AfxMessageBox(_T("±£´æ³É¹¦!"));
+	AfxMessageBox(_T("ä¿å­˜æˆåŠŸ!"));
 	EndDialog(0);
 }
 
 void CDlgBossSettings::OnTcnSelchangeTabBossSetings(NMHDR *pNMHDR, LRESULT *pResult)
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	int curSel=m_pTab->GetCurSel();
 	int cmd=SW_SHOW;
 	for(int i=0;i<g_tabCount;++i)

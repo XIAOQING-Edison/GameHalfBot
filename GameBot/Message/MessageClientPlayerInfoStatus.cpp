@@ -16,15 +16,15 @@ bool CMessageClientPlayerInfoStatus::Encode(CStreamReadWrite *pStreamBuf)
 	CBaseMessage::Encode(pStreamBuf);
 	ResetWritePostion();
 
-	pStreamBuf->WriteShort(GetProtocolId());	//Ğ­ÒéID
+	pStreamBuf->WriteShort(GetProtocolId());	//åè®®ID
 	WriteBean(pStreamBuf,&m_playerInfoStatus);
 	//test
-	//TRACE_OUTPUT(_T("±àÂë¿Í»§Íæ¼ÒÊı¾İ:%s\n"),HexArrayToString(pStreamBuf->GetBufHead(),pStreamBuf->GetCurWritePostion()).c_str());
+	//TRACE_OUTPUT(_T("ç¼–ç å®¢æˆ·ç©å®¶æ•°æ®:%s\n"),HexArrayToString(pStreamBuf->GetBufHead(),pStreamBuf->GetCurWritePostion()).c_str());
 	return true;
 }
 
 
-//Õâ¸öÓÎÏ·µ½ÕâÀï¾ÍÊÇ³ö´í
+//è¿™ä¸ªæ¸¸æˆåˆ°è¿™é‡Œå°±æ˜¯å‡ºé”™
 int CMessageClientPlayerInfoStatus::Decode(CStreamReadWrite *pStreamBuf)
 {
 	int handleLength=0;

@@ -14,54 +14,54 @@ public:
 	STRING GetName(){return name;};
 	int GetLevel(){return level;}
 	INT64 GetUnionId(){return unionId;}
-	STRING GetUnionName(){return unionName;}	//Õ½ÃËÃû×Ö
-	int GetTotalFight(){return fight;}	//Õ½Á¦
+	STRING GetUnionName(){return unionName;}	//æˆ˜ç›Ÿåå­—
+	int GetTotalFight(){return fight;}	//æˆ˜åŠ›
 	int GetServerId(){return serverId;}
 	int GetMapId(){return mapId;}
 	int GetCareer(){return career;}
 
 	void Reset();
 private:
-	INT64 roleId;// = 1; //½ÇÉ«ID
-	STRING name;// = 2; //Ãû³Æ
-	int level;// = 3; //µÈ¼¶
-	int career;// = 4; //Ö°Òµ
-	int sex;// = 5; //ĞÔ±ğ
-	bool online;// = 6; //ÔÚÏß
-	INT64 unionId;// = 7; //Õ½ÃËId
-	STRING unionName;// = 8; //Õ½ÃËÃû×Ö
-	int unionPosition;// = 10; //Õ½ÃËÖ°Î»
+	INT64 roleId;// = 1; //è§’è‰²ID
+	STRING name;// = 2; //åç§°
+	int level;// = 3; //ç­‰çº§
+	int career;// = 4; //èŒä¸š
+	int sex;// = 5; //æ€§åˆ«
+	bool online;// = 6; //åœ¨çº¿
+	INT64 unionId;// = 7; //æˆ˜ç›ŸId
+	STRING unionName;// = 8; //æˆ˜ç›Ÿåå­—
+	int unionPosition;// = 10; //æˆ˜ç›ŸèŒä½
 #if (_GAME_VERSION_ == _YONG_HENG_LIAN_MENG_) ||(_GAME_VERSION_ == _TIAN_SHI_SHEN_YU_) ||(_GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_MOBILE_)\
 	||(_GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_PC_)
-	int fight;// = 11; //½ÇÉ«Õ½Á¦
+	int fight;// = 11; //è§’è‰²æˆ˜åŠ›
 #elif _GAME_VERSION_ == _YONG_HENG_ZHI_DIAN_
-	INT64 fight;// = 11; //½ÇÉ«Õ½Á¦
+	INT64 fight;// = 11; //è§’è‰²æˆ˜åŠ›
 #endif
-	STRING appear;// = 12; //µ±Ç°Ê±×°
-	int equipScore;// = 13; //×°±¸ÆÀ·Ö
-	int unionLevel;// = 14; //Õ½ÃËµÈ¼¶
+	STRING appear;// = 12; //å½“å‰æ—¶è£…
+	int equipScore;// = 13; //è£…å¤‡è¯„åˆ†
+	int unionLevel;// = 14; //æˆ˜ç›Ÿç­‰çº§
 #if (_GAME_VERSION_ == _YONG_HENG_LIAN_MENG_) ||(_GAME_VERSION_ == _YONG_HENG_ZHI_DIAN_)
 #elif (_GAME_VERSION_ == _TIAN_SHI_SHEN_YU_) ||(_GAME_VERSION_	== _TIAN_SHI_ZHI_ZHAN_MOBILE_)\
 	||(_GAME_VERSION_	== _TIAN_SHI_ZHI_ZHAN_PC_)
-	int badgeLevel;// = 15; //Õ½ÃË±ÛÕÂµÈ¼¶
+	int badgeLevel;// = 15; //æˆ˜ç›Ÿè‡‚ç« ç­‰çº§
 #endif
-	int notoriety;// = 16;//¶ñÃûÖµ
-	int redLevel;// = 17;//ºìÃûµÈ¼¶ 1ÎŞÀµ 2¶ñÈË 3Ä§Í·
-	int createTime;// = 18;//„“½¨•rég
-	bool hasShield;// = 19;//ÊÇ·ñ¿ªÆô»¤¶ÜÏµÍ³
-	int serverId;// = 20;//Çø·şid
+	int notoriety;// = 16;//æ¶åå€¼
+	int redLevel;// = 17;//çº¢åç­‰çº§ 1æ— èµ– 2æ¶äºº 3é­”å¤´
+	int createTime;// = 18;//å‰µå»ºæ™‚é–“
+	bool hasShield;// = 19;//æ˜¯å¦å¼€å¯æŠ¤ç›¾ç³»ç»Ÿ
+	int serverId;// = 20;//åŒºæœid
 	int unionCamp;// = 21;
-	int mapId;// = 22;//µ±Ç°µØÍ¼id
+	int mapId;// = 22;//å½“å‰åœ°å›¾id
 	int hostId;// = 23;
 #if _GAME_VERSION_	== _TIAN_SHI_ZHI_ZHAN_MOBILE_
 #elif _GAME_VERSION_	== _TIAN_SHI_ZHI_ZHAN_PC_
-	int charm;// = 24;//÷ÈÁ¦Öµ
-	int unionBadgeIntensify;// = 25;//Õ½ÃË±ÛÕÂÇ¿»¯µÈ¼¶
-	int stageId;//= 26; // 3v3¶ÎÎ»
-	int killCount;//= 27; // ĞüÉÍ¹¦ÄÜ-»÷É±ÈËÊı
-	bool showRankAppear;//= 28; // ÊÇ·ñÕ¹Ê¾ÅÅĞĞ°ñÍâ¹Û
-	int dawankaLevel;//= 29;//´óÍæ¿§µÈ¼¶
-	int skillInstanceFloor;//= 30;//¼¼ÄÜ¸±±¾×î¸ß²ã
+	int charm;// = 24;//é­…åŠ›å€¼
+	int unionBadgeIntensify;// = 25;//æˆ˜ç›Ÿè‡‚ç« å¼ºåŒ–ç­‰çº§
+	int stageId;//= 26; // 3v3æ®µä½
+	int killCount;//= 27; // æ‚¬èµåŠŸèƒ½-å‡»æ€äººæ•°
+	bool showRankAppear;//= 28; // æ˜¯å¦å±•ç¤ºæ’è¡Œæ¦œå¤–è§‚
+	int dawankaLevel;//= 29;//å¤§ç©å’–ç­‰çº§
+	int skillInstanceFloor;//= 30;//æŠ€èƒ½å‰¯æœ¬æœ€é«˜å±‚
 #endif
 
 

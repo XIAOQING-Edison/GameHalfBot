@@ -19,8 +19,8 @@ int CInfoRoleToOtherInfo::Decode(CStreamReadWrite *pStreamBuf)
 
 	int orgPos=pStreamBuf->GetHandlePos();
 	int objLength=0;
-	int restBytes=m_packageLengthInRes;	//¶ÁÈ¡¹Ì¶¨³¤¶ÈµÄ×Ö½Ú¾Í½âÎöÍê
-	TRACE_OUTPUT(_T("½âÎöCInfoRoleToOtherInfo\n"));
+	int restBytes=m_packageLengthInRes;	//è¯»å–å›ºå®šé•¿åº¦çš„å­—èŠ‚å°±è§£æå®Œ
+	TRACE_OUTPUT(_T("è§£æCInfoRoleToOtherInfo\n"));
 
 	Reset();
 
@@ -35,9 +35,9 @@ int CInfoRoleToOtherInfo::Decode(CStreamReadWrite *pStreamBuf)
 		case 1:
 			if(fieldFlag %8 ==2)
 			{
-				objLength=pStreamBuf->ReadRawVarInt32();	//³¤¶È
+				objLength=pStreamBuf->ReadRawVarInt32();	//é•¿åº¦
 				info.SetPackageLengthInRes(objLength);
-				if(objLength>0)	//ĞèÒªÅĞ¶ÏÊÇ·ñÓĞ³¤¶È²ÅÈ¥½âÎö£¬ÕâÀïÓĞ0³¤¶ÈµÄÇé¿ö
+				if(objLength>0)	//éœ€è¦åˆ¤æ–­æ˜¯å¦æœ‰é•¿åº¦æ‰å»è§£æï¼Œè¿™é‡Œæœ‰0é•¿åº¦çš„æƒ…å†µ
 					info.Decode(pStreamBuf);
 			}
 			break;
@@ -49,9 +49,9 @@ int CInfoRoleToOtherInfo::Decode(CStreamReadWrite *pStreamBuf)
 			break;
 		case 4:
 			{
-				objLength=pStreamBuf->ReadRawVarInt32();	//³¤¶È
+				objLength=pStreamBuf->ReadRawVarInt32();	//é•¿åº¦
 					
-				if(objLength>0)	//ĞèÒªÅĞ¶ÏÊÇ·ñÓĞ³¤¶È²ÅÈ¥½âÎö£¬ÕâÀïÓĞ0³¤¶ÈµÄÇé¿ö
+				if(objLength>0)	//éœ€è¦åˆ¤æ–­æ˜¯å¦æœ‰é•¿åº¦æ‰å»è§£æï¼Œè¿™é‡Œæœ‰0é•¿åº¦çš„æƒ…å†µ
 				{
 					pStreamBuf->SetHandlePos(pStreamBuf->GetHandlePos()+objLength);	
 				}
@@ -95,8 +95,8 @@ int CInfoRoleToOtherInfo::Decode(CStreamReadWrite *pStreamBuf)
 			}
 			break;
 		default:
-			TRACE_OUTPUT(_T("--------------------CInfoRoleToOtherInfo ½âÎö³ö´íÁË!!--------------------\n"));
-// 			if(fieldFlag%8 !=0)	//ÔİÊ±Ã»ÕÒµ½½âÎöµÄ£¬ÏÈÌø¹ı
+			TRACE_OUTPUT(_T("--------------------CInfoRoleToOtherInfo è§£æå‡ºé”™äº†!!--------------------\n"));
+// 			if(fieldFlag%8 !=0)	//æš‚æ—¶æ²¡æ‰¾åˆ°è§£æçš„ï¼Œå…ˆè·³è¿‡
 // 			{
 // 				objLength=pStreamBuf->ReadRawVarInt32();
 // 				pStreamBuf->SetHandlePos(pStreamBuf->GetHandlePos()+objLength);
@@ -108,6 +108,6 @@ int CInfoRoleToOtherInfo::Decode(CStreamReadWrite *pStreamBuf)
 
 EXT:
 	handleLength=pStreamBuf->GetHandlePos()-orgPos;
-	//TRACE_OUTPUT(_T("CInfoRoleToOtherInfo ½âÎö³¤¶È:%d\n"),handleLength);
+	//TRACE_OUTPUT(_T("CInfoRoleToOtherInfo è§£æé•¿åº¦:%d\n"),handleLength);
 	return handleLength;
 }

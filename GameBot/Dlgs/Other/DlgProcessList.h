@@ -11,17 +11,17 @@ struct PROCESS_INFO
 	CString szPath;
 };
 
-// CDlgProcessList ¶Ô»°¿ò
+// CDlgProcessList å¯¹è¯æ¡†
 
 class CDlgProcessList : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgProcessList)
 
 public:
-	CDlgProcessList(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgProcessList(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgProcessList();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_PROCESS_LIST };
 public:
 	void GetAllProcessList();
@@ -41,9 +41,9 @@ private:
 	CListCtrl *m_pList;
 	int m_pidSelect;
 	bool m_bShowEmuOnly;
-	map<CString,CString> m_filterStringMap;	//ÓÃÀ´¹ıÂË
+	map<CString,CString> m_filterStringMap;	//ç”¨æ¥è¿‡æ»¤
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:

@@ -2,17 +2,17 @@
 
 #include "../../Config/WorldBossConfig.h"
 #include "../../resource.h"
-// CDlgDailyTaskSettings ¶Ô»°¿ò
+// CDlgDailyTaskSettings å¯¹è¯æ¡†
 
 class CDlgWorldBossSetting : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgWorldBossSetting)
 
 public:
-	CDlgWorldBossSetting(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgWorldBossSetting(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgWorldBossSetting();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_WORLD_BOSS };
 
 	void SetConfigObject(CWorldBossConfig *p){m_pWorldBossConfig=p;}
@@ -47,7 +47,7 @@ private:
 	CWorldBossConfig *m_pWorldBossConfig;
 	CBrush m_brush;
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:

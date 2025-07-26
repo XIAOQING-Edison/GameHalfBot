@@ -18,14 +18,14 @@ bool CMessageClientPlayerTaskStatus::Encode(CStreamReadWrite *pStreamBuf)
 	CBaseMessage::Encode(pStreamBuf);
 	ResetWritePostion();
 
-	pStreamBuf->WriteShort(GetProtocolId());	//Ğ­ÒéID
+	pStreamBuf->WriteShort(GetProtocolId());	//åè®®ID
 	pStreamBuf->WriteFixedInt32(m_index);
 	pStreamBuf->WriteBigString(m_taskStatus.c_str());
 	return true;
 }
 
 
-//Õâ¸öÓÎÏ·µ½ÕâÀï¾ÍÊÇ³ö´í
+//è¿™ä¸ªæ¸¸æˆåˆ°è¿™é‡Œå°±æ˜¯å‡ºé”™
 int CMessageClientPlayerTaskStatus::Decode(CStreamReadWrite *pStreamBuf)
 {
 	int handleLength=0;

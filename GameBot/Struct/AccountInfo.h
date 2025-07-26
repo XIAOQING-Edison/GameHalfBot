@@ -24,6 +24,6 @@ private:
 	STRING m_accountName;
 	int m_serverId;
 	int m_platformIndex;
-	int m_index;	//ÔÚlistctrlÖĞµÄid
+	int m_index;	//åœ¨listctrlä¸­çš„id
 	
 };

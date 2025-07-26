@@ -16,8 +16,8 @@ bool CMessageDoGameOperationReq::Encode(CStreamReadWrite *pStreamBuf)
 	CBaseMessage::Encode(pStreamBuf);
 	ResetWritePostion();
 
-	pStreamBuf->WriteShort(GetProtocolId());	//Ğ­ÒéID
-	pStreamBuf->WriteFixedInt32(m_gameOperationProtocolId);	//Òª¿Í»§Ö´ĞĞµÄprotocolId
+	pStreamBuf->WriteShort(GetProtocolId());	//åè®®ID
+	pStreamBuf->WriteFixedInt32(m_gameOperationProtocolId);	//è¦å®¢æˆ·æ‰§è¡Œçš„protocolId
 	pStreamBuf->WriteFixedInt32(m_paramLength);
 	pStreamBuf->WriteBytes(m_data,m_paramLength);
 	return true;
@@ -42,7 +42,7 @@ EXT:
 
 }
 
-void CMessageDoGameOperationReq::MakeDoGameOperationMessage(int protocolId,int paramLength,char *data)	//Ğ­Òéid,paramLengthÊÇ²ÎÊı³¤¶È,dataÊÇ²ÎÊıÄÚÈİ
+void CMessageDoGameOperationReq::MakeDoGameOperationMessage(int protocolId,int paramLength,char *data)	//åè®®id,paramLengthæ˜¯å‚æ•°é•¿åº¦,dataæ˜¯å‚æ•°å†…å®¹
 {
 	m_gameOperationProtocolId=protocolId;
 	m_paramLength=paramLength;

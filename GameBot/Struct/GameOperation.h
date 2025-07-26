@@ -8,15 +8,15 @@
 // #include "../Util/ComposeHelper.h"
 // 
 
-//Ö¸Ê¾µ±Ç°µÄÈÎÎñid
+//æŒ‡ç¤ºå½“å‰çš„ä»»åŠ¡id
 enum E_TASK_ID{
-	e_task_id_none=-1,		//ÎŞÈÎÎñµÄ»°»áÔÚË¢¹ÖµãË¢²ÄÁÏ
-	e_task_id_demon_plaza=0,	//¶ñÄ§¹ã³¡
-	e_task_id_blood_town		//ÑªÉ«³Ç±¤
+	e_task_id_none=-1,		//æ— ä»»åŠ¡çš„è¯ä¼šåœ¨åˆ·æ€ªç‚¹åˆ·ææ–™
+	e_task_id_demon_plaza=0,	//æ¶é­”å¹¿åœº
+	e_task_id_blood_town		//è¡€è‰²åŸå ¡
 };
 
 
-//³ÌĞòÖĞµÄÈÎÎñÊÇÒ»ÏµÁĞ²Ù×÷µÄ×éºÏ,Ã¿¸öº¯ÊıÊÇÒ»¸ö¹¦ÄÜ£¬Ã¿¸ö¹¦ÄÜĞèÒªÊ±¼äÍê³É£¬¾ÍÊÇĞèÒªµÈ´ı
+//ç¨‹åºä¸­çš„ä»»åŠ¡æ˜¯ä¸€ç³»åˆ—æ“ä½œçš„ç»„åˆ,æ¯ä¸ªå‡½æ•°æ˜¯ä¸€ä¸ªåŠŸèƒ½ï¼Œæ¯ä¸ªåŠŸèƒ½éœ€è¦æ—¶é—´å®Œæˆï¼Œå°±æ˜¯éœ€è¦ç­‰å¾…
 
 class CPlayer;
 
@@ -30,7 +30,7 @@ public:
 	CPlayer *GetPlayer(){return m_pThisPlayer;}
 
 
-	void Init();	//³õÊ¼»¯ÊÂ¼ş±äÁ¿
+	void Init();	//åˆå§‹åŒ–äº‹ä»¶å˜é‡
 	
 	void ResetResCode();
 	void SetResCode(int state){m_gameResCode=state;}
@@ -81,15 +81,15 @@ public:
 
 	void ResetNeedMakeFakeChangePosMsg(){SetNeedMakeFakeChangePosMsg(false);}
 	void SetNeedMakeFakeChangePosMsg(bool b){m_bNeedMakeFakeChangePosMsg=b;}
-	bool IsNeedMakeFakeChangePosMsg(){return m_bNeedMakeFakeChangePosMsg;} //¸üĞÂÄ¿±ê¹ÖÎïµÄÊôĞÔĞÅÏ¢ÊÇ·ñ³É¹¦
+	bool IsNeedMakeFakeChangePosMsg(){return m_bNeedMakeFakeChangePosMsg;} //æ›´æ–°ç›®æ ‡æ€ªç‰©çš„å±æ€§ä¿¡æ¯æ˜¯å¦æˆåŠŸ
 
 	void ResetUpdateTargetMonsterStatusSucc(){SetUpdateTargetMonsterStatusSucc(false);}
 	void SetUpdateTargetMonsterStatusSucc(bool b){m_bUpdateTargetMonsterStatusSucc=b;}
-	bool IsUpdateTargetMonsterStatusSucc(){return m_bUpdateTargetMonsterStatusSucc;} //¸üĞÂÄ¿±ê¹ÖÎïµÄÊôĞÔĞÅÏ¢ÊÇ·ñ³É¹¦
+	bool IsUpdateTargetMonsterStatusSucc(){return m_bUpdateTargetMonsterStatusSucc;} //æ›´æ–°ç›®æ ‡æ€ªç‰©çš„å±æ€§ä¿¡æ¯æ˜¯å¦æˆåŠŸ
 
 	void ResetMoveSucc(){SetMoveSucc(true);}
 	void SetMoveSucc(bool b){m_bMoveSucc=b;}
-	bool IsMoveSucc(){return m_bMoveSucc;} //¸üĞÂÄ¿±ê¹ÖÎïµÄÊôĞÔĞÅÏ¢ÊÇ·ñ³É¹¦
+	bool IsMoveSucc(){return m_bMoveSucc;} //æ›´æ–°ç›®æ ‡æ€ªç‰©çš„å±æ€§ä¿¡æ¯æ˜¯å¦æˆåŠŸ
 
 
 	void SetMaxWaitTime(int maxTime){m_maxWaitTime=maxTime;}
@@ -97,74 +97,74 @@ public:
 
 
 	DWORD WaitForOperationComplete(){return WaitForSingleObject(m_hEvtOperationFinished,GetMaxWaitTime());}
-	BOOL InterruptCurrentOperation(){return SetEvent(m_hEvtOperationFinished);}	//´Óµ±Ç°µÈ´ı×´Ì¬ÖĞ»½ĞÑ,Ìø³öµ±Ç°²Ù×÷
+	BOOL InterruptCurrentOperation(){return SetEvent(m_hEvtOperationFinished);}	//ä»å½“å‰ç­‰å¾…çŠ¶æ€ä¸­å”¤é†’,è·³å‡ºå½“å‰æ“ä½œ
 
 	bool InterruptOperationByEmergencyLevel(E_EMERGENCY_LEVEL lv);
 
 
 	void SetEmergencyLevel(E_EMERGENCY_LEVEL lv){m_emergencyLevel=lv;}
 	E_EMERGENCY_LEVEL GetEmergencyLevel(){return m_emergencyLevel;}
-	void ResetEmergencyLevel(){SetEmergencyLevel(e_emergency_level_none);}	//Ä¬ÈÏÎŞ½ô¼±×´Ì¬
+	void ResetEmergencyLevel(){SetEmergencyLevel(e_emergency_level_none);}	//é»˜è®¤æ— ç´§æ€¥çŠ¶æ€
 
 	void SetCurTaskId(int id){m_curTaskId=id;}
 	
 
-public:	//ÆäËü½Ó¿Ú
+public:	//å…¶å®ƒæ¥å£
 	bool IsInSafeArea(int x,int y){return false;}
 
 
-	//»ù±¾ÓÎÏ·ÀïµÄ²Ù×÷
-public://operation,ÕâÀï°ÑÒ»¸öÍêÕûµÄ¹¦ÄÜµ±×öÒ»¸ö²Ù×÷(operation),ÀıÈç×ßµ½Ä¿µÄµØ²¢´ò¹Ö£¬×ßµ½Ä¿µÄµØ²É¼¯µÈ
+	//åŸºæœ¬æ¸¸æˆé‡Œçš„æ“ä½œ
+public://operation,è¿™é‡ŒæŠŠä¸€ä¸ªå®Œæ•´çš„åŠŸèƒ½å½“åšä¸€ä¸ªæ“ä½œ(operation),ä¾‹å¦‚èµ°åˆ°ç›®çš„åœ°å¹¶æ‰“æ€ªï¼Œèµ°åˆ°ç›®çš„åœ°é‡‡é›†ç­‰
 
 
-	E_OPERATION_RESULT SetPkMode(int mode,CSocketHelper *pSocketHelper);	//pkÄ£Ê½×ª»»
+	E_OPERATION_RESULT SetPkMode(int mode,CSocketHelper *pSocketHelper);	//pkæ¨¡å¼è½¬æ¢
 
-	//µ¥¸ö½ÇÉ«ÒÆ¶¯»òÊ¹ÓÃ¼¼ÄÜ
-
-
+	//å•ä¸ªè§’è‰²ç§»åŠ¨æˆ–ä½¿ç”¨æŠ€èƒ½
 
 
-private://ÆäËü¸¨Öú¶ÔÏó
+
+
+private://å…¶å®ƒè¾…åŠ©å¯¹è±¡
 	
 	CPlayer *m_pThisPlayer;
 
-	bool RecvPacketAndUpdateInfo(int times,CSocketHelper *pSocketHelper);	//½ÓÊÕ²¢´¦ÀíÊı¾İ£¬timesÊÇ´ÎÊı£¬ÒÔ¼°ÑÓÊ±Ò»ÏÂÊ±¼ä
+	bool RecvPacketAndUpdateInfo(int times,CSocketHelper *pSocketHelper);	//æ¥æ”¶å¹¶å¤„ç†æ•°æ®ï¼Œtimesæ˜¯æ¬¡æ•°ï¼Œä»¥åŠå»¶æ—¶ä¸€ä¸‹æ—¶é—´
 private:
-	HANDLE m_hEvtOperationFinished;	//Õı³£Çé¿öÏÂÊÇ»áµÈ´ıÕâ¸öÊÂ¼şÍê³É,½ô¼±Çé¿öÏÂ»á»½ĞÑ²¢Ìø³öÄ³Ğ©º¯ÊıÖ´ĞĞÁíÒ»¸ö¸ü½ô¼±µÄ
-	E_EMERGENCY_LEVEL m_emergencyLevel;	//ÖĞ¶Ïµ±Ç°Ö´ĞĞµÄº¯ÊıÈ¥Ö´ĞĞÏÂÒ»¸ö²Ù×÷
+	HANDLE m_hEvtOperationFinished;	//æ­£å¸¸æƒ…å†µä¸‹æ˜¯ä¼šç­‰å¾…è¿™ä¸ªäº‹ä»¶å®Œæˆ,ç´§æ€¥æƒ…å†µä¸‹ä¼šå”¤é†’å¹¶è·³å‡ºæŸäº›å‡½æ•°æ‰§è¡Œå¦ä¸€ä¸ªæ›´ç´§æ€¥çš„
+	E_EMERGENCY_LEVEL m_emergencyLevel;	//ä¸­æ–­å½“å‰æ‰§è¡Œçš„å‡½æ•°å»æ‰§è¡Œä¸‹ä¸€ä¸ªæ“ä½œ
 	
-	int m_gameResCode;	//ÕâÀï´Ó½ÓÊÕµÄresÀïµÃµ½µÄstate¸³¸ø±äÁ¿
-	int m_maxWaitTime;	//×î´óµÈ´ıÊ±¼ä
-	int m_curTaskId;	//µ±Ç°µÄÈÎÎñID
-	int m_nextTaskId;	//ÏÂÒ»¸öÈÎÎñID(ÕâÀïÏÈ°Ñ¿É½ÓÊÜµÄ´¦ÀíÍê£¬µ±Ç°ÈÎÎñÊÕµ½misson_changeÍê³ÉÊ±»áÊÕµ½ÏÂÒ»¸ö¿É½ÓÊÜµÄÈÎÎñID)
+	int m_gameResCode;	//è¿™é‡Œä»æ¥æ”¶çš„resé‡Œå¾—åˆ°çš„stateèµ‹ç»™å˜é‡
+	int m_maxWaitTime;	//æœ€å¤§ç­‰å¾…æ—¶é—´
+	int m_curTaskId;	//å½“å‰çš„ä»»åŠ¡ID
+	int m_nextTaskId;	//ä¸‹ä¸€ä¸ªä»»åŠ¡ID(è¿™é‡Œå…ˆæŠŠå¯æ¥å—çš„å¤„ç†å®Œï¼Œå½“å‰ä»»åŠ¡æ”¶åˆ°misson_changeå®Œæˆæ—¶ä¼šæ”¶åˆ°ä¸‹ä¸€ä¸ªå¯æ¥å—çš„ä»»åŠ¡ID)
 
-	INT64 m_atkSpriteId;	//Éè¶¨µ±Ç°µÄ¹ÖÎïID,ÕâÓÎÏ·ÊÇ64Î»µÄID£¬ËùÒÔÓÃint64,Ò»°ãÊÇ´òBOSS»òÕßPKÄ³¸öÍæ¼Ò
-	int m_atkConfigId;	//Éè¶¨Õâ¸öÖ÷ÒªÊÇÈİÒ×ÕÒBOSS»òÌØ¶¨ÀàĞÍµÄ¹Ö
+	INT64 m_atkSpriteId;	//è®¾å®šå½“å‰çš„æ€ªç‰©ID,è¿™æ¸¸æˆæ˜¯64ä½çš„IDï¼Œæ‰€ä»¥ç”¨int64,ä¸€èˆ¬æ˜¯æ‰“BOSSæˆ–è€…PKæŸä¸ªç©å®¶
+	int m_atkConfigId;	//è®¾å®šè¿™ä¸ªä¸»è¦æ˜¯å®¹æ˜“æ‰¾BOSSæˆ–ç‰¹å®šç±»å‹çš„æ€ª
 
-	int m_curInstanceZoneState;//µ±Ç°¸±±¾×´Ì¬,1,2--×¼±¸£¬3--ÔËĞĞ£¬4--Í£Ö¹,5--½áÊø
+	int m_curInstanceZoneState;//å½“å‰å‰¯æœ¬çŠ¶æ€,1,2--å‡†å¤‡ï¼Œ3--è¿è¡Œï¼Œ4--åœæ­¢,5--ç»“æŸ
 
-	bool m_bFinished;	//ÈÎÎñÊÇ·ñÔÚµÈ´ıÊ±¼äÇ°Íê³É,¿ÉÔÚ½ÓÊÕcheckcount==ĞèÒªµÄcheckcount,Ê±ÉèÎªfinish
-	bool m_bCurTaskFinished;	//ÊÇ·ñµ±Ç°ÈÎÎñÍê³É
+	bool m_bFinished;	//ä»»åŠ¡æ˜¯å¦åœ¨ç­‰å¾…æ—¶é—´å‰å®Œæˆ,å¯åœ¨æ¥æ”¶checkcount==éœ€è¦çš„checkcount,æ—¶è®¾ä¸ºfinish
+	bool m_bCurTaskFinished;	//æ˜¯å¦å½“å‰ä»»åŠ¡å®Œæˆ
 
-	bool m_bRecvUpdateRolePosition;	//ÊÇ·ñµ½´ïÖ¸¶¨µØµã
-	bool m_bNeedMakeFakeChangePosMsg;	//ÊÇ·ñĞèÒªÎ±ÔìÎ»ÖÃ¸Ä±ä
-	bool m_bUpdateTargetMonsterStatusSucc;	//¸üĞÂÄ¿±ê¹ÖÎïµÄÊôĞÔĞÅÏ¢ÊÇ·ñ³É¹¦
+	bool m_bRecvUpdateRolePosition;	//æ˜¯å¦åˆ°è¾¾æŒ‡å®šåœ°ç‚¹
+	bool m_bNeedMakeFakeChangePosMsg;	//æ˜¯å¦éœ€è¦ä¼ªé€ ä½ç½®æ”¹å˜
+	bool m_bUpdateTargetMonsterStatusSucc;	//æ›´æ–°ç›®æ ‡æ€ªç‰©çš„å±æ€§ä¿¡æ¯æ˜¯å¦æˆåŠŸ
 
-	bool m_bConnectToGameServer;	//ÊÇ·ñÒÑÁ¬½Óµ½ÓÎÏ··şÎñÆ÷
-// 	bool m_bSign;	//ÊÇ·ñÒÑÇ©µ½
-// 	bool m_bGetOfflineExp;	//ÊÇ·ñÒÑÈ¡µÃÀëÏß¾­Ñé
-// 	bool m_bGetAward;	//ÊÇ·ñÒÑÈ¡µÃÆäËü½±ÉÍ
+	bool m_bConnectToGameServer;	//æ˜¯å¦å·²è¿æ¥åˆ°æ¸¸æˆæœåŠ¡å™¨
+// 	bool m_bSign;	//æ˜¯å¦å·²ç­¾åˆ°
+// 	bool m_bGetOfflineExp;	//æ˜¯å¦å·²å–å¾—ç¦»çº¿ç»éªŒ
+// 	bool m_bGetAward;	//æ˜¯å¦å·²å–å¾—å…¶å®ƒå¥–èµ
 
-	//ÏÂÃæµÄĞÅÏ¢ĞèÒªÔÚµÇÂ½ºó½ÓÊÕÍê³ÉÔÙ½øĞĞÆäËü²Ù×÷
-// 	bool m_bItemsLoadSucc;	//ÊÇ·ñ×°±¸ĞÅÏ¢£¬°üÀ¨±³°ü»ò²Ö¿â¶¼ÒÑ³É¹¦´¦Àí
-// 	bool m_bSkillsLoadSucc;	//ÊÇ·ñ¼¼ÄÜ¼ÓÔØÍê±Ï
-// 	bool m_bMallLoadSucc;	//ÉÌ³ÇÊÇ·ñ¼ÓÔØÍê±Ï
-// 	bool m_bMissionsLoadSucc;	//ÈÎÎñÊÇ·ñ¼ÓÔØÍê±Ï
-// 	bool m_bAchievementLoadSucc;	//³É¾ÍÊÇ·ñ¼ÓÔØÍê±Ï
-// 	bool m_bMailLoadSucc;	//ÊÇ·ñÊÕµ½ÓÊ¼şĞÅÏ¢//º¯ÊıºóÃæ¼Ó£¬ÕâÀïÏÈ¼ÓĞèÒª´¦ÀíµÄÊôĞÔ
+	//ä¸‹é¢çš„ä¿¡æ¯éœ€è¦åœ¨ç™»é™†åæ¥æ”¶å®Œæˆå†è¿›è¡Œå…¶å®ƒæ“ä½œ
+// 	bool m_bItemsLoadSucc;	//æ˜¯å¦è£…å¤‡ä¿¡æ¯ï¼ŒåŒ…æ‹¬èƒŒåŒ…æˆ–ä»“åº“éƒ½å·²æˆåŠŸå¤„ç†
+// 	bool m_bSkillsLoadSucc;	//æ˜¯å¦æŠ€èƒ½åŠ è½½å®Œæ¯•
+// 	bool m_bMallLoadSucc;	//å•†åŸæ˜¯å¦åŠ è½½å®Œæ¯•
+// 	bool m_bMissionsLoadSucc;	//ä»»åŠ¡æ˜¯å¦åŠ è½½å®Œæ¯•
+// 	bool m_bAchievementLoadSucc;	//æˆå°±æ˜¯å¦åŠ è½½å®Œæ¯•
+// 	bool m_bMailLoadSucc;	//æ˜¯å¦æ”¶åˆ°é‚®ä»¶ä¿¡æ¯//å‡½æ•°åé¢åŠ ï¼Œè¿™é‡Œå…ˆåŠ éœ€è¦å¤„ç†çš„å±æ€§
 
-	bool m_bChangeMapSucc;	//ÊÇ·ñÊÕµ½changeMapRes
-	bool m_bLoginMapSucc;	//ÊÇ·ñÊÕµ½loginMapres
-	bool m_bMoveSucc;	//ÊÇ·ñÒÆ¶¯³É¹¦
+	bool m_bChangeMapSucc;	//æ˜¯å¦æ”¶åˆ°changeMapRes
+	bool m_bLoginMapSucc;	//æ˜¯å¦æ”¶åˆ°loginMapres
+	bool m_bMoveSucc;	//æ˜¯å¦ç§»åŠ¨æˆåŠŸ
 
 };

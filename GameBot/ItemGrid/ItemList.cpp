@@ -1,10 +1,10 @@
 #include "ItemList.h"
 #include "../GameData/ItemHelper.h"
 #include "../Protocol/Bag/InfoItemInfo.h"
-static const int g_boxColPerRow=8;	//Ã¿ĞĞ8¸ñ
+static const int g_boxColPerRow=8;	//æ¯è¡Œ8æ ¼
 CItemList::CItemList(void)
 {
-	SetType(e_item_grid_type_none);	//³õÊ¼ÀàĞÍÎª·Ç·¨
+	SetType(e_item_grid_type_none);	//åˆå§‹ç±»å‹ä¸ºéæ³•
 	SetAvailableSize(0);
 }
 
@@ -56,17 +56,17 @@ void CItemList::AddOneItemtoItemList(void *pInfoItem)
 	else
 	{
 		CInfoItemInfo *pItem=(CInfoItemInfo*)pInfoItem;
-		TRACE_OUTPUT(_T("Ôö¼ÓÎïÆ·id:%d³ö´í---Ã»ÕÒµ½Ïà¹ØĞÅÏ¢!!!!!!\n"),pItem->GetConfigId());
+		TRACE_OUTPUT(_T("å¢åŠ ç‰©å“id:%då‡ºé”™---æ²¡æ‰¾åˆ°ç›¸å…³ä¿¡æ¯!!!!!!\n"),pItem->GetConfigId());
 	}
 // 	Lock();
 // 	if(pos>=0 && pos<m_itemList.size())
 // 	{
-// 		TRACE_OUTPUT(_T("µÃµ½ÎïÆ·%s!\n"),item.GetName().c_str());
+// 		TRACE_OUTPUT(_T("å¾—åˆ°ç‰©å“%s!\n"),item.GetName().c_str());
 // 		m_itemList[pos]=item;
 // 	}
 // 	else
 // 	{
-// 		TRACE_OUTPUT(_T("Ôö¼ÓÎïÆ·Î»ÖÃ:%d³ö´í£¬³¬³ö±³°üÊıÁ¿!!!\n"),pos);
+// 		TRACE_OUTPUT(_T("å¢åŠ ç‰©å“ä½ç½®:%då‡ºé”™ï¼Œè¶…å‡ºèƒŒåŒ…æ•°é‡!!!\n"),pos);
 // 	}
 // 	Unlock();
 }
@@ -91,7 +91,7 @@ void CItemList::RemoveItemsFromItemList(void* removes)
 		}
 		else
 		{
-			TRACE_OUTPUT(_T("É¾³ıÊ±ÕÒ²»µ½id:%I64dµÄÎïÆ·ĞÅÏ¢!!!!!!!\n"),*it);
+			TRACE_OUTPUT(_T("åˆ é™¤æ—¶æ‰¾ä¸åˆ°id:%I64dçš„ç‰©å“ä¿¡æ¯!!!!!!!\n"),*it);
 		}
 		++it;
 	}
@@ -102,7 +102,7 @@ void CItemList::UpdateItemToItemList(int pos,CItem &item)
 {
 // 	CItem item;
 // 	item.ParseInfoItemToItem(pInfoItem);
-	//Ç°ÃæÒÑ½âÎöÍê
+	//å‰é¢å·²è§£æå®Œ
 	Lock();
 	if(pos>=0 && pos<m_itemList.size())
 	{
@@ -112,7 +112,7 @@ void CItemList::UpdateItemToItemList(int pos,CItem &item)
 		int yOccupied=pItem->GetYOccupied();
 		int i;
 		int row=pos/g_boxColPerRow;
-		int col=pos%g_boxColPerRow;	//Ëã³öÁĞ
+		int col=pos%g_boxColPerRow;	//ç®—å‡ºåˆ—
 		_ITEM_INFO_ *pItemConfigInfo=NULL;
 		CItem *pCurItem=NULL;
 		for(i=0;i<xOccupied;++i)
@@ -125,7 +125,7 @@ void CItemList::UpdateItemToItemList(int pos,CItem &item)
 			}
 			else
 			{
-				//ÆäËüÎ»ÖÃÊÇÕ¼Î»µÄ
+				//å…¶å®ƒä½ç½®æ˜¯å ä½çš„
 				pItemConfigInfo=pCurItem->GetItemInfo();
 				*pItemConfigInfo=*(pItem->GetItemInfo());
 				pCurItem->SetIsOcccupied(true);
@@ -143,7 +143,7 @@ void CItemList::UpdateItemToItemList(int pos,CItem &item)
 	}
 	else
 	{
-		TRACE_OUTPUT(_T("¸üĞÂÎïÆ·%dÎ»ÖÃ³ö´í£¬³¬³ö±³°üÊıÁ¿:%d!!!!!\n"),pos,m_itemList.size());
+		TRACE_OUTPUT(_T("æ›´æ–°ç‰©å“%dä½ç½®å‡ºé”™ï¼Œè¶…å‡ºèƒŒåŒ…æ•°é‡:%d!!!!!\n"),pos,m_itemList.size());
 	}
 	Unlock();
 }
@@ -160,7 +160,7 @@ void CItemList::DeleteItemByPos(int pos)
 		int yOccupied=pItem->GetYOccupied();
 		int i;
 		int row=pos/g_boxColPerRow;
-		int col=pos%g_boxColPerRow;	//Ëã³öÁĞ
+		int col=pos%g_boxColPerRow;	//ç®—å‡ºåˆ—
 		for(i=0;i<xOccupied;++i)
 		{
 			m_itemList[pos+i]=emptyItem;
@@ -175,7 +175,7 @@ void CItemList::DeleteItemByPos(int pos)
 	}
 	else
 	{
-		TRACE_OUTPUT(_T("É¾³ı%dÎ»ÖÃ³ö´í£¬³¬³ö±³°üÊıÁ¿!\n"),pos);
+		TRACE_OUTPUT(_T("åˆ é™¤%dä½ç½®å‡ºé”™ï¼Œè¶…å‡ºèƒŒåŒ…æ•°é‡!\n"),pos);
 	}
 	Unlock();
 }
@@ -191,7 +191,7 @@ CItem *CItemList::GetItemByPos(int pos)
 	}
 	else
 	{
-		TRACE_OUTPUT(_T("È¡±³°ü¸ñ%dÎ»ÖÃ³ö´í£¬³¬³ö±³°üÊıÁ¿!\n"),pos);
+		TRACE_OUTPUT(_T("å–èƒŒåŒ…æ ¼%dä½ç½®å‡ºé”™ï¼Œè¶…å‡ºèƒŒåŒ…æ•°é‡!\n"),pos);
 	}
 	Unlock();
 	return pItem;
@@ -238,7 +238,7 @@ int CItemList::GetPosByItemObjectId(INT64 id)
 	return pos;
 }
 
-INT64 CItemList::GetItemCountByNameBindOrNot(const STRING &name,bool bind)	//´ÓÃû×ÖÈ¡µÃ°ó¶¨»ò·Ç°ó¶¨µÄÎïÆ·
+INT64 CItemList::GetItemCountByNameBindOrNot(const STRING &name,bool bind)	//ä»åå­—å–å¾—ç»‘å®šæˆ–éç»‘å®šçš„ç‰©å“
 {
 	INT64 count=0;
 	Lock();
@@ -254,8 +254,8 @@ INT64 CItemList::GetItemCountByNameBindOrNot(const STRING &name,bool bind)	//´ÓÃ
 	return count;
 }
 
-//»áÓĞ¶à¸öÏî£¬ÒòÎªÓĞ¿ÉÄÜÒ»¸ö¸ñÖØµşÊıÁ¿ÓĞÏŞ»á·Ö×é
-vector<CItem*> CItemList::GetItemByNameBindOrNot(const STRING& name,bool bind)	//È¡µÃÊÇ·ñ°ó¶¨µÄÎïÆ·
+//ä¼šæœ‰å¤šä¸ªé¡¹ï¼Œå› ä¸ºæœ‰å¯èƒ½ä¸€ä¸ªæ ¼é‡å æ•°é‡æœ‰é™ä¼šåˆ†ç»„
+vector<CItem*> CItemList::GetItemByNameBindOrNot(const STRING& name,bool bind)	//å–å¾—æ˜¯å¦ç»‘å®šçš„ç‰©å“
 {
 	vector<CItem*> result;
 	Lock();
@@ -264,7 +264,7 @@ vector<CItem*> CItemList::GetItemByNameBindOrNot(const STRING& name,bool bind)	/
 	while(it != itemsInSameName.end())
 	{
 		CItem *pTmpItem=*it;
-		if(pTmpItem->IsBind()==bind && !pTmpItem->IsOccupied())	//ÅĞ¶ÏÕ¼ÓÃ
+		if(pTmpItem->IsBind()==bind && !pTmpItem->IsOccupied())	//åˆ¤æ–­å ç”¨
 		{
 			result.push_back(pTmpItem);
 		}
@@ -274,8 +274,8 @@ vector<CItem*> CItemList::GetItemByNameBindOrNot(const STRING& name,bool bind)	/
 	return result;
 }
 
-//·µ»ØÒ»¸öitemÖ¸ÕëÊı×é£¬Èç¹ûÊÇ¿ÕµÄitem£¬count=0£¬µ«ÈÔÈ»ÔÚÄÚ´æÖĞÓĞÎ»ÖÃ
-//Í¬Ãû×ÖµÄ»áÓĞ¶à¸ö
+//è¿”å›ä¸€ä¸ªitemæŒ‡é’ˆæ•°ç»„ï¼Œå¦‚æœæ˜¯ç©ºçš„itemï¼Œcount=0ï¼Œä½†ä»ç„¶åœ¨å†…å­˜ä¸­æœ‰ä½ç½®
+//åŒåå­—çš„ä¼šæœ‰å¤šä¸ª
 vector<CItem*> CItemList::GetItemsByName(const STRING &name)
 {
 	vector<CItem*> result;
@@ -294,7 +294,7 @@ vector<CItem*> CItemList::GetItemsByName(const STRING &name)
 }
  
 
-int CItemList::GetRemainIdleGridCount()	//µÃµ½¿ÕÏĞµÄ¸ñ×Ó
+int CItemList::GetRemainIdleGridCount()	//å¾—åˆ°ç©ºé—²çš„æ ¼å­
 {
 	int res=0;
 	Lock();
@@ -302,7 +302,7 @@ int CItemList::GetRemainIdleGridCount()	//µÃµ½¿ÕÏĞµÄ¸ñ×Ó
 	int queryTimes=0;
 	while(it != m_itemList.end())
 	{
-		if(it->IsEmptyItem()&& !it->IsOccupied())	//·ÇÕ¼ÓÃ²ÅÍ³¼Æ
+		if(it->IsEmptyItem()&& !it->IsOccupied())	//éå ç”¨æ‰ç»Ÿè®¡
 		{
 			++res;
 		}
@@ -318,7 +318,7 @@ int CItemList::GetRemainIdleGridCount()	//µÃµ½¿ÕÏĞµÄ¸ñ×Ó
 
 }
 
-void CItemList::EmptyAllItems()	//½«È«²¿item±ê¼ÇÎª¿ÕµÄitem,Ò»°ãÊÇ¶ÏÏßºóµôÓÃ
+void CItemList::EmptyAllItems()	//å°†å…¨éƒ¨itemæ ‡è®°ä¸ºç©ºçš„item,ä¸€èˆ¬æ˜¯æ–­çº¿åæ‰ç”¨
 {
 	Lock();
 	for(int i=0;i<m_itemList.size();++i)
@@ -328,7 +328,7 @@ void CItemList::EmptyAllItems()	//½«È«²¿item±ê¼ÇÎª¿ÕµÄitem,Ò»°ãÊÇ¶ÏÏßºóµôÓÃ
 	Unlock();
 }
 
-void CItemList::OnMoveItemRes(void *item)	//ÒÆ¶¯ÎïÆ·£¬ÕâÀïÏÈÒªÕÒ³öÎïÆ·ËùÔÚµÄ¸ñ×Ó£¬É¾³ı£¬ÔÙ°ÑĞÂµÄÎïÆ·¸³µ½Ä¿±ê¸ñ×ÓÀï
+void CItemList::OnMoveItemRes(void *item)	//ç§»åŠ¨ç‰©å“ï¼Œè¿™é‡Œå…ˆè¦æ‰¾å‡ºç‰©å“æ‰€åœ¨çš„æ ¼å­ï¼Œåˆ é™¤ï¼Œå†æŠŠæ–°çš„ç‰©å“èµ‹åˆ°ç›®æ ‡æ ¼å­é‡Œ
 {
 	CInfoItemInfo *pInfoItem=(CInfoItemInfo*)item;
 	int orgPos=GetPosByItemObjectId(pInfoItem->GetId());
@@ -337,16 +337,16 @@ void CItemList::OnMoveItemRes(void *item)	//ÒÆ¶¯ÎïÆ·£¬ÕâÀïÏÈÒªÕÒ³öÎïÆ·ËùÔÚµÄ¸ñ×Ó
 	if(newItem.ParseInfoItemToItem(item))
 		UpdateItemToItemList(newItem.GetPos(),newItem);
 	else
-		TRACE_OUTPUT(_T("ÒÆ¶¯ÎïÆ·¸üĞÂÕÒ²»µ½id:%dµÄÎïÆ·ĞÅÏ¢!!!!!!\n"),pInfoItem->GetConfigId());
+		TRACE_OUTPUT(_T("ç§»åŠ¨ç‰©å“æ›´æ–°æ‰¾ä¸åˆ°id:%dçš„ç‰©å“ä¿¡æ¯!!!!!!\n"),pInfoItem->GetConfigId());
 }
 
 
-void CItemList::PrintInfo()	//test,²âÊÔÊä³ö
+void CItemList::PrintInfo()	//test,æµ‹è¯•è¾“å‡º
 {
 	for(int i=0;i<m_itemList.size();++i)
 	{
 		CItem *pItem=GetItemByPos(i);
-		STRING name=_T("ÎŞ");
+		STRING name=_T("æ— ");
 		int count=0;
 		if(!pItem->IsEmptyItem())
 		{
@@ -354,8 +354,8 @@ void CItemList::PrintInfo()	//test,²âÊÔÊä³ö
 			name=pItem->GetName();
 		}
 		if(!pItem->IsOccupied())
-			TRACE_OUTPUT(_T("ÎïÆ·Ãû³Æ:%s---Î»ÖÃ:%d---ÊıÁ¿:%d\n"),name.c_str(),i,count);
+			TRACE_OUTPUT(_T("ç‰©å“åç§°:%s---ä½ç½®:%d---æ•°é‡:%d\n"),name.c_str(),i,count);
 		else
-			TRACE_OUTPUT(_T("ÎïÆ·Ãû³Æ:%s---Î»ÖÃ:%d---####Õ¼Î»####\n"),name.c_str(),i);
+			TRACE_OUTPUT(_T("ç‰©å“åç§°:%s---ä½ç½®:%d---####å ä½####\n"),name.c_str(),i);
 	}	
 }

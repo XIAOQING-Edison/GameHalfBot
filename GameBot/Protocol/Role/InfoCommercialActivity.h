@@ -1,7 +1,7 @@
 #pragma once
 #include "../protocol.h"
 #include "../Commerce/ProtocolGetCommercialActivityInfoRes.h"
-// ÉÌÒµ»¯»î¶¯
+// å•†ä¸šåŒ–æ´»åŠ¨
 class CInfoCommercialActivity :
 	public CProtocol
 {

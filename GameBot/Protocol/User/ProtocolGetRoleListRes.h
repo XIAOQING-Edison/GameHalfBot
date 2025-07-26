@@ -12,5 +12,5 @@ public:
 	virtual int Decode(CStreamReadWrite *pStreamBuf);
 
 private:
-	CInfoResGetRoleList infoResGetRoleList;	//交由这个decode
+	CInfoResGetRoleList infoResGetRoleList;	//浜ょ敱杩欎釜decode
 };

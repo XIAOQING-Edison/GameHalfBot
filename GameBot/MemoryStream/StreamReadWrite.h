@@ -1,9 +1,9 @@
-// ÏÂÁĞ ifdef ¿éÊÇ´´½¨Ê¹´Ó DLL µ¼³ö¸ü¼òµ¥µÄ
-// ºêµÄ±ê×¼·½·¨¡£´Ë DLL ÖĞµÄËùÓĞÎÄ¼ş¶¼ÊÇÓÃÃüÁîĞĞÉÏ¶¨ÒåµÄ STREAMREADWRITE_EXPORTS
-// ·ûºÅ±àÒëµÄ¡£ÔÚÊ¹ÓÃ´Ë DLL µÄ
-// ÈÎºÎÆäËûÏîÄ¿ÉÏ²»Ó¦¶¨Òå´Ë·ûºÅ¡£ÕâÑù£¬Ô´ÎÄ¼şÖĞ°üº¬´ËÎÄ¼şµÄÈÎºÎÆäËûÏîÄ¿¶¼»á½«
-// STREAMREADWRITE_API º¯ÊıÊÓÎªÊÇ´Ó DLL µ¼ÈëµÄ£¬¶ø´Ë DLL Ôò½«ÓÃ´Ëºê¶¨ÒåµÄ
-// ·ûºÅÊÓÎªÊÇ±»µ¼³öµÄ¡£
+// ä¸‹åˆ— ifdef å—æ˜¯åˆ›å»ºä½¿ä» DLL å¯¼å‡ºæ›´ç®€å•çš„
+// å®çš„æ ‡å‡†æ–¹æ³•ã€‚æ­¤ DLL ä¸­çš„æ‰€æœ‰æ–‡ä»¶éƒ½æ˜¯ç”¨å‘½ä»¤è¡Œä¸Šå®šä¹‰çš„ STREAMREADWRITE_EXPORTS
+// ç¬¦å·ç¼–è¯‘çš„ã€‚åœ¨ä½¿ç”¨æ­¤ DLL çš„
+// ä»»ä½•å…¶ä»–é¡¹ç›®ä¸Šä¸åº”å®šä¹‰æ­¤ç¬¦å·ã€‚è¿™æ ·ï¼Œæºæ–‡ä»¶ä¸­åŒ…å«æ­¤æ–‡ä»¶çš„ä»»ä½•å…¶ä»–é¡¹ç›®éƒ½ä¼šå°†
+// STREAMREADWRITE_API å‡½æ•°è§†ä¸ºæ˜¯ä» DLL å¯¼å…¥çš„ï¼Œè€Œæ­¤ DLL åˆ™å°†ç”¨æ­¤å®å®šä¹‰çš„
+// ç¬¦å·è§†ä¸ºæ˜¯è¢«å¯¼å‡ºçš„ã€‚
 #pragma once
 // #ifdef STREAMREADWRITE_EXPORTS
 // #define STREAMREADWRITE_API __declspec(dllexport)
@@ -17,23 +17,23 @@ enum E_ENDIAN_TYPE
 	E_ENDIAN_TYPE_BIG_ENDIAN
 };
 
-// ´ËÀàÊÇ´Ó StreamReadWrite.dll µ¼³öµÄ
+// æ­¤ç±»æ˜¯ä» StreamReadWrite.dll å¯¼å‡ºçš„
 #include "../Global/public.h"
 class CByte;
 class STREAMREADWRITE_API CStreamReadWrite {
 public:
 	CStreamReadWrite(int type,int bufLength);
 	~CStreamReadWrite();
-	// TODO: ÔÚ´ËÌí¼ÓÄúµÄ·½·¨¡£
+	// TODO: åœ¨æ­¤æ·»åŠ æ‚¨çš„æ–¹æ³•ã€‚
 	
 	void SetEndianType(int type);
 	int GetEndianType();
 
 public:
-	void Reset(bool bSetBufNull);	//setBufNullÊ±m_pBuf=NULL,·ñÔòÖ»ÉèÖÃÆäËüÎ»ÖÃ
+	void Reset(bool bSetBufNull);	//setBufNullæ—¶m_pBuf=NULL,å¦åˆ™åªè®¾ç½®å…¶å®ƒä½ç½®
 
 
-	void CopyBufAndLength(char *buf,int len,bool showDebug=false);	//test,¿ªÆôµ÷ÊÔÊä³ö²ÎÊı
+	void CopyBufAndLength(char *buf,int len,bool showDebug=false);	//test,å¼€å¯è°ƒè¯•è¾“å‡ºå‚æ•°
 	int GetRestBytesLength();
 
 	char *GetBufHead();
@@ -54,42 +54,42 @@ public:
 	void ResetReadPos();
 	void ResetWritePosition();
 
-	//ÕâÀï×÷ÎªÒ»¸öÌØÊâ´¦Àíº¯Êı£¬Ò»°ãÇé¿ö²»³£Ê¹ÓÃ
+	//è¿™é‡Œä½œä¸ºä¸€ä¸ªç‰¹æ®Šå¤„ç†å‡½æ•°ï¼Œä¸€èˆ¬æƒ…å†µä¸å¸¸ä½¿ç”¨
 	void CopyBufAndLengthWithReadPos(char *buf,int len);
-	void SetBufPos(int pos);	//ÕâÀïÎªÁËÌØÊâÄ¿µÄ£¬Æ½Ê±²»ÒªÊ¹ÓÃ!!!
-	void SetHandlePos(int pos);//ÕâÀïÎªÁËÌØÊâÄ¿µÄ£¬Æ½Ê±²»ÒªÊ¹ÓÃ!!!
+	void SetBufPos(int pos);	//è¿™é‡Œä¸ºäº†ç‰¹æ®Šç›®çš„ï¼Œå¹³æ—¶ä¸è¦ä½¿ç”¨!!!
+	void SetHandlePos(int pos);//è¿™é‡Œä¸ºäº†ç‰¹æ®Šç›®çš„ï¼Œå¹³æ—¶ä¸è¦ä½¿ç”¨!!!
 public:
 
-	BYTE ReadUnsignedByte();	//¶ÁÎŞ·ûºÅÒ»¸ö×Ö½Ú
-	char ReadSignedByte();	//ÓĞ·ûºÅµÄ×Ö½Ú
+	BYTE ReadUnsignedByte();	//è¯»æ— ç¬¦å·ä¸€ä¸ªå­—èŠ‚
+	char ReadSignedByte();	//æœ‰ç¬¦å·çš„å­—èŠ‚
 
-	bool ReadBoolean();//¶ÁÒ»¸öboolean
-	short ReadShort();	//¶ÁÒ»¸öÓĞ·ûºÅshort
-	WORD ReadWord();//ÎŞ·ûºÅshort
+	bool ReadBoolean();//è¯»ä¸€ä¸ªboolean
+	short ReadShort();	//è¯»ä¸€ä¸ªæœ‰ç¬¦å·short
+	WORD ReadWord();//æ— ç¬¦å·short
 
-	int ReadRawVarInt32();	//vint,²¢Î´zigzag
-	__int64 ReadRawVarInt64();	//¿É±ä³¤¶È
+	int ReadRawVarInt32();	//vint,å¹¶æœªzigzag
+	__int64 ReadRawVarInt64();	//å¯å˜é•¿åº¦
 
-	double ReadDouble();	//¶ÁÒ»¸ödouble
-	float ReadFloat();	//¶ÁÒ»¸öfloat
-	STRING ReadVarIntString();	//¶ÁÒ»¸östring,ÕâÀïµÄ³¤¶ÈÊÇvarInt32µÄ
-	char* ReadArray();	//¶ÁÒ»¸öarray
-	int ReadObject();	//¶ÁÒ»¸ö¶ÔÏó£¬´ı¶¨
+	double ReadDouble();	//è¯»ä¸€ä¸ªdouble
+	float ReadFloat();	//è¯»ä¸€ä¸ªfloat
+	STRING ReadVarIntString();	//è¯»ä¸€ä¸ªstring,è¿™é‡Œçš„é•¿åº¦æ˜¯varInt32çš„
+	char* ReadArray();	//è¯»ä¸€ä¸ªarray
+	int ReadObject();	//è¯»ä¸€ä¸ªå¯¹è±¡ï¼Œå¾…å®š
 
 
-	STRING ReadUtfString();	//¶ÁÒ»¸östring,ÕâÀïµÄ³¤¶ÈÊÇ¹Ì¶¨2×Ö½ÚµÄ
+	STRING ReadUtfString();	//è¯»ä¸€ä¸ªstring,è¿™é‡Œçš„é•¿åº¦æ˜¯å›ºå®š2å­—èŠ‚çš„
 
-	STRING ReadBigString();//¶ÁÒ»¸östring,ÕâÀïµÄ³¤¶ÈÊÇfix32µÄ,¼´¹Ì¶¨4×Ö½Ú
+	STRING ReadBigString();//è¯»ä¸€ä¸ªstring,è¿™é‡Œçš„é•¿åº¦æ˜¯fix32çš„,å³å›ºå®š4å­—èŠ‚
 
-	char* ReadUtfBytes(int len);	//¶Áutfbytes,ÕâÀïĞèÒªÅĞ¶¨unicode,µ½Ê±ÍêÉÆ×ª»»¹ı³Ì
+	char* ReadUtfBytes(int len);	//è¯»utfbytes,è¿™é‡Œéœ€è¦åˆ¤å®šunicode,åˆ°æ—¶å®Œå–„è½¬æ¢è¿‡ç¨‹
 
-	char *ReadBytes(int pos,int len);	//¶Á´ÓposÊ¼³¤¶ÈÎªlenµÄ×Ö½Ú
+	char *ReadBytes(int pos,int len);	//è¯»ä»poså§‹é•¿åº¦ä¸ºlençš„å­—èŠ‚
 
-	int ReadFixedInt32();//¶Á¹Ì¶¨4×Ö½Ú
+	int ReadFixedInt32();//è¯»å›ºå®š4å­—èŠ‚
 
-	__int64 ReadFixedInt48();//¶Á¹Ì¶¨6×Ö½Ú
+	__int64 ReadFixedInt48();//è¯»å›ºå®š6å­—èŠ‚
 
-	__int64 ReadFixedInt64();	//¹Ì¶¨8×Ö½Ú
+	__int64 ReadFixedInt64();	//å›ºå®š8å­—èŠ‚
 
 	int WriteByte(char b);
 	int WriteBool(bool b);
@@ -104,13 +104,13 @@ public:
 
 	int WriteUtfBytes(const char *data,int len=-1);
 
-	int WriteUtfString(const TCHAR *data);	//³¤¶È¹Ì¶¨2×Ö½Ú
+	int WriteUtfString(const TCHAR *data);	//é•¿åº¦å›ºå®š2å­—èŠ‚
 
-	int WriteBigString(const TCHAR *data);	//³¤¶È¹Ì¶¨4×Ö½Ú
+	int WriteBigString(const TCHAR *data);	//é•¿åº¦å›ºå®š4å­—èŠ‚
 
-	int WriteFixedInt48(__int64 int64);	//Ğ´Ò»¸ö48Î»µÄÊı×Ö
-	int WriteVarIntString(const TCHAR *data);	//³¤¶ÈÊÇvarInt32¿É±ä³¤¶ÈÀàĞÍ
-	int WriteRawVariant32(int i);//Ğ´Ò»¸ö±ä³¤32Î»Êı×Ö
+	int WriteFixedInt48(__int64 int64);	//å†™ä¸€ä¸ª48ä½çš„æ•°å­—
+	int WriteVarIntString(const TCHAR *data);	//é•¿åº¦æ˜¯varInt32å¯å˜é•¿åº¦ç±»å‹
+	int WriteRawVariant32(int i);//å†™ä¸€ä¸ªå˜é•¿32ä½æ•°å­—
 	int WriteRawVariant64(__int64 int64);//varInt64
 private:
 

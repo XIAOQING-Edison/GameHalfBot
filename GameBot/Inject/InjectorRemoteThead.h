@@ -10,7 +10,7 @@ public:
 
 	//virtual bool Inject(LPCTSTR szProcessName);
 	virtual bool Inject(DWORD pid);
-	virtual bool Uninject();	//ÊÍ·Å
+	virtual bool Uninject();	//é‡Šæ”¾
 private:
 
 };

@@ -18,6 +18,6 @@ public:
 	void SetCfgFileName(const TCHAR *szFile){m_szFileName=(TCHAR*)szFile;}
 private:
 	int m_platformId;
-	TCHAR *m_szFileName;	//只包含文件名不含路径
+	TCHAR *m_szFileName;	//鍙寘鍚枃浠跺悕涓嶅惈璺緞
 	
 };

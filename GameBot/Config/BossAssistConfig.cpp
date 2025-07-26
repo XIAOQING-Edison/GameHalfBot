@@ -23,7 +23,7 @@ CBossAssistConfig::~CBossAssistConfig(void)
 }
 
 
-BOOL CBossAssistConfig::IsBeastBossAutoAssistOtherFromCfg()	//ÊÇ·ñ×Ô¶¯Ğ­ÖúËûÈË
+BOOL CBossAssistConfig::IsBeastBossAutoAssistOtherFromCfg()	//æ˜¯å¦è‡ªåŠ¨ååŠ©ä»–äºº
 {
 	return (BOOL)CConfig::ReadInt(m_sectionName.c_str(),g_szIsBeastBossAutoAssistOther);
 
@@ -37,7 +37,7 @@ void CBossAssistConfig::SetIsBeastBossAutoAssistOtherToCfg(BOOL b)	//
 
 
 
-BOOL CBossAssistConfig::IsBeastBossOnlyAssistSelfMaxCountFromCfg()	//ÊÇ·ñ´ïµ½×î´ó´ÎÊı¾Í²»Ğ­Öú£¬Ä¬ÈÏÊÇ¶¼Ğ­Öú
+BOOL CBossAssistConfig::IsBeastBossOnlyAssistSelfMaxCountFromCfg()	//æ˜¯å¦è¾¾åˆ°æœ€å¤§æ¬¡æ•°å°±ä¸ååŠ©ï¼Œé»˜è®¤æ˜¯éƒ½ååŠ©
 {
 	return (BOOL)CConfig::ReadInt(m_sectionName.c_str(),g_szIsBeastBossOnlyAssistSelfMaxCount);
 }
@@ -61,7 +61,7 @@ void CBossAssistConfig::SetIsBeastBossAutoSendAssistToCfg(BOOL b)
 }
 
 
-int CBossAssistConfig::GetBeastBossAssistMaxTimeoutFromCfg()	//ÊŞÉñ×î´óĞ­Öú³¬Ê±
+int CBossAssistConfig::GetBeastBossAssistMaxTimeoutFromCfg()	//å…½ç¥æœ€å¤§ååŠ©è¶…æ—¶
 {
 	return CConfig::ReadInt(m_sectionName.c_str(),g_szBeastBossAssistMaxTimeout,5);
 }
@@ -72,7 +72,7 @@ void CBossAssistConfig::SetBeastBossAssistMaxTimeoutToCfg(int timeout)
 }
 
 
-BOOL CBossAssistConfig::IsBeastBossAssistAutoSendAssistFromCfg()	//ÊŞÉñĞ­Öú×Ô¶¯·¢ËÍÇóĞ­Öú
+BOOL CBossAssistConfig::IsBeastBossAssistAutoSendAssistFromCfg()	//å…½ç¥ååŠ©è‡ªåŠ¨å‘é€æ±‚ååŠ©
 {
 	return (BOOL)CConfig::ReadInt(m_sectionName.c_str(),g_szIsBeastBossAssistAutoSendAssist);
 
@@ -85,7 +85,7 @@ void CBossAssistConfig::SetIsBeastBossAssistAutoSendAssistToCfg(BOOL b)
 
 }
 
-//¾üÍÅ
+//å†›å›¢
 BOOL CBossAssistConfig::IsCorpsBossAutoSendAssistFromCfg()
 {
 	return (BOOL)CConfig::ReadInt(m_sectionName.c_str(),g_szIsCorpsBossAutoSendAssist);
@@ -99,7 +99,7 @@ void CBossAssistConfig::SetIsCorpsBossAutoSendAssistToCfg(BOOL b)
 
 }
 
-BOOL CBossAssistConfig::IsCorpsBossOnlyAssistSelfMaxCountFromCfg()	//ÊÇ·ñ´ïµ½×î´ó´ÎÊı¾Í²»Ğ­Öú£¬Ä¬ÈÏÊÇ¶¼Ğ­Öú
+BOOL CBossAssistConfig::IsCorpsBossOnlyAssistSelfMaxCountFromCfg()	//æ˜¯å¦è¾¾åˆ°æœ€å¤§æ¬¡æ•°å°±ä¸ååŠ©ï¼Œé»˜è®¤æ˜¯éƒ½ååŠ©
 {
 	return (BOOL)CConfig::ReadInt(m_sectionName.c_str(),g_szIsCorpsBossOnlyAssistSelfMaxCount);
 
@@ -112,7 +112,7 @@ void CBossAssistConfig::SetIsCorpsBossOnlyAssistSelfMaxCountToCfg(BOOL b)
 }
 
 
-BOOL CBossAssistConfig::IsCorpsBossAssistAutoSendAssistFromCfg()	//¾üÍÅĞ­Öú×Ô¶¯·¢ËÍÇóĞ­Öú
+BOOL CBossAssistConfig::IsCorpsBossAssistAutoSendAssistFromCfg()	//å†›å›¢ååŠ©è‡ªåŠ¨å‘é€æ±‚ååŠ©
 {
 	return (BOOL)CConfig::ReadInt(m_sectionName.c_str(),g_szIsCorpsBossAssistAutoSendAssist);
 
@@ -120,7 +120,7 @@ BOOL CBossAssistConfig::IsCorpsBossAssistAutoSendAssistFromCfg()	//¾üÍÅĞ­Öú×Ô¶¯·
 
 
 
-int CBossAssistConfig::GetCorpsBossAssistMaxTimeoutFromCfg()	//¾üÍÅ×î´óĞ­Öú³¬Ê±
+int CBossAssistConfig::GetCorpsBossAssistMaxTimeoutFromCfg()	//å†›å›¢æœ€å¤§ååŠ©è¶…æ—¶
 {
 	return CConfig::ReadInt(m_sectionName.c_str(),g_szCorpsBossAssistMaxTimeout,5);
 
@@ -140,7 +140,7 @@ void CBossAssistConfig::SetIsCorpsBossAssistAutoSendAssistToCfg(BOOL b)
 }
 
 
-BOOL CBossAssistConfig::IsCorpsBossAutoAssistOtherFromCfg()	//ÊÇ·ñ×Ô¶¯Ğ­ÖúËûÈË
+BOOL CBossAssistConfig::IsCorpsBossAutoAssistOtherFromCfg()	//æ˜¯å¦è‡ªåŠ¨ååŠ©ä»–äºº
 {
 	return (BOOL)CConfig::ReadInt(m_sectionName.c_str(),g_szIsCorpsBossAutoAssistOther);
 }

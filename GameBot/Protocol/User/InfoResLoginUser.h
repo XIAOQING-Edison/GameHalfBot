@@ -12,9 +12,9 @@ public:
 	virtual int Decode(CStreamReadWrite *pStreamBuf);
 
 private:
-	INT64 openServerTime;// = 1; //¿ª·şÊ±¼ä
-	INT64 combineServerTime;// = 2; //ºÏ·şÊ±¼ä
-	INT64 serverCurTime;// = 3; //·şÎñÆ÷µ±Ç°Ê±¼ä
-	bool needInviteCode;// = 4; //ĞèÒªÊäÈëÑûÇëÂë
+	INT64 openServerTime;// = 1; //å¼€æœæ—¶é—´
+	INT64 combineServerTime;// = 2; //åˆæœæ—¶é—´
+	INT64 serverCurTime;// = 3; //æœåŠ¡å™¨å½“å‰æ—¶é—´
+	bool needInviteCode;// = 4; //éœ€è¦è¾“å…¥é‚€è¯·ç 
 
 };

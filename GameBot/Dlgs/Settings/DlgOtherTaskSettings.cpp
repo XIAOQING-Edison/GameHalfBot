@@ -1,4 +1,4 @@
-// ./Dlgs/Settings/DlgOtherTaskSettings.cpp : ÊµÏÖÎÄ¼þ
+// ./Dlgs/Settings/DlgOtherTaskSettings.cpp : å®žçŽ°æ–‡ä»¶
 //
 
 #include "../../StdAfx.h"
@@ -6,7 +6,7 @@
 #include "DlgOtherTaskSettings.h"
 
 
-// CDlgOtherTaskSettings ¶Ô»°¿ò
+// CDlgOtherTaskSettings å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CDlgBossAssistSettings, CDialog)
 
@@ -32,26 +32,26 @@ BEGIN_MESSAGE_MAP(CDlgBossAssistSettings, CDialog)
 END_MESSAGE_MAP()
 
 
-// CDlgOtherTaskSettings ÏûÏ¢´¦Àí³ÌÐò
+// CDlgOtherTaskSettings æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CDlgBossAssistSettings::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// TODO:  ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯
+	// TODO:  åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–
 	m_brush.CreateSolidBrush(RGB(255,255,255));//while brush
 	InitCtrls();
 	return TRUE;  // return TRUE unless you set the focus to a control
-	// Òì³£: OCX ÊôÐÔÒ³Ó¦·µ»Ø FALSE
+	// å¼‚å¸¸: OCX å±žæ€§é¡µåº”è¿”å›ž FALSE
 }
 
 HBRUSH CDlgBossAssistSettings::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 {
 	HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
 
-	// TODO:  ÔÚ´Ë¸ü¸Ä DC µÄÈÎºÎÊôÐÔ
+	// TODO:  åœ¨æ­¤æ›´æ”¹ DC çš„ä»»ä½•å±žæ€§
 	hbr=(HBRUSH)m_brush;
-	// TODO:  Èç¹ûÄ¬ÈÏµÄ²»ÊÇËùÐè»­±Ê£¬Ôò·µ»ØÁíÒ»¸ö»­±Ê
+	// TODO:  å¦‚æžœé»˜è®¤çš„ä¸æ˜¯æ‰€éœ€ç”»ç¬”ï¼Œåˆ™è¿”å›žå¦ä¸€ä¸ªç”»ç¬”
 	return hbr;
 }
 
@@ -71,17 +71,17 @@ void CDlgBossAssistSettings::InitCtrls()
 	m_pChkCorpsBossAssistAutoSendAssist=(CButton*)GetDlgItem(IDC_CHK_CORPS_BOSS_ASSIST_AUTO_SEND_ASSIST);
 	m_pChkCorpsBossOnlyAssistSelfMaxCount=(CButton*)GetDlgItem(IDC_CHK_CORPS_BOSS_ONLY_ASSIST_SELF_MAX_COUNT);
 // 
-// 	m_pChkSpaceCorridor=(CButton*)GetDlgItem(IDC_CHK_SPACE_CORRIDOR);	//Ê±¹â»ØÀÈ
+// 	m_pChkSpaceCorridor=(CButton*)GetDlgItem(IDC_CHK_SPACE_CORRIDOR);	//æ—¶å…‰å›žå»Š
 // 	m_pChkSpecialSpace=(CButton*)GetDlgItem(IDC_CHK_SPECIAL_ROOM);
 // 	m_pChkFastFight=(CButton*)GetDlgItem(IDC_CHK_FAST_FIGHT);
-// 	m_pChkCampWar=(CButton*)GetDlgItem(IDC_CHK_CAMP_WAR);	//±ùÔ¨Õ½³¡
-// 	m_pChkCertificate=(CButton*)GetDlgItem(IDC_CHK_CERTIFICATE);	//ÌìÊ¹Õ½Áî
-// 	m_pChkPinkDiamond=(CButton*)GetDlgItem(IDC_CHK_PINK_DIAMOND);	//·Û×ê
-// 	m_pChkHorcrux=(CButton*)GetDlgItem(IDC_CHK_HORCRUX);	//»êÆ÷
-// 	m_pChkOriginalSin=(CButton*)GetDlgItem(IDC_CHK_ORIGINAL_SIN);	//Ô­×ïxxxx
-// 	m_pChkFairyLand=(CButton*)GetDlgItem(IDC_CHK_FAIRY_LAND);	//»Ã¾³
+// 	m_pChkCampWar=(CButton*)GetDlgItem(IDC_CHK_CAMP_WAR);	//å†°æ¸Šæˆ˜åœº
+// 	m_pChkCertificate=(CButton*)GetDlgItem(IDC_CHK_CERTIFICATE);	//å¤©ä½¿æˆ˜ä»¤
+// 	m_pChkPinkDiamond=(CButton*)GetDlgItem(IDC_CHK_PINK_DIAMOND);	//ç²‰é’»
+// 	m_pChkHorcrux=(CButton*)GetDlgItem(IDC_CHK_HORCRUX);	//é­‚å™¨
+// 	m_pChkOriginalSin=(CButton*)GetDlgItem(IDC_CHK_ORIGINAL_SIN);	//åŽŸç½ªxxxx
+// 	m_pChkFairyLand=(CButton*)GetDlgItem(IDC_CHK_FAIRY_LAND);	//å¹»å¢ƒ
 // 	m_pEdtFairyLandCount=(CEdit*)GetDlgItem(IDC_EDT_FAIRY_LAND_COUNT);
-// 	m_pChkOrcGodBless=(CButton*)GetDlgItem(IDC_CHK_ORC_GOD_BLESS);	//ÊÞÉñÆíÔ¸
+// 	m_pChkOrcGodBless=(CButton*)GetDlgItem(IDC_CHK_ORC_GOD_BLESS);	//å…½ç¥žç¥ˆæ„¿
 // 
 // 
 // 	int limit=2;
@@ -99,35 +99,35 @@ void CDlgBossAssistSettings::ReadIniToCtrls()
 	CString str;
 	
 	str.Format(_T("%d"),m_pBossAssistConfig->GetBeastBossAssistMaxTimeoutFromCfg());
-	m_pEdtBeastBossAssistMaxTimeout->SetWindowText(str);	//Ð­Öú×î³¤Ê±¼ä
-	m_pChkBeastBossAutoAssistOther->SetCheck(m_pBossAssistConfig->IsBeastBossAutoAssistOtherFromCfg());	//Ð­ÖúËûÈË
-	m_pChkBeastBossAutoSendAssist->SetCheck(m_pBossAssistConfig->IsBeastBossAutoSendAssistFromCfg());	//»÷É±Ê±·¢ËÍÐ­Öú
-	m_pChkBeastBossAssistAutoSendAssist->SetCheck(m_pBossAssistConfig->IsBeastBossAssistAutoSendAssistFromCfg());//Ð­ÖúÊ±·¢ËÍÐ­Öú
-	m_pChkBeastBossOnlyAssistSelfMaxCount->SetCheck(m_pBossAssistConfig->IsBeastBossOnlyAssistSelfMaxCountFromCfg());	//Ö»Ð­Öú±¾Éí×î´ó´ÎÊý
+	m_pEdtBeastBossAssistMaxTimeout->SetWindowText(str);	//ååŠ©æœ€é•¿æ—¶é—´
+	m_pChkBeastBossAutoAssistOther->SetCheck(m_pBossAssistConfig->IsBeastBossAutoAssistOtherFromCfg());	//ååŠ©ä»–äºº
+	m_pChkBeastBossAutoSendAssist->SetCheck(m_pBossAssistConfig->IsBeastBossAutoSendAssistFromCfg());	//å‡»æ€æ—¶å‘é€ååŠ©
+	m_pChkBeastBossAssistAutoSendAssist->SetCheck(m_pBossAssistConfig->IsBeastBossAssistAutoSendAssistFromCfg());//ååŠ©æ—¶å‘é€ååŠ©
+	m_pChkBeastBossOnlyAssistSelfMaxCount->SetCheck(m_pBossAssistConfig->IsBeastBossOnlyAssistSelfMaxCountFromCfg());	//åªååŠ©æœ¬èº«æœ€å¤§æ¬¡æ•°
 
 	str.Format(_T("%d"),m_pBossAssistConfig->GetCorpsBossAssistMaxTimeoutFromCfg());
-	m_pEdtCorpsBossAssistMaxTimout->SetWindowText(str);//Ð­Öú×î³¤Ê±¼ä
-	m_pChkCorpsBossAutoAssistOther->SetCheck(m_pBossAssistConfig->IsCorpsBossAutoAssistOtherFromCfg());//Ð­ÖúËûÈË
-	m_pChkCorpsBossAusoSendAssist->SetCheck(m_pBossAssistConfig->IsCorpsBossAutoSendAssistFromCfg());//»÷É±Ê±·¢ËÍÐ­Öú
-	m_pChkCorpsBossAssistAutoSendAssist->SetCheck(m_pBossAssistConfig->IsCorpsBossAssistAutoSendAssistFromCfg());//Ð­ÖúÊ±·¢ËÍÐ­Öú
-	m_pChkCorpsBossOnlyAssistSelfMaxCount->SetCheck(m_pBossAssistConfig->IsCorpsBossOnlyAssistSelfMaxCountFromCfg());//Ö»Ð­Öú±¾Éí×î´ó´ÎÊý
+	m_pEdtCorpsBossAssistMaxTimout->SetWindowText(str);//ååŠ©æœ€é•¿æ—¶é—´
+	m_pChkCorpsBossAutoAssistOther->SetCheck(m_pBossAssistConfig->IsCorpsBossAutoAssistOtherFromCfg());//ååŠ©ä»–äºº
+	m_pChkCorpsBossAusoSendAssist->SetCheck(m_pBossAssistConfig->IsCorpsBossAutoSendAssistFromCfg());//å‡»æ€æ—¶å‘é€ååŠ©
+	m_pChkCorpsBossAssistAutoSendAssist->SetCheck(m_pBossAssistConfig->IsCorpsBossAssistAutoSendAssistFromCfg());//ååŠ©æ—¶å‘é€ååŠ©
+	m_pChkCorpsBossOnlyAssistSelfMaxCount->SetCheck(m_pBossAssistConfig->IsCorpsBossOnlyAssistSelfMaxCountFromCfg());//åªååŠ©æœ¬èº«æœ€å¤§æ¬¡æ•°
 	
 	// 
 // 
-// 	m_pChkSpaceCorridor->SetCheck(m_pOtherTaskConfig->IsSpaceCorridorSelectedFromCfg());	//Ê±¹â»ØÀÈ
+// 	m_pChkSpaceCorridor->SetCheck(m_pOtherTaskConfig->IsSpaceCorridorSelectedFromCfg());	//æ—¶å…‰å›žå»Š
 // 	m_pChkSpecialSpace->SetCheck(m_pOtherTaskConfig->IsSpecialRoomSelectedFromCfg());
 // 	m_pChkFastFight->SetCheck(m_pOtherTaskConfig->IsFastFightSelectedFromCfg());
-// 	m_pChkCampWar->SetCheck(m_pOtherTaskConfig->IsCampWarSelectedFromCfg());	//±ùÔ¨Õ½³¡
-// 	m_pChkCertificate->SetCheck(m_pOtherTaskConfig->IsCertificateSelectedFromCfg());	//ÌìÊ¹Õ½Áî
-// 	m_pChkPinkDiamond->SetCheck(m_pOtherTaskConfig->IsPinkDiamondSelectedFromcCfg());	//·Û×ê
-// 	m_pChkHorcrux->SetCheck(m_pOtherTaskConfig->IsHorcruxSelectedFromCfg());	//»êÆ÷
-// 	m_pChkOriginalSin->SetCheck(m_pOtherTaskConfig->IsOriginalSinSelectedFromCfg());	//Ô­×ïxxxx
-// 	m_pChkFairyLand->SetCheck(m_pOtherTaskConfig->IsFairyLandSelectedFromCfg());	//»Ã¾³
+// 	m_pChkCampWar->SetCheck(m_pOtherTaskConfig->IsCampWarSelectedFromCfg());	//å†°æ¸Šæˆ˜åœº
+// 	m_pChkCertificate->SetCheck(m_pOtherTaskConfig->IsCertificateSelectedFromCfg());	//å¤©ä½¿æˆ˜ä»¤
+// 	m_pChkPinkDiamond->SetCheck(m_pOtherTaskConfig->IsPinkDiamondSelectedFromcCfg());	//ç²‰é’»
+// 	m_pChkHorcrux->SetCheck(m_pOtherTaskConfig->IsHorcruxSelectedFromCfg());	//é­‚å™¨
+// 	m_pChkOriginalSin->SetCheck(m_pOtherTaskConfig->IsOriginalSinSelectedFromCfg());	//åŽŸç½ªxxxx
+// 	m_pChkFairyLand->SetCheck(m_pOtherTaskConfig->IsFairyLandSelectedFromCfg());	//å¹»å¢ƒ
 // 
 // 	str.Format(_T("%d"),m_pOtherTaskConfig->GetFairyLandCountFromCfg());
 // 	m_pEdtFairyLandCount->SetWindowText(str);
 // 
-// 	m_pChkOrcGodBless->SetCheck(m_pOtherTaskConfig->IsOrcGodBlessSelectedFromCfg());	//ÊÞÉñÆíÔ¸
+// 	m_pChkOrcGodBless->SetCheck(m_pOtherTaskConfig->IsOrcGodBlessSelectedFromCfg());	//å…½ç¥žç¥ˆæ„¿
 }
 
 
@@ -151,21 +151,21 @@ void CDlgBossAssistSettings::SaveCtrlsToIni()
 
 
 // 
-// 	m_pOtherTaskConfig->SetSelectSpaceCorridorToCfg(m_pChkSpaceCorridor->GetCheck());	//Ê±¹â»ØÀÈ
+// 	m_pOtherTaskConfig->SetSelectSpaceCorridorToCfg(m_pChkSpaceCorridor->GetCheck());	//æ—¶å…‰å›žå»Š
 // 	m_pOtherTaskConfig->SetSelectSpecialRoomToCfg(m_pChkSpecialSpace->GetCheck());
 // 	m_pOtherTaskConfig->SetSelectFastFightToCfg(m_pChkFastFight->GetCheck());
-// 	m_pOtherTaskConfig->SetSelectCampWarToCfg(m_pChkCampWar->GetCheck());	//±ùÔ¨Õ½³¡
-// 	m_pOtherTaskConfig->SetSelectCertificateToCfg(m_pChkCertificate->GetCheck());	//ÌìÊ¹Õ½Áî
-// 	m_pOtherTaskConfig->SetSelectPinkDiamondToCfg(m_pChkPinkDiamond->GetCheck());	//·Û×ê
-// 	m_pOtherTaskConfig->SetSelectHorcruxToCfg(m_pChkHorcrux->GetCheck());	//»êÆ÷
-// 	m_pOtherTaskConfig->SetSelectOriginalSinToCfg(m_pChkOriginalSin->GetCheck());	//Ô­×ïxxxx
-// 	m_pOtherTaskConfig->SetSelectFairyLandToCfg(m_pChkFairyLand->GetCheck());	//»Ã¾³
+// 	m_pOtherTaskConfig->SetSelectCampWarToCfg(m_pChkCampWar->GetCheck());	//å†°æ¸Šæˆ˜åœº
+// 	m_pOtherTaskConfig->SetSelectCertificateToCfg(m_pChkCertificate->GetCheck());	//å¤©ä½¿æˆ˜ä»¤
+// 	m_pOtherTaskConfig->SetSelectPinkDiamondToCfg(m_pChkPinkDiamond->GetCheck());	//ç²‰é’»
+// 	m_pOtherTaskConfig->SetSelectHorcruxToCfg(m_pChkHorcrux->GetCheck());	//é­‚å™¨
+// 	m_pOtherTaskConfig->SetSelectOriginalSinToCfg(m_pChkOriginalSin->GetCheck());	//åŽŸç½ªxxxx
+// 	m_pOtherTaskConfig->SetSelectFairyLandToCfg(m_pChkFairyLand->GetCheck());	//å¹»å¢ƒ
 // 
 // 	m_pEdtFairyLandCount->GetWindowText(str);
 // 	m_pOtherTaskConfig->SetFairyLandCountToCfg(_ttoi(str));
 // 
 // 
-// 	m_pOtherTaskConfig->SetSelectOrcGodBlessToCfg(m_pChkOrcGodBless->GetCheck());	//ÊÞÉñÆíÔ¸
+// 	m_pOtherTaskConfig->SetSelectOrcGodBlessToCfg(m_pChkOrcGodBless->GetCheck());	//å…½ç¥žç¥ˆæ„¿
 }
 
 
@@ -179,16 +179,16 @@ void CDlgBossAssistSettings::InitBtns()
 	m_pChk[i++]=m_pChkCorpsBossAssistAutoSendAssist;
 	m_pChk[i++]=m_pChkCorpsBossOnlyAssistSelfMaxCount;
 // 
-// 	m_pChk[i++]=m_pChkSpaceCorridor;	//Ê±¹â»ØÀÈ
+// 	m_pChk[i++]=m_pChkSpaceCorridor;	//æ—¶å…‰å›žå»Š
 // 	m_pChk[i++]=m_pChkSpecialSpace;
 // 	m_pChk[i++]=m_pChkFastFight;
-// 	m_pChk[i++]=m_pChkCampWar;	//±ùÔ¨Õ½³¡
-// 	m_pChk[i++]=m_pChkCertificate;	//ÌìÊ¹Õ½Áî
-// 	m_pChk[i++]=m_pChkPinkDiamond;	//·Û×ê
-// 	m_pChk[i++]=m_pChkHorcrux;	//»êÆ÷
-// 	m_pChk[i++]=m_pChkOriginalSin;	//Ô­×ïxxxx
-// 	m_pChk[i++]=m_pChkFairyLand;	//»Ã¾³
-// 	m_pChk[i++]=m_pChkOrcGodBless;	//ÊÞÉñÆíÔ¸
+// 	m_pChk[i++]=m_pChkCampWar;	//å†°æ¸Šæˆ˜åœº
+// 	m_pChk[i++]=m_pChkCertificate;	//å¤©ä½¿æˆ˜ä»¤
+// 	m_pChk[i++]=m_pChkPinkDiamond;	//ç²‰é’»
+// 	m_pChk[i++]=m_pChkHorcrux;	//é­‚å™¨
+// 	m_pChk[i++]=m_pChkOriginalSin;	//åŽŸç½ªxxxx
+// 	m_pChk[i++]=m_pChkFairyLand;	//å¹»å¢ƒ
+// 	m_pChk[i++]=m_pChkOrcGodBless;	//å…½ç¥žç¥ˆæ„¿
 }
 
 
@@ -203,7 +203,7 @@ void CDlgBossAssistSettings::CheckAll(bool bSelect)
 
 void CDlgBossAssistSettings::OnBnClickedChkOtherTaskSelAll()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	CheckAll(m_pChkAll->GetCheck());
 }
 

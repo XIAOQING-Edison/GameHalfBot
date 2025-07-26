@@ -8,15 +8,15 @@
 #include "../Config/DailyTaskConfig.h"
 #include "../Config/GiftHallConfig.h"
 
-#include "../Config/SkillConfig.h"	//¼¼ÄÜÅäÖÃ
+#include "../Config/SkillConfig.h"	//æŠ€èƒ½é…ç½®
 
 
 #include "../Misc/Misc.h"		//for some calculate
 #include "../Client.h"
 
-//#define _CHAT_VERSION_	//º°»°ĞèÒª½¨Á¢Õâ¸ö±ê¼Ç
+//#define _CHAT_VERSION_	//å–Šè¯éœ€è¦å»ºç«‹è¿™ä¸ªæ ‡è®°
 
-//ÒÔÏÂÊÇskillsÑ¡Ôñ¶¨Òå,ÏÂ±ê
+//ä»¥ä¸‹æ˜¯skillsé€‰æ‹©å®šä¹‰,ä¸‹æ ‡
 
 // static const int g_skillWarrior[]={};
 // static const int g_skillArch[]={};
@@ -38,7 +38,7 @@ void CGameLogicHelper::Init()
 	SetPlayer(NULL);
 	ResetIsFirstRunning();
 	m_hEvtTaskFinished=NULL;
-	m_hEvtTaskFinished=CreateEvent(NULL,FALSE,FALSE,NULL);//×Ô¶¯»Ö¸´ÎŞĞÅºÅ×´Ì¬
+	m_hEvtTaskFinished=CreateEvent(NULL,FALSE,FALSE,NULL);//è‡ªåŠ¨æ¢å¤æ— ä¿¡å·çŠ¶æ€
 
 }
 
@@ -61,7 +61,7 @@ bool CGameLogicHelper::InterruptTaskByEmergencyLevel()
 
 
 
-void CGameLogicHelper::DoTimerTask(CSocketHelper *pSocketHelper)	//×ö¶¨Ê±ÈÎÎñ	//ÕâÀïÖ÷ÒªÊÇ×ö¶¨Ê±·¢°ü
+void CGameLogicHelper::DoTimerTask(CSocketHelper *pSocketHelper)	//åšå®šæ—¶ä»»åŠ¡	//è¿™é‡Œä¸»è¦æ˜¯åšå®šæ—¶å‘åŒ…
 {
 	
 }
@@ -69,7 +69,7 @@ void CGameLogicHelper::DoTimerTask(CSocketHelper *pSocketHelper)	//×ö¶¨Ê±ÈÎÎñ	//
 
 
 
-void CGameLogicHelper::DoSetPkModeTask(CGameConfig *pCfg,CSocketHelper *pSocketHelper)	//pkÄ£Ê½×ª»»
+void CGameLogicHelper::DoSetPkModeTask(CGameConfig *pCfg,CSocketHelper *pSocketHelper)	//pkæ¨¡å¼è½¬æ¢
 {
 	CConfigSecretary1 *pConfigFun1=pCfg->GetConfigSecretary1();
 	
@@ -81,12 +81,12 @@ void CGameLogicHelper::DoSetPkModeTask(CGameConfig *pCfg,CSocketHelper *pSocketH
 
 
 
-///////////////////////////////Íâ²¿½Ó¿Úµ÷ÓÃĞ­Òé///////////////////////////////////////////
-void CGameLogicHelper::DoGameOperaion(int protocolId,int paramLength,char *cmdData,CSocketHelper *pSocketHelper)	//ÕâÀï¸ù¾İprotocolIdÀ´·¢ËÍÄ³Ğ©Ğ­Òé
+///////////////////////////////å¤–éƒ¨æ¥å£è°ƒç”¨åè®®///////////////////////////////////////////
+void CGameLogicHelper::DoGameOperaion(int protocolId,int paramLength,char *cmdData,CSocketHelper *pSocketHelper)	//è¿™é‡Œæ ¹æ®protocolIdæ¥å‘é€æŸäº›åè®®
 {
 	if(protocolId==1314)
 	{
-		CGameConfig cfg(m_pThisPlayer->GetAccountName(),true,false);	//Ê¹ÓÃÉÏÒ»²ãÄ¿Â¼×÷ÎªÖ÷ÅäÖÃ
+		CGameConfig cfg(m_pThisPlayer->GetAccountName(),true,false);	//ä½¿ç”¨ä¸Šä¸€å±‚ç›®å½•ä½œä¸ºä¸»é…ç½®
 		OutputDebugStr(_T("hhhhhhhhhhhhhhhhh\n"));
 		DoSetPkModeTask(&cfg,pSocketHelper);
 	}
@@ -96,7 +96,7 @@ void CGameLogicHelper::DoGameOperaion(int protocolId,int paramLength,char *cmdDa
 
 
 
-////////////////////////////////²âÊÔ¹¦ÄÜ//////////////////////////////////////////
+////////////////////////////////æµ‹è¯•åŠŸèƒ½//////////////////////////////////////////
 void CGameLogicHelper::Test(CSocketHelper *pSocketHelper)
 {
 }

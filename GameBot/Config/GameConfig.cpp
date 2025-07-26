@@ -35,8 +35,8 @@ CGameConfig::CGameConfig(STRING &accountName,bool bUseEncryptDecrypt):CConfig(g_
 	m_sectionName=m_userName;
 }
 
-//²»Ê¹ÓÃ¸¸ÀàµÄÄ¿Â¼¹¹Ôì·½·¨
-CGameConfig::CGameConfig(STRING &accountName,bool bUseParentDir,bool bUseEncryptDecrypt):CConfig(_T(""),bUseEncryptDecrypt)	//ÕâÀïÓÃÒ»¸ö±êÖ¾À´¾ö¶¨ÊÇ·ñÊ¹ÓÃparentÄ¿Â¼
+//ä¸ä½¿ç”¨çˆ¶ç±»çš„ç›®å½•æ„é€ æ–¹æ³•
+CGameConfig::CGameConfig(STRING &accountName,bool bUseParentDir,bool bUseEncryptDecrypt):CConfig(_T(""),bUseEncryptDecrypt)	//è¿™é‡Œç”¨ä¸€ä¸ªæ ‡å¿—æ¥å†³å®šæ˜¯å¦ä½¿ç”¨parentç›®å½•
 {
 	m_userName=accountName;
 	m_sectionName=m_userName;
@@ -62,7 +62,7 @@ void CGameConfig::InitConfigObjects(const TCHAR *szFileName)
 }
 
 
-void CGameConfig::InitConfigObjectsBySetPath(const TCHAR *szFullPath)	//ÎªÆäËüÅäÖÃ¶ÔÏóÉè¶¨Ò»¸öÈ«Â·¾¶
+void CGameConfig::InitConfigObjectsBySetPath(const TCHAR *szFullPath)	//ä¸ºå…¶å®ƒé…ç½®å¯¹è±¡è®¾å®šä¸€ä¸ªå…¨è·¯å¾„
 {
 	
 

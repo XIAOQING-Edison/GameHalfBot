@@ -1,7 +1,7 @@
 #pragma once
 #include "GameConfig.h"
 
-//ÕâÀï°ÑbossConfig×÷Îª»ùÀà£¬ÒòÎª´¦Àí·½·¨À×Í¬£¬¾Í²»ÔÙ¸´ÖÆ´úÂëÁË
+//è¿™é‡ŒæŠŠbossConfigä½œä¸ºåŸºç±»ï¼Œå› ä¸ºå¤„ç†æ–¹æ³•é›·åŒï¼Œå°±ä¸å†å¤åˆ¶ä»£ç äº†
 class CBossConfig :
 	public CConfig
 {
@@ -18,15 +18,15 @@ public:
 	void SetBossMaxTimeoutToCfg(int minutes);
 	int GetBossMaxTimeoutFromCfg();
 
-	void SetBossKillModeToCfg(int mode);	//ÊÖ¶¯»ò×Ô¶¯Ä£Ê½
-	int GetBossKillModeFromCfg();	//ÊÖ¶¯»ò×Ô¶¯Ä£Ê½
+	void SetBossKillModeToCfg(int mode);	//æ‰‹åŠ¨æˆ–è‡ªåŠ¨æ¨¡å¼
+	int GetBossKillModeFromCfg();	//æ‰‹åŠ¨æˆ–è‡ªåŠ¨æ¨¡å¼
 
 
 	void Init();
 protected:
-	TCHAR *m_szIsBossSelected;	//ÊÇ·ñBOSSÑ¡Ôñ£¬»áÔÚ³õÊ¼»¯¸³Öµ
-	TCHAR *m_szBossList;	//BOSSÁĞ±í×Ö¶Î,»áÔÚ³õÊ¼»¯¸³Öµ
-	TCHAR *m_szBossMaxTimeout;	//BOSSÁĞ±í×î´óµÄ³¬Ê±¼ä
-	TCHAR *m_szBossKillMode;	//´òBOSSÄ£Ê½£¬ÊÖ¶¯»ò×Ô¶¯
+	TCHAR *m_szIsBossSelected;	//æ˜¯å¦BOSSé€‰æ‹©ï¼Œä¼šåœ¨åˆå§‹åŒ–èµ‹å€¼
+	TCHAR *m_szBossList;	//BOSSåˆ—è¡¨å­—æ®µ,ä¼šåœ¨åˆå§‹åŒ–èµ‹å€¼
+	TCHAR *m_szBossMaxTimeout;	//BOSSåˆ—è¡¨æœ€å¤§çš„è¶…æ—¶é—´
+	TCHAR *m_szBossKillMode;	//æ‰“BOSSæ¨¡å¼ï¼Œæ‰‹åŠ¨æˆ–è‡ªåŠ¨
 
 };

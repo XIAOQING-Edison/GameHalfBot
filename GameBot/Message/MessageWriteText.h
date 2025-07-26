@@ -1,8 +1,8 @@
 #pragma once
 #include "basemessage.h"
 
-//此类主要是发送到主窗口进行写文件
-//最大一次写1k
+//姝ょ被涓昏鏄彂閫佸埌涓荤獥鍙ｈ繘琛屽啓鏂囦欢
+//鏈�澶т竴娆″啓1k
 class CMessageWriteText :
 	public CBaseMessage
 {

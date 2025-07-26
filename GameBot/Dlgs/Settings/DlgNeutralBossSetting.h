@@ -2,17 +2,17 @@
 
 #include "../../Config/NeutralBossConfig.h"
 #include "../../resource.h"
-// CDlgDailyTaskSettings ¶Ô»°¿ò
+// CDlgDailyTaskSettings å¯¹è¯æ¡†
 
 class CDlgNeutralBossSetting : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgNeutralBossSetting)
 
 public:
-	CDlgNeutralBossSetting(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgNeutralBossSetting(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgNeutralBossSetting();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_NEUTRAL_BOSS };
 
 	void SetConfigObject(CNeutralBossConfig *p){m_pNeutralBossConfig=p;}
@@ -25,7 +25,7 @@ public:
 	void ReadIniToCtrls();
 	void SaveCtrlsToIni();
 	
-	CComboBox *m_pCbSelectMaps[10];	//Ñ¡ÔñµÄµØÍ¼combo
+	CComboBox *m_pCbSelectMaps[10];	//é€‰æ‹©çš„åœ°å›¾combo
 	void InitCombo();
 
 	void InitListBox();
@@ -51,7 +51,7 @@ private:
 	CNeutralBossConfig *m_pNeutralBossConfig;
 	CBrush m_brush;
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:

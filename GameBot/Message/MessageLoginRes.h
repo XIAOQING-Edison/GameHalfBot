@@ -19,5 +19,5 @@ public:
 
 private:
 	int m_resCode;
-	int m_assignedId;	//分配得到的id
+	int m_assignedId;	//鍒嗛厤寰楀埌鐨刬d
 };

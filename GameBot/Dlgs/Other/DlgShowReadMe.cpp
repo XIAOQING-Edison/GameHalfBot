@@ -1,10 +1,10 @@
-// ./Dlgs/Other/DlgShowReadMe.cpp : ÊµÏÖÎÄ¼ş
+// ./Dlgs/Other/DlgShowReadMe.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "../../StdAfx.h"
 #include "DlgShowReadMe.h"
 
-// CDlgShowReadMe ¶Ô»°¿ò
+// CDlgShowReadMe å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CDlgShowReadMe, CDialog)
 
@@ -29,23 +29,23 @@ BEGIN_MESSAGE_MAP(CDlgShowReadMe, CDialog)
 END_MESSAGE_MAP()
 
 
-// CDlgShowReadMe ÏûÏ¢´¦Àí³ÌĞò
+// CDlgShowReadMe æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CDlgShowReadMe::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// TODO:  ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯
+	// TODO:  åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–
 	InitCtrls();
 	SetWindowText(m_titleName.c_str());
 	ReadFileToEdit(_T("GameVersion.dat"));
 	return TRUE;  // return TRUE unless you set the focus to a control
-	// Òì³£: OCX ÊôĞÔÒ³Ó¦·µ»Ø FALSE
+	// å¼‚å¸¸: OCX å±æ€§é¡µåº”è¿”å› FALSE
 }
 
 void CDlgShowReadMe::OnClose()
 {
-	// TODO: ÔÚ´ËÌí¼ÓÏûÏ¢´¦Àí³ÌĞò´úÂëºÍ/»òµ÷ÓÃÄ¬ÈÏÖµ
+	// TODO: åœ¨æ­¤æ·»åŠ æ¶ˆæ¯å¤„ç†ç¨‹åºä»£ç å’Œ/æˆ–è°ƒç”¨é»˜è®¤å€¼
 	CDialog::OnCancel();
 	CDialog::OnClose();
 }

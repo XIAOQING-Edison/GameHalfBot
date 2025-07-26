@@ -1,6 +1,6 @@
 #include "InfoPlayerInfoStatus.h"
 
-//encode decode¶¼ÐèÒªÊµÏÖ
+//encode decodeéƒ½éœ€è¦å®žçŽ°
 CInfoPlayerInfoStatus::CInfoPlayerInfoStatus(void)
 {
 	SetProtocolId(e_cmd_info_player_info_status);
@@ -13,7 +13,7 @@ CInfoPlayerInfoStatus::~CInfoPlayerInfoStatus(void)
 
 void CInfoPlayerInfoStatus::Reset()
 {
-	connectionInfo=e_disconnect_no_error;	//ÀëÏß»¹ÊÇÔÚÏß
+	connectionInfo=e_disconnect_no_error;	//ç¦»çº¿è¿˜æ˜¯åœ¨çº¿
 	roleName=_T("");
 	job=0;
 	level=0;
@@ -32,7 +32,7 @@ bool CInfoPlayerInfoStatus::Encode(CStreamReadWrite *pStreamBuf)
 	CBaseMessage::Encode(pStreamBuf);
 	ResetWritePostion();
 
-	pStreamBuf->WriteShort(GetProtocolId());	//Ð­ÒéID
+	pStreamBuf->WriteShort(GetProtocolId());	//åè®®ID
 	pStreamBuf->WriteFixedInt64(roleId);
 	pStreamBuf->WriteFixedInt32(-1/*connectionInfo*/);
 	pStreamBuf->WriteBigString(roleName.c_str());

@@ -11,20 +11,20 @@
 
 #include "Config.h"
 
-//´ø×¢ÊÍĞĞµÄconfig
-//m_comment¿ÉÎª""³¤¶ÈÎª0×Ö´®
+//å¸¦æ³¨é‡Šè¡Œçš„config
+//m_commentå¯ä¸º""é•¿åº¦ä¸º0å­—ä¸²
 class CCommentConfig : public CConfig  
 {
 public:
 	CCommentConfig(const TCHAR *szFileName,const TCHAR *szComment,bool bUseEncrypDecrypt);
-	CCommentConfig(const TCHAR *szPath,const TCHAR *szFileName,int gameVersion,const TCHAR *szComment,bool bUseEncrypDecrypt);	//Õâ¸öÓÃÒÔ¼ÓÔØÄ³ÌØ¶¨°æ±¾µÄini
+	CCommentConfig(const TCHAR *szPath,const TCHAR *szFileName,int gameVersion,const TCHAR *szComment,bool bUseEncrypDecrypt);	//è¿™ä¸ªç”¨ä»¥åŠ è½½æŸç‰¹å®šç‰ˆæœ¬çš„ini
 	~CCommentConfig();
 
 	void SetSectionName(const TCHAR *szName){m_sectionName=szName;}
 	const TCHAR *GetSectionName(){return m_sectionName.c_str();}
 
-	BOOL WriteComment();	//Ğ´µ½Í·Àï
-	const TCHAR* ReadComment();	//´ÓÎÄ¼şÀï¶Á³ö×¢ÊÍ
+	BOOL WriteComment();	//å†™åˆ°å¤´é‡Œ
+	const TCHAR* ReadComment();	//ä»æ–‡ä»¶é‡Œè¯»å‡ºæ³¨é‡Š
 
 	const TCHAR* GetComment(){return m_comment.c_str();}
 	void SetComment(const TCHAR *szComment){m_comment=szComment;}
@@ -32,11 +32,11 @@ public:
 	BOOL WriteIni(const TCHAR *szKey,const TCHAR *szValue);
 	STRING ReadIni(const TCHAR *szKey);
 
-	vector<STRING> ReadIniAndGetStringVec(const TCHAR *szKey);	//ÄÃ³ö×Ö¶Î²¢ÇÒ×ª»»³ÉÁËvector
+	vector<STRING> ReadIniAndGetStringVec(const TCHAR *szKey);	//æ‹¿å‡ºå­—æ®µå¹¶ä¸”è½¬æ¢æˆäº†vector
 
-	map<STRING,STRING>	GetAllKeyValueBySetionName(const TCHAR *szSection);	//·Ö³öINIÀïËùÓĞµÄkey-value,Õâ¸ömap»á×Ô¶¯ÅÅĞò
+	map<STRING,STRING>	GetAllKeyValueBySetionName(const TCHAR *szSection);	//åˆ†å‡ºINIé‡Œæ‰€æœ‰çš„key-value,è¿™ä¸ªmapä¼šè‡ªåŠ¨æ’åº
 
-	vector<pair<STRING,STRING> > GetAllKeyValueBySetionNameNoSorted(const TCHAR *szSection);//²»»áÅÅĞò
+	vector<pair<STRING,STRING> > GetAllKeyValueBySetionNameNoSorted(const TCHAR *szSection);//ä¸ä¼šæ’åº
 
 private:
 	STRING m_sectionName;

@@ -25,7 +25,7 @@ void CProtocol::Init()
 }
 
 
-// bool CProtocol::AllocateEncodeBuf(int len)	//ĞèÒª·ÖÅä±àÂëÄÚ´æ»º³å,len=0µÄ»°ÓÃÄ¬ÈÏ³¤¶ÈÀ´´´½¨
+// bool CProtocol::AllocateEncodeBuf(int len)	//éœ€è¦åˆ†é…ç¼–ç å†…å­˜ç¼“å†²,len=0çš„è¯ç”¨é»˜è®¤é•¿åº¦æ¥åˆ›å»º
 // {
 // 	if(m_pProtocolEncodeStreamBuf)
 // 	{
@@ -50,56 +50,56 @@ void CProtocol::Init()
 // }
 
 
-void CProtocol::Clone(CProtocol **p)	//ÓÃĞéº¯ÊıÀ´·µ»Ø×ÓÀà¶ÔÏó,ÕâÀïµÄÖ¸ÕëĞèÒªÊÖ¶¯ÊÍ·Å
+void CProtocol::Clone(CProtocol **p)	//ç”¨è™šå‡½æ•°æ¥è¿”å›å­ç±»å¯¹è±¡,è¿™é‡Œçš„æŒ‡é’ˆéœ€è¦æ‰‹åŠ¨é‡Šæ”¾
 {
 	**p=*this;
 }
 
 
-int CProtocol::DecodeFirst(CStreamReadWrite *pStreamBuf)	//ÏÈ½âÂë³ö³¤¶È,protocolIdÕâÀà
+int CProtocol::DecodeFirst(CStreamReadWrite *pStreamBuf)	//å…ˆè§£ç å‡ºé•¿åº¦,protocolIdè¿™ç±»
 {
-	int orgHandlePos=pStreamBuf->GetHandlePos();	//×î³õµÄÎ»ÖÃ´æÆğÀ´£¬ºóÃæ³¤¶È²»¹»Ê±¾ÍÔÙ
+	int orgHandlePos=pStreamBuf->GetHandlePos();	//æœ€åˆçš„ä½ç½®å­˜èµ·æ¥ï¼Œåé¢é•¿åº¦ä¸å¤Ÿæ—¶å°±å†
 	int packageLen=0;
 	int protocolId=0;
-	int minLen=0;	//°ü½á¹¹ÊÇ4×Ö½Ú³¤¶È+4×Ö½Ú0+2×Ö½ÚĞ­ÒéID,°üµÄ×Ü³¤¶ÈÊÇ°ü³¤¶È+4×Ö½Ú,Èç¹ûÕûÌå³¤¶È°üÀ¨°ü³¤ÔÚÄÚµÄÎª0£¬·ñÔòÒªÌîĞ´ÊµÏÖÃèÊö³¤¶È
-	int packageFlag;//2×Ö½Ú0ÃüÃûÎªpackageFlag
+	int minLen=0;	//åŒ…ç»“æ„æ˜¯4å­—èŠ‚é•¿åº¦+4å­—èŠ‚0+2å­—èŠ‚åè®®ID,åŒ…çš„æ€»é•¿åº¦æ˜¯åŒ…é•¿åº¦+4å­—èŠ‚,å¦‚æœæ•´ä½“é•¿åº¦åŒ…æ‹¬åŒ…é•¿åœ¨å†…çš„ä¸º0ï¼Œå¦åˆ™è¦å¡«å†™å®ç°æè¿°é•¿åº¦
+	int packageFlag;//2å­—èŠ‚0å‘½åä¸ºpackageFlag
 	int len=pStreamBuf->GetRestBytesLength();
 	static int preProtocolId=0;
-	pStreamBuf->SetEndianType(E_ENDIAN_TYPE_BIG_ENDIAN);	//Ç°ÃæÊÇ´ó¶ËÄ£Ê½
-	if(len>=protocol_header_length)	//Ê£Óà³¤¶È±ØĞë´óÓÚ»òµÈÓÚ×îĞ¡³¤¶È
+	pStreamBuf->SetEndianType(E_ENDIAN_TYPE_BIG_ENDIAN);	//å‰é¢æ˜¯å¤§ç«¯æ¨¡å¼
+	if(len>=protocol_header_length)	//å‰©ä½™é•¿åº¦å¿…é¡»å¤§äºæˆ–ç­‰äºæœ€å°é•¿åº¦
 	{
-		packageLen=pStreamBuf->ReadFixedInt32();	//¶ÁÈ¡µ½µÄ°üÃèÊö³¤¶È
-		//´Ë´¦µÄ°ü³¤ÊÇ°üº¬°ü³¤ÃèÊö×Ö¶ÎÔÚÄÚµÄ£¬ËùÒÔÓëºóÃæ±È½ÏÊ±ĞèÒª¼õÈ¥°ü³¤ÃèÊö×Ö¶Î
-		int alreadReadLength=pStreamBuf->GetHandlePos()-orgHandlePos;	//±¾´ÎÒÑ¶ÁÈ¡µÄ×Ö¶Î³¤¶È
-		//TRACE_OUTPUT(_T("×Ü°ü³¤:%d,ÒÑ¶Á:%d,Ê£ÏÂ×Ö½Ú:%d\n"),packageLen,alreadReadLength,pStreamBuf->GetRestBytesLength());
+		packageLen=pStreamBuf->ReadFixedInt32();	//è¯»å–åˆ°çš„åŒ…æè¿°é•¿åº¦
+		//æ­¤å¤„çš„åŒ…é•¿æ˜¯åŒ…å«åŒ…é•¿æè¿°å­—æ®µåœ¨å†…çš„ï¼Œæ‰€ä»¥ä¸åé¢æ¯”è¾ƒæ—¶éœ€è¦å‡å»åŒ…é•¿æè¿°å­—æ®µ
+		int alreadReadLength=pStreamBuf->GetHandlePos()-orgHandlePos;	//æœ¬æ¬¡å·²è¯»å–çš„å­—æ®µé•¿åº¦
+		//TRACE_OUTPUT(_T("æ€»åŒ…é•¿:%d,å·²è¯»:%d,å‰©ä¸‹å­—èŠ‚:%d\n"),packageLen,alreadReadLength,pStreamBuf->GetRestBytesLength());
 		if((packageLen-alreadReadLength+minLen)<=pStreamBuf->GetRestBytesLength())
 		{
 
 			protocolId=pStreamBuf->ReadFixedInt32();		
-			packageFlag=pStreamBuf->ReadShort();	//Á½×Ö½Úflag(00 00)
+			packageFlag=pStreamBuf->ReadShort();	//ä¸¤å­—èŠ‚flag(00 00)
 			SetProtocolIdResOrSyn(protocolId);
-			if(protocolId != ResHeart)	//¹ıÂËĞÄÌø
-				TRACE_OUTPUT(_T("Ğ­Òéid:%d,°ü³¤:%d\n"),protocolId,packageLen);
+			if(protocolId != ResHeart)	//è¿‡æ»¤å¿ƒè·³
+				TRACE_OUTPUT(_T("åè®®id:%d,åŒ…é•¿:%d\n"),protocolId,packageLen);
 			preProtocolId=protocolId;	//testQ	A/		SetProtocolIdResOrSyn(protocolId);
 		}
 		else
 		{
-			//°üĞèÒªµÄ³¤¶È´óÓÚ½ÓÊÕ³¤¶È£¬ÔòĞèÒª¼ÌĞø½ÓÊÕ
-			if(packageLen>0x1ffff)	//²»¿ÉÄÜ³¬¹ıÕâ¸öÊı£¬³¬¹ıÓ¦¸ÃÊÇ´íµÄ
+			//åŒ…éœ€è¦çš„é•¿åº¦å¤§äºæ¥æ”¶é•¿åº¦ï¼Œåˆ™éœ€è¦ç»§ç»­æ¥æ”¶
+			if(packageLen>0x1ffff)	//ä¸å¯èƒ½è¶…è¿‡è¿™ä¸ªæ•°ï¼Œè¶…è¿‡åº”è¯¥æ˜¯é”™çš„
 			{
-				TRACE_OUTPUT(_T("Ğ­Òé³¤¶È:%u Ì«³¤!!!!!!\n"),(DWORD)packageLen);
-				TRACE_OUTPUT(_T("Ç°Ò»¸öĞ­Òé id:%d\n"),preProtocolId);
+				TRACE_OUTPUT(_T("åè®®é•¿åº¦:%u å¤ªé•¿!!!!!!\n"),(DWORD)packageLen);
+				TRACE_OUTPUT(_T("å‰ä¸€ä¸ªåè®® id:%d\n"),preProtocolId);
 			}
 			if(protocol_header_length>pStreamBuf->GetRestBytesLength() || packageLen > 2*MAX_BUF_LENGTH)
 			{
-				TRACE_OUTPUT(_T("°ü°ü³¤¶È:%dÌ«Ğ¡»òÌ«³¤£¬½âÎö³ö´í..\n"),packageLen);
+				TRACE_OUTPUT(_T("åŒ…åŒ…é•¿åº¦:%då¤ªå°æˆ–å¤ªé•¿ï¼Œè§£æå‡ºé”™..\n"),packageLen);
 			}
-			//TRACE_OUTPUT(_T("°ü²»ÍêÕû--°ü³¤¶È:%d,Ê£Óà³¤¶È:%d\n"),packageLen,pStreamBuf->GetRestBytesLength());
+			//TRACE_OUTPUT(_T("åŒ…ä¸å®Œæ•´--åŒ…é•¿åº¦:%d,å‰©ä½™é•¿åº¦:%d\n"),packageLen,pStreamBuf->GetRestBytesLength());
 			pStreamBuf->SetHandlePos(orgHandlePos);
 			packageLen=0;
 		}
 	}
-	pStreamBuf->SetEndianType(E_ENDIAN_TYPE_LITTLE_ENDIAN);	//Ç°ÃæÊÇ´ó¶ËÄ£Ê½
+	pStreamBuf->SetEndianType(E_ENDIAN_TYPE_LITTLE_ENDIAN);	//å‰é¢æ˜¯å¤§ç«¯æ¨¡å¼
 	return packageLen;
 }
 

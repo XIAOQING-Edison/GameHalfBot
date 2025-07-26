@@ -24,28 +24,28 @@ public:
 	void UpdateItemsWhenChanged(void *items,void * removes);
 	void RemoveItemsFromItemList(void* removes);
 
-	void OnMoveItemRes(void *item);	//ÒÆ¶¯ÎïÆ·£¬ÕâÀïÏÈÒªÕÒ³öÎïÆ·ËùÔÚµÄ¸ñ×Ó£¬É¾³ı£¬ÔÙ°ÑĞÂµÄÎïÆ·¸³µ½Ä¿±ê¸ñ×ÓÀï
+	void OnMoveItemRes(void *item);	//ç§»åŠ¨ç‰©å“ï¼Œè¿™é‡Œå…ˆè¦æ‰¾å‡ºç‰©å“æ‰€åœ¨çš„æ ¼å­ï¼Œåˆ é™¤ï¼Œå†æŠŠæ–°çš„ç‰©å“èµ‹åˆ°ç›®æ ‡æ ¼å­é‡Œ
 
 	void UpdateItemToItemList(int pos,CItem &item);
-	void DeleteItemByPos(int pos);	//ÕâÀï°Ñ¶ÔÓ¦¸ñÖÃ³É¿Õ¶ÔÏó¼´¿É£¬²»ÕæÕıÉ¾³ı
+	void DeleteItemByPos(int pos);	//è¿™é‡ŒæŠŠå¯¹åº”æ ¼ç½®æˆç©ºå¯¹è±¡å³å¯ï¼Œä¸çœŸæ­£åˆ é™¤
 	CItem *GetItemByPos(int pos);
 
 	CItem *GetItemByObjectId(INT64 id);
 	int GetPosByItemObjectId(INT64 id);
-	vector<CItem*> GetEquipmentsByExcellentAttrAndStarCount(int attrCount,int starCount);//×¿Ô½ÊôĞÔ,ºÍ¼¸ĞÇ
+	vector<CItem*> GetEquipmentsByExcellentAttrAndStarCount(int attrCount,int starCount);//å“è¶Šå±æ€§,å’Œå‡ æ˜Ÿ
 
-	int GetRemainIdleGridCount();	//µÃµ½¿ÕÏĞµÄ¸ñ×Ó
+	int GetRemainIdleGridCount();	//å¾—åˆ°ç©ºé—²çš„æ ¼å­
 
 	void SetAvailableSize(int sz){m_availableSize=sz;}
 	int GetAvailableSize(){return m_availableSize;}
 
-	INT64 GetItemCountByNameBindOrNot(const STRING &name,bool bind);	//´ÓÃû×ÖÈ¡µÃ°ó¶¨»ò·Ç°ó¶¨µÄÎïÆ·
+	INT64 GetItemCountByNameBindOrNot(const STRING &name,bool bind);	//ä»åå­—å–å¾—ç»‘å®šæˆ–éç»‘å®šçš„ç‰©å“
 
-	void EmptyAllItems();	//½«È«²¿item±ê¼ÇÎª¿ÕµÄitem,Ò»°ãÊÇ¶ÏÏßºóµôÓÃ
+	void EmptyAllItems();	//å°†å…¨éƒ¨itemæ ‡è®°ä¸ºç©ºçš„item,ä¸€èˆ¬æ˜¯æ–­çº¿åæ‰ç”¨
 
-	void PrintInfo();	//test,²âÊÔÊä³ö
+	void PrintInfo();	//test,æµ‹è¯•è¾“å‡º
 private:
-	vector<CItem*> GetItemByNameBindOrNot(const STRING& name,bool bind);	//È¡µÃÊÇ·ñ°ó¶¨µÄÎïÆ·
+	vector<CItem*> GetItemByNameBindOrNot(const STRING& name,bool bind);	//å–å¾—æ˜¯å¦ç»‘å®šçš„ç‰©å“
 
 	vector<CItem*> GetItemsByItemType(EItemType type);
 	vector<CItem*> GetItemsByName(const STRING &name);
@@ -59,5 +59,5 @@ private:
 private:
 	E_ITEM_GRID_TYPE m_type;
 	vector<CItem> m_itemList;
-	int m_availableSize;	//Õâ¸öÊÇ¿ÉÓÃµÄ´óĞ¡
+	int m_availableSize;	//è¿™ä¸ªæ˜¯å¯ç”¨çš„å¤§å°
 };

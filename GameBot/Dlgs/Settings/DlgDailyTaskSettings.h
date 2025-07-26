@@ -2,17 +2,17 @@
 
 #include "../../Config/DailyTaskConfig.h"
 #include "../../resource.h"
-// CDlgDailyTaskSettings ¶Ô»°¿ò
+// CDlgDailyTaskSettings å¯¹è¯æ¡†
 class CPlayer;
 class CDlgSettingSecretary1 : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgSettingSecretary1)
 
 public:
-	CDlgSettingSecretary1(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgSettingSecretary1(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgSettingSecretary1();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_SETTING_SECRETARY1 };
 
 	void SetConfigObject(CConfigSecretary1 *p){m_pSecretary1Config=p;}
@@ -22,7 +22,7 @@ public:
 
 	void InitCtrls();
 
-	void InitCombo();	//Ö÷ÒªÊÇ³õÊ¼»¯µØÍ¼ÀàĞÍºÍµØÍ¼ÁĞ±í
+	void InitCombo();	//ä¸»è¦æ˜¯åˆå§‹åŒ–åœ°å›¾ç±»å‹å’Œåœ°å›¾åˆ—è¡¨
 
 	void ReadIniToCtrls();
 	void SaveCtrlsToIni();
@@ -35,7 +35,7 @@ public:
 	void SetPlayer(CPlayer *player){m_pPlayer=player;}
 	virtual void OnOK(){}
 	virtual void OnCancel(){}
-private:	//ÓÃÓÚÑ¡ÔñÊ±¼ä¶Î
+private:	//ç”¨äºé€‰æ‹©æ—¶é—´æ®µ
 	CPlayer *m_pPlayer;
 private:
 	CButton *m_pChk[13];
@@ -50,14 +50,14 @@ private:
 	CButton *m_pChkIsAutoCounterStrikeOtherPlayer;
 	CButton *m_pChkIsAutoCounterStrikeOtherPlayerUsingConfigSkills;
 
-	CComboBox *m_pCbMaps;	//µØÍ¼id
-	CComboBox *m_pCbPkMode;	//¹Ò»úµÄpkÄ£Ê½
-	CStatic *m_pStaticPkMode;	//pkmode¾²Ì¬
+	CComboBox *m_pCbMaps;	//åœ°å›¾id
+	CComboBox *m_pCbPkMode;	//æŒ‚æœºçš„pkæ¨¡å¼
+	CStatic *m_pStaticPkMode;	//pkmodeé™æ€
 private:
 	CConfigSecretary1 *m_pSecretary1Config;
 	CBrush m_brush;
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:

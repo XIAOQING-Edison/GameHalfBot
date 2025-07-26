@@ -15,8 +15,8 @@ public:
 
 	void SetURL(CString strURL);
 	CString GetURL() const;
-	void SetColor(COLORREF clr, BYTE clrItem);//设置颜色
-	COLORREF GetColor(BYTE clrItem);//得到颜色
+	void SetColor(COLORREF clr, BYTE clrItem);//璁剧疆棰滆壊
+	COLORREF GetColor(BYTE clrItem);//寰楀埌棰滆壊
 	// Overrides
 	// ClassWizard generated virtual function overrides
 	//{{AFX_VIRTUAL(CHyperLink)

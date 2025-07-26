@@ -1,4 +1,4 @@
-// ./Dlgs/Settings/DlgUserSettings.cpp : ÊµÏÖÎÄ¼ş
+// ./Dlgs/Settings/DlgUserSettings.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "../../StdAfx.h"
@@ -10,14 +10,14 @@
 #include "../../Misc/Misc.h"
 #include "../../Struct/AccountInfo.h"
 
-// CDlgUserSettings ¶Ô»°¿ò
+// CDlgUserSettings å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CDlgUserSettings, CDialog)
 
 CDlgUserSettings::CDlgUserSettings(CWnd* pParent /*=NULL*/)
 	: CDialog(CDlgUserSettings::IDD, pParent)
 {
-	SetAddUser(true);	//Ä¬ÈÏÔö¼ÓÓÃ»§
+	SetAddUser(true);	//é»˜è®¤å¢åŠ ç”¨æˆ·
 }
 
 CDlgUserSettings::~CDlgUserSettings()
@@ -38,13 +38,13 @@ BEGIN_MESSAGE_MAP(CDlgUserSettings, CDialog)
 END_MESSAGE_MAP()
 
 
-// CDlgUserSettings ÏûÏ¢´¦Àí³ÌĞò
+// CDlgUserSettings æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CDlgUserSettings::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// TODO:  ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯
+	// TODO:  åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–
 	m_brush.CreateSolidBrush(RGB(255,255,255));//while brush
 
 	m_pGameCfg=new CGameConfig(m_strUserName,false);
@@ -56,16 +56,16 @@ BOOL CDlgUserSettings::OnInitDialog()
 	InitCombo();
 	ReadIniToCtrls();
 	return TRUE;  // return TRUE unless you set the focus to a control
-	// Òì³£: OCX ÊôĞÔÒ³Ó¦·µ»Ø FALSE
+	// å¼‚å¸¸: OCX å±æ€§é¡µåº”è¿”å› FALSE
 }
 
 HBRUSH CDlgUserSettings::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 {
 	HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
 
-	// TODO:  ÔÚ´Ë¸ü¸Ä DC µÄÈÎºÎÊôĞÔ
+	// TODO:  åœ¨æ­¤æ›´æ”¹ DC çš„ä»»ä½•å±æ€§
 	hbr=(HBRUSH)m_brush;
-	// TODO:  Èç¹ûÄ¬ÈÏµÄ²»ÊÇËùĞè»­±Ê£¬Ôò·µ»ØÁíÒ»¸ö»­±Ê
+	// TODO:  å¦‚æœé»˜è®¤çš„ä¸æ˜¯æ‰€éœ€ç”»ç¬”ï¼Œåˆ™è¿”å›å¦ä¸€ä¸ªç”»ç¬”
 	return hbr;
 }
 
@@ -143,7 +143,7 @@ void CDlgUserSettings::SaveCtrlsToIni()
 }
 void CDlgUserSettings::OnBnClickedBtnConfirm()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	if(!CheckValid())
 	{
 		return;
@@ -164,7 +164,7 @@ void CDlgUserSettings::OnBnClickedBtnConfirm()
 	{
 		CMisc::GetInstance()->SendUpdateAccountInfoToMainHwnd((LPARAM)&accountInfo);
 	}
-	AfxMessageBox(_T("±£´æ³É¹¦!"));
+	AfxMessageBox(_T("ä¿å­˜æˆåŠŸ!"));
 	EndDialog(0);
 }
 
@@ -175,21 +175,21 @@ void CDlgUserSettings::OnClose()
 }
 
 
-bool  CDlgUserSettings::CheckValid()	//¼ì²âÊäÈëÊÇ·ñºÏ·¨
+bool  CDlgUserSettings::CheckValid()	//æ£€æµ‹è¾“å…¥æ˜¯å¦åˆæ³•
 {
 	bool ret=true;
 	CString str;
 	m_pEdtUserName->GetWindowText(str);
 	if(str.GetLength()==0)
 	{
-		AfxMessageBox(_T("ÇëÊäÈëÓÃ»§Ãû!"));
+		AfxMessageBox(_T("è¯·è¾“å…¥ç”¨æˆ·å!"));
 		ret=false;
 		goto EXT;
 	}
 	m_pEdtPassword->GetWindowText(str);
 	if(str.GetLength()==0)
 	{
-		AfxMessageBox(_T("ÇëÊäÈëÃÜÂë!"));
+		AfxMessageBox(_T("è¯·è¾“å…¥å¯†ç !"));
 		ret=false;
 		goto EXT;
 	}
@@ -197,7 +197,7 @@ bool  CDlgUserSettings::CheckValid()	//¼ì²âÊäÈëÊÇ·ñºÏ·¨
 	m_pEdtServerId->GetWindowText(str);
 	if(str.GetLength()==0)
 	{
-		AfxMessageBox(_T("ÇëÊäÈë·şÎñÆ÷Id!"));
+		AfxMessageBox(_T("è¯·è¾“å…¥æœåŠ¡å™¨Id!"));
 		ret=false;
 		goto EXT;
 	}

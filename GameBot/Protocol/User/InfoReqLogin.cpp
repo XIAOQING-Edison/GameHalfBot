@@ -8,19 +8,19 @@ CInfoReqLogin::~CInfoReqLogin(void)
 {
 }
 
-//这个带req的应该不需要decode
-//到这里就只剩下包体直接解析了，没有头部信息或者其它flag
+//杩欎釜甯eq鐨勫簲璇ヤ笉闇�瑕乨ecode
+//鍒拌繖閲屽氨鍙墿涓嬪寘浣撶洿鎺ヨВ鏋愪簡锛屾病鏈夊ご閮ㄤ俊鎭垨鑰呭叾瀹僨lag
 int CInfoReqLogin::Decode(CStreamReadWrite *pStreamBuf)
 {
 	int handleLength=0;
 
 	int orgPos=pStreamBuf->GetHandlePos();
 
-	TRACE_OUTPUT(_T("解析CInfoReqLogin\n"));
+	TRACE_OUTPUT(_T("瑙ｆ瀽CInfoReqLogin\n"));
 
 
 EXT:
 	handleLength=pStreamBuf->GetHandlePos()-orgPos;
-	//TRACE_OUTPUT(_T("CInfoReqLogin 解析长度:%d\n"),handleLength);
+	//TRACE_OUTPUT(_T("CInfoReqLogin 瑙ｆ瀽闀垮害:%d\n"),handleLength);
 	return handleLength;
 }

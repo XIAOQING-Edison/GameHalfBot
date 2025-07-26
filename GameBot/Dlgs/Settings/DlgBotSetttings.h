@@ -2,17 +2,17 @@
 
 #include "../../Config/BotConfig.h"
 #include "../../resource.h"
-// CDlgBotSetttings ¶Ô»°¿ò
+// CDlgBotSetttings å¯¹è¯æ¡†
 
 class CDlgSettingSecretary2 : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgSettingSecretary2)
 
 public:
-	CDlgSettingSecretary2(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgSettingSecretary2(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgSettingSecretary2();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_SETTING_SECRETARY2};
 
 	void SetConfigObject(CConfigSecretary2 *p){m_pSecretary2Config=p;}
@@ -40,7 +40,7 @@ private:
 private:
 	CButton *m_pChkDemonPlaza;
 	CButton *m_pChkDemonPlazaBuyTicketWhenNotEnough;
-	CButton *m_pChkDemonPlazaAutoComposeTicket;	//×Ô¶¯ºÏ³ÉÃÅÆ±
+	CButton *m_pChkDemonPlazaAutoComposeTicket;	//è‡ªåŠ¨åˆæˆé—¨ç¥¨
 
 	CEdit *m_pEdtDemonPlazaHungUpPointX;
 	CEdit *m_pEdtDemonPlazaHungUpPointY;
@@ -51,12 +51,12 @@ private:
 
 	CListBox *m_pListSkillAll;
 	CListBox *m_pListSkillSelected;
-	vector<int> m_demonPlazaTimeSelectedList;	//ÒÑÑ¡ÔñÊ±¼ä¶ÎµÄÏÂ±ê
+	vector<int> m_demonPlazaTimeSelectedList;	//å·²é€‰æ‹©æ—¶é—´æ®µçš„ä¸‹æ ‡
 private:
 	CConfigSecretary2 *m_pSecretary2Config;
 	CBrush m_brush;
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:

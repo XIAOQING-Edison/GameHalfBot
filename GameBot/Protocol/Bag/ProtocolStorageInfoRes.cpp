@@ -21,7 +21,7 @@ int CProtocolStorageInfoRes::Decode(CStreamReadWrite *pStreamBuf)
 
 	bool bFinish=false;
 	int restBytes=m_packageLengthInRes-protocol_header_length;
-	//µ½ÕâÀïÓÎÏ·»ù±¾¼ÓÔØÍê³É
+	//åˆ°è¿™é‡Œæ¸¸æˆåŸºæœ¬åŠ è½½å®Œæˆ
 	m_pPlayer->SetInGameAlready(true);
 	m_pPlayer->ReadyForPlaying();
 	

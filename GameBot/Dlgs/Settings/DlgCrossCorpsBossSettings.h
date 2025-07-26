@@ -3,17 +3,17 @@
 #include "../../Config/CrossCorpsBossConfig.h"
 #include "../../resource.h"
 
-// CDlgCrossBossSettings ¶Ô»°¿ò
+// CDlgCrossBossSettings å¯¹è¯æ¡†
 
 class CDlgCrossCorpsBossSetting : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgCrossCorpsBossSetting)
 
 public:
-	CDlgCrossCorpsBossSetting(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgCrossCorpsBossSetting(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgCrossCorpsBossSetting();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_CROSS_CORPS_BOSS };
 
 	void SetConfigObject(CCrossCorpsBossConfig *p){m_pCrossCorpsBossConfig=p;}
@@ -47,7 +47,7 @@ private:
 	CCrossCorpsBossConfig *m_pCrossCorpsBossConfig;
 	CBrush m_brush;
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 

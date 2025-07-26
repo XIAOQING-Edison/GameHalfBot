@@ -9,11 +9,11 @@ CInfoRoleBasic::~CInfoRoleBasic(void)
 
 void CInfoRoleBasic::Reset()
 {
-	createTime=0;// = 2; //´´½ÇÊ±¼ä (s)
-	attributePoint=0;// = 4; //¿ÉÊ¹ÓÃüc”µ
+	createTime=0;// = 2; //åˆ›è§’æ—¶é—´ (s)
+	attributePoint=0;// = 4; //å¯ä½¿ç”¨é»æ•¸
 	PKMode=0;// = 7;
-	dailyOnlineTime=0;// = 8;//Ã¿ÈÕÔÚÏßÊ±³¤ (s)
-	logoutTime=0;// = 10;//ÀëÏßÊ±¼ä´Á£¬Ãë
+	dailyOnlineTime=0;// = 8;//æ¯æ—¥åœ¨çº¿æ—¶é•¿ (s)
+	logoutTime=0;// = 10;//ç¦»çº¿æ—¶é—´æˆ³ï¼Œç§’
 
 }
 
@@ -24,12 +24,12 @@ int CInfoRoleBasic::Decode(CStreamReadWrite *pStreamBuf)
 	int orgPos=pStreamBuf->GetHandlePos();
 
 
-	TRACE_OUTPUT(_T("½âÎöCInfoRoleBasic\n"));
+	TRACE_OUTPUT(_T("è§£æCInfoRoleBasic\n"));
 	Reset();
 
 	bool bFinish=false;
 	int objLength=0;
-	int restBytes=m_packageLengthInRes;	//¶ÁÈ¡¹Ì¶¨³¤¶ÈµÄ×Ö½Ú¾Í½âÎöÍê
+	int restBytes=m_packageLengthInRes;	//è¯»å–å›ºå®šé•¿åº¦çš„å­—èŠ‚å°±è§£æå®Œ
 
 	while(!bFinish)
 	{
@@ -110,8 +110,8 @@ int CInfoRoleBasic::Decode(CStreamReadWrite *pStreamBuf)
 			break;
 		default:
 			{
-				TRACE_OUTPUT(_T("----------------------Role basic ½âÎö³ö´í-------------------\n"));
-// 				if(fieldFlag%8 !=0)	//ÔİÊ±Ã»ÕÒµ½½âÎöµÄ£¬ÏÈÌø¹ı
+				TRACE_OUTPUT(_T("----------------------Role basic è§£æå‡ºé”™-------------------\n"));
+// 				if(fieldFlag%8 !=0)	//æš‚æ—¶æ²¡æ‰¾åˆ°è§£æçš„ï¼Œå…ˆè·³è¿‡
 // 				{
 // 					objLength=pStreamBuf->ReadRawVarInt32();
 // 					pStreamBuf->SetHandlePos(pStreamBuf->GetHandlePos()+objLength);
@@ -122,9 +122,9 @@ int CInfoRoleBasic::Decode(CStreamReadWrite *pStreamBuf)
 		}
 		bFinish=(pStreamBuf->GetHandlePos()-orgPos)>=restBytes;
 	}
-	//TRACE_OUTPUT(_T("FoleBasic--´´½¨Ê±¼ä:%d,µÇ³öÊ±¼ä:%d\n"),createTime,logoutTime);
+	//TRACE_OUTPUT(_T("FoleBasic--åˆ›å»ºæ—¶é—´:%d,ç™»å‡ºæ—¶é—´:%d\n"),createTime,logoutTime);
 EXT:
 	handleLength=pStreamBuf->GetHandlePos()-orgPos;
-	//TRACE_OUTPUT(_T("CInfoRoleBasic ½âÎö³¤¶È:%d\n"),handleLength);
+	//TRACE_OUTPUT(_T("CInfoRoleBasic è§£æé•¿åº¦:%d\n"),handleLength);
 	return handleLength;
 }

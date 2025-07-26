@@ -19,10 +19,10 @@ int CInfoResGetRoleList::Decode(CStreamReadWrite *pStreamBuf)
 	roleList.clear();
 	deleteRoleList.clear();
 
-	TRACE_OUTPUT(_T("½âÎöCInfoResGetRoleList\n"));
-	int restBytes=m_packageLengthInRes;//Ö»ÓĞÉÏ²ãµÄres²ÅĞèÒª¼õÈ¥Í·²¿³¤¶Èprotocol_header_length,ÀïÃæµÄ×Ó¶ÔÏó²»ĞèÒª
+	TRACE_OUTPUT(_T("è§£æCInfoResGetRoleList\n"));
+	int restBytes=m_packageLengthInRes;//åªæœ‰ä¸Šå±‚çš„resæ‰éœ€è¦å‡å»å¤´éƒ¨é•¿åº¦protocol_header_length,é‡Œé¢çš„å­å¯¹è±¡ä¸éœ€è¦
 
-	int objLength;	//Ä³¸öÀàĞÍµÄ³¤¶È
+	int objLength;	//æŸä¸ªç±»å‹çš„é•¿åº¦
 	bool bFinish=false;
 	DWORD fieldFlag;
 
@@ -30,8 +30,8 @@ int CInfoResGetRoleList::Decode(CStreamReadWrite *pStreamBuf)
 	while(!bFinish)
 	{
 		fieldFlag=pStreamBuf->ReadRawVarInt32();
-		//ÕâÀï·¢ÏÖÈç¹ûfieldFlag%8 ==2µÄ»°£¬ÊÇÃèÊöÊ£ÏÂÄÇ¸öÀàĞÍµÄ³¤¶È
-		//Èç¹û%8==0ÔòÊÇ²ÎÊıµÄflag,±íÊ¾µÚ¼¸¸ö²ÎÊı
+		//è¿™é‡Œå‘ç°å¦‚æœfieldFlag%8 ==2çš„è¯ï¼Œæ˜¯æè¿°å‰©ä¸‹é‚£ä¸ªç±»å‹çš„é•¿åº¦
+		//å¦‚æœ%8==0åˆ™æ˜¯å‚æ•°çš„flag,è¡¨ç¤ºç¬¬å‡ ä¸ªå‚æ•°
 		switch(fieldFlag>>3)
 		{
 		case 1:
@@ -39,12 +39,12 @@ int CInfoResGetRoleList::Decode(CStreamReadWrite *pStreamBuf)
 			break;
 		case 2:
 			{
-				//ÕâÀïÒªÉè¶¨³¤¶È
+				//è¿™é‡Œè¦è®¾å®šé•¿åº¦
 				objLength=pStreamBuf->ReadRawVarInt32();
 				infoDecode.SetPackageLengthInRes(objLength);
 				if(objLength>0)
 				{
-					infoDecode.Decode(pStreamBuf);	//ÔÚÀïÃæ°Ñ³¤¶È´¦ÀíÁË
+					infoDecode.Decode(pStreamBuf);	//åœ¨é‡Œé¢æŠŠé•¿åº¦å¤„ç†äº†
 					roleList.push_back(infoDecode);
 				}
 			}
@@ -53,7 +53,7 @@ int CInfoResGetRoleList::Decode(CStreamReadWrite *pStreamBuf)
 		case 3:
 			
 			{
-				//ÕâÀïÒªÉè¶¨³¤¶È
+				//è¿™é‡Œè¦è®¾å®šé•¿åº¦
 				objLength=pStreamBuf->ReadRawVarInt32();
 				infoDecode.SetPackageLengthInRes(objLength);
 				if(objLength>0)
@@ -84,6 +84,6 @@ int CInfoResGetRoleList::Decode(CStreamReadWrite *pStreamBuf)
 
 EXT:
 	handleLength=pStreamBuf->GetHandlePos()-orgPos;
-	//TRACE_OUTPUT(_T("CInfoResGetRoleList ½âÎö³¤¶È:%d\n"),handleLength);
+	//TRACE_OUTPUT(_T("CInfoResGetRoleList è§£æé•¿åº¦:%d\n"),handleLength);
 	return handleLength;
 }

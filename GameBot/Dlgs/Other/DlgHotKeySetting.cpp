@@ -1,4 +1,4 @@
-// ./Dlgs/Other/DlgHotKeySetting.cpp : ÊµÏÖÎÄ¼ş
+// ./Dlgs/Other/DlgHotKeySetting.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "../../stdafx.h"
@@ -6,7 +6,7 @@
 #include "DlgHotKeySetting.h"
 #include "../../Config/GlobalConfig.h"
 
-// CDlgHotKeySetting ¶Ô»°¿ò
+// CDlgHotKeySetting å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CDlgHotKeySetting, CDialog)
 
@@ -33,11 +33,11 @@ BEGIN_MESSAGE_MAP(CDlgHotKeySetting, CDialog)
 END_MESSAGE_MAP()
 
 
-// CDlgHotKeySetting ÏûÏ¢´¦Àí³ÌĞò
+// CDlgHotKeySetting æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CDlgHotKeySetting::PreTranslateMessage(MSG* pMsg)
 {
-	// TODO: ÔÚ´ËÌí¼Ó×¨ÓÃ´úÂëºÍ/»òµ÷ÓÃ»ùÀà
+	// TODO: åœ¨æ­¤æ·»åŠ ä¸“ç”¨ä»£ç å’Œ/æˆ–è°ƒç”¨åŸºç±»
 	
 	return CDialog::PreTranslateMessage(pMsg);
 }
@@ -46,16 +46,16 @@ BOOL CDlgHotKeySetting::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// TODO:  ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯
+	// TODO:  åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–
 	InitCtrls();
 	ReadIniToCtrls();
 	return TRUE;  // return TRUE unless you set the focus to a control
-	// Òì³£: OCX ÊôĞÔÒ³Ó¦·µ»Ø FALSE
+	// å¼‚å¸¸: OCX å±æ€§é¡µåº”è¿”å› FALSE
 }
 
 void CDlgHotKeySetting::OnClose()
 {
-	// TODO: ÔÚ´ËÌí¼ÓÏûÏ¢´¦Àí³ÌĞò´úÂëºÍ/»òµ÷ÓÃÄ¬ÈÏÖµ
+	// TODO: åœ¨æ­¤æ·»åŠ æ¶ˆæ¯å¤„ç†ç¨‹åºä»£ç å’Œ/æˆ–è°ƒç”¨é»˜è®¤å€¼
 	CDialog::OnCancel();
 	CDialog::OnClose();
 }
@@ -68,8 +68,8 @@ void CDlgHotKeySetting::InitCtrls()
 	m_pEdtHotKey=(CStatic*)GetDlgItem(IDC_EDT_HOT_KEY);
 	m_pEdtTips=(CEdit*)GetDlgItem(IDC_EDT_TIPS);
 	CFont font;
-	font.CreatePointFont(90, _T("ºÚÌå"));
-	m_pEdtTips->SetWindowText(_T("°´ÏÂÈÎÒâ¼üÏÔÊ¾ÔÚÏÂÃæµÄ¼´ÎªËùĞè¿ì½İ¼ü,Shift,Ctrl°´Á½´Î¾Í»áÈ¡Ïû,ÆäËü¼ü²»±ä!)"));	
+	font.CreatePointFont(90, _T("é»‘ä½“"));
+	m_pEdtTips->SetWindowText(_T("æŒ‰ä¸‹ä»»æ„é”®æ˜¾ç¤ºåœ¨ä¸‹é¢çš„å³ä¸ºæ‰€éœ€å¿«æ·é”®,Shift,CtrlæŒ‰ä¸¤æ¬¡å°±ä¼šå–æ¶ˆ,å…¶å®ƒé”®ä¸å˜!)"));	
 
 	m_pEdtHotKey->SetFont(&font);
 	m_pEdtHotKey->SetFocus();
@@ -80,9 +80,9 @@ void CDlgHotKeySetting::InitCtrls()
 }
 void CDlgHotKeySetting::OnBnClickedBtnSaveHotKey()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	SaveIniFromCtrls();
-	MessageBox(_T("±£´æ³É¹¦!"));
+	MessageBox(_T("ä¿å­˜æˆåŠŸ!"));
 	CDialog::OnOK();
 }
 
@@ -109,6 +109,6 @@ void CDlgHotKeySetting::SaveIniFromCtrls()
 }
 void CDlgHotKeySetting::OnCbnSelchangeCbHotKeyType()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	ShowKeyCodeString();
 }

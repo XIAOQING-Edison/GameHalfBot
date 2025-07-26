@@ -4,12 +4,12 @@
 
 #include "../../Config/GameConfig.h"
 #include "../../resource.h"
-// CDlgSettings ¶Ô»°¿ò
+// CDlgSettings å¯¹è¯æ¡†
 
 enum E_SETTING_MODE	
 {
-	e_setting_mode_add_or_modify_user=0,	//Ö»ĞŞ¸ÄÓÃ»§
-	e_setting_mode_other_task	//ĞŞ¸ÄÆäËüÈÎÎñÅäÖÃ
+	e_setting_mode_add_or_modify_user=0,	//åªä¿®æ”¹ç”¨æˆ·
+	e_setting_mode_other_task	//ä¿®æ”¹å…¶å®ƒä»»åŠ¡é…ç½®
 };
 
 extern const int g_tabCount;
@@ -26,10 +26,10 @@ class CDlgSecretarySettings : public CDialog
 	DECLARE_DYNAMIC(CDlgSecretarySettings)
 
 public:
-	CDlgSecretarySettings(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgSecretarySettings(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgSecretarySettings();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_SECRETARY_SETTINGS };
 
 
@@ -51,8 +51,8 @@ public:
 	STRING GetAccountName(){return m_accountName;}
 
 
-	void ReadIniToCtrls();	//´ÓiniÀï¶ÁÈ¡Öµµ½¸÷×Ó´°¿Ú
-	void SaveCtrlsToIni();	//×Ó´°¿Ú¸÷×Ô±£´æÖµµ½ini
+	void ReadIniToCtrls();	//ä»inié‡Œè¯»å–å€¼åˆ°å„å­çª—å£
+	void SaveCtrlsToIni();	//å­çª—å£å„è‡ªä¿å­˜å€¼åˆ°ini
 
 
 
@@ -68,7 +68,7 @@ public:
 	int GetIndex(){return m_index;}
 	void SetPlayerPointer(CPlayer *player);
 private:
-	CDialog *m_pDlg[5];	//·ÅdlgÖ¸Õë·½±ã²Ù×÷,ÏÈÉèÎª³£Á¿£¬ºóÃæÔÙ¸ü¸Ä
+	CDialog *m_pDlg[5];	//æ”¾dlgæŒ‡é’ˆæ–¹ä¾¿æ“ä½œ,å…ˆè®¾ä¸ºå¸¸é‡ï¼Œåé¢å†æ›´æ”¹
 	
 	CDlgSettingSecretary1 m_dlgSecretary1Settings;
 	CDlgSettingSecretary2 m_dlgSecretary2Settings;
@@ -78,12 +78,12 @@ private:
 	
 
 private:
-	bool m_bAdd;	//ÊÇ·ñÊÇÌí¼ÓÓÃ»§
+	bool m_bAdd;	//æ˜¯å¦æ˜¯æ·»åŠ ç”¨æˆ·
 	STRING m_accountName;
-	HWND m_hwndMain;	//Ö÷´°¿Ú
-	int m_index;	//ÁĞ±íÏÂ±ê
+	HWND m_hwndMain;	//ä¸»çª—å£
+	int m_index;	//åˆ—è¡¨ä¸‹æ ‡
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:

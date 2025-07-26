@@ -23,7 +23,7 @@ public:
 	void SetSelfWindow(HWND hwnd){m_hSelfWin=hwnd;}
 	HWND GetSelfWindow(){return m_hSelfWin;}
 
-	bool DoReadyWork();	//´´½¨Ïß³ÌÀà
+	bool DoReadyWork();	//åˆ›å»ºçº¿ç¨‹ç±»
 
 	int GetIndex(){return m_index;}
 	void SetIndex(int index){m_index=index;}
@@ -32,7 +32,7 @@ public:
 	STRING GetTaskStatus(){return m_playerStatus.taskName;}
 
 	void UpdatePlayerInfoStatus(CInfoPlayerInfoStatus *pInfo);
-	void UpdatePlayerInfoToPlayerInfoStatus();	//½«CPlayerÀïµÄ×´Ì¬¸³Öµµ½m_playerInfoStatusÀïÃæ
+	void UpdatePlayerInfoToPlayerInfoStatus();	//å°†CPlayeré‡Œçš„çŠ¶æ€èµ‹å€¼åˆ°m_playerInfoStatusé‡Œé¢
 	DWORD GetMessageThreadId(){return m_messageThreadId;}
 
 	CStreamReadWrite *GetStreamBufEncode(){return m_pStreamBufSend;}
@@ -56,26 +56,26 @@ private:
 
 	void AssignPlayerIsTeamLeader();
 
-	static DWORD WINAPI ThreadMessage(LPVOID p);	//ÏûÏ¢Ïß³Ì
-	static DWORD WINAPI ThredTimer(LPVOID p);	//¶¨Ê±Æ÷Ïß³Ì
+	static DWORD WINAPI ThreadMessage(LPVOID p);	//æ¶ˆæ¯çº¿ç¨‹
+	static DWORD WINAPI ThredTimer(LPVOID p);	//å®šæ—¶å™¨çº¿ç¨‹
 private:
-	HWND m_hMainControlWin;	//Ö÷¿Ø,¿Í»§¶ËÓëËûÍ¨ĞÅµÄ¡£ºóÃæ¿É»»³Ésocket
-	HWND m_hSelfWin;	//×ÔÉíµÄ¾ä±ú
+	HWND m_hMainControlWin;	//ä¸»æ§,å®¢æˆ·ç«¯ä¸ä»–é€šä¿¡çš„ã€‚åé¢å¯æ¢æˆsocket
+	HWND m_hSelfWin;	//è‡ªèº«çš„å¥æŸ„
 	CPlayer *m_pPlayer;
 	CStreamReadWrite *m_pStreamBufRecv;
 	CStreamReadWrite *m_pStreamBufSend;
 	HANDLE m_hThreadMessage;
-	int m_cmd;	//ÏÖÊ±ÃüÁî
+	int m_cmd;	//ç°æ—¶å‘½ä»¤
 	DWORD m_messageThreadId;
 
 	HANDLE m_hThreadTimer;
 
 	int m_liveTime;
-	int m_index;	//ÏÂ±êÓÃÓÚ¿Í»§¶ËÓÃÓÚ¿ØÖÆ
+	int m_index;	//ä¸‹æ ‡ç”¨äºå®¢æˆ·ç«¯ç”¨äºæ§åˆ¶
 
-	CInfoPlayerInfoStatus m_playerStatus;	//²âÊÔÓÃµÄĞÅÏ¢
-	INT64 m_materialData[64];	//²ÄÁÏÏêÇé
-	int m_materialCount;	//ÒªÏÔÊ¾µÄ²ÄÁÏÊı
-	STRING m_taskStatus;	//²âÊÔÓÃ
+	CInfoPlayerInfoStatus m_playerStatus;	//æµ‹è¯•ç”¨çš„ä¿¡æ¯
+	INT64 m_materialData[64];	//ææ–™è¯¦æƒ…
+	int m_materialCount;	//è¦æ˜¾ç¤ºçš„ææ–™æ•°
+	STRING m_taskStatus;	//æµ‹è¯•ç”¨
 
 };

@@ -1,17 +1,17 @@
 #pragma once
 
-#include "SocketHelper.h"	//ÓÃÀ´·¢°üÓÃµÄ
+#include "SocketHelper.h"	//ç”¨æ¥å‘åŒ…ç”¨çš„
 #include "../Struct/GameOperation.h"
 
 
-//Âß¼­ÀàÓÃÀ´¸ù¾İÈÎÎñÀàĞÍÈ¥×ö²Ù×÷£¬ÀıÈçµÈ´ı£¬ÇĞ»»µÈ
+//é€»è¾‘ç±»ç”¨æ¥æ ¹æ®ä»»åŠ¡ç±»å‹å»åšæ“ä½œï¼Œä¾‹å¦‚ç­‰å¾…ï¼Œåˆ‡æ¢ç­‰
 class CPlayer;
 class CGameConfig;
 class CGameLogicHelper
 {
-	friend class CTestHelper;	//²âÊÔ
+	friend class CTestHelper;	//æµ‹è¯•
 	friend class CBossLogicHelper;	//BOSS
-	friend class CTaskLogicHelper;	//ÈÎÎñ
+	friend class CTaskLogicHelper;	//ä»»åŠ¡
 public:
 	CGameLogicHelper(void);
 	~CGameLogicHelper(void);
@@ -32,42 +32,42 @@ public:
 
 	void Init();
 
-	//Íâ²¿¸øplayerÓÃµÄ½Ó¿Ú
-	void DoGameOperaion(int protocolId,int paramLength,char *cmdData,CSocketHelper *pSocketHelper);	//ÕâÀï¸ù¾İprotocolIdÀ´·¢ËÍÄ³Ğ©Ğ­Òé
+	//å¤–éƒ¨ç»™playerç”¨çš„æ¥å£
+	void DoGameOperaion(int protocolId,int paramLength,char *cmdData,CSocketHelper *pSocketHelper);	//è¿™é‡Œæ ¹æ®protocolIdæ¥å‘é€æŸäº›åè®®
 
-	//game operation½Ó¿Ú
+	//game operationæ¥å£
 
 	void ResetMoveSucc(){m_gameOperation.ResetMoveSucc();}
 	void SetMoveSucc(bool b){m_gameOperation.SetMoveSucc(b);}
-	bool IsMoveSucc(){return m_gameOperation.IsMoveSucc();} //¸üĞÂÄ¿±ê¹ÖÎïµÄÊôĞÔĞÅÏ¢ÊÇ·ñ³É¹¦
+	bool IsMoveSucc(){return m_gameOperation.IsMoveSucc();} //æ›´æ–°ç›®æ ‡æ€ªç‰©çš„å±æ€§ä¿¡æ¯æ˜¯å¦æˆåŠŸ
 
 
 
-	//ÆäËü
-	bool InterruptTaskByEmergencyLevel();	//ÖĞ¶ÏÏÖÊ±×öµÄ¶«Î÷
+	//å…¶å®ƒ
+	bool InterruptTaskByEmergencyLevel();	//ä¸­æ–­ç°æ—¶åšçš„ä¸œè¥¿
 	void ResetTaskEmergencyLevel(){m_gameOperation.ResetEmergencyLevel();}
 
-	//ÈÎÎñ
-	void DoSetPkModeTask(CGameConfig *pCfg,CSocketHelper *pSocketHelper);	//pkÄ£Ê½×ª»»
+	//ä»»åŠ¡
+	void DoSetPkModeTask(CGameConfig *pCfg,CSocketHelper *pSocketHelper);	//pkæ¨¡å¼è½¬æ¢
 
-public:	//ÆäËü½Ó¿Ú
-	void DoTimerTask(CSocketHelper *pSocketHelper);	//×ö¶¨Ê±ÈÎÎñ	//ÕâÀïÖ÷ÒªÊÇ×ö¶¨Ê±·¢°ü	
-public:	//bossÈÎÎñ
+public:	//å…¶å®ƒæ¥å£
+	void DoTimerTask(CSocketHelper *pSocketHelper);	//åšå®šæ—¶ä»»åŠ¡	//è¿™é‡Œä¸»è¦æ˜¯åšå®šæ—¶å‘åŒ…	
+public:	//bossä»»åŠ¡
 
-public:	//¸±±¾ÀàµÄ²Ù×÷,ÏÖÔÚÊÇ¸±±¾ÓÅÏÈ
+public:	//å‰¯æœ¬ç±»çš„æ“ä½œ,ç°åœ¨æ˜¯å‰¯æœ¬ä¼˜å…ˆ
 	
-private:	//Ë½ÓĞ½Ó¿Ú£¬²»¹©ÍâÓÃ
+private:	//ç§æœ‰æ¥å£ï¼Œä¸ä¾›å¤–ç”¨
 
 	void Test(CSocketHelper *pSocketHelper);
 
 
 private:
 	CPlayer *m_pThisPlayer;
-	HANDLE m_hEvtTaskFinished;	//Õı³£Çé¿öÊÇµÈ´ıÈÎÎñÍê³É£¬ÓĞ½ô¼±ÈÎÎñÔò»áÌø³öÈ¥,ÓĞ×´Ì¬Ê±ÊÇÖĞ¶Ï»òÍê³É
+	HANDLE m_hEvtTaskFinished;	//æ­£å¸¸æƒ…å†µæ˜¯ç­‰å¾…ä»»åŠ¡å®Œæˆï¼Œæœ‰ç´§æ€¥ä»»åŠ¡åˆ™ä¼šè·³å‡ºå»,æœ‰çŠ¶æ€æ—¶æ˜¯ä¸­æ–­æˆ–å®Œæˆ
 	bool m_bFirstRunning;
 
-	int m_sendErrorCount;	//Õâ¸öÖ÷ÒªÍ³¼Æ·¢ËÍĞ¡ÃØÊéµÄ´íÎó´ÎÊı³¬¹ıÒ»¶¨´ÎÊı¾Í±íÊ¾¶Ï¿ªÁË
-	CGameOperation m_gameOperation;	//ÓÎÏ·²Ù×÷Àà£¬ÓÃÀ´Ö´ĞĞÒ»ÏµÁĞ·¢°üÁ÷³Ì
+	int m_sendErrorCount;	//è¿™ä¸ªä¸»è¦ç»Ÿè®¡å‘é€å°ç§˜ä¹¦çš„é”™è¯¯æ¬¡æ•°è¶…è¿‡ä¸€å®šæ¬¡æ•°å°±è¡¨ç¤ºæ–­å¼€äº†
+	CGameOperation m_gameOperation;	//æ¸¸æˆæ“ä½œç±»ï¼Œç”¨æ¥æ‰§è¡Œä¸€ç³»åˆ—å‘åŒ…æµç¨‹
 
 private:
 };

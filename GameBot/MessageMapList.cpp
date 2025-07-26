@@ -30,7 +30,7 @@ void CMessageMapList::DeleteInstance()
 }
 
 
-bool CMessageMapList::InitMessageList()	//初始化通信
+bool CMessageMapList::InitMessageList()	//鍒濆鍖栭�氫俊
 {
 	bool ret=true;
 	CBaseMessage *pMsg=NULL;

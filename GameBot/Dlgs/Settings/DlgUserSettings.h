@@ -5,17 +5,17 @@
 
 #include "../../Config/GameConfig.h"
 
-// CDlgUserSettings ¶Ô»°¿ò
+// CDlgUserSettings å¯¹è¯æ¡†
 
 class CDlgUserSettings : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgUserSettings)
 
 public:
-	CDlgUserSettings(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgUserSettings(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgUserSettings();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_USER_SETTINGS };
 	
 	void InitCtrls();
@@ -38,7 +38,7 @@ public:
 	void ReadIniToCtrls();
 	void SaveCtrlsToIni();
 
-	bool CheckValid();	//¼ì²âÊäÈëÊÇ·ñºÏ·¨
+	bool CheckValid();	//æ£€æµ‹è¾“å…¥æ˜¯å¦åˆæ³•
 
 	virtual void OnOK(){}
 	virtual void OnCancel(){}
@@ -52,13 +52,13 @@ private:
 private:
 	CUserConfig *m_pUserConfig;
 	CBrush m_brush;
-	STRING m_strUserNameOrg;	//´æÔ­À´µÄÓÃ»§Ãû
+	STRING m_strUserNameOrg;	//å­˜åŸæ¥çš„ç”¨æˆ·å
 	STRING m_strUserName;
 	int m_index;
 	CGameConfig *m_pGameCfg;
 	bool m_bAdd;
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:

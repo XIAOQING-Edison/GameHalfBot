@@ -29,7 +29,7 @@ public:
 	E_DISCONNECT_ERROR_REASON GetDisconnectInfo(){return connectionInfo;}
 public:
 	UINT64 roleId;
-	E_DISCONNECT_ERROR_REASON  connectionInfo;	//离线还是在线
+	E_DISCONNECT_ERROR_REASON  connectionInfo;	//绂荤嚎杩樻槸鍦ㄧ嚎
 	STRING roleName;
 	int job;
 	int level;
@@ -37,6 +37,6 @@ public:
 	STRING mapName;
 	STRING taskName;
 	vector<int> skillList;
-	int x;	//当前坐标
-	int y;	//当前坐标
+	int x;	//褰撳墠鍧愭爣
+	int y;	//褰撳墠鍧愭爣
 };

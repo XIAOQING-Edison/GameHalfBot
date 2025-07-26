@@ -1,4 +1,4 @@
-// ./Dlgs/Settings/DlgBotSetttings.cpp : ÊµÏÖÎÄ¼ş
+// ./Dlgs/Settings/DlgBotSetttings.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "../../StdAfx.h"
@@ -6,7 +6,7 @@
 #include "DlgBotSetttings.h"
 #include "../../Misc/Misc.h"
 
-// CDlgBotSetttings ¶Ô»°¿ò
+// CDlgBotSetttings å¯¹è¯æ¡†
 static int g_checkCount=3;
 IMPLEMENT_DYNAMIC(CDlgSettingSecretary2, CDialog)
 
@@ -34,26 +34,26 @@ BEGIN_MESSAGE_MAP(CDlgSettingSecretary2, CDialog)
 END_MESSAGE_MAP()
 
 
-// CDlgBotSetttings ÏûÏ¢´¦Àí³ÌĞò
+// CDlgBotSetttings æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CDlgSettingSecretary2::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// TODO:  ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯
+	// TODO:  åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–
 	m_brush.CreateSolidBrush(RGB(255,255,255));//while brush
 	InitCtrls();
 	return TRUE;  // return TRUE unless you set the focus to a control
-	// Òì³£: OCX ÊôĞÔÒ³Ó¦·µ»Ø FALSE
+	// å¼‚å¸¸: OCX å±æ€§é¡µåº”è¿”å› FALSE
 }
 
 HBRUSH CDlgSettingSecretary2::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 {
 	HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
 
-	// TODO:  ÔÚ´Ë¸ü¸Ä DC µÄÈÎºÎÊôĞÔ
+	// TODO:  åœ¨æ­¤æ›´æ”¹ DC çš„ä»»ä½•å±æ€§
 	hbr=(HBRUSH)m_brush;	
-	// TODO:  Èç¹ûÄ¬ÈÏµÄ²»ÊÇËùĞè»­±Ê£¬Ôò·µ»ØÁíÒ»¸ö»­±Ê
+	// TODO:  å¦‚æœé»˜è®¤çš„ä¸æ˜¯æ‰€éœ€ç”»ç¬”ï¼Œåˆ™è¿”å›å¦ä¸€ä¸ªç”»ç¬”
 	return hbr;
 }
 
@@ -182,18 +182,18 @@ void CDlgSettingSecretary2::CheckAll(bool bSelect)
 
 void CDlgSettingSecretary2::OnBnClickedChkBotSettingsSelAll()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	CheckAll(m_pChkAll->GetCheck());
 }
 
 
 void CDlgSettingSecretary2::OnBnClickedBtnDel()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 
 }
 
 void CDlgSettingSecretary2::OnBnClickedBtnAdd()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 }

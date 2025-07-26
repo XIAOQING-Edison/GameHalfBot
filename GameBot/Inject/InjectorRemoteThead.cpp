@@ -34,7 +34,7 @@ bool CInjectorRemoteThead::Inject(DWORD pid)
 	return ret;
 }
 
-bool CInjectorRemoteThead::Uninject()	//ÊÍ·Å,Õâ¸öÎ´Íê³É£¬ÓĞÎÊÌâ,´ıĞŞ¸Ä
+bool CInjectorRemoteThead::Uninject()	//é‡Šæ”¾,è¿™ä¸ªæœªå®Œæˆï¼Œæœ‰é—®é¢˜,å¾…ä¿®æ”¹
 {
 	bool ret=false;
 	if(m_bInjectSucc)

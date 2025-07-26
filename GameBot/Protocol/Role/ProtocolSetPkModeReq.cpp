@@ -17,7 +17,7 @@ bool CProtocolSetPkModeReq::Encode(CStreamReadWrite *pStreamBuf)
 	CProtocol::Encode(pStreamBuf);
 	ResetWritePostion();
 
-	int count=1;	//ÒªĞ´Èë4¸ö²ÎÊı
+	int count=1;	//è¦å†™å…¥4ä¸ªå‚æ•°
 	for(int i=1;i<=count;++i)
 	{
 		if(!(m_pkMode ==0 && i==1))
@@ -36,7 +36,7 @@ bool CProtocolSetPkModeReq::Encode(CStreamReadWrite *pStreamBuf)
 
 
 
-void CProtocolSetPkModeReq::MakePkModeMessage(int m)//±àÂëpkÄ£Ê½
+void CProtocolSetPkModeReq::MakePkModeMessage(int m)//ç¼–ç pkæ¨¡å¼
 {
 	this->m_pkMode=m;
 }

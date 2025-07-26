@@ -29,18 +29,18 @@ struct SOCKETDATA
 
 enum SENDMODEL
 {
-	SEND_BY_CONBINUOUSLY,	// ��������
-	SEND_BY_TIMES			// ���η���
+	SEND_BY_CONBINUOUSLY,	// 持续发送
+	SEND_BY_TIMES			// 按次发送
 };
 
 enum SENDTYPE
 {
-	SEND_BY_RAWSOCKET,		// ʹ��ԭʼSOCKET����
-	SEND_BY_NEWSOCKET		// ʹ����SOCKET����
+	SEND_BY_RAWSOCKET,		// 使用原始SOCKET发送
+	SEND_BY_NEWSOCKET		// 使用新SOCKET发送
 };
 
-//��Ҫ��ʾ��ĳ��������ʹ�ܾ���ʾ����ʹ�ܾͲ���ʾ
-#define SHOW_FLAG	(1<<0)	//Ĭ����send
+//需要显示的某个函数，使能就显示，不使能就不显示
+#define SHOW_FLAG	(1<<0)	//默认是send
 #define SHOW_SEND_FLAG	SHOW_FLAG
 #define SHOW_RECV_FLAG	(1<<1)
 #define SHOW_SEND_TO_FLAG	(1<<2)

@@ -8,7 +8,7 @@ const TCHAR *g_szMainGameCfgName=_T("mainGameCfg.dat");
 const TCHAR *g_szLogFileName=_T("log.log");
 STRING g_exePath;
 STRING g_exeName;
-STRING g_dllPath;	//È«¾ÖÓÃµÄdll±¾µØÂ·¾¶
+STRING g_dllPath;	//å…¨å±€ç”¨çš„dllæœ¬åœ°è·¯å¾„
 HWND g_hwndMainDlg=NULL;
 
 
@@ -26,7 +26,7 @@ const int g_maxCount=5;
 
 const TCHAR *g_szConfigPath=_T("GameConfig\\");
 const TCHAR *g_szMapDataPath=_T("MapData\\");
-int g_gameVersion=_GAME_VERSION_;	//Ä¬ÈÏÊÇmu2
+int g_gameVersion=_GAME_VERSION_;	//é»˜è®¤æ˜¯mu2
 
 #ifdef _M_IX86
 const const TCHAR *g_szProxyDllName=_T("Proxy.dll");
@@ -147,13 +147,13 @@ string UnicodeToUTF8(const wchar_t *lpwcszWString)
 
 
 //////////////////////////////////////////////////////////////////////////
-STRING GetCurrentAppPath()	//È¡µÃµ±Ç°EXEÔËĞĞÄ¿Â¼
+STRING GetCurrentAppPath()	//å–å¾—å½“å‰EXEè¿è¡Œç›®å½•
 {
 	return GetModuleFolderPath(NULL);
 
 }
 
-STRING GetCurrentDllModuleFolderPath()	//È¡µÃµ±Ç°dllÔËĞĞÄ¿Â¼
+STRING GetCurrentDllModuleFolderPath()	//å–å¾—å½“å‰dllè¿è¡Œç›®å½•
 {
 	STRING path;
 	HMODULE hMod=GetCurrentModuleHandle();
@@ -169,18 +169,18 @@ STRING GetCurrentDllModuleFolderPath()	//È¡µÃµ±Ç°dllÔËĞĞÄ¿Â¼
 	return path;
 }
 
-STRING GetCurrentDllModuleParentPath()	//È¡µÃµ±Ç°DLLµÄ¸¸Â·¾¶
+STRING GetCurrentDllModuleParentPath()	//å–å¾—å½“å‰DLLçš„çˆ¶è·¯å¾„
 {
 	STRING dllPath=GetCurrentDllModuleFolderPath();
 	STRING parentPath;
 	int pos;
-	dllPath.erase(dllPath.length()-1);	//È¥³ı×îºóÒ»¸ö'\\'
+	dllPath.erase(dllPath.length()-1);	//å»é™¤æœ€åä¸€ä¸ª'\\'
 	pos=dllPath.rfind(_T("\\"));
 	parentPath=dllPath.substr(0,pos+1);
 	return parentPath;
 }
 
-STRING GetModuleFullPath(HMODULE hMod)	//È¡µÃµ±Ç°Ä£¿éµÄÈ«Â·¾¶
+STRING GetModuleFullPath(HMODULE hMod)	//å–å¾—å½“å‰æ¨¡å—çš„å…¨è·¯å¾„
 {
 	STRING result;
 	TCHAR  path[MAX_PATH+1];
@@ -197,7 +197,7 @@ STRING GetModuleFullPath(HMODULE hMod)	//È¡µÃµ±Ç°Ä£¿éµÄÈ«Â·¾¶
 
 }
 
-STRING GetModuleFolderPath(HMODULE hMod)//È¡µÃµ±Ç°Ä£¿éµÄÄ¿Â¼Â·¾¶
+STRING GetModuleFolderPath(HMODULE hMod)//å–å¾—å½“å‰æ¨¡å—çš„ç›®å½•è·¯å¾„
 {
 	STRING result;
 	TCHAR  path[MAX_PATH+1];
@@ -212,7 +212,7 @@ STRING GetModuleFolderPath(HMODULE hMod)//È¡µÃµ±Ç°Ä£¿éµÄÄ¿Â¼Â·¾¶
 	return result;
 }
 
-HMODULE GetCurrentModuleHandle()	//È¡µÃµ±Ç°Ä£¿é»ùÖ·
+HMODULE GetCurrentModuleHandle()	//å–å¾—å½“å‰æ¨¡å—åŸºå€
 {
 	MEMORY_BASIC_INFORMATION mbi;
 	return ((::VirtualQuery(GetCurrentModuleHandle, &mbi, sizeof(mbi)) != 0) ? (HMODULE)mbi.AllocationBase : NULL);
@@ -224,7 +224,7 @@ HMODULE GetCurrentModuleHandle()	//È¡µÃµ±Ç°Ä£¿é»ùÖ·
 
 
 
-bool InitSocketLib()	//³õÊ¼»¯sockect¿â
+bool InitSocketLib()	//åˆå§‹åŒ–sockectåº“
 {
 	int ret=0;
 	WSADATA wsadata;
@@ -238,7 +238,7 @@ bool InitSocketLib()	//³õÊ¼»¯sockect¿â
 
 
 
-bool CleanupSocketLib()	//ÇåÀísocket¿â
+bool CleanupSocketLib()	//æ¸…ç†socketåº“
 {
 	int ret=WSACleanup();
 	if(ret!=0)
@@ -255,7 +255,7 @@ bool CleanupSocketLib()	//ÇåÀísocket¿â
 
 /////////////////////////////////ip function end/////////////////////////////////////////
 
-///////////////////////////////////ÔÓÏî///////////////////////////////////////
+///////////////////////////////////æ‚é¡¹///////////////////////////////////////
 
 
 void TRACE_OUTPUT(LPCTSTR szFormat, ... )

@@ -31,7 +31,7 @@ void CGameOperation::Init()
 	ResetEmergencyLevel();
 // 	ResetLoadItemsSucc();
 
-	//Ö»Éèmall¼ÓÔØ³É¹¦£¬ÆäËüÓÉ½ÓÊÕ²¿·İ¸³Öµ
+	//åªè®¾mallåŠ è½½æˆåŠŸï¼Œå…¶å®ƒç”±æ¥æ”¶éƒ¨ä»½èµ‹å€¼
 // 	SetLoadMallSucc(true);	//test
 // 
 // 	ResetLoadMailSucc();
@@ -41,7 +41,7 @@ void CGameOperation::Init()
 //  	ResetLoadMallSucc();
 
 	m_hEvtOperationFinished=NULL;
-	m_hEvtOperationFinished=CreateEvent(NULL,FALSE,FALSE,NULL);	//×Ô¶¯»Ö¸´ÎŞĞÅºÅ×´Ì¬
+	m_hEvtOperationFinished=CreateEvent(NULL,FALSE,FALSE,NULL);	//è‡ªåŠ¨æ¢å¤æ— ä¿¡å·çŠ¶æ€
 	
 }
 
@@ -56,9 +56,9 @@ bool CGameOperation::InterruptOperationByEmergencyLevel(E_EMERGENCY_LEVEL lv)
 
 
 
-////////////////////////////////ÕæÕı¹¦ÄÜ//////////////////////////////////////////
+////////////////////////////////çœŸæ­£åŠŸèƒ½//////////////////////////////////////////
 
-bool CGameOperation::RecvPacketAndUpdateInfo(int times,CSocketHelper *pSocketHelper)	//½ÓÊÕ²¢´¦ÀíÊı¾İ£¬timesÊÇ´ÎÊı
+bool CGameOperation::RecvPacketAndUpdateInfo(int times,CSocketHelper *pSocketHelper)	//æ¥æ”¶å¹¶å¤„ç†æ•°æ®ï¼Œtimesæ˜¯æ¬¡æ•°
 {
 	bool ret=true;
 	while(times--)
@@ -70,7 +70,7 @@ EXT:
 }
 
 
-E_OPERATION_RESULT CGameOperation::SetPkMode(int mode,CSocketHelper *pSocketHelper)	//pkÄ£Ê½×ª»»
+E_OPERATION_RESULT CGameOperation::SetPkMode(int mode,CSocketHelper *pSocketHelper)	//pkæ¨¡å¼è½¬æ¢
 {
 	int tryTimes=5;
 	bool bFinish=false;

@@ -22,11 +22,11 @@ int CInfoCommercialActivity::Decode(CStreamReadWrite *pStreamBuf)
 
 	int orgPos=pStreamBuf->GetHandlePos();
 
-	TRACE_OUTPUT(_T("½âÎöCInfoCommercialActivity\n"));
+	TRACE_OUTPUT(_T("è§£æCInfoCommercialActivity\n"));
 
 	Reset();
 	bool bFinish=false;
-	int restBytes=m_packageLengthInRes;	//¶ÁÈ¡¹Ì¶¨³¤¶ÈµÄ×Ö½Ú¾Í½âÎöÍê
+	int restBytes=m_packageLengthInRes;	//è¯»å–å›ºå®šé•¿åº¦çš„å­—èŠ‚å°±è§£æå®Œ
 	int objLength=0;
 	divineCostumeInfo.SetPackageLengthInRes(restBytes);
 	while(!bFinish)
@@ -37,7 +37,7 @@ int CInfoCommercialActivity::Decode(CStreamReadWrite *pStreamBuf)
 		case 1:
 			{
 				objLength=pStreamBuf->ReadRawVarInt32();
-				divineCostumeInfo.SetPackageLengthInRes(objLength+protocol_header_length);	//resµÄ»áÏÈ¼õÈ¥Í·£¬ÕâÀïÏÈ¸´Ô­³¤¶È
+				divineCostumeInfo.SetPackageLengthInRes(objLength+protocol_header_length);	//resçš„ä¼šå…ˆå‡å»å¤´ï¼Œè¿™é‡Œå…ˆå¤åŸé•¿åº¦
 				if(objLength>0)
 				{
 					divineCostumeInfo.Decode(pStreamBuf);
@@ -52,6 +52,6 @@ int CInfoCommercialActivity::Decode(CStreamReadWrite *pStreamBuf)
 	}
 EXT:
 	handleLength=pStreamBuf->GetHandlePos()-orgPos;
-	//TRACE_OUTPUT(_T("CInfoCommercialActivity ½âÎö³¤¶È:%d\n"),handleLength);
+	//TRACE_OUTPUT(_T("CInfoCommercialActivity è§£æé•¿åº¦:%d\n"),handleLength);
 	return handleLength;
 }

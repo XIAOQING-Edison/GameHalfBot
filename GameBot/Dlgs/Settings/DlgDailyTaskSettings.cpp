@@ -1,4 +1,4 @@
-// ./Dlgs/Settings/DlgDailyTaskSettings.cpp : ÊµÏÖÎÄ¼ş
+// ./Dlgs/Settings/DlgDailyTaskSettings.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "../../StdAfx.h"
@@ -7,9 +7,9 @@
 #include "../../Misc/Misc.h"
 #include "../../Player.h"
 #include "../../Config/GameConfig.h"
-const TCHAR *g_szMapType[]={_T("·Ç»áÔ±"),_T("»áÔ±")};
+const TCHAR *g_szMapType[]={_T("éä¼šå‘˜"),_T("ä¼šå‘˜")};
 
-// CDlgDailyTaskSettings ¶Ô»°¿ò
+// CDlgDailyTaskSettings å¯¹è¯æ¡†
 static int g_checkCount=0;
 IMPLEMENT_DYNAMIC(CDlgSettingSecretary1, CDialog)
 
@@ -37,26 +37,26 @@ BEGIN_MESSAGE_MAP(CDlgSettingSecretary1, CDialog)
 END_MESSAGE_MAP()
 
 
-// CDlgDailyTaskSettings ÏûÏ¢´¦Àí³ÌĞò
+// CDlgDailyTaskSettings æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CDlgSettingSecretary1::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// TODO:  ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯
+	// TODO:  åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–
 	m_brush.CreateSolidBrush(RGB(255,255,255));//while brush
 	InitCtrls();
 	return TRUE;  // return TRUE unless you set the focus to a control
-	// Òì³£: OCX ÊôĞÔÒ³Ó¦·µ»Ø FALSE
+	// å¼‚å¸¸: OCX å±æ€§é¡µåº”è¿”å› FALSE
 }
 
 HBRUSH CDlgSettingSecretary1::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 {
 	HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
 
-	// TODO:  ÔÚ´Ë¸ü¸Ä DC µÄÈÎºÎÊôĞÔ
+	// TODO:  åœ¨æ­¤æ›´æ”¹ DC çš„ä»»ä½•å±æ€§
 	hbr=(HBRUSH)m_brush;
-	// TODO:  Èç¹ûÄ¬ÈÏµÄ²»ÊÇËùĞè»­±Ê£¬Ôò·µ»ØÁíÒ»¸ö»­±Ê
+	// TODO:  å¦‚æœé»˜è®¤çš„ä¸æ˜¯æ‰€éœ€ç”»ç¬”ï¼Œåˆ™è¿”å›å¦ä¸€ä¸ªç”»ç¬”
 	return hbr;
 }
 
@@ -67,7 +67,7 @@ void CDlgSettingSecretary1::InitCtrls()
 	m_pEdtAutoHungUpPointX=(CEdit*)GetDlgItem(IDC_EDT_VIP_BOSS_EXTRA_TIME);
 	m_pEdtAutoHungUPPointY=(CEdit*)GetDlgItem(IDC_EDT_ARENA_EXTRA_TIME);
 	m_pCbMapType=(CComboBox*)GetDlgItem(IDC_CB_ARENA_MULTI_COUNT);
-	m_pCbMaps=(CComboBox*)GetDlgItem(IDC_CB_BLOOD_TOWN_MULTI_CHALLENGE_COUNT);	//µØÍ¼id
+	m_pCbMaps=(CComboBox*)GetDlgItem(IDC_CB_BLOOD_TOWN_MULTI_CHALLENGE_COUNT);	//åœ°å›¾id
 
 	m_pChkIsUsingSelfSkillsWhenSeeOtherPlayer=(CButton*)GetDlgItem(IDC_CHK_BLOODTOWN_BUY_WHEN_TICKET_GONE);
 	m_pChkIsAutoCounterStrikeOtherPlayer=(CButton*)GetDlgItem(IDC_CHK_AUTO_COUNTER_STRIKE);
@@ -85,7 +85,7 @@ void CDlgSettingSecretary1::InitCtrls()
 	m_pEdtAutoHungUpPointX->SetLimitText(limit);
 
 
-#ifdef _CAI_SHANG_VERSION_	//²ËÉÌ°æ
+#ifdef _CAI_SHANG_VERSION_	//èœå•†ç‰ˆ
 	int cmd=SW_SHOW;
 #else
 	int cmd=SW_HIDE;
@@ -164,12 +164,12 @@ void CDlgSettingSecretary1::CheckAll(bool bSelect)
 
 void CDlgSettingSecretary1::OnBnClickedChkDailyTaskSelAll()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	CheckAll(m_pChkAll->GetCheck());
 }
 
 
-void CDlgSettingSecretary1::InitCombo()	//Ö÷ÒªÊÇ³õÊ¼»¯µØÍ¼ÀàĞÍºÍµØÍ¼ÁĞ±í
+void CDlgSettingSecretary1::InitCombo()	//ä¸»è¦æ˜¯åˆå§‹åŒ–åœ°å›¾ç±»å‹å’Œåœ°å›¾åˆ—è¡¨
 {
 	int i=0;
 	for(i=0;i<2;++i)
@@ -203,7 +203,7 @@ void CDlgSettingSecretary1::OnCbnSelchangeCbArenaMultiCount()
 
 void CDlgSettingSecretary1::OnBnClickedBtnReadCurRoleCoor()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	CGameConfig cfg(m_pPlayer->GetAccountName(),true,false);
 	m_pSecretary1Config=cfg.GetConfigSecretary1();
 	CString str;

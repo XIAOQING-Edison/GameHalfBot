@@ -2,17 +2,17 @@
 
 #include "../../resource.h"
 #include "../../Config/ConfigSecretary5.h"
-// CDlgSecretary5 ¶Ô»°¿ò
+// CDlgSecretary5 å¯¹è¯æ¡†
 
 class CDlgSettingSecretary5 : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgSettingSecretary5)
 
 public:
-	CDlgSettingSecretary5(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgSettingSecretary5(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgSettingSecretary5();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_SETTING_SECRETARY5 };
 
 	void SetConfigObject(CConfigSecretary5 *p){m_pSecrectary5Config=p;}
@@ -61,12 +61,12 @@ private:
 	CButton *m_pChkContinueMerceneryDispathWhenNoUnits;
 	CComboBox *m_pCbMerceneryDispathStarLevel;
 	CButton *m_pChkAutoMeceneryTask;
-	CButton *m_pChkAutoBuyHandCemecery;	//ÊÖÀñ
+	CButton *m_pChkAutoBuyHandCemecery;	//æ‰‹ç¤¼
 
 private:
 	CConfigSecretary5 *m_pSecrectary5Config;
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 

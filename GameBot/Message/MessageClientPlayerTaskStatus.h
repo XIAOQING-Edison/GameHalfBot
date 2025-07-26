@@ -17,6 +17,6 @@ public:
 	STRING GetTaskStaus(){return m_taskStatus;}
 	int GetPlayerIndex(){return m_index;}
 private:
-	STRING m_taskStatus;	//任务状态只是个字符
+	STRING m_taskStatus;	//浠诲姟鐘舵�佸彧鏄釜瀛楃
 	int m_index;
 };

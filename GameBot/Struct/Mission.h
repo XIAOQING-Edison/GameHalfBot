@@ -16,6 +16,6 @@ public:
 private:
 	int m_missionId;
 	int m_missionGoalId;
-	_MISSION_INFO_ *m_pMissionInfo;	//ÕâÀïÓÃÅäÖÃÀïµÄmissionInfo×÷ÏêÏ¸ĞÅÏ¢
-	vector<STRING> m_missionParams;	//´ı¶¨
+	_MISSION_INFO_ *m_pMissionInfo;	//è¿™é‡Œç”¨é…ç½®é‡Œçš„missionInfoä½œè¯¦ç»†ä¿¡æ¯
+	vector<STRING> m_missionParams;	//å¾…å®š
 };

@@ -33,13 +33,13 @@
 
 #pragma warning(disable:4996)
 
-//µ±ÆôÓÃ¼ÓÃÜÊ±ÓÃÕâ¸öºê
+//å½“å¯ç”¨åŠ å¯†æ—¶ç”¨è¿™ä¸ªå®
 // #define ACTIVE_ENCRYPT
 
-#include "GameVersion.h"	//ÓÎÏ·°æ±¾Éè¶¨
-//ÓÎÏ·°æ±¾±àÒë×Üºê¿ª¹Ø
+#include "GameVersion.h"	//æ¸¸æˆç‰ˆæœ¬è®¾å®š
+//æ¸¸æˆç‰ˆæœ¬ç¼–è¯‘æ€»å®å¼€å…³
 // #define _GAME_VERSION_	_TIAN_SHI_ZHI_ZHAN_MOBILE_	//mu1
-#define _GAME_VERSION_	_TIAN_SHI_ZHI_ZHAN_PC_	//mu1 pc°æ
+#define _GAME_VERSION_	_TIAN_SHI_ZHI_ZHAN_PC_	//mu1 pcç‰ˆ
 // #define _GAME_VERSION_	_YONG_HENG_LIAN_MENG_	//mu2
 // #define _GAME_VERSION_	_TIAN_SHI_SHEN_YU_
 // #define _GAME_VERSION_	_YONG_HENG_ZHI_DIAN_	//mu3
@@ -79,25 +79,25 @@ using namespace std;
 #define  MAX_INT64	((UINT64)(~0)>>1)	//0x7fffffffffffffff
 #define  MAX_UINT64	((UINT64)~0)	//0xffffffffffffffff
 
-#define  MILLISEOND_DELAY_PER_TIME	50	//ÑÓÊ±¼ä¸ô£¬ºÁÃë
-#define  MILLISECOND_PER_SECOND	1000	//Ã¿ÃëµÄºÁÃëÊı
+#define  MILLISEOND_DELAY_PER_TIME	50	//å»¶æ—¶é—´éš”ï¼Œæ¯«ç§’
+#define  MILLISECOND_PER_SECOND	1000	//æ¯ç§’çš„æ¯«ç§’æ•°
 #define  SECONDS_PER_MINUTE	60
 #define  MINUTES_PER_HOUR	60
 #define  HOURS_PER_DAY	24
 
 
 /************************************************************************/
-/* ÓÎÏ·Í¨ĞÅÏ¢¹ØµÄ¶¨Òå                                                   */
+/* æ¸¸æˆé€šä¿¡æ¯å…³çš„å®šä¹‰                                                   */
 /************************************************************************/
 
-#define NORMAL_MAX_WAIT_TIME	300	//Éè¶¨Îª500msµÈ´ıÊ±¼ä
-#define KILL_BOSS_MAX_WAIT_TIME	60*30*1000	//Éè¶¨Îª30·ÖÖÓ,¸öÈËBOSS×î³¤Ê±¼ä30·ÖÖÓ
-#define KILL_MONSTER_MAX_WAIT_TIME 60*1000	//ÆÕÍ¨´ò¹ÖµÈ´ıÎª1·ÖÖÓ
-#define OTHER_MAX_WAIT_TIME	500	//ÆäËüµÈ´ıÊ±¼ä£¬´ı¶¨
+#define NORMAL_MAX_WAIT_TIME	300	//è®¾å®šä¸º500msç­‰å¾…æ—¶é—´
+#define KILL_BOSS_MAX_WAIT_TIME	60*30*1000	//è®¾å®šä¸º30åˆ†é’Ÿ,ä¸ªäººBOSSæœ€é•¿æ—¶é—´30åˆ†é’Ÿ
+#define KILL_MONSTER_MAX_WAIT_TIME 60*1000	//æ™®é€šæ‰“æ€ªç­‰å¾…ä¸º1åˆ†é’Ÿ
+#define OTHER_MAX_WAIT_TIME	500	//å…¶å®ƒç­‰å¾…æ—¶é—´ï¼Œå¾…å®š
 
 
-#define MAX_BUF_LENGTH	0x10000	//16kbÊı¾İ½ÓÊÕ»º³å
-#define MAX_STACK_BUF_LENGTH	0x1000	//4kbÕ»
+#define MAX_BUF_LENGTH	0x10000	//16kbæ•°æ®æ¥æ”¶ç¼“å†²
+#define MAX_STACK_BUF_LENGTH	0x1000	//4kbæ ˆ
 
 /************************************************************************/
 /*                    global vars                                       */
@@ -107,7 +107,7 @@ extern const TCHAR *g_szDefSectionName;
 extern const TCHAR *g_szMainGameCfgName;
 
 extern const TCHAR *g_szSharedMemoryName;
-extern const int g_maxCount;	//¶à¿ªÊı
+extern const int g_maxCount;	//å¤šå¼€æ•°
 
 class CThreadLock;
 extern CThreadLock *g_pThreadRecvLock;
@@ -126,7 +126,7 @@ extern const TCHAR *g_szProxyDllName;
 /************************************************************************/
 extern const TCHAR *g_szConfigPath;
 extern const TCHAR *g_szMapDataPath;
-extern int g_gameVersion;	//ÓÃÀ´Çø·ÖÓÎÏ·°æ±¾
+extern int g_gameVersion;	//ç”¨æ¥åŒºåˆ†æ¸¸æˆç‰ˆæœ¬
 
 extern STRING g_exePath;
 extern STRING g_exeName;
@@ -143,14 +143,14 @@ wstring UTF8ToUnicode(const char *lpcszString);
 
 ///////////////////////////////string functions///////////////////////////////////////////
 
-STRING GetCurrentAppPath();	//È¡µÃµ±Ç°EXEÔËĞĞÄ¿Â¼
-STRING GetCurrentDllModuleFolderPath();	//È¡µÃµ±Ç°dllÔËĞĞÄ¿Â¼
-STRING GetCurrentDllModuleParentPath();	//È¡µÃµ±Ç°DLLµÄ¸¸Â·¾¶
-STRING GetModuleFullPath(HMODULE hMod);	//È¡µÃµ±Ç°Ä£¿éµÄÈ«Â·¾¶
+STRING GetCurrentAppPath();	//å–å¾—å½“å‰EXEè¿è¡Œç›®å½•
+STRING GetCurrentDllModuleFolderPath();	//å–å¾—å½“å‰dllè¿è¡Œç›®å½•
+STRING GetCurrentDllModuleParentPath();	//å–å¾—å½“å‰DLLçš„çˆ¶è·¯å¾„
+STRING GetModuleFullPath(HMODULE hMod);	//å–å¾—å½“å‰æ¨¡å—çš„å…¨è·¯å¾„
 
-STRING GetModuleFolderPath(HMODULE hMod);//È¡µÃµ±Ç°Ä£¿éµÄÄ¿Â¼Â·¾¶
+STRING GetModuleFolderPath(HMODULE hMod);//å–å¾—å½“å‰æ¨¡å—çš„ç›®å½•è·¯å¾„
 
-HMODULE GetCurrentModuleHandle();	//È¡µÃµ±Ç°Ä£¿é»ùÖ·
+HMODULE GetCurrentModuleHandle();	//å–å¾—å½“å‰æ¨¡å—åŸºå€
 
 
 
@@ -161,26 +161,26 @@ HMODULE GetCurrentModuleHandle();	//È¡µÃµ±Ç°Ä£¿é»ùÖ·
 
 
 /////////////////////////////////socket libs init or cleanup/////////////////////////////////////////
-bool InitSocketLib();	//³õÊ¼»¯sockect¿â
-bool CleanupSocketLib();	//ÇåÀísocket¿â
+bool InitSocketLib();	//åˆå§‹åŒ–sockectåº“
+bool CleanupSocketLib();	//æ¸…ç†socketåº“
 
 
 /////////////////////////////////socket lib end//////////////////////////////////////////////////
 
 
-////////////////////////////////ÔÓÏî//////////////////////////////////////////
+////////////////////////////////æ‚é¡¹//////////////////////////////////////////
 
-/////////////////////////////////ÔÓÏîend/////////////////////////////////////
+/////////////////////////////////æ‚é¡¹end/////////////////////////////////////
 
 
-////////////////////////////½âÎöURL//////////////////////////////////////////
+////////////////////////////è§£æURL//////////////////////////////////////////
 
 
 bool HostNameToAddress(STRING &hostName,STRING& strAddress);
 
 
 //////////////////////////////////////////////////////////////////////////
-//ÔÓÏî
+//æ‚é¡¹
 
-void TRACE_OUTPUT(LPCTSTR szFormat, ... );	//×Ô¶¨ÒåµÄtrace
+void TRACE_OUTPUT(LPCTSTR szFormat, ... );	//è‡ªå®šä¹‰çš„trace
 

@@ -15,11 +15,11 @@ int CInfoResLoginUser::Decode(CStreamReadWrite *pStreamBuf)
 
 	int orgPos=pStreamBuf->GetHandlePos();
 
-	TRACE_OUTPUT(_T("½âÎöCInfoResLoginUser\n"));
+	TRACE_OUTPUT(_T("è§£æCInfoResLoginUser\n"));
 
 	bool bFinish=false;
 	//int count=0,maxCount=4;
-	int restBytes=m_packageLengthInRes;	//¶ÁÈ¡¹Ì¶¨³¤¶ÈµÄ×Ö½Ú¾Í½âÎöÍê
+	int restBytes=m_packageLengthInRes;	//è¯»å–å›ºå®šé•¿åº¦çš„å­—èŠ‚å°±è§£æå®Œ
 	while(!bFinish)
 	{
 		DWORD fieldFlag=pStreamBuf->ReadRawVarInt32();
@@ -45,6 +45,6 @@ int CInfoResLoginUser::Decode(CStreamReadWrite *pStreamBuf)
 
 EXT:
 	handleLength=pStreamBuf->GetHandlePos()-orgPos;
-	TRACE_OUTPUT(_T("CInfoResLoginUser ½âÎö³¤¶È:%d\n"),handleLength);
+	TRACE_OUTPUT(_T("CInfoResLoginUser è§£æé•¿åº¦:%d\n"),handleLength);
 	return handleLength;
 }

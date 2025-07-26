@@ -9,20 +9,20 @@ public:
 	~CConfigSecretary1(void);
 
 
-	BOOL IsAutoHungUpFromCfg();	//ÊÇ·ñ×Ô¶¯¹Ò»ú
+	BOOL IsAutoHungUpFromCfg();	//æ˜¯å¦è‡ªåŠ¨æŒ‚æœº
 	BOOL SetIsAutoHungUpToCfg(BOOL b);
 
-	int GetAutoHungUpPointXFromCfg();//¶à±¶ÌôÕ½±¶Êı
-	BOOL SetAutoHungUpPointXToCfg(int count);//¶à±¶ÌôÕ½±¶Êı
+	int GetAutoHungUpPointXFromCfg();//å¤šå€æŒ‘æˆ˜å€æ•°
+	BOOL SetAutoHungUpPointXToCfg(int count);//å¤šå€æŒ‘æˆ˜å€æ•°
 
-	int GetAutoHungUpPointYFromCfg();//¹ºÂò´ÎÊı
-	BOOL SetAutoHungUpPointYToCfg(int count);//¹ºÂò´ÎÊı
+	int GetAutoHungUpPointYFromCfg();//è´­ä¹°æ¬¡æ•°
+	BOOL SetAutoHungUpPointYToCfg(int count);//è´­ä¹°æ¬¡æ•°
 
-	int GetAutoHungUpMapIndexCfg();	//×Ô¶¯Áì½±
-	BOOL SetAutoHungUpMapIdToCfg(int mapId);	//×Ô¶¯Áì½±
+	int GetAutoHungUpMapIndexCfg();	//è‡ªåŠ¨é¢†å¥–
+	BOOL SetAutoHungUpMapIdToCfg(int mapId);	//è‡ªåŠ¨é¢†å¥–
 
-	int GetHungUpMapTypeFromCfg();	//µØÍ¼ÀàĞÍ
-	BOOL SetHungUpMapTypeToCfg(int type);	//µØÍ¼ÀàĞÍ
+	int GetHungUpMapTypeFromCfg();	//åœ°å›¾ç±»å‹
+	BOOL SetHungUpMapTypeToCfg(int type);	//åœ°å›¾ç±»å‹
 
 	vector<int> GetBloodCastleTimeSelectArrayFromCfg();
 	BOOL SetBloodCastleTimeSelectArrayToCfg(vector<int> &timeSels);
@@ -45,7 +45,7 @@ public:
 	BOOL IsAutoCounterStrikeFromCfg();
 	BOOL SetIsAutoCounterStrikeToCfg(BOOL b);
 
-	BOOL IsAutoCounterStrikeUsingConfigSkillsFromCfg();	//ÊÇ·ñÊ¹ÓÃÅäÖÃÀïµÄ¼¼ÄÜ
+	BOOL IsAutoCounterStrikeUsingConfigSkillsFromCfg();	//æ˜¯å¦ä½¿ç”¨é…ç½®é‡Œçš„æŠ€èƒ½
 	BOOL SetIsAutoCounterStrikeUsingConfigSkillsToCfg(BOOL b);
 
 	int GetPkModeFromCfg();

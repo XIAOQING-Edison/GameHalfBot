@@ -3,17 +3,17 @@
 #include "../../Config/LocalCorpsBossConfig.h"
 #include "../../resource.h"
 
-// CDlgCrossBossSettings ¶Ô»°¿ò
+// CDlgCrossBossSettings å¯¹è¯æ¡†
 
 class CDlgLocalCorpsBossSetting : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgLocalCorpsBossSetting)
 
 public:
-	CDlgLocalCorpsBossSetting(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgLocalCorpsBossSetting(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgLocalCorpsBossSetting();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_LOCAL_CORPS_BOSS };
 
 	void SetConfigObject(CLocalCorpsBossConfig *p){m_pLocalCorpsBossConfig=p;}
@@ -47,7 +47,7 @@ private:
 	CLocalCorpsBossConfig *m_pLocalCorpsBossConfig;
 	CBrush m_brush;
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 

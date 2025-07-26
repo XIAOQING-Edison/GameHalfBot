@@ -11,23 +11,23 @@
 #define RES_ERROR_CODE_FAILED	-2
 
 enum E_MSG_TYPE{
-	e_msg_type_none=-1,	//ÎŞ×´Ì¬
+	e_msg_type_none=-1,	//æ— çŠ¶æ€
 	e_msg_type_login_web=0,
 	e_msg_type_login_game_server,
-	e_msg_type_report_player_status,//¸üĞÂÍæ¼Ò½ÇÉ«ĞÅÏ¢,ÕâÀïÊÇÓÎÏ·×´Ì¬
+	e_msg_type_report_player_status,//æ›´æ–°ç©å®¶è§’è‰²ä¿¡æ¯,è¿™é‡Œæ˜¯æ¸¸æˆçŠ¶æ€
 	e_msg_type_connect_info,
 	e_msg_type_error_occur,
-	e_msg_type_update_sprite_info,	//test,²âÊÔ¹ÖÎïÊı¾İ
-	e_msg_type_change_map,	//µØÍ¼¸Ä±äÁË£¬¾Í°ÑµØÍ¼Êı¾İ¼ÓÔØ£¬²¢ÇÒ½çÃæÉÏÏÔÊ¾
-	e_msg_type_update_skill_info,	//test,²âÊÔ¼¼ÄÜÊı¾İ
-	e_msg_type_update_account_info,	//¸üĞÂaccountĞÅÏ¢µ½listctrl
-	e_msg_type_add_account_info,	//Ôö¼Óaccount
-	e_msg_type_del_account_info,	//É¾³ıaccount
-	e_msg_type_write_log,		//Ğ´ÈÕÖ¾
-	e_msg_type_report_current_operation,	//µ±Ç°½øĞĞµÄ²Ù×÷×´Ì¬,ÀıÈçXX¸±±¾£¬´ò¹Ö£¬²É¼¯£¬ÍÚ¿óµÈµÈ
-	e_msg_type_do_game_operation,	//ÓÎÏ·ÖĞĞèÒªÊÖ¶¯·¢ËÍĞ­Òé
-	e_msg_type_report_material_data,	//±¨¸æÒ»Ğ©²ÄÁÏÊı¾İ
-	e_msg_type_do_trade_task	//Æô¶¯Ïß³Ì½»Ò×²Ù×÷
+	e_msg_type_update_sprite_info,	//test,æµ‹è¯•æ€ªç‰©æ•°æ®
+	e_msg_type_change_map,	//åœ°å›¾æ”¹å˜äº†ï¼Œå°±æŠŠåœ°å›¾æ•°æ®åŠ è½½ï¼Œå¹¶ä¸”ç•Œé¢ä¸Šæ˜¾ç¤º
+	e_msg_type_update_skill_info,	//test,æµ‹è¯•æŠ€èƒ½æ•°æ®
+	e_msg_type_update_account_info,	//æ›´æ–°accountä¿¡æ¯åˆ°listctrl
+	e_msg_type_add_account_info,	//å¢åŠ account
+	e_msg_type_del_account_info,	//åˆ é™¤account
+	e_msg_type_write_log,		//å†™æ—¥å¿—
+	e_msg_type_report_current_operation,	//å½“å‰è¿›è¡Œçš„æ“ä½œçŠ¶æ€,ä¾‹å¦‚XXå‰¯æœ¬ï¼Œæ‰“æ€ªï¼Œé‡‡é›†ï¼ŒæŒ–çŸ¿ç­‰ç­‰
+	e_msg_type_do_game_operation,	//æ¸¸æˆä¸­éœ€è¦æ‰‹åŠ¨å‘é€åè®®
+	e_msg_type_report_material_data,	//æŠ¥å‘Šä¸€äº›ææ–™æ•°æ®
+	e_msg_type_do_trade_task	//å¯åŠ¨çº¿ç¨‹äº¤æ˜“æ“ä½œ
 };
 
 
@@ -75,8 +75,8 @@ struct _GAME_LOG_MSG_
 struct _OPERATION_MSG_
 {
 	int playerIndex;
-	int bytesIntLength;	//ÏûÏ¢µÄ×Ö½Ú³¤·¼
-	int protocolId;	//Òª·¢ËÍµÄĞ­Òéid
+	int bytesIntLength;	//æ¶ˆæ¯çš„å­—èŠ‚é•¿èŠ³
+	int protocolId;	//è¦å‘é€çš„åè®®id
 	char szMsg[512];
 
 	_OPERATION_MSG_()
@@ -92,12 +92,12 @@ struct _POINTER_INFO_
 {
 	BYTE *pData;
 	int length;
-	bool bNeedFree;	//ÊÇ·ñĞèÒªÖ÷¶¯ÊÍ·Å
+	bool bNeedFree;	//æ˜¯å¦éœ€è¦ä¸»åŠ¨é‡Šæ”¾
 	_POINTER_INFO_()
 	{
 		pData=NULL;
 		length=0;
-		bNeedFree=true;	//Ä¬ÈÏÎªtrue
+		bNeedFree=true;	//é»˜è®¤ä¸ºtrue
 	}
 };
 #endif

@@ -26,9 +26,9 @@ bool CProcessMutex::CreateProcessMutex(BOOL bInitOwner,const TCHAR *szName)
 	DWORD res=GetLastError();
 	if(res !=0 && res != ERROR_ALREADY_EXISTS)
 	{
-		TRACE_OUTPUT(_T("´´½¨mutex´íÎó£¬´úºÅ:%x\n"),GetLastError());
+		TRACE_OUTPUT(_T("åˆ›å»ºmutexé”™è¯¯ï¼Œä»£å·:%x\n"),GetLastError());
 	}
-	TRACE_OUTPUT(_T("»ñÈ¡mutex¾ä±ú:%08x\n"),m_mutex);
+	TRACE_OUTPUT(_T("è·å–mutexå¥æŸ„:%08x\n"),m_mutex);
 	ret=(m_mutex!=NULL);
 	return ret;
 }

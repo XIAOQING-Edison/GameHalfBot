@@ -24,13 +24,13 @@
 
 
 //bag
-#include "Protocol/Bag/ProtocolStorageInfoRes.h"	//²Ö¿â
-#include "Protocol/Bag/ProtocolBagInfoRes.h"	//±³°ü
+#include "Protocol/Bag/ProtocolStorageInfoRes.h"	//ä»“åº“
+#include "Protocol/Bag/ProtocolBagInfoRes.h"	//èƒŒåŒ…
 
-//mu1Ê¹ÓÃ
+//mu1ä½¿ç”¨
 #include "Protocol/Bag/ProtocolConstellationBagInfoRes.h"
 
-//mu1 PCÊ¹ÓÃ
+//mu1 PCä½¿ç”¨
 #include "Protocol/Bag/ProtocolAllStorageInfoRes.h"
 
 
@@ -48,9 +48,9 @@ public:
 
 	CProtocol *GetProtocolById(DWORD id);
 
-	int DecodeProtocol(BYTE *p,int len);	//ÀûÓÃmapÀ´´¦Àí,Ñ­»·´¦ÀíÊı¾İ£¬ÄÜ½âÎöµÄĞ­Òé¶¼½âÎöÁË
+	int DecodeProtocol(BYTE *p,int len);	//åˆ©ç”¨mapæ¥å¤„ç†,å¾ªç¯å¤„ç†æ•°æ®ï¼Œèƒ½è§£æçš„åè®®éƒ½è§£æäº†
 
-	int DecodeProtocolOnce(DWORD protocolId,int len,CStreamReadWrite *pStreamBuf);	//ÀûÓÃmapÀ´´¦Àí,Ã¿´ÎÖ»´¦ÀíÒ»¸öĞ­Òé³¤¶È
+	int DecodeProtocolOnce(DWORD protocolId,int len,CStreamReadWrite *pStreamBuf);	//åˆ©ç”¨mapæ¥å¤„ç†,æ¯æ¬¡åªå¤„ç†ä¸€ä¸ªåè®®é•¿åº¦
 
 	bool InitProtocolMap();
 
@@ -59,15 +59,15 @@ public:
 
 	void SetCurrentPlayer(CPlayer *p){m_pPlayer=p;}
 
-	void AddToProtocolMap(DWORD id,CProtocol *p);	//½«protocolIdºÍÖ¸Õë´æµ½mapÖĞ
+	void AddToProtocolMap(DWORD id,CProtocol *p);	//å°†protocolIdå’ŒæŒ‡é’ˆå­˜åˆ°mapä¸­
 
 	int GetSize(){return m_protolcolMap.size();}
 
 private:
-	bool InitProtocolMapInTianShiZhiZhan();	//ÕâÀï³õÊ¼»¯Ò»Ğ©ÌìÊ¹ÕâÕ½²ÅÓÃµ½µÄĞ­Òé
-	bool InitProtocolMapInTianShiZhiZhanPc();	//ÌìÊ¹Ö®Õ½PC¶Ë²ÅÓÃµ½µÄ
-	bool InitProtocolMapInTianShiShenYu();	//ÉñÚÍ,to do
-	bool InitProtocolMapInYongHengZhiDian();//ÓÀºãÖ®µß,to do
+	bool InitProtocolMapInTianShiZhiZhan();	//è¿™é‡Œåˆå§‹åŒ–ä¸€äº›å¤©ä½¿è¿™æˆ˜æ‰ç”¨åˆ°çš„åè®®
+	bool InitProtocolMapInTianShiZhiZhanPc();	//å¤©ä½¿ä¹‹æˆ˜PCç«¯æ‰ç”¨åˆ°çš„
+	bool InitProtocolMapInTianShiShenYu();	//ç¥è°•,to do
+	bool InitProtocolMapInYongHengZhiDian();//æ°¸æ’ä¹‹é¢ ,to do
 private:
 	CPlayer *m_pPlayer;
 	map<DWORD,CProtocol*>	m_protolcolMap;

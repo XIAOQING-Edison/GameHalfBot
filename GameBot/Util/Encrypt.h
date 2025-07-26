@@ -6,9 +6,9 @@ public:
 	CEncrypt(void);
 	~CEncrypt(void);
 
-	void InitEncrypt();	//³õÊ¼»¯¼ÓÃÜº¯Êı
+	void InitEncrypt();	//åˆå§‹åŒ–åŠ å¯†å‡½æ•°
 
-	void EncryptData(char *pBuf,int len);	//Õâ¸öµ÷ÓÃ½«pBuf×ªÎªint×ªÎªoutputBuf
+	void EncryptData(char *pBuf,int len);	//è¿™ä¸ªè°ƒç”¨å°†pBufè½¬ä¸ºintè½¬ä¸ºoutputBuf
 
 	char *GetEncryptData(){return (char*)magicBytes;}
 

@@ -65,7 +65,7 @@ void CServer::ClearClients()
 
 
 
-CClient *CServer::GetClientByHwnd(HWND hwnd)	//ÕÒ³ö¿Í»§¾ä±ú
+CClient *CServer::GetClientByHwnd(HWND hwnd)	//æ‰¾å‡ºå®¢æˆ·å¥æŸ„
 {
 	CClient *pClient=NULL;
 	vector<CClient*>::iterator it=m_clientList.begin();
@@ -92,14 +92,14 @@ CClient *CServer::GetClientById(int index)
 	}
 	else
 	{
-		//TRACE(_T("È¡µÃ¿Í»§ÏÂ±ê:%d³¬³ö·¶Î§!!!!\n"),index);
+		//TRACE(_T("å–å¾—å®¢æˆ·ä¸‹æ ‡:%dè¶…å‡ºèŒƒå›´!!!!\n"),index);
 	}
 
 	return pClient;
 }
 
 
-int CServer::GetAvailableClientIndex()	//ÕÒµ½Ò»¸öºÏÊÊµÄÏÂ±ê·ÖÅä
+int CServer::GetAvailableClientIndex()	//æ‰¾åˆ°ä¸€ä¸ªåˆé€‚çš„ä¸‹æ ‡åˆ†é…
 {
 	vector<CClient*>::iterator it=m_clientList.begin();
 	int index=-1;
@@ -152,7 +152,7 @@ void CServer::DecAllPlayerLiveTime()
 
 void CServer::AddPlayerToClientList(CPlayer *p)
 {
-	CClient *client=new CClient;	//ÊµÊ¼»¯¿Í»§£¬ÕâÀïÃ»ÓĞ¾ä±ú£¬ĞèÒªÔÚloginreqÀï°Ñ¾ä±úÅª¹ıÀ´
+	CClient *client=new CClient;	//å®å§‹åŒ–å®¢æˆ·ï¼Œè¿™é‡Œæ²¡æœ‰å¥æŸ„ï¼Œéœ€è¦åœ¨loginreqé‡ŒæŠŠå¥æŸ„å¼„è¿‡æ¥
 	client->SetPlayer(p);
 	m_clientList.push_back(client);
 }
@@ -169,18 +169,18 @@ int CServer::UpdateClientHwnd(HWND hClient,int index)
 	}
 	else
 	{
-		if(index==-1)	//²âÊÔ£¬ÕâÀïÃ»·ÖÅä¾Í¸ø0
+		if(index==-1)	//æµ‹è¯•ï¼Œè¿™é‡Œæ²¡åˆ†é…å°±ç»™0
 		{
 			index=GetAvailableClientIndex();
 			if(index !=-1)
 			{
-				TRACE_OUTPUT(_T("·ÖÅä¿Í»§id:%d\n"),index);
+				TRACE_OUTPUT(_T("åˆ†é…å®¢æˆ·id:%d\n"),index);
 				pClient=GetClientById(index);
 				pClient->SetSelfWindow(hClient);
 			}
 			else
 			{
-				TRACE_OUTPUT(_T("ÕÒ²»µ½¿ÉÓÃµÄ¿Í»§id,¿ÉÄÜÊıÁ¿ÒÑÂú!!\n"));
+				TRACE_OUTPUT(_T("æ‰¾ä¸åˆ°å¯ç”¨çš„å®¢æˆ·id,å¯èƒ½æ•°é‡å·²æ»¡!!\n"));
 			}
 		}
 	}
@@ -200,7 +200,7 @@ void CServer::DeleteClient(int index)
 	}
 	else
 	{
-		//TRACE(_T("É¾³ı¿Í»§ÏÂ±ê:%d³¬³ö·¶Î§!!!!\n"),index);
+		//TRACE(_T("åˆ é™¤å®¢æˆ·ä¸‹æ ‡:%dè¶…å‡ºèŒƒå›´!!!!\n"),index);
 	}
 	m_pThreadLock->UnLock();
 }
@@ -221,7 +221,7 @@ void CServer::DecodeMessage(HWND hClient,char *data,int len)
 	else
 	{
 		
-		//TRACE(_T("ÕÒ²»µ½ÏûÏ¢id:%dµÄÏûÏ¢ÀàĞÍ!!!!\n"));
+		//TRACE(_T("æ‰¾ä¸åˆ°æ¶ˆæ¯id:%dçš„æ¶ˆæ¯ç±»å‹!!!!\n"));
 	}
 	m_pStreamBufRead->SetBufPos(0);
 	m_pStreamBufRead->SetHandlePos(0);
@@ -256,7 +256,7 @@ void CServer::HandleMessage(HWND hClient,CBaseMessage *pMessage)
 		playerIndex=pLoginReq->GetPlayerIndex();	
 		if(!pClient)
 		{
-			//Ã»ÕÒµ½¾Í·ÖÅäÒ»¸öid¸øËü
+			//æ²¡æ‰¾åˆ°å°±åˆ†é…ä¸€ä¸ªidç»™å®ƒ
 			playerIndex=UpdateClientHwnd(hClient,playerIndex);
 			pClient=GetClientById(playerIndex);
 			pClient->SetIndex(playerIndex);
@@ -299,7 +299,7 @@ void CServer::HandleMessage(HWND hClient,CBaseMessage *pMessage)
 			pClient->SetIndex(playerIndex);
 		}
 		IncClientLiveTime(playerIndex);
-		//ÔÚÕâÀï°ÑĞÅÏ¢¸üĞÂµ½listctrl
+		//åœ¨è¿™é‡ŒæŠŠä¿¡æ¯æ›´æ–°åˆ°listctrl
 		if(pClient)
 		{
 			pClient->UpdatePlayerInfoStatus(pPlayerInfoStatus->GetPlayerInfoStatus());
@@ -315,7 +315,7 @@ void CServer::HandleMessage(HWND hClient,CBaseMessage *pMessage)
 			pClient->SetIndex(playerIndex);
 		}
 		IncClientLiveTime(playerIndex);
-		//ÔÚÕâÀï°ÑĞÅÏ¢¸üĞÂµ½listctrl
+		//åœ¨è¿™é‡ŒæŠŠä¿¡æ¯æ›´æ–°åˆ°listctrl
 		if(pClient)
 		{
 			pClient->GetPlayerStatus()->taskName=pPlayerTaskStatus->GetTaskStaus();
@@ -341,13 +341,13 @@ void CServer::HandleMessage(HWND hClient,CBaseMessage *pMessage)
 		break;
 	}
 
-	printf("ÏûÏ¢À´×Ô¿Í»§:%d,cmd:%d\n",playerIndex,pMessage->GetProtocolId());
+	printf("æ¶ˆæ¯æ¥è‡ªå®¢æˆ·:%d,cmd:%d\n",playerIndex,pMessage->GetProtocolId());
 
 }
 
 
-//Ğ´ÈÕÖ¾
-void CServer::SendToMainWindowToWriteLog(const STRING &account,char *msg,int len)	//Ğ´ÈÕÖ¾
+//å†™æ—¥å¿—
+void CServer::SendToMainWindowToWriteLog(const STRING &account,char *msg,int len)	//å†™æ—¥å¿—
 {
 	_GAME_LOG_MSG_ logMsg;
 	logMsg.accountName=account;
@@ -356,7 +356,7 @@ void CServer::SendToMainWindowToWriteLog(const STRING &account,char *msg,int len
 
 }
 
-//¸ù¾İtypeÀ´¾ö¶¨Ğ´Ê²Ã´
+//æ ¹æ®typeæ¥å†³å®šå†™ä»€ä¹ˆ
 void CServer::SendToMainWindowToWriteText(int type,const STRING &account,char *msg,int len)
 {
 	if(type==e_write_data_type_log)
@@ -365,14 +365,14 @@ void CServer::SendToMainWindowToWriteText(int type,const STRING &account,char *m
 	}
 	else
 	{
-		TRACE_OUTPUT(_T("ÊÕµ½ÒªĞ´ÎÄ¼şÈ´Ã»ÕÒµ½´¦ÀíÕâÀàĞÍ:%dµÄº¯Êı~~~~\n"),type);
+		TRACE_OUTPUT(_T("æ”¶åˆ°è¦å†™æ–‡ä»¶å´æ²¡æ‰¾åˆ°å¤„ç†è¿™ç±»å‹:%dçš„å‡½æ•°~~~~\n"),type);
 	}
 }
 
 
 
-//Ö´ĞĞ
-bool CServer::ExecuteClientApp(const TCHAR *szAppName,TCHAR *szCommandLine)	//Ö´ĞĞ
+//æ‰§è¡Œ
+bool CServer::ExecuteClientApp(const TCHAR *szAppName,TCHAR *szCommandLine)	//æ‰§è¡Œ
 {
 	bool ret=false;
 	STARTUPINFO si;
@@ -383,7 +383,7 @@ bool CServer::ExecuteClientApp(const TCHAR *szAppName,TCHAR *szCommandLine)	//Ö´
 	ret=CreateProcess(szAppName,szCommandLine,NULL,NULL,FALSE,0,NULL,NULL,&si,&pi);
 	if(!ret)
 	{
-		//TRACE(_T("´´½¨½ø³ÌÊ§°Ü!!´úºÅ:%x\n"),GetLastError());
+		//TRACE(_T("åˆ›å»ºè¿›ç¨‹å¤±è´¥!!ä»£å·:%x\n"),GetLastError());
 	}
 	return ret;
 }
@@ -413,7 +413,7 @@ void CServer::CopyMsgToStreamRead(HWND hClient,char *data,int len)
 }
 
 
-void CServer::Decode()	//½âÂëÏûÏ¢
+void CServer::Decode()	//è§£ç æ¶ˆæ¯
 {
 	char *data=NULL;
 	m_pThreadLock->Lock();
@@ -425,7 +425,7 @@ void CServer::Decode()	//½âÂëÏûÏ¢
 }
 
 
-void CServer::CreateEvents()	//´´½¨ÊÂ¼ş±äÁ¿
+void CServer::CreateEvents()	//åˆ›å»ºäº‹ä»¶å˜é‡
 {
 	if(!m_hEvtDoTask)
 	{
@@ -439,7 +439,7 @@ void CServer::CreateEvents()	//´´½¨ÊÂ¼ş±äÁ¿
 
 
 
-bool CServer::CreateMessageHandleThread()//´´½¨ÏûÏ¢´¦ÀíÏß³Ì
+bool CServer::CreateMessageHandleThread()//åˆ›å»ºæ¶ˆæ¯å¤„ç†çº¿ç¨‹
 {
 	bool ret=false;
 	DWORD tid;
@@ -452,7 +452,7 @@ bool CServer::CreateMessageHandleThread()//´´½¨ÏûÏ¢´¦ÀíÏß³Ì
 }
 
 
-bool CServer::CreateTaskThread()	//´´½¨ÈÎÎñÏß³Ì
+bool CServer::CreateTaskThread()	//åˆ›å»ºä»»åŠ¡çº¿ç¨‹
 {
 	bool ret=false;
 	DWORD tid;
@@ -468,7 +468,7 @@ bool CServer::CreateTaskThread()	//´´½¨ÈÎÎñÏß³Ì
 bool CServer::RunClientApp()
 {
 	bool ret=true;
-// 	TCHAR cmdLine[MAX_PATH];	//ôÖ
+// 	TCHAR cmdLine[MAX_PATH];	//ç³
 // 
 // 	for(int i=0;i<m_pListPlayers->GetItemCount();++i)
 // 	{	
@@ -488,7 +488,7 @@ bool CServer::RunClientApp()
 
 
 
-void CServer::CheckClientExist()	//¼ì²â¿Í»§¶ËÊÇ·ñ»¹´æÔÚ
+void CServer::CheckClientExist()	//æ£€æµ‹å®¢æˆ·ç«¯æ˜¯å¦è¿˜å­˜åœ¨
 {
 	vector<CClient*>::iterator it=m_clientList.begin();
 	while(it != m_clientList.end())
@@ -504,7 +504,7 @@ void CServer::CheckClientExist()	//¼ì²â¿Í»§¶ËÊÇ·ñ»¹´æÔÚ
 
 
 
-/////////////////////////////////ÒÔÏÂÊÇÏß³Ìº¯Êı/////////////////////////////////////////
+/////////////////////////////////ä»¥ä¸‹æ˜¯çº¿ç¨‹å‡½æ•°/////////////////////////////////////////
 
 DWORD WINAPI CServer::ThreadHeartBeat(LPVOID p)
 {
@@ -525,7 +525,7 @@ DWORD WINAPI CServer::ThreadMessageHandle(LPVOID p)
 	DWORD ret=0;
 	CServer *pServer=(CServer*)p;
 	HANDLE hEvt=pServer->GetEvtMessageHandle();
-	printf("ÏûÏ¢´¦ÀíÏß³ÌÆô¶¯!!\n");
+	printf("æ¶ˆæ¯å¤„ç†çº¿ç¨‹å¯åŠ¨!!\n");
 	while(!pServer->IsQuit())
 	{
 		::WaitForSingleObject(hEvt,INFINITE);
@@ -535,7 +535,7 @@ DWORD WINAPI CServer::ThreadMessageHandle(LPVOID p)
 		}
 		pServer->Decode();
 	}
-	printf("ÏûÏ¢´¦ÀíÏß³Ì½áÊø!!\n");
+	printf("æ¶ˆæ¯å¤„ç†çº¿ç¨‹ç»“æŸ!!\n");
 	return ret;
 }
 
@@ -545,7 +545,7 @@ DWORD WINAPI CServer::ThreadTask(LPVOID p)
 	DWORD ret=0;
 	CServer *pServer=(CServer*)p;
 	HANDLE hEvt=pServer->GetEvtTask();
-	TRACE_OUTPUT(_T("ÈÎÎñ´¦ÀíÏß³ÌÆô¶¯!!\n"));
+	TRACE_OUTPUT(_T("ä»»åŠ¡å¤„ç†çº¿ç¨‹å¯åŠ¨!!\n"));
 	while(!pServer->IsQuit())
 	{
 		//::WaitForSingleObject(hEvt,INFINITE);
@@ -554,10 +554,10 @@ DWORD WINAPI CServer::ThreadTask(LPVOID p)
 			break;
 		}
 		//pServer->RunClientApp();
-		pServer->CheckClientExist();	//¶¨Ê±¼ì²â¿Í»§¶ËÓĞĞ§ĞÔ
+		pServer->CheckClientExist();	//å®šæ—¶æ£€æµ‹å®¢æˆ·ç«¯æœ‰æ•ˆæ€§
 		Sleep(500);
 	}
 
-	TRACE_OUTPUT(_T("ÈÎÎñ´¦ÀíÏß³Ì½áÊø!!\n"));
+	TRACE_OUTPUT(_T("ä»»åŠ¡å¤„ç†çº¿ç¨‹ç»“æŸ!!\n"));
 	return ret;
 }

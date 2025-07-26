@@ -27,7 +27,7 @@ public:
 
 
 
-	int DecodeFirst(CStreamReadWrite *pStreamBuf);	//ÏÈ½âÂë³ö³¤¶È,protocolIdÕâÀà,·µ»ØĞ­Òé³¤¶È
+	int DecodeFirst(CStreamReadWrite *pStreamBuf);	//å…ˆè§£ç å‡ºé•¿åº¦,protocolIdè¿™ç±»,è¿”å›åè®®é•¿åº¦
 
 
 	//void SetCurrentPlayer(CPlayer *p){m_pPlayer=p;}
@@ -42,7 +42,7 @@ public:
 protected:
 	CServer *m_pServer;
 	
-	WORD m_protocolId;	//ÇëÇóµÄprotocolId,ÓÃ×÷·¢ËÍ
+	WORD m_protocolId;	//è¯·æ±‚çš„protocolId,ç”¨ä½œå‘é€
 	CStreamReadWrite *m_pProtocolEncodeStreamBuf;
 
 };

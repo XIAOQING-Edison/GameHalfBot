@@ -24,10 +24,10 @@ int CInfoPlayerInfo::Decode(CStreamReadWrite *pStreamBuf)
 
 	Reset();
 
-	TRACE_OUTPUT(_T("½âÎöCInfoPlayerInfo\n"));
+	TRACE_OUTPUT(_T("è§£æCInfoPlayerInfo\n"));
 
 	bool bFinish=false;
-	int restBytes=m_packageLengthInRes;	//¶ÁÈ¡¹Ì¶¨³¤¶ÈµÄ×Ö½Ú¾Í½âÎöÍê
+	int restBytes=m_packageLengthInRes;	//è¯»å–å›ºå®šé•¿åº¦çš„å­—èŠ‚å°±è§£æå®Œ
 	int objLength=0;
 
 #if _GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_MOBILE_
@@ -223,13 +223,13 @@ int CInfoPlayerInfo::Decode(CStreamReadWrite *pStreamBuf)
 			}
 			break;
 		default:
-			TRACE_OUTPUT(_T("½âÎöInfoPlayerInfo³ö´íÁË!!!!\n"));
+			TRACE_OUTPUT(_T("è§£æInfoPlayerInfoå‡ºé”™äº†!!!!\n"));
 			break;
 		}
 		bFinish=(pStreamBuf->GetHandlePos()-orgPos)>=restBytes;
 	}
 EXT:
 	handleLength=pStreamBuf->GetHandlePos()-orgPos;
-	//TRACE_OUTPUT(_T("CInfoPlayerInfo ½âÎö³¤¶È:%d\n"),handleLength);
+	//TRACE_OUTPUT(_T("CInfoPlayerInfo è§£æé•¿åº¦:%d\n"),handleLength);
 	return handleLength;
 }

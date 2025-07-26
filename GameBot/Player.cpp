@@ -15,14 +15,14 @@ CPlayer::~CPlayer(void)
 
 void CPlayer::Init()
 {
-	SetQuit(false);	//Ä¬ÈÏ²»ÍË³ö
+	SetQuit(false);	//é»˜è®¤ä¸é€€å‡º
 
 	SetClient(NULL);
 	SetCareer(-1);
 	SetX(0);
 	SetY(0);
 	SetLevel(0);
-	SetVipLevel(0);	//»áÔ±µÈ¼¶
+	SetVipLevel(0);	//ä¼šå‘˜ç­‰çº§
 
 	SetCurHp(-1);
 	SetMaxHp(-1);
@@ -32,9 +32,9 @@ void CPlayer::Init()
 	SetCurShield(0);
 	SetCurComboValue(0);
 	SetMaxComboValue(1);
-	ResetAttackerId();	//³õ¶¨ÎÞÍæ¼Ò¹¥»÷×ÔÉí
+	ResetAttackerId();	//åˆå®šæ— çŽ©å®¶æ”»å‡»è‡ªèº«
 
-	SetPlayerIndex(-1);	//³õÊ¼ÎªÎÞÏÂ±ê
+	SetPlayerIndex(-1);	//åˆå§‹ä¸ºæ— ä¸‹æ ‡
 
 
 	SetTotalBattleScore(0);
@@ -47,8 +47,8 @@ void CPlayer::Init()
 	m_pGameLogicHelper->SetPlayer(this);
 	m_pSocketHelper->SetPlayer(this);
 	m_hThreadPlay=NULL;
-	//SetStop(false);	//Ä¬ÈÏ²»ÔÝÍ£
-	SetStop(true);	//ÕâÀïÏÈÔÝÍ£×´Ì¬
+	//SetStop(false);	//é»˜è®¤ä¸æš‚åœ
+	SetStop(true);	//è¿™é‡Œå…ˆæš‚åœçŠ¶æ€
 // #endif
 }
 
@@ -59,7 +59,7 @@ void CPlayer::CloseObjectWhenQuit()
 
 }
 
-STRING CPlayer::GetAccountName()	//ÕâÀïÅÐ¶ÏindexÓÐÐ§²¢ÇÒÎÞÕÊ»§Ãû³Æ£¬Ôò°Ñindex×Ö´®×÷Îªaccount
+STRING CPlayer::GetAccountName()	//è¿™é‡Œåˆ¤æ–­indexæœ‰æ•ˆå¹¶ä¸”æ— å¸æˆ·åç§°ï¼Œåˆ™æŠŠindexå­—ä¸²ä½œä¸ºaccount
 {
 	STRING result;
 	TCHAR buf[64];
@@ -71,7 +71,7 @@ STRING CPlayer::GetAccountName()	//ÕâÀïÅÐ¶ÏindexÓÐÐ§²¢ÇÒÎÞÕÊ»§Ãû³Æ£¬Ôò°Ñindex×Ö´
 	return m_accountName;
 }
 
-//ÖØÖÃÄ³Ð©×´Ì¬£¬ºóÃæ¿ÉÄÜ»á¼¯ÖÐÐ´µ½ÕâÀïÔÙµ÷ÓÃ
+//é‡ç½®æŸäº›çŠ¶æ€ï¼ŒåŽé¢å¯èƒ½ä¼šé›†ä¸­å†™åˆ°è¿™é‡Œå†è°ƒç”¨
 void CPlayer::ResetStates()
 {
 	STRING defString;
@@ -146,16 +146,16 @@ bool CPlayer::IsRoleChosenAlready()
 
 
 
-bool CPlayer::ReadyForPlaying()	//×¼±¸´´½¨ÈÎÎñÏß³Ì
+bool CPlayer::ReadyForPlaying()	//å‡†å¤‡åˆ›å»ºä»»åŠ¡çº¿ç¨‹
 {
 	bool ret=false;
-	TRACE_OUTPUT(_T("-----------------CPlayer×¼±¸´´½¨Íæ¼ÒÏß³Ì--------------------\n"));
-	ret=CreatePlayThread();	//ÍæµÄÏß³Ì;
+	TRACE_OUTPUT(_T("-----------------CPlayerå‡†å¤‡åˆ›å»ºçŽ©å®¶çº¿ç¨‹--------------------\n"));
+	ret=CreatePlayThread();	//çŽ©çš„çº¿ç¨‹;
 	return ret;
 }
 
 
-bool CPlayer::CreatePlayThread()	//ÍæµÄÏß³Ì£¬´¦ÀíÈÎÎñ
+bool CPlayer::CreatePlayThread()	//çŽ©çš„çº¿ç¨‹ï¼Œå¤„ç†ä»»åŠ¡
 {
 	DWORD tid;
 	if(!m_hThreadPlay)
@@ -168,21 +168,21 @@ bool CPlayer::CreatePlayThread()	//ÍæµÄÏß³Ì£¬´¦ÀíÈÎÎñ
 
 
 
-void CPlayer::InitSkillFromConfig()	//³õÊ¼»¯¼¼ÄÜÅäÖÃ
+void CPlayer::InitSkillFromConfig()	//åˆå§‹åŒ–æŠ€èƒ½é…ç½®
 {
 
 }
 
 
 ///////////////////////////////////gameLogic///////////////////////////////////////
-bool CPlayer::InterruptTaskByEmergencyLevel(){return m_pGameLogicHelper->InterruptTaskByEmergencyLevel();}	//ÖÐ¶ÏÏÖÊ±×öµÄ¶«Î÷
+bool CPlayer::InterruptTaskByEmergencyLevel(){return m_pGameLogicHelper->InterruptTaskByEmergencyLevel();}	//ä¸­æ–­çŽ°æ—¶åšçš„ä¸œè¥¿
 void CPlayer::ResetTaskEmergencyLevel(){m_pGameLogicHelper->ResetTaskEmergencyLevel();}
 void CPlayer::SetResCode(int code){m_pGameLogicHelper->SetResCode(code);}
 int	CPlayer::GetResCode(){return m_pGameLogicHelper->GetResCode();}
 void CPlayer::ResetResCode(){m_pGameLogicHelper->ResetResCode();}
 void CPlayer::SetMoveSucc(bool b){m_pGameLogicHelper->SetMoveSucc(b);}
 
-/////////////////////////////////µØÍ¼Ïà¹Ø½Ó¿Ú/////////////////////////////////////////
+/////////////////////////////////åœ°å›¾ç›¸å…³æŽ¥å£/////////////////////////////////////////
 
 
 DWORD WINAPI CPlayer::ThreadProcessTask(LPVOID p)
@@ -190,12 +190,12 @@ DWORD WINAPI CPlayer::ThreadProcessTask(LPVOID p)
 	DWORD ret=0;
 	CPlayer *player=(CPlayer*)p;
 	CGameLogicHelper *pLogicHelper=player->GetGameLogicHelper();
-	player->InitSkillFromConfig();	//³õÊ¼»¯¼¼ÄÜÅäÖÃ
-	TRACE_OUTPUT(_T("---------------------CPlayerÍæ¼ÒÏß³Ì½øÈë!!!!!!----------------------\n"));
+	player->InitSkillFromConfig();	//åˆå§‹åŒ–æŠ€èƒ½é…ç½®
+	TRACE_OUTPUT(_T("---------------------CPlayerçŽ©å®¶çº¿ç¨‹è¿›å…¥!!!!!!----------------------\n"));
 	while(!player->IsQuit())
 	{
 		Sleep(1000);
 	}
-	TRACE_OUTPUT(_T("--------------------CPlayerÍæ¼ÒÏß³ÌÍË³ö!!!!!!------------------------\n"));
+	TRACE_OUTPUT(_T("--------------------CPlayerçŽ©å®¶çº¿ç¨‹é€€å‡º!!!!!!------------------------\n"));
 	return ret;
 }

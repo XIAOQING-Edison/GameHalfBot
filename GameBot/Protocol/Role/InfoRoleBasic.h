@@ -14,8 +14,8 @@ public:
 	INT64 GetRoleId(){return info.GetRoleId();}
 	STRING GetName(){return info.GetName();};
 	int GetLevel(){return info.GetLevel();;}
-	STRING GetUnionName(){return info.GetUnionName();}	//Õ½ÃËÃû×Ö
-	int GetTotalFight(){return info.GetTotalFight();}	//Õ½Á¦
+	STRING GetUnionName(){return info.GetUnionName();}	//æˆ˜ç›Ÿåå­—
+	int GetTotalFight(){return info.GetTotalFight();}	//æˆ˜åŠ›
 	int GetServerId(){return info.GetServerId();}
 	int GetMapId(){return info.GetMapId();}
 	int GetCareer(){return info.GetCareer();}
@@ -26,17 +26,17 @@ public:
 
 private:
 	CInfoRoleSimpleInfo info;// = 1 ;
-	int createTime;// = 2; //´´½ÇÊ±¼ä (s)
+	int createTime;// = 2; //åˆ›è§’æ—¶é—´ (s)
 #if (_GAME_VERSION_ == _YONG_HENG_LIAN_MENG_)	|| (_GAME_VERSION_ == _TIAN_SHI_SHEN_YU_) ||(_GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_MOBILE_)\
 	||(_GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_PC_)
 	INT64 exp;// = 3;
 #elif _GAME_VERSION_ == _YONG_HENG_ZHI_DIAN_
 	STRING exp;
 #endif
-	int attributePoint;// = 4; //¿ÉÊ¹ÓÃüc”µ
+	int attributePoint;// = 4; //å¯ä½¿ç”¨é»æ•¸
 	int PKMode;// = 7;
-	int dailyOnlineTime;// = 8;//Ã¿ÈÕÔÚÏßÊ±³¤ (s)
-	int logoutTime;// = 10;//ÀëÏßÊ±¼ä´Á£¬Ãë
+	int dailyOnlineTime;// = 8;//æ¯æ—¥åœ¨çº¿æ—¶é•¿ (s)
+	int logoutTime;// = 10;//ç¦»çº¿æ—¶é—´æˆ³ï¼Œç§’
 
 #if _GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_MOBILE_
 #elif _GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_PC_

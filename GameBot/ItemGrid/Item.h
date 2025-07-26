@@ -17,17 +17,17 @@ public:
 
 	void UpdateInfoItemToItem(void *pInfoItem);
 
-	bool IsEmptyItem(){return ((GetConfigId()==0) || (GetCount()==0)) && !IsOccupied();}	//¿ÕµÄ¸ñ×ÓÊÇ²»»á±»Õ¼ÓÃ
-	bool IsOccupied(){return m_bIsOccupied;}	//ÊÇ·ñ±»Õ¼ÓÃ£¬ÒòÎªÎïÆ·ÓĞĞ©Õ¼ÓÃ²»Ö¹Ò»¸ö¸ñ×Ó
+	bool IsEmptyItem(){return ((GetConfigId()==0) || (GetCount()==0)) && !IsOccupied();}	//ç©ºçš„æ ¼å­æ˜¯ä¸ä¼šè¢«å ç”¨
+	bool IsOccupied(){return m_bIsOccupied;}	//æ˜¯å¦è¢«å ç”¨ï¼Œå› ä¸ºç‰©å“æœ‰äº›å ç”¨ä¸æ­¢ä¸€ä¸ªæ ¼å­
 	bool IsBind(){return m_bIsBind;}
 	void SetIsOcccupied(bool b){m_bIsOccupied=b;}
 
-	int GetXOccupied(){return m_itemInfo.GetXTranslate();}	//x·½ÏòÕ¼ÓÃ
-	int GetYOccupied(){return m_itemInfo.GetYTranslate();}	//y·½ÏòÕ¼ÓÃ
+	int GetXOccupied(){return m_itemInfo.GetXTranslate();}	//xæ–¹å‘å ç”¨
+	int GetYOccupied(){return m_itemInfo.GetYTranslate();}	//yæ–¹å‘å ç”¨
 
-	bool IsMaterial();	//ÊÇ·ñ²ÄÁÏ
+	bool IsMaterial();	//æ˜¯å¦ææ–™
 	bool IsEquip(){return m_itemInfo.IsEquipItem();}
-	bool IsLowestEquip();	//ÊÇ·ñ×îµÍ¼¶×°±¸
+	bool IsLowestEquip();	//æ˜¯å¦æœ€ä½çº§è£…å¤‡
 public:
 	void SetPos(int pos){m_pos=pos;}
 	int GetPos(){return m_pos;}
@@ -47,22 +47,22 @@ public:
 	_ITEM_INFO_ *GetItemInfo(){return &m_itemInfo;}
 	_EQUIPMENT_INFO_ *GetEquipmentInfo(){return &m_equipInfo;}
 
-	bool IsMountEquipType();	//ÊÇ·ñ×øÆï×°±¸
-	bool IsEquipSuit();	//ÊÇ·ñÌ××°?
+	bool IsMountEquipType();	//æ˜¯å¦åéª‘è£…å¤‡
+	bool IsEquipSuit();	//æ˜¯å¦å¥—è£…?
 private:
 	bool m_bIsBind;
-	bool m_bIsOccupied;	//ÊÇ·ñÕ¼ÓÃ
+	bool m_bIsOccupied;	//æ˜¯å¦å ç”¨
 
 	int m_pos;
-	INT64 m_count;	//µş¼ÓÊıÁ¿
-	INT64 m_id;	//Õâ¸öÊÇÓÎÏ·ÖĞÎï±à±àºÅID
-	_ITEM_INFO_ m_itemInfo;	//´ÓÅäÖÃÀï¶Áµ½µÄÎïÆ·Êı¾İ
-	_EQUIPMENT_INFO_ m_equipInfo;	//´ÓÅäÖÃÖĞ¶Áµ½µÄ×°±¸Êı¾İ
+	INT64 m_count;	//å åŠ æ•°é‡
+	INT64 m_id;	//è¿™ä¸ªæ˜¯æ¸¸æˆä¸­ç‰©ç¼–ç¼–å·ID
+	_ITEM_INFO_ m_itemInfo;	//ä»é…ç½®é‡Œè¯»åˆ°çš„ç‰©å“æ•°æ®
+	_EQUIPMENT_INFO_ m_equipInfo;	//ä»é…ç½®ä¸­è¯»åˆ°çš„è£…å¤‡æ•°æ®
 public:
-	vector<int> additionalAttribute;// = 10;//×·¼ÓÊôĞÔ
-	vector<int> lucky;// = 11;//ĞÒÔËÊôĞÔ
+	vector<int> additionalAttribute;// = 10;//è¿½åŠ å±æ€§
+	vector<int> lucky;// = 11;//å¹¸è¿å±æ€§
 
-	map<int,INT64> m_excellentAttrs;	//ÆÕÍ¨×¿Ô½
-	map<int,INT64> m_excellentStarAttrs;	//´øĞÇ×¿Ô½
-	map<int,INT64> m_regenerateAttrs;	//ÖØÉúÊôĞÔ
+	map<int,INT64> m_excellentAttrs;	//æ™®é€šå“è¶Š
+	map<int,INT64> m_excellentStarAttrs;	//å¸¦æ˜Ÿå“è¶Š
+	map<int,INT64> m_regenerateAttrs;	//é‡ç”Ÿå±æ€§
 };

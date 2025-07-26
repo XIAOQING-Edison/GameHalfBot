@@ -1,8 +1,8 @@
 #include "SystemConfig.h"
 
 
-const int g_defDisconnetLogoutByOtherMin=3;	//Íæ¼Ò´ÓÁíÒ»¸öµØ·½µÇÂ½£¬ÖØÁ¬Ê±¼ä
-const int g_defDisconnectByServerMin=1;	//·şÎñÆ÷Á¬½Ó¶Ï¿ª
+const int g_defDisconnetLogoutByOtherMin=3;	//ç©å®¶ä»å¦ä¸€ä¸ªåœ°æ–¹ç™»é™†ï¼Œé‡è¿æ—¶é—´
+const int g_defDisconnectByServerMin=1;	//æœåŠ¡å™¨è¿æ¥æ–­å¼€
 
 //system
 const TCHAR *g_szIsXiaoHao=_T("IsXiaoHao");
@@ -96,7 +96,7 @@ void CSystemConfig::SetBindModeToCfg(int mode)
 
 
 
-int CSystemConfig::GetLoadMapMaxWaitSecondsFromCfg()	//ÖØĞÂÁ¬½ÓÓÎÏ·µÄĞ¡Ê±
+int CSystemConfig::GetLoadMapMaxWaitSecondsFromCfg()	//é‡æ–°è¿æ¥æ¸¸æˆçš„å°æ—¶
 {
 	return CConfig::ReadInt(m_sectionName.c_str(),g_szLoadMapMaxWaitSeconds,3);
 

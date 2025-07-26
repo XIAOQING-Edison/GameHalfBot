@@ -8,38 +8,38 @@ public:
 	CBossAssistConfig(const TCHAR *szFileName,bool bUseEncryptDecrypt=true);
 	~CBossAssistConfig(void);
 
-	BOOL IsBeastBossOnlyAssistSelfMaxCountFromCfg();	//ÊÇ·ñ´ïµ½×î´ó´ÎÊı¾Í²»Ğ­Öú£¬Ä¬ÈÏÊÇ¶¼Ğ­Öú
+	BOOL IsBeastBossOnlyAssistSelfMaxCountFromCfg();	//æ˜¯å¦è¾¾åˆ°æœ€å¤§æ¬¡æ•°å°±ä¸ååŠ©ï¼Œé»˜è®¤æ˜¯éƒ½ååŠ©
 	void SetIsBeastBossOnlyAssistSelfMaxCountToCfg(BOOL b);
 
-	BOOL IsBeastBossAutoSendAssistFromCfg();	//»÷É±Ê±·¢ËÍĞ­Öú
+	BOOL IsBeastBossAutoSendAssistFromCfg();	//å‡»æ€æ—¶å‘é€ååŠ©
 	void SetIsBeastBossAutoSendAssistToCfg(BOOL b);
 
-	int GetBeastBossAssistMaxTimeoutFromCfg();	//ÊŞÉñ×î´óĞ­Öú³¬Ê±
+	int GetBeastBossAssistMaxTimeoutFromCfg();	//å…½ç¥æœ€å¤§ååŠ©è¶…æ—¶
 	void SetBeastBossAssistMaxTimeoutToCfg(int timeout);
 
-	BOOL IsBeastBossAssistAutoSendAssistFromCfg();	//ÊŞÉñĞ­Öú×Ô¶¯·¢ËÍÇóĞ­Öú
+	BOOL IsBeastBossAssistAutoSendAssistFromCfg();	//å…½ç¥ååŠ©è‡ªåŠ¨å‘é€æ±‚ååŠ©
 	void SetIsBeastBossAssistAutoSendAssistToCfg(BOOL b);
 
-	BOOL IsBeastBossAutoAssistOtherFromCfg();	//ÊÇ·ñ×Ô¶¯Ğ­ÖúËûÈË
+	BOOL IsBeastBossAutoAssistOtherFromCfg();	//æ˜¯å¦è‡ªåŠ¨ååŠ©ä»–äºº
 	void SetIsBeastBossAutoAssistOtherToCfg(BOOL b);	//
 
 
-	//¾üÍÅ
+	//å†›å›¢
 	BOOL IsCorpsBossAutoSendAssistFromCfg();
 	void SetIsCorpsBossAutoSendAssistToCfg(BOOL b);
 
-	BOOL IsCorpsBossOnlyAssistSelfMaxCountFromCfg();	//ÊÇ·ñ´ïµ½×î´ó´ÎÊı¾Í²»Ğ­Öú£¬Ä¬ÈÏÊÇ¶¼Ğ­Öú
+	BOOL IsCorpsBossOnlyAssistSelfMaxCountFromCfg();	//æ˜¯å¦è¾¾åˆ°æœ€å¤§æ¬¡æ•°å°±ä¸ååŠ©ï¼Œé»˜è®¤æ˜¯éƒ½ååŠ©
 	void SetIsCorpsBossOnlyAssistSelfMaxCountToCfg(BOOL b);
 
-	int GetCorpsBossAssistMaxTimeoutFromCfg();	//¾üÍÅ×î´óĞ­Öú³¬Ê±
+	int GetCorpsBossAssistMaxTimeoutFromCfg();	//å†›å›¢æœ€å¤§ååŠ©è¶…æ—¶
 	void SetCorpsBossAssistMaxTimeoutToCfg(int timeout);
 
 
-	BOOL IsCorpsBossAssistAutoSendAssistFromCfg();	//¾üÍÅĞ­Öú×Ô¶¯·¢ËÍÇóĞ­Öú
+	BOOL IsCorpsBossAssistAutoSendAssistFromCfg();	//å†›å›¢ååŠ©è‡ªåŠ¨å‘é€æ±‚ååŠ©
 	void SetIsCorpsBossAssistAutoSendAssistToCfg(BOOL b);
 
 
-	BOOL IsCorpsBossAutoAssistOtherFromCfg();	//ÊÇ·ñ×Ô¶¯Ğ­ÖúËûÈË
+	BOOL IsCorpsBossAutoAssistOtherFromCfg();	//æ˜¯å¦è‡ªåŠ¨ååŠ©ä»–äºº
 	void SetIsCorpsBossAutoAssistOtherToCfg(BOOL b);	//
 
 	void Init();

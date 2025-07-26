@@ -1,6 +1,6 @@
 #include "ShareMemory.h"
 
-//Õâ¸öÊÇÎÄ¼þÎÞ¹ØµÄÄÚ´æ£¬ËùÒÔhFileÎª-1;
+//è¿™ä¸ªæ˜¯æ–‡ä»¶æ— å…³çš„å†…å­˜ï¼Œæ‰€ä»¥hFileä¸º-1;
 CShareMemory::CShareMemory(int sz,bool bCreator)
 {
 	Init();
@@ -10,7 +10,7 @@ CShareMemory::CShareMemory(int sz,bool bCreator)
 
 CShareMemory::~CShareMemory(void)
 {
-	if(m_pMemoryAddress && IsCreator())	//´´½¨Õß²ÅÐèÒª×îºóÊÍ·Å
+	if(m_pMemoryAddress && IsCreator())	//åˆ›å»ºè€…æ‰éœ€è¦æœ€åŽé‡Šæ”¾
 	{
 		UnmapViewOfFile(m_pMemoryAddress);
 	}
@@ -71,7 +71,7 @@ bool CShareMemory::OpenShareMemory(const TCHAR *szName)
 	}
 	else
 	{
-		TRACE_OUTPUT(_T("´ò¿ªÃû×ÖÎª:%sµÄ¹²ÏíÄÚ´æ´íÎó:%x\n"),szName,GetLastError());
+		TRACE_OUTPUT(_T("æ‰“å¼€åå­—ä¸º:%sçš„å…±äº«å†…å­˜é”™è¯¯:%x\n"),szName,GetLastError());
 		ret=false;
 	}
 	SAFE_CLOSE_HANDLE(hFileMap);
@@ -83,14 +83,14 @@ bool CShareMemory::WriteSharedMemory(void *data,int len)
 	bool ret=false;
 	if(len>m_memorySize)
 	{
-		//TRACE(_T("Ð´µÄ´óÐ¡´óÓÚÄÚ´æ³ß´ç!!!!\n"));
+		//TRACE(_T("å†™çš„å¤§å°å¤§äºŽå†…å­˜å°ºå¯¸!!!!\n"));
 		goto EXT;
 	}
 	else
 	{
 		if(!m_pMemoryAddress)
 		{
-			//TRACE(_T("Ð´Ê±ÄÚ´æµØÖ·»¹Ã»Ó³Éä!!!!\n"));
+			//TRACE(_T("å†™æ—¶å†…å­˜åœ°å€è¿˜æ²¡æ˜ å°„!!!!\n"));
 			goto EXT;
 		}
 		memcpy(m_pMemoryAddress,data,len);
@@ -107,14 +107,14 @@ bool CShareMemory::ReadSharedMemory(void *data,int len)
 	bool ret=false;
 	if(len>m_memorySize)
 	{
-		//TRACE(_T("¶ÁµÄ´óÐ¡´óÓÚÄÚ´æ³ß´ç!!!!\n"));
+		//TRACE(_T("è¯»çš„å¤§å°å¤§äºŽå†…å­˜å°ºå¯¸!!!!\n"));
 		goto EXT;
 	}
 	else
 	{
 		if(!m_pMemoryAddress)
 		{
-			//TRACE(_T("¶ÁÊ±ÄÚ´æµØÖ·»¹Ã»Ó³Éä!!!!\n"));
+			//TRACE(_T("è¯»æ—¶å†…å­˜åœ°å€è¿˜æ²¡æ˜ å°„!!!!\n"));
 			goto EXT;
 		}
 		memcpy(data,m_pMemoryAddress,len);
@@ -131,14 +131,14 @@ bool CShareMemory::WriteSharedMemoryByOffset(void *data,int offset,int len)
 	bool ret=false;
 	if(len>m_memorySize || (offset+len)>m_memorySize)
 	{
-		//TRACE(_T("Ð´µÄ´óÐ¡´óÓÚÄÚ´æ³ß´ç!!!!\n"));
+		//TRACE(_T("å†™çš„å¤§å°å¤§äºŽå†…å­˜å°ºå¯¸!!!!\n"));
 		goto EXT;
 	}
 	else
 	{
 		if(!m_pMemoryAddress)
 		{
-			//TRACE(_T("Ð´Ê±ÄÚ´æµØÖ·»¹Ã»Ó³Éä!!!!\n"));
+			//TRACE(_T("å†™æ—¶å†…å­˜åœ°å€è¿˜æ²¡æ˜ å°„!!!!\n"));
 			goto EXT;
 		}
 		memcpy(m_pMemoryAddress+offset,data,len);
@@ -155,14 +155,14 @@ bool CShareMemory::ReadShreadMemoryByOffset(void *data,int offset,int len)
 	bool ret=false;
 	if(len>m_memorySize || (offset+len)>m_memorySize)
 	{
-		//TRACE(_T("¶ÁµÄ´óÐ¡´óÓÚÄÚ´æ³ß´ç!!!!\n"));
+		//TRACE(_T("è¯»çš„å¤§å°å¤§äºŽå†…å­˜å°ºå¯¸!!!!\n"));
 		goto EXT;
 	}
 	else
 	{
 		if(!m_pMemoryAddress)
 		{
-			//TRACE(_T("¶ÁÊ±ÄÚ´æµØÖ·»¹Ã»Ó³Éä!!!!\n"));
+			//TRACE(_T("è¯»æ—¶å†…å­˜åœ°å€è¿˜æ²¡æ˜ å°„!!!!\n"));
 			goto EXT;
 		}
 		memcpy(data,m_pMemoryAddress+offset,len);
@@ -174,7 +174,7 @@ EXT:
 }
 
 
-void CShareMemory::FillSharedMemory(int value)	//½«ÄÚ´æÄ¬ÈÏÖÃÄ³Öµ
+void CShareMemory::FillSharedMemory(int value)	//å°†å†…å­˜é»˜è®¤ç½®æŸå€¼
 {
 	if(m_pMemoryAddress && m_memorySize>0)
 		memset(m_pMemoryAddress,value,m_memorySize);

@@ -18,26 +18,26 @@ public:
 	virtual ~CInjector(void);
 
 	E_INJECT_TYPE GetInjectType(){return m_injectType;}
-	void SetDllFullPath(const TCHAR *szFullPath){m_dllFullPath=szFullPath;}//È«Â·¾¶,Â·¾¶ĞèÒªÔÚÍâÃæ¼ÆËã
+	void SetDllFullPath(const TCHAR *szFullPath){m_dllFullPath=szFullPath;}//å…¨è·¯å¾„,è·¯å¾„éœ€è¦åœ¨å¤–é¢è®¡ç®—
 
 	//virtual bool Inject(LPCTSTR szProcessName)=0;
 	virtual bool Inject(DWORD pid)=0;
-	virtual bool Uninject()=0;	//ÊÍ·Å
+	virtual bool Uninject()=0;	//é‡Šæ”¾
 
 	DWORD FindTargetProcessPid(LPCTSTR lpszProcess);
 	SIZE_T GetTargetProcessDllBase(DWORD pid,LPCTSTR szDllName);
 protected:
 	void SetInjectType(E_INJECT_TYPE type){m_injectType=type;}
-	bool EnableDebugPrivilege();	//ÌáÈ¨
+	bool EnableDebugPrivilege();	//ææƒ
 	bool DoInjectByMethodType(DWORD dwPID, LPCTSTR lpszDllName,bool bFreeDll);	//ntcreatthread or createremotethread
 private:
-	bool InjectByCreateRemoteThread(HANDLE hProcess, LPTHREAD_START_ROUTINE  lpThreadProc, LPVOID lpDllName,bool bFreeDll);	//ÆÕÍ¨Ô¶³ÌÏß³Ì
+	bool InjectByCreateRemoteThread(HANDLE hProcess, LPTHREAD_START_ROUTINE  lpThreadProc, LPVOID lpDllName,bool bFreeDll);	//æ™®é€šè¿œç¨‹çº¿ç¨‹
 	bool InjectByZwCreateThreadEx(HANDLE hProcess, LPTHREAD_START_ROUTINE  lpThreadProc, LPVOID lpDllName,bool bFreeDll);	//ntCreateThreadEx
-	bool InjectByAPC(DWORD processId,PAPCFUNC pFunc,LPVOID lpDllName,bool bFreeDll);	//APC×¢Èë
+	bool InjectByAPC(DWORD processId,PAPCFUNC pFunc,LPVOID lpDllName,bool bFreeDll);	//APCæ³¨å…¥
 	bool InjectByRtlCreateUserThread(HANDLE hProcess, LPTHREAD_START_ROUTINE  lpThreadProc, LPVOID lpDllName,bool bFreeDll);	//RtlCreateUserThread
 protected:
 	E_INJECT_TYPE m_injectType;
-	DWORD m_pidSelect;	//Ñ¡ÔñµÄpid
-	bool m_bInjectSucc;	//ÊÇ·ñ×¢Èë³É¹¦
+	DWORD m_pidSelect;	//é€‰æ‹©çš„pid
+	bool m_bInjectSucc;	//æ˜¯å¦æ³¨å…¥æˆåŠŸ
 	STRING m_dllFullPath;
 };

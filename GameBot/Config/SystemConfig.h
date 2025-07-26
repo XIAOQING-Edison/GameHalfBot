@@ -26,7 +26,7 @@ public:
 	int GetReviveTypeFromCfg();
 	void SetReviveTypeToCfg(int mode);
 
-	int GetLoadMapMaxWaitSecondsFromCfg();	//ÖØĞÂÁ¬½ÓÓÎÏ·µÄĞ¡Ê±
+	int GetLoadMapMaxWaitSecondsFromCfg();	//é‡æ–°è¿æ¥æ¸¸æˆçš„å°æ—¶
 	void SetLoadMapMaxWaitSecondsToCfg(int seconds);
 
 };

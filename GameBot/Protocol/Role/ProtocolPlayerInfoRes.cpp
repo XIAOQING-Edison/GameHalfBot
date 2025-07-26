@@ -20,10 +20,10 @@ int CProtocolPlayerInfoRes::Decode(CStreamReadWrite *pStreamBuf)
 	int orgPos=pStreamBuf->GetHandlePos();
 
 	int restBytes=m_packageLengthInRes-protocol_header_length;
-	TRACE_OUTPUT(_T("½âÎöCProtocolPlayerInfoRes\n"),restBytes);
+	TRACE_OUTPUT(_T("è§£æžCProtocolPlayerInfoRes\n"),restBytes);
 	
-// 	TRACE_OUTPUT(_T("Player info resÌø¹ý×Ö½Ú:%d\n"),restBytes);
-// 	pStreamBuf->SetHandlePos(orgPos+restBytes);	//Î´Íê³É½âÎöÊ±Ö±½ÓÌø¹ý
+// 	TRACE_OUTPUT(_T("Player info resè·³è¿‡å­—èŠ‚:%d\n"),restBytes);
+// 	pStreamBuf->SetHandlePos(orgPos+restBytes);	//æœªå®Œæˆè§£æžæ—¶ç›´æŽ¥è·³è¿‡
 
 
 	playerInfo.SetPackageLengthInRes(restBytes);
@@ -41,7 +41,7 @@ int CProtocolPlayerInfoRes::Decode(CStreamReadWrite *pStreamBuf)
 
 #if (_GAME_VERSION_ == _TIAN_SHI_SHEN_YU_)
 #endif
-		TRACE_OUTPUT(_T("¸üÐÂ½ÇÉ«ÐÅÏ¢----\n"));
+		TRACE_OUTPUT(_T("æ›´æ–°è§’è‰²ä¿¡æ¯----\n"));
 
 #if (_GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_MOBILE_) ||(_GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_PC_) /*||()*/
 		
@@ -51,7 +51,7 @@ int CProtocolPlayerInfoRes::Decode(CStreamReadWrite *pStreamBuf)
 		CClient *pClient=m_pPlayer->GetClient();
 		if(pClient)
 		{
-			pClient->UpdatePlayerInfoToPlayerInfoStatus();	//¸üÐÂ×´Ì¬
+			pClient->UpdatePlayerInfoToPlayerInfoStatus();	//æ›´æ–°çŠ¶æ€
 			CMessageSenderHelper::GetInstance()->SendPlayerInfoStatus(pClient,pClient->GetPlayerStatus());
 		}
 	}

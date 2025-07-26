@@ -66,7 +66,7 @@ EXT:
 }
 
 
-bool CInjector::EnableDebugPrivilege()	//ÌáÈ¨
+bool CInjector::EnableDebugPrivilege()	//ææƒ
 {
 	return EnablePrivilege(SE_DEBUG_NAME);
 
@@ -98,7 +98,7 @@ bool CInjector::DoInjectByMethodType(DWORD dwPID, LPCTSTR lpszDllName,bool bFree
 	LPVOID pszLibFileRemote = NULL;
 	BOOL bSucc=FALSE;
 	
-	// ÏòÄ¿±ê½ø³ÌµØÖ·¿Õ¼äĞ´ÈëDLLÃû³Æ  
+	// å‘ç›®æ ‡è¿›ç¨‹åœ°å€ç©ºé—´å†™å…¥DLLåç§°  
 	SIZE_T dwSize, dwWritten;  
 	dwSize  = ( _tcslen( lpszDllName ) + 1 ) * sizeof( TCHAR );
 	pszLibFileRemote = VirtualAllocEx( hPro, NULL, dwSize, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
@@ -117,7 +117,7 @@ bool CInjector::DoInjectByMethodType(DWORD dwPID, LPCTSTR lpszDllName,bool bFree
 	{
 		if (dwWritten != dwSize )  
 		{  
-			TRACE_OUTPUT(_T("WriteProcessMemory ÒÑĞ´ÈëÓëÊµ¼ÊĞ´Èë²»Ò»ÖÂ!´íÎó: %x\n"),GetLastError());
+			TRACE_OUTPUT(_T("WriteProcessMemory å·²å†™å…¥ä¸å®é™…å†™å…¥ä¸ä¸€è‡´!é”™è¯¯: %x\n"),GetLastError());
 			goto EXT;
 		}
 	}
@@ -135,8 +135,8 @@ bool CInjector::DoInjectByMethodType(DWORD dwPID, LPCTSTR lpszDllName,bool bFree
 #endif
 
 
-	//ASLR,ÔÚVISTAºóÃæµÄÏµÍ³£¬ÏµÍ³DLL»ù³UÊÇËæ»ú±ä»¯µÄ£¬²»ÏñxpÒÔÇ°ÊÇ¹Ì¶¨µÄ£¬ÕâÀï²Î¿¼ÁË
-	//remoteDllµÄ×ö·¨
+	//ASLR,åœ¨VISTAåé¢çš„ç³»ç»Ÿï¼Œç³»ç»ŸDLLåŸºç ‹æ˜¯éšæœºå˜åŒ–çš„ï¼Œä¸åƒxpä»¥å‰æ˜¯å›ºå®šçš„ï¼Œè¿™é‡Œå‚è€ƒäº†
+	//remoteDllçš„åšæ³•
 	HMODULE hKernel32Local=LoadLibrary(_T("kernel32.dll"));
 	SIZE_T targetKernel32=GetTargetProcessDllBase(dwPID,_T("kernel32.dll"));
 	if(!targetKernel32)
@@ -160,7 +160,7 @@ bool CInjector::DoInjectByMethodType(DWORD dwPID, LPCTSTR lpszDllName,bool bFree
 
 	if ( pfnThreadRtn == NULL )
 	{
-		TRACE_OUTPUT(_T("get targetLoad Library addr Ê§°Ü!´íÎó:%x\n"),GetLastError());
+		TRACE_OUTPUT(_T("get targetLoad Library addr å¤±è´¥!é”™è¯¯:%x\n"),GetLastError());
 		goto EXT;
 	}
 
@@ -191,7 +191,7 @@ EXT:
 }
 
 
-bool CInjector::InjectByCreateRemoteThread(HANDLE hProcess, LPTHREAD_START_ROUTINE  lpThreadProc, LPVOID lpDllName,bool bFreeDll)	//ÆÕÍ¨Ô¶³ÌÏß³Ì
+bool CInjector::InjectByCreateRemoteThread(HANDLE hProcess, LPTHREAD_START_ROUTINE  lpThreadProc, LPVOID lpDllName,bool bFreeDll)	//æ™®é€šè¿œç¨‹çº¿ç¨‹
 {
 	bool ret=false;
 	HANDLE hThread = NULL;
@@ -205,7 +205,7 @@ bool CInjector::InjectByCreateRemoteThread(HANDLE hProcess, LPTHREAD_START_ROUTI
 	
 	if(WaitForSingleObject(hThread,1000)==WAIT_TIMEOUT)
 	{
-		OutputDebugString( _T( "µÈ´ıCreateRemoteThread·µ»Ø³¬Ê±!" ) );
+		OutputDebugString( _T( "ç­‰å¾…CreateRemoteThreadè¿”å›è¶…æ—¶!" ) );
 		ret=false;
 	}
 	else

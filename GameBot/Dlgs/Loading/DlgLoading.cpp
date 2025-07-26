@@ -1,11 +1,11 @@
-// ./Dlgs/Loading/DlgLoading.cpp : ÊµÏÖÎÄ¼ş
+// ./Dlgs/Loading/DlgLoading.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "../../StdAfx.h"
 #include "DlgLoading.h"
 
 
-// CDlgLoading ¶Ô»°¿ò
+// CDlgLoading å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CDlgLoading, CDialog)
 
@@ -30,11 +30,11 @@ BEGIN_MESSAGE_MAP(CDlgLoading, CDialog)
 END_MESSAGE_MAP()
 
 
-// CDlgLoading ÏûÏ¢´¦Àí³ÌĞò
+// CDlgLoading æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 void CDlgLoading::OnTimer(UINT_PTR nIDEvent)
 {
-	// TODO: ÔÚ´ËÌí¼ÓÏûÏ¢´¦Àí³ÌĞò´úÂëºÍ/»òµ÷ÓÃÄ¬ÈÏÖµ
+	// TODO: åœ¨æ­¤æ·»åŠ æ¶ˆæ¯å¤„ç†ç¨‹åºä»£ç å’Œ/æˆ–è°ƒç”¨é»˜è®¤å€¼
 	PlayAnimation();
 	CDialog::OnTimer(nIDEvent);
 }
@@ -48,7 +48,7 @@ void CDlgLoading::PlayAnimation()
 	CString str;
 	CStatic *pStaticText=(CStatic*)GetDlgItem(IDC_STATIC_SHOW_TEXT);
 	pStaticText->GetWindowText(str);
-	str=str.Left(9);	//È¡×ó±ß9¸ö×Ö·û
+	str=str.Left(9);	//å–å·¦è¾¹9ä¸ªå­—ç¬¦
 	for(int i=0;i<=count;++i)
 	{
 		str+=_T(".");

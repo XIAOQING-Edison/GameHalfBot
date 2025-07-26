@@ -6,7 +6,7 @@ class CWndNotify
 {
 private:
 	WPEX_STATUS m_wpex_Status;
-	DWORD m_showFlag;	//ÏÔÊ¾±ê¼Ç
+	DWORD m_showFlag;	//æ˜¾ç¤ºæ ‡è®°
 public:
     CWndNotify()
     {

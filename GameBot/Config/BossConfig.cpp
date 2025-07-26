@@ -64,14 +64,14 @@ int CBossConfig::GetBossMaxTimeoutFromCfg()
 }
 
 
-void CBossConfig::SetBossKillModeToCfg(int mode)	//ÊÖ¶¯»ò×Ô¶¯Ä£Ê½
+void CBossConfig::SetBossKillModeToCfg(int mode)	//æ‰‹åŠ¨æˆ–è‡ªåŠ¨æ¨¡å¼
 {
 	CConfig::WriteInt(m_sectionName.c_str(),m_szBossKillMode,0,mode);
 
 }
 
 
-int CBossConfig::GetBossKillModeFromCfg()	//ÊÖ¶¯»ò×Ô¶¯Ä£Ê½
+int CBossConfig::GetBossKillModeFromCfg()	//æ‰‹åŠ¨æˆ–è‡ªåŠ¨æ¨¡å¼
 {
 	return CConfig::ReadInt(m_sectionName.c_str(),m_szBossKillMode,0);
 

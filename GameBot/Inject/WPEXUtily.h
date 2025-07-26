@@ -17,7 +17,7 @@ struct NtCreateThreadExBuffer
 };
 
 
-//32Î»ºÍ64Î»ÓĞ²»Í¬
+//32ä½å’Œ64ä½æœ‰ä¸åŒ
 #ifdef _M_IX86
 typedef DWORD( WINAPI *PFNTCREATETHREADEX )(
 	PHANDLE hThread, ACCESS_MASK DesiredAccess, LPVOID ObjectAttributes, HANDLE ProcessHandle, LPTHREAD_START_ROUTINE lpStartAddress,
@@ -33,7 +33,7 @@ typedef struct _CLIENT_ID {
 	HANDLE UniqueThread;
 } CLIENT_ID, *PCLIENT_ID;
 
-//ÕâÀï»¹²»ÖªµÀ32ºÍ64ÊÇ·ñÓĞÇø±ğ
+//è¿™é‡Œè¿˜ä¸çŸ¥é“32å’Œ64æ˜¯å¦æœ‰åŒºåˆ«
 typedef DWORD(NTAPI * pfnRtlCreateUserThread)(
 	IN HANDLE ProcessHandle,
 	IN PSECURITY_DESCRIPTOR SecurityDescriptor OPTIONAL,
@@ -62,13 +62,13 @@ BOOL MyCreateRemoteThread( HANDLE hProcess, LPTHREAD_START_ROUTINE  lpThreadProc
 {
     HANDLE hThread = NULL;
     FARPROC pFunc = NULL;
-	//test£¬ÏÈ²»ÓÃntcreateThread
-    if ( IsVistaOrLater() &&FALSE) //NT6.0ÒÔºó£¬ÓĞ´óÅ£ÓÃOD½øĞĞµ÷ÊÔ¸ú½ø·¢ÏÖ×îÖÕµ÷ÓÃµÄÊÂntdll.NtCreateThreadExº¯Êı½øĞĞ´´½¨Ô¶³ÌÏß³Ì
+	//testï¼Œå…ˆä¸ç”¨ntcreateThread
+    if ( IsVistaOrLater() &&FALSE) //NT6.0ä»¥åï¼Œæœ‰å¤§ç‰›ç”¨ODè¿›è¡Œè°ƒè¯•è·Ÿè¿›å‘ç°æœ€ç»ˆè°ƒç”¨çš„äº‹ntdll.NtCreateThreadExå‡½æ•°è¿›è¡Œåˆ›å»ºè¿œç¨‹çº¿ç¨‹
     {
         pFunc = GetProcAddress( GetModuleHandle( _TEXT( "ntdll.dll" ) ), "NtCreateThreadEx" );
         if ( pFunc == NULL )
         {
-            OutputDebugString( _TEXT( "»ñÈ¡NtCreateThreadExµØÖ·Ê§°Ü!" ) );
+            OutputDebugString( _TEXT( "è·å–NtCreateThreadExåœ°å€å¤±è´¥!" ) );
             return FALSE;
         }
         __try
@@ -91,7 +91,7 @@ BOOL MyCreateRemoteThread( HANDLE hProcess, LPTHREAD_START_ROUTINE  lpThreadProc
         }
         if ( hThread == NULL )
         {
-            OutputDebugString( _TEXT( "µ÷ÓÃNtCreateThreadExÊ§°Ü!" ) );
+            OutputDebugString( _TEXT( "è°ƒç”¨NtCreateThreadExå¤±è´¥!" ) );
             return FALSE;
         }
         
@@ -106,7 +106,7 @@ BOOL MyCreateRemoteThread( HANDLE hProcess, LPTHREAD_START_ROUTINE  lpThreadProc
     }
     if ( WAIT_TIMEOUT == WaitForSingleObject( hThread, INFINITE ) )
     {
-        OutputDebugString( _TEXT( "µÈ´ı³¬Ê±!" ) );
+        OutputDebugString( _TEXT( "ç­‰å¾…è¶…æ—¶!" ) );
         return FALSE;
     }
     CloseHandle( hThread );
@@ -182,7 +182,7 @@ BOOL InjectDll( DWORD dwPID, LPCTSTR lpszDllName )
         }
 
 		//test
-		//_stprintf(buf,_TEXT("ÒªĞ´Èë:%d×Ö½Ú£¬ÒÑĞ´Èë:%d×Ö½Ú"),cb,bytesWritten);
+		//_stprintf(buf,_TEXT("è¦å†™å…¥:%då­—èŠ‚ï¼Œå·²å†™å…¥:%då­—èŠ‚"),cb,bytesWritten);
 		//MessageBox(NULL,buf,_TEXT("Info"),MB_OK);
         
 #ifdef _UNICODE

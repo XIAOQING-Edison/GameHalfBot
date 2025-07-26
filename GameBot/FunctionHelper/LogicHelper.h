@@ -3,7 +3,7 @@
 class CPlayer;
 class CGameLogicHelper;
 class CGameOperation;
-//作为其它逻辑类的基类
+//浣滀负鍏跺畠閫昏緫绫荤殑鍩虹被
 class CLogicHelper
 {
 public:
@@ -13,10 +13,10 @@ public:
 	void SetGameLogicHelper(CGameLogicHelper *pLogicHelper);
 
 protected:
-	virtual void Init();	//子类继承
+	virtual void Init();	//瀛愮被缁ф壙
 protected:
 	CPlayer *m_pThisPlayer;
-	CGameOperation *m_pGameOperation;	//游戏操作类，用来执行一系列发包流程
-	CGameLogicHelper *m_pGameLogicHelper;	//为了调用某些功能
+	CGameOperation *m_pGameOperation;	//娓告垙鎿嶄綔绫伙紝鐢ㄦ潵鎵ц涓�绯诲垪鍙戝寘娴佺▼
+	CGameLogicHelper *m_pGameLogicHelper;	//涓轰簡璋冪敤鏌愪簺鍔熻兘
 
 };

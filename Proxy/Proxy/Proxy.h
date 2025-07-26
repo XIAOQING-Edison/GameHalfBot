@@ -5,7 +5,7 @@
 // that uses this DLL. This way any other project whose source files include this file see 
 // PROXY_API functions as being imported from a DLL, wheras this DLL sees symbols
 // defined with this macro as being exported.
-//以C方式导出方便使用
+//浠鏂瑰紡瀵煎嚭鏂逛究浣跨敤
 #ifdef PROXY_EXPORTS
 #define PROXY_API extern "C"__declspec(dllexport)
 #else
@@ -29,7 +29,7 @@ extern "C"{
 #endif // _cplusplus
 
 
-//导出停止，暂停，开始的接口
+//瀵煎嚭鍋滄锛屾殏鍋滐紝寮�濮嬬殑鎺ュ彛
 
 #ifdef __cplusplus
 extern "C"{

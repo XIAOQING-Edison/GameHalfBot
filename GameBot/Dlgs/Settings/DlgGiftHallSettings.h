@@ -2,17 +2,17 @@
 
 #include "../../Config/GiftHallConfig.h"
 #include "../../resource.h"
-// CDlgGiftHallSettings ¶Ô»°¿ò
+// CDlgGiftHallSettings å¯¹è¯æ¡†
 
 class CDlgGiftHallSettings : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgGiftHallSettings)
 
 public:
-	CDlgGiftHallSettings(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgGiftHallSettings(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgGiftHallSettings();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_GIFT_HALL_SETTINGS };
 
 	void SetConfigObject(CGiftHallConfig *p){m_pGiftHallConfig=p;}
@@ -45,13 +45,13 @@ private:
 	CButton *m_pChkAutoGetOnlineReward;
 	CButton *m_pChkAutoGetOfflineExp;
 
-	CButton *m_pChkAutoSendGetVipMemberInfo;	//ÊÇ·ñ¶¨Ê±·¢ËÍ»ñÈ¡»áÔ±ÏûÏ¢
-	CButton *m_pChkAutoGetActivityReward;	//»îÔ¾¶ÈÁì½±
+	CButton *m_pChkAutoSendGetVipMemberInfo;	//æ˜¯å¦å®šæ—¶å‘é€è·å–ä¼šå‘˜æ¶ˆæ¯
+	CButton *m_pChkAutoGetActivityReward;	//æ´»è·ƒåº¦é¢†å¥–
 
-	CButton *m_pChkAutoUpdateMagicNuclear;	//Ä§ºË³äÄÜ
+	CButton *m_pChkAutoUpdateMagicNuclear;	//é­”æ ¸å……èƒ½
 
 	CButton *m_pChkAutoReadMail;
-	CButton *m_pChkAutoDeleteMailWhenRead;	//É¾³ıÒÑ¶ÁÓÊ¼ş
+	CButton *m_pChkAutoDeleteMailWhenRead;	//åˆ é™¤å·²è¯»é‚®ä»¶
 
 
 
@@ -63,7 +63,7 @@ private:
 
 	CComboBox *m_pCbGetOfflineExpType;
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:

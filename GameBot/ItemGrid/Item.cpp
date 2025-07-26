@@ -1,5 +1,5 @@
 #include "Item.h"
-#include "../GameData/ItemHelper.h"	//´ÓitemhelperÀïÖ±½Ó¶ÁÈ¡
+#include "../GameData/ItemHelper.h"	//ä»Žitemhelperé‡Œç›´æŽ¥è¯»å–
 #include "../GameData/EquipHelper.h"
 #include "../Protocol/Bag/InfoItemInfo.h"
 
@@ -32,8 +32,8 @@ void CItem::Init()
 
 
 
-//½âÎöÎïÆ·¸ñÀïµÄÎïÆ·
-//ÕâÀïÐèÒªÖ±½ÓÊÇCInfoItemInfoÖ¸Õë£¬²»ÄÜÊÇÆäËüÖ¸Õë
+//è§£æžç‰©å“æ ¼é‡Œçš„ç‰©å“
+//è¿™é‡Œéœ€è¦ç›´æŽ¥æ˜¯CInfoItemInfoæŒ‡é’ˆï¼Œä¸èƒ½æ˜¯å…¶å®ƒæŒ‡é’ˆ
 bool CItem::ParseInfoItemToItem(void *pInfoItem)
 {
 	bool ret=true;
@@ -43,20 +43,20 @@ bool CItem::ParseInfoItemToItem(void *pInfoItem)
 
 	if(!pInfoItem)
 	{
-		Init();	//±ä³É¿Õ¸ñ
+		Init();	//å˜æˆç©ºæ ¼
 		return ret;
 	}
 	SetPos(pItem->GetIndexInBag());
 	SetId(pItem->GetId());
 	m_itemInfo.itemId=pItem->GetConfigId();
 	SetCount(pItem->GetCount());
-	m_bIsBind=pItem->IsBind();	//ÊÇ·ñ°ó¶¨
+	m_bIsBind=pItem->IsBind();	//æ˜¯å¦ç»‘å®š
 	int i=0;
 	_ITEM_INFO_ *pItemInfo=CItemHelper::GetInstance()->GetItemInfoById(pItem->GetConfigId());
 	if(pItemInfo)
 	{			
-		m_itemInfo=*pItemInfo;	//¸´ÖÆÊôÐÔ
-		if(m_itemInfo.IsEquipItem())	//×°±¸»¹Òª½«ÊôÐÔ´æÆðÀ´
+		m_itemInfo=*pItemInfo;	//å¤åˆ¶å±žæ€§
+		if(m_itemInfo.IsEquipItem())	//è£…å¤‡è¿˜è¦å°†å±žæ€§å­˜èµ·æ¥
 		{
 			ParseInfoItemToEquip(pInfoItem);
 // 			m_excellentAttrs=pItem->;
@@ -71,7 +71,7 @@ bool CItem::ParseInfoItemToItem(void *pInfoItem)
 	{
 		ret=false;
 		{
-			TRACE_OUTPUT(_T("ÎïÆ·ÅäÖÃ:%d\tÕÒ²»µ½ÐÅÏ¢!!!!!!!\n"),pItem->GetConfigId());
+			TRACE_OUTPUT(_T("ç‰©å“é…ç½®:%d\tæ‰¾ä¸åˆ°ä¿¡æ¯!!!!!!!\n"),pItem->GetConfigId());
 		}
 	}
 
@@ -92,26 +92,26 @@ bool CItem::ParseInfoItemToEquip(void *pInfoItem)
 	return ret;
 }
 
-bool CItem::IsMaterial()	//ÊÇ·ñ²ÄÁÏ
+bool CItem::IsMaterial()	//æ˜¯å¦ææ–™
 {
 	return GetItemInfo()->itemType==EItemTypeMaterial;
 }
 
 
-bool CItem::IsLowestEquip()	//ÊÇ·ñ×îµÍ¼¶×°±¸
+bool CItem::IsLowestEquip()	//æ˜¯å¦æœ€ä½Žçº§è£…å¤‡
 {
 	CItemUtility *pItemUtility= CGlobalObject::GetInstance()->GetItemUtility();
 	_ITEM_INFO_ *pItemInfo=GetItemInfo();
 	return pItemUtility->IsEquipType(pItemInfo->itemType) && pItemInfo->quality<=1;
 }
 //////////////////////////////////////////////////////////////////////////
-bool CItem::IsMountEquipType()//ÊÇ·ñ×øÆï×°±¸
+bool CItem::IsMountEquipType()//æ˜¯å¦åéª‘è£…å¤‡
 {
 	return (m_itemInfo.itemType==EItemTypeEquipe && m_itemInfo.itemSubType==EItemSubTypeMount);
 }
 
 
-bool CItem::IsEquipSuit()	//ÊÇ·ñÌ××°?
+bool CItem::IsEquipSuit()	//æ˜¯å¦å¥—è£…?
 {
 	return m_equipInfo.GetExtraInfo()->strSuitId.length()>0;
 }

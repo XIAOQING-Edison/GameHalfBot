@@ -17,7 +17,7 @@ int CInfoRoleTask::Decode(CStreamReadWrite *pStreamBuf)
 
 
 
-	TRACE_OUTPUT(_T("解析CInfoRoleTask\n"));
+	TRACE_OUTPUT(_T("瑙ｆ瀽CInfoRoleTask\n"));
 
 	bool bFinish=false;
 	int restBytes=m_packageLengthInRes;
@@ -54,6 +54,6 @@ int CInfoRoleTask::Decode(CStreamReadWrite *pStreamBuf)
 	}
 EXT:
 	handleLength=pStreamBuf->GetHandlePos()-orgPos;
-	//TRACE_OUTPUT(_T("CInfoRoleTask 解析长度:%d\n"),handleLength);
+	//TRACE_OUTPUT(_T("CInfoRoleTask 瑙ｆ瀽闀垮害:%d\n"),handleLength);
 	return handleLength;
 }

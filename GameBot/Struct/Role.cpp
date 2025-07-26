@@ -9,11 +9,11 @@ CRole::~CRole(void)
 }
 
 
-bool CRole::ParseInfoRoleToRoleStruct(void *pInfoRole)	//解析协议中的角色信息
+bool CRole::ParseInfoRoleToRoleStruct(void *pInfoRole)	//瑙ｆ瀽鍗忚涓殑瑙掕壊淇℃伅
 {
 	bool ret=true;
 	CInfoRoleSimpleInfo *pInfo=(CInfoRoleSimpleInfo*)pInfoRole;
-	m_roleId=pInfo->GetRoleId();	//暂时只解析roleId字段
+	m_roleId=pInfo->GetRoleId();	//鏆傛椂鍙В鏋恟oleId瀛楁
 
 	return ret;
 }

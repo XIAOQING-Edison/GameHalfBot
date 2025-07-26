@@ -1,8 +1,8 @@
 #include "HookHelper.h"
 #include "../ProtocolMap.h"
 #include "../Player.h"
-#include "../FunctionHelper/GameLogicHelper.h"	//ÓÃÓÚ¿ØÖÆÂß¼­
-#include "../FunctionHelper/SocketHelper.h"	//ÊÕ·¢°ü
+#include "../FunctionHelper/GameLogicHelper.h"	//ç”¨äºæ§åˆ¶é€»è¾‘
+#include "../FunctionHelper/SocketHelper.h"	//æ”¶å‘åŒ…
 
 #include "../Config/GameConfig.h"
 #include "../Config/GiftHallConfig.h"
@@ -10,14 +10,14 @@
 #include "Misc.h"
 #include <time.h>
 
-#define  PACKET_CAPTURE_ON	0	//×¥°ü±ê¼Ç1ÊÇ×¥°ü
+#define  PACKET_CAPTURE_ON	0	//æŠ“åŒ…æ ‡è®°1æ˜¯æŠ“åŒ…
 
 // #include "../libs/mhook64.lib"
 
 
 CHookHelper *CHookHelper::s_pHookHelperInstance=NULL;
 
-const int g_hook_modify_count=1;	//ĞèÒªĞŞ¸ÄµÄµØ·½
+const int g_hook_modify_count=1;	//éœ€è¦ä¿®æ”¹çš„åœ°æ–¹
 
 char g_heartBeatRes[]={0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0xF4, 0x00, 0x00, 0x08};
 char g_heartBeatReq[0xa]={0x00,0x00,0x00,0x06,0x00,0x00,0x00,0x00,0xfb,0xa9};
@@ -26,17 +26,17 @@ char g_createRoleReq[]={0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0xED, 0x00, 0x
 
 char g_loginMapReq[10] = {	0x00, 0x00, 0x00, 0x0A, 0x00, 0x01, 0x87, 0xCD, 0x00, 0x00};//ReqLoginMap
 
-char g_sendLoginReq[0xa]={0x00,0x00,0x00,0x00,0x00,0x00,0x03,0xe9,0x00,0x00};	//Ìø¹ıµÚ3×Ö½Ú£¬ÒòÎª×Ü³¤¿ÉÄÜ²»Ò»Ñù
+char g_sendLoginReq[0xa]={0x00,0x00,0x00,0x00,0x00,0x00,0x03,0xe9,0x00,0x00};	//è·³è¿‡ç¬¬3å­—èŠ‚ï¼Œå› ä¸ºæ€»é•¿å¯èƒ½ä¸ä¸€æ ·
 char g_recvLoginRes[0xa]={0x00,0x00,0x00,0x23,0x00,0x00,0x03,0xea,0x00,0x00};	
 
-char g_sendChooseRoleReq[]={0x00,0x00,0x00,0x00,0x00,0x00,0x03,0xef,0x00,0x00};	//ºóÃæĞŞ¸Ä
-char g_recvChooseRoleRes[]={0x00,0x00,0x00,0x00,0x00,0x00,0x03,0xef,0x00,0x00};	//½ÇÉ«²ÎÊı
+char g_sendChooseRoleReq[]={0x00,0x00,0x00,0x00,0x00,0x00,0x03,0xef,0x00,0x00};	//åé¢ä¿®æ”¹
+char g_recvChooseRoleRes[]={0x00,0x00,0x00,0x00,0x00,0x00,0x03,0xef,0x00,0x00};	//è§’è‰²å‚æ•°
 
-char g_recvEnterGameRes[]={0x00,0x00,0x00,0x00,0x00,0x00,0x03,0xF2,0x00,0x00};	//³¤¶È¿ÉÄÜ»á±ä£¬½øÈëÓÎÏ·»ØÓ¦
+char g_recvEnterGameRes[]={0x00,0x00,0x00,0x00,0x00,0x00,0x03,0xF2,0x00,0x00};	//é•¿åº¦å¯èƒ½ä¼šå˜ï¼Œè¿›å…¥æ¸¸æˆå›åº”
 
 
 
-WORD g_minPort=2000;	//¼ÙÉèĞèÒªµÄ¶Ë¿ÚÊÇÒª2000ÒÔÉÏµÄ²ÅÀ¹½Ø
+WORD g_minPort=2000;	//å‡è®¾éœ€è¦çš„ç«¯å£æ˜¯è¦2000ä»¥ä¸Šçš„æ‰æ‹¦æˆª
 
 
 // char *TestReadFileTest(const TCHAR *szPath,int &fileLength)
@@ -85,9 +85,9 @@ CHookHelper::CHookHelper(void)
 	Reset();
 	m_pStreamBufRecv=new CStreamReadWrite(E_ENDIAN_TYPE_BIG_ENDIAN,MAX_STACK_BUF_LENGTH);
 	m_pStreamBufSend=new CStreamReadWrite(E_ENDIAN_TYPE_BIG_ENDIAN,MAX_STACK_BUF_LENGTH);
-	m_pRecvBuf=new char[MAX_STACK_BUF_LENGTH*0x10];	//64k½ÓÊÕ»º³å
-	m_pSendBuf=new char[MAX_STACK_BUF_LENGTH];	//4k·¢ËÍ»º³å
-	m_pTmpRecvBuf=new char[MAX_STACK_BUF_LENGTH*0x10];	//ÁÙÊ±½ÓÊÕ
+	m_pRecvBuf=new char[MAX_STACK_BUF_LENGTH*0x10];	//64kæ¥æ”¶ç¼“å†²
+	m_pSendBuf=new char[MAX_STACK_BUF_LENGTH];	//4kå‘é€ç¼“å†²
+	m_pTmpRecvBuf=new char[MAX_STACK_BUF_LENGTH*0x10];	//ä¸´æ—¶æ¥æ”¶
 
 }
 
@@ -123,7 +123,7 @@ void CHookHelper::DeleteInstance()
 }
 
 
-void CHookHelper::CheckAndSetSocket(SOCKET s,const char *ip,WORD port)	//Éè¶¨ËùĞèÒªµÄsocket
+void CHookHelper::CheckAndSetSocket(SOCKET s,const char *ip,WORD port)	//è®¾å®šæ‰€éœ€è¦çš„socket
 {
 	
 	if(port==GetMainServerPort()&& ip==GetMainServerIp())
@@ -139,7 +139,7 @@ void CHookHelper::CheckAndSetSocket(SOCKET s,const char *ip,WORD port)	//Éè¶¨ËùĞ
 	}
 }
 
-void CHookHelper::Reset()	//ÊµÊ¼»¯¸÷ÖÖ±äÁ¿£¬ÕâÀï¿ÉÄÜĞèÒªÍâ²¿µ÷ÓÃ
+void CHookHelper::Reset()	//å®å§‹åŒ–å„ç§å˜é‡ï¼Œè¿™é‡Œå¯èƒ½éœ€è¦å¤–éƒ¨è°ƒç”¨
 {
 	m_crossServerSocket=INVALID_SOCKET;
 	m_crossServerPort=0;
@@ -155,7 +155,7 @@ void CHookHelper::Reset()	//ÊµÊ¼»¯¸÷ÖÖ±äÁ¿£¬ÕâÀï¿ÉÄÜĞèÒªÍâ²¿µ÷ÓÃ
 
 }
 
-void CHookHelper::ResetSocketAndStreamBuf()	//¶Ï¿ªÊ±ËùÓĞ¶«Î÷ÖØÖÃ
+void CHookHelper::ResetSocketAndStreamBuf()	//æ–­å¼€æ—¶æ‰€æœ‰ä¸œè¥¿é‡ç½®
 {
 	ResetCrossServerSocket();
 
@@ -176,7 +176,7 @@ void CHookHelper::ResetCrossServerStreamBuffer()
 // 	pStreamBuf->SetHandlePos(0);
 }
 
-void CHookHelper::ResetCrossServerSocket()	//ÍË³ö¿ç·şÊ±ÖØÖÃ
+void CHookHelper::ResetCrossServerSocket()	//é€€å‡ºè·¨æœæ—¶é‡ç½®
 {
 	m_crossServerSocket=INVALID_SOCKET;
 	m_crossServerPort=0;
@@ -190,7 +190,7 @@ bool CHookHelper::IsInGameServer()
 }
 
 
-void CHookHelper::CheckSocketState(SOCKET s)	//¼ì²âsocket×´Ì¬
+void CHookHelper::CheckSocketState(SOCKET s)	//æ£€æµ‹socketçŠ¶æ€
 {
 	int err = WSAGetLastError();
 	bool bNeedReset=false;
@@ -223,11 +223,11 @@ void CHookHelper::CheckSocketState(SOCKET s)	//¼ì²âsocket×´Ì¬
 
 
 
-int CHookHelper::HandleRecv(SOCKET s,char *buf,int len,int bufLength,char **newBuf,bool &bIsModify)	//ÕâÀï»á½øĞĞĞŞ¸Ä»ò½âÎö²Ù×÷,·µ»Ønewlen
+int CHookHelper::HandleRecv(SOCKET s,char *buf,int len,int bufLength,char **newBuf,bool &bIsModify)	//è¿™é‡Œä¼šè¿›è¡Œä¿®æ”¹æˆ–è§£ææ“ä½œ,è¿”å›newlen
 {
 	int newLength=len;
 	bool ret=false;
-	struct sockaddr_in sa;	//ÓÃÀ´getpeer
+	struct sockaddr_in sa;	//ç”¨æ¥getpeer
 
 	int handleLength=0;
 	int zeroLen=0;	
@@ -235,7 +235,7 @@ int CHookHelper::HandleRecv(SOCKET s,char *buf,int len,int bufLength,char **newB
 	string ip;
 	WORD port=0;
 
-	if(!m_pPlayer->IsLoginAlready() && m_pPlayer->IsRoleChosenAlready() && m_pPlayer->IsInGameAlready())	//login=false,ÆäËüÎªtrueÔò±íÊ¾¶ÏÏßÁË
+	if(!m_pPlayer->IsLoginAlready() && m_pPlayer->IsRoleChosenAlready() && m_pPlayer->IsInGameAlready())	//login=false,å…¶å®ƒä¸ºtrueåˆ™è¡¨ç¤ºæ–­çº¿äº†
 	{
 		if(!getpeername(s,(struct sockaddr *)&sa, &saLen))
 		{
@@ -244,14 +244,14 @@ int CHookHelper::HandleRecv(SOCKET s,char *buf,int len,int bufLength,char **newB
 		}
 		if(GetMainServerIp()==ip && GetMainServerPort()==port)
 		{
-			TRACE_OUTPUT(_T("Recv»ñµÃ¶ÏÏßÖØÁ¬socket:%x\n"),s);
+			TRACE_OUTPUT(_T("Recvè·å¾—æ–­çº¿é‡è¿socket:%x\n"),s);
 			SetMainServerSocket(s);
 			m_pPlayer->SetLoginAlready(true);
 			m_pPlayer->GetSocketHelper()->SetSocket(s);
 		}
 		else
 		{
-			TRACE_OUTPUT(_T("¶ÏÏßºóÀ¹½Øµ½socketĞÅÏ¢---ip:%s,port:%d\n"),GBKToUnicode(ip.c_str()).c_str(),port);
+			TRACE_OUTPUT(_T("æ–­çº¿åæ‹¦æˆªåˆ°socketä¿¡æ¯---ip:%s,port:%d\n"),GBKToUnicode(ip.c_str()).c_str(),port);
 		}
 	}
 
@@ -261,20 +261,20 @@ EXT:
 
 
 
-int CHookHelper::HandleSend(SOCKET s,char *buf,int len,char **newBuf,bool &bIsModify)	//ÕâÀï»áĞŞ¸Ä·¢ËÍ²Ù×÷,·µ»Ønewlen
+int CHookHelper::HandleSend(SOCKET s,char *buf,int len,char **newBuf,bool &bIsModify)	//è¿™é‡Œä¼šä¿®æ”¹å‘é€æ“ä½œ,è¿”å›newlen
 {
 	int newLength=len;
-	struct sockaddr_in sa;	//ÓÃÀ´getpeer
+	struct sockaddr_in sa;	//ç”¨æ¥getpeer
 	int zeroLen=0;	
 	int saLen = sizeof(sa);
 	string ip;
 	WORD port=0;
 	const char cmpBuf[]={0x00,0x00,0x00,0x0a};
 
-	if(!m_pPlayer->IsLoginAlready() && len<0xff )	//»¹Ã»ÕÒµ½µÇÂ½°üÊ±,¼Ù¶¨µÇÂ½°ü×ÜÊÇĞ¡ÓÚ0xff×Ö½Ú
+	if(!m_pPlayer->IsLoginAlready() && len<0xff )	//è¿˜æ²¡æ‰¾åˆ°ç™»é™†åŒ…æ—¶,å‡å®šç™»é™†åŒ…æ€»æ˜¯å°äº0xffå­—èŠ‚
 	{
-// 		TRACE_OUTPUT(_T("Hook·¢°üÄÚÈİ:%s\n"),HexArrayToString(buf,len).c_str());
-		if(m_pPlayer->IsRoleChosenAlready() && m_pPlayer->IsInGameAlready())	//login=false,ÆäËüÎªtrueÔò±íÊ¾¶ÏÏßÁË
+// 		TRACE_OUTPUT(_T("Hookå‘åŒ…å†…å®¹:%s\n"),HexArrayToString(buf,len).c_str());
+		if(m_pPlayer->IsRoleChosenAlready() && m_pPlayer->IsInGameAlready())	//login=false,å…¶å®ƒä¸ºtrueåˆ™è¡¨ç¤ºæ–­çº¿äº†
 		{
 			if(!getpeername(s,(struct sockaddr *)&sa, &saLen))
 			{
@@ -283,8 +283,8 @@ int CHookHelper::HandleSend(SOCKET s,char *buf,int len,char **newBuf,bool &bIsMo
 			}
 			if(GetMainServerIp()==ip && GetMainServerPort()==port)
 			{
-				//TRACE_OUTPUT(_T("Hook¶ÏÏßÖØÁ¬·¢°üÄÚÈİ:%s\n"),HexArrayToString(buf,len).c_str());
-				TRACE_OUTPUT(_T("»ñµÃ¶ÏÏßÖØÁ¬socket:%x\n"),s);
+				//TRACE_OUTPUT(_T("Hookæ–­çº¿é‡è¿å‘åŒ…å†…å®¹:%s\n"),HexArrayToString(buf,len).c_str());
+				TRACE_OUTPUT(_T("è·å¾—æ–­çº¿é‡è¿socket:%x\n"),s);
 				SetMainServerSocket(s);
 				m_pPlayer->SetLoginAlready(true);
 				m_pPlayer->GetSocketHelper()->SetSocket(s);
@@ -292,13 +292,13 @@ int CHookHelper::HandleSend(SOCKET s,char *buf,int len,char **newBuf,bool &bIsMo
 		}
 		else if(CHookHelper::GetInstance()->CheckIsSendLoginMessage(buf,len))
 		{
-			//·¢ËÍµÇÂ½£¬°ÑµÇÂ½²ÎÊıÈ¡³öÀ´
+			//å‘é€ç™»é™†ï¼ŒæŠŠç™»é™†å‚æ•°å–å‡ºæ¥
 			m_pPlayer->SetLoginAlready(false);
 			m_pPlayer->SetChooseRoleAlreay(false);
 			m_pPlayer->SetInGameAlready(false);
-			TRACE_OUTPUT(_T("¼ì²âµ½·¢ËÍµÇÂ½°ü,socket:0x%x\n"),s);
+			TRACE_OUTPUT(_T("æ£€æµ‹åˆ°å‘é€ç™»é™†åŒ…,socket:0x%x\n"),s);
 			CHookHelper::GetInstance()->SetMainServerSocket(s);
-// 			if(CHookHelper::GetInstance()->DuplicateSocket(s) && CHookHelper::GetInstance()->CreateDuplicateSocket())//duplicate socketÒ²·¢²»³öÀ´
+// 			if(CHookHelper::GetInstance()->DuplicateSocket(s) && CHookHelper::GetInstance()->CreateDuplicateSocket())//duplicate socketä¹Ÿå‘ä¸å‡ºæ¥
 // 			{
 // 				m_pPlayer->GetSocketHelper()->SetSocket(m_duplicateSocket);
 // 				m_pPlayer->GetSocketHelper()->SetSocketOptBlock(true);
@@ -306,8 +306,8 @@ int CHookHelper::HandleSend(SOCKET s,char *buf,int len,char **newBuf,bool &bIsMo
 // 			else
 			{
 				//test
-// 				int nNetTimeout=10;//10ms£¬
-// 				//ÉèÖÃ·¢ËÍ³¬Ê±
+// 				int nNetTimeout=10;//10msï¼Œ
+// 				//è®¾ç½®å‘é€è¶…æ—¶
 // 				setsockopt(s,SOL_SOCKET,SO_SNDTIMEO,(char *)&nNetTimeout,sizeof(int));
 				m_pPlayer->GetSocketHelper()->SetSocket(s);
 			}
@@ -320,14 +320,14 @@ int CHookHelper::HandleSend(SOCKET s,char *buf,int len,char **newBuf,bool &bIsMo
 			}
 			else
 			{
-				TRACE_OUTPUT(_T("È¡µÃip¶ÔÓ¦ĞÅÏ¢socket·¢Éú´íÎó,´úÂë:%x\n"),WSAGetLastError());
+				TRACE_OUTPUT(_T("å–å¾—ipå¯¹åº”ä¿¡æ¯socketå‘ç”Ÿé”™è¯¯,ä»£ç :%x\n"),WSAGetLastError());
 				goto EXT;
 			}
 
 		}
 	
 	}
-	else if(GetMainServerSocket()==s)	//×¥·¢°üÊ±´ò¿ª
+	else if(GetMainServerSocket()==s)	//æŠ“å‘åŒ…æ—¶æ‰“å¼€
 	{
 
 	}
@@ -341,28 +341,28 @@ EXT:
 
 
 
-bool CHookHelper::IsSameMainGameSocket(SOCKET s)	//ÊÇ·ñÊÇÖ÷socket,ÕâÀïÊÇµÇÂ½ÓÃµÄsocket
+bool CHookHelper::IsSameMainGameSocket(SOCKET s)	//æ˜¯å¦æ˜¯ä¸»socket,è¿™é‡Œæ˜¯ç™»é™†ç”¨çš„socket
 {
 	return IsMainSocketValid() && (GetMainServerSocket()==s);
 }
 
 
-bool CHookHelper::CheckIsSendLoginMessage(const char *data,int len)	//¼ì²éÊÇ·ñÊÇµÇÂ½°ü
+bool CHookHelper::CheckIsSendLoginMessage(const char *data,int len)	//æ£€æŸ¥æ˜¯å¦æ˜¯ç™»é™†åŒ…
 {
 	bool ret=false;
 	m_pStreamBufSend->SetBufPos(0);
 	m_pStreamBufSend->SetHandlePos(0);
 	m_pStreamBufSend->CopyBufAndLength((char*)data,len);
-	int packageLength=m_pStreamBufSend->ReadFixedInt32();	//4×Ö½Ú¹Ì¶¨³¤¶È
-	int cmpLen1=3;	//±È½ÏÇ°3×Ö½Ú
-	int cmpLen2=sizeof(g_sendLoginReq)-cmpLen1-1;	//Ìø¹ı³¤¶ÈÄ³¸ö×Ö½Ú		
-	//TRACE_OUTPUT(_T("Hook·¢°ü³É¹¦!³¤¶È:%d,Êı¾İ:%s\n"),len,HexArrayToString(data,len).c_str());
+	int packageLength=m_pStreamBufSend->ReadFixedInt32();	//4å­—èŠ‚å›ºå®šé•¿åº¦
+	int cmpLen1=3;	//æ¯”è¾ƒå‰3å­—èŠ‚
+	int cmpLen2=sizeof(g_sendLoginReq)-cmpLen1-1;	//è·³è¿‡é•¿åº¦æŸä¸ªå­—èŠ‚		
+	//TRACE_OUTPUT(_T("Hookå‘åŒ…æˆåŠŸ!é•¿åº¦:%d,æ•°æ®:%s\n"),len,HexArrayToString(data,len).c_str());
 	if(packageLength<0xff && len<0xff)
 	{
-// 		TRACE_OUTPUT(_T("¼ì²âÓÎÏ··¢°üÔÚºÏ·¨·¶Î§,³¤¶È:%d\n"),packageLength);
+// 		TRACE_OUTPUT(_T("æ£€æµ‹æ¸¸æˆå‘åŒ…åœ¨åˆæ³•èŒƒå›´,é•¿åº¦:%d\n"),packageLength);
 		if(memcmp(g_sendLoginReq,data,cmpLen1)==0&& memcmp(data+cmpLen1+1,g_sendLoginReq+cmpLen1+1,cmpLen2)==0)
 		{
-// 			TRACE_OUTPUT(_T("¼ì²âÓÎÏ·ÀïµÄµÇÂ½·¢°üÊı¾İ:%s\n"),HexArrayToString(data,len).c_str());
+// 			TRACE_OUTPUT(_T("æ£€æµ‹æ¸¸æˆé‡Œçš„ç™»é™†å‘åŒ…æ•°æ®:%s\n"),HexArrayToString(data,len).c_str());
 			ret=true;
 		}
 

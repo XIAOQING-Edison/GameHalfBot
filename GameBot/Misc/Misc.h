@@ -43,14 +43,14 @@ public:
 	bool SendReportMaterialDataToMainHwnd(LPARAM lParam);
 
 
-	bool SendPopupMsgBox(int msgType,const TCHAR* szMsg);	//·¢ËÍµ¯¿ò²¢Ê¹Ä³°´Å¥¼¤»î
+	bool SendPopupMsgBox(int msgType,const TCHAR* szMsg);	//å‘é€å¼¹æ¡†å¹¶ä½¿æŸæŒ‰é’®æ¿€æ´»
 
 
 	bool SendDataToOtherWindow(HWND hClient,COPYDATASTRUCT *pCopyStruct);
 
-	bool ChangeThemeOnWin7();	//×ª³Ébasic
+	bool ChangeThemeOnWin7();	//è½¬æˆbasic
 
 private:
-	HWND m_hwndMain;	//Ö÷´°¿ÚÓÃÀ´´¦ÀíĞÅÏ¢Ö®Àà
+	HWND m_hwndMain;	//ä¸»çª—å£ç”¨æ¥å¤„ç†ä¿¡æ¯ä¹‹ç±»
 	static CMisc *s_pMisc;
 };

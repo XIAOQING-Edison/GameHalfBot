@@ -12,7 +12,7 @@ CProtocolLoginRes::~CProtocolLoginRes(void)
 
 
 
-//到这里就只剩下包体直接解析了，没有头部信息或者其它flag
+//鍒拌繖閲屽氨鍙墿涓嬪寘浣撶洿鎺ヨВ鏋愪簡锛屾病鏈夊ご閮ㄤ俊鎭垨鑰呭叾瀹僨lag
 int CProtocolLoginRes::Decode(CStreamReadWrite *pStreamBuf)
 {
 	int handleLength=0;
@@ -23,8 +23,8 @@ int CProtocolLoginRes::Decode(CStreamReadWrite *pStreamBuf)
 	int restBytes=m_packageLengthInRes-protocol_header_length;
 	int objLength=0;
 
-	TRACE_OUTPUT(_T("解析login Res\n"));
-	//TRACE_OUTPUT(_T("login Res内容:%s\n"),HexArrayToString(pStreamBuf->GetBufHead()+orgPos,restBytes).c_str());
+	TRACE_OUTPUT(_T("瑙ｆ瀽login Res\n"));
+	//TRACE_OUTPUT(_T("login Res鍐呭:%s\n"),HexArrayToString(pStreamBuf->GetBufHead()+orgPos,restBytes).c_str());
 	//pStreamBuf->SetHandlePos(orgPos+restBytes);	//test
 	while(!bFinish)
 	{

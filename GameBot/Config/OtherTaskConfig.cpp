@@ -14,11 +14,11 @@ const TCHAR *g_szIsSpaceCorridorSelected=_T("IsSpaceCorridorSelected");
 const TCHAR *g_szIsSpecialRoomSelected=_T("IsSpecialRoomSelected");
 const TCHAR *g_szIsFastFightSelected=_T("IsFastFightSelected");
 const TCHAR *g_szIsCampWarSelected=_T("IsCampWarSelected");
-const TCHAR *g_szIsCertificateSelected=_T("IsCertificateSelected");//天使战令
-const TCHAR *g_szIsPinkDiamondSelected=_T("IsPinkDiamondSelected");//粉钻福利
+const TCHAR *g_szIsCertificateSelected=_T("IsCertificateSelected");//澶╀娇鎴樹护
+const TCHAR *g_szIsPinkDiamondSelected=_T("IsPinkDiamondSelected");//绮夐捇绂忓埄
 const TCHAR *g_szIsHorcruxSelected=_T("IsHorcruxSelected");
-const TCHAR *g_szIsOriginalSinSelected=_T("IsOriginalSinSelected");	//原罪XXX
-const TCHAR *g_szIsFairyLandSelected=_T("IsFairyLandSelected");	//原罪XXX
+const TCHAR *g_szIsOriginalSinSelected=_T("IsOriginalSinSelected");	//鍘熺姜XXX
+const TCHAR *g_szIsFairyLandSelected=_T("IsFairyLandSelected");	//鍘熺姜XXX
 const TCHAR *g_szGetFairyLandCount=_T("GetFairyLandCount");
 const TCHAR *g_szIsOrcGodBlessSelected=_T("IsOrcGodBlessSelected");
 

@@ -1,4 +1,4 @@
-// ./Dlgs/Settings/DlgDailyTaskSettings.cpp : ÊµÏÖÎÄ¼þ
+// ./Dlgs/Settings/DlgDailyTaskSettings.cpp : å®žçŽ°æ–‡ä»¶
 //
 
 #include "../../StdAfx.h"
@@ -8,9 +8,9 @@
 // static const int max_boss_num=16;
 
 
-// CDlgNeutralBossSetting ¶Ô»°¿ò
+// CDlgNeutralBossSetting å¯¹è¯æ¡†
 static const int g_bossTransferInfoCount=1;
-static const TCHAR *g_szBossTransferInfo[]={_T("bossÐÅÏ¢")
+static const TCHAR *g_szBossTransferInfo[]={_T("bossä¿¡æ¯")
 };
 
 IMPLEMENT_DYNAMIC(CDlgNeutralBossSetting, CDialog)
@@ -42,26 +42,26 @@ BEGIN_MESSAGE_MAP(CDlgNeutralBossSetting, CDialog)
 END_MESSAGE_MAP()
 
 
-// CDlgDailyTaskSettings ÏûÏ¢´¦Àí³ÌÐò
+// CDlgDailyTaskSettings æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CDlgNeutralBossSetting::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// TODO:  ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯
+	// TODO:  åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–
 	m_brush.CreateSolidBrush(RGB(255,255,255));//while brush
 	InitCtrls();
 	return TRUE;  // return TRUE unless you set the focus to a control
-	// Òì³£: OCX ÊôÐÔÒ³Ó¦·µ»Ø FALSE
+	// å¼‚å¸¸: OCX å±žæ€§é¡µåº”è¿”å›ž FALSE
 }
 
 HBRUSH CDlgNeutralBossSetting::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 {
 	HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
 
-	// TODO:  ÔÚ´Ë¸ü¸Ä DC µÄÈÎºÎÊôÐÔ
+	// TODO:  åœ¨æ­¤æ›´æ”¹ DC çš„ä»»ä½•å±žæ€§
 	hbr=(HBRUSH)m_brush;
-	// TODO:  Èç¹ûÄ¬ÈÏµÄ²»ÊÇËùÐè»­±Ê£¬Ôò·µ»ØÁíÒ»¸ö»­±Ê
+	// TODO:  å¦‚æžœé»˜è®¤çš„ä¸æ˜¯æ‰€éœ€ç”»ç¬”ï¼Œåˆ™è¿”å›žå¦ä¸€ä¸ªç”»ç¬”
 	return hbr;
 }
 
@@ -85,8 +85,8 @@ void CDlgNeutralBossSetting::InitCtrls()
 // 	}
 // 
 
-	InitListBox();//BOSSÁÐ±íÏÈÆÁ±Î
-	InitListCtrl();//ÒÑÖª´«ËÍµãÏÈÆÁ±Î
+	InitListBox();//BOSSåˆ—è¡¨å…ˆå±è”½
+	InitListCtrl();//å·²çŸ¥ä¼ é€ç‚¹å…ˆå±è”½
 }
 
 
@@ -116,7 +116,7 @@ void CDlgNeutralBossSetting::SaveCtrlsToIni()
 
 
 
-void CDlgNeutralBossSetting::InitCombo()	//Ö÷ÒªÊÇ³õÊ¼»¯µØÍ¼ÀàÐÍºÍµØÍ¼ÁÐ±í
+void CDlgNeutralBossSetting::InitCombo()	//ä¸»è¦æ˜¯åˆå§‹åŒ–åœ°å›¾ç±»åž‹å’Œåœ°å›¾åˆ—è¡¨
 {
 	int i=0;
 	int count=1;
@@ -125,7 +125,7 @@ void CDlgNeutralBossSetting::InitCombo()	//Ö÷ÒªÊÇ³õÊ¼»¯µØÍ¼ÀàÐÍºÍµØÍ¼ÁÐ±í
 
 
 
-//ÕâÀïÒ²Òª·Ö¶à°æ±¾
+//è¿™é‡Œä¹Ÿè¦åˆ†å¤šç‰ˆæœ¬
 void CDlgNeutralBossSetting::InitListBox()
 {
 	
@@ -145,7 +145,7 @@ void CDlgNeutralBossSetting::InitListCtrl()
 
 void CDlgNeutralBossSetting::OnBnClickedBtnSelect()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	int selCount=m_pLstAllBoss->GetSelCount();
 
 
@@ -154,7 +154,7 @@ void CDlgNeutralBossSetting::OnBnClickedBtnSelect()
 
 void CDlgNeutralBossSetting::OnBnClickedBtnUnselect()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	int selCount=m_pLstSelectedBoss->GetSelCount();
 
 }
@@ -169,10 +169,10 @@ int CDlgNeutralBossSetting::GetInsertIndexInList(int orgIndex,CListBox *pList)
 }
 void CDlgNeutralBossSetting::OnLbnDblclkListNeutralBossSelect()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 }
 
-//Ë«»÷
+//åŒå‡»
 void CDlgNeutralBossSetting::OnNMDblclkLstBossPoint(NMHDR *pNMHDR, LRESULT *pResult)
 {
 	*pResult = 0;
@@ -180,7 +180,7 @@ void CDlgNeutralBossSetting::OnNMDblclkLstBossPoint(NMHDR *pNMHDR, LRESULT *pRes
 
 void CDlgNeutralBossSetting::OnLbnSelchangeListNeutralBossSelect()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	int nIndex = m_pLstSelectedBoss->GetCurSel();
 
 }
@@ -192,8 +192,8 @@ void CDlgNeutralBossSetting::InitBossPointByConfigId(int configId)
 }
 void CDlgNeutralBossSetting::OnCbnSelchangeCbBossMap1()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
-	//È¡µÃÏÖÊ±µÄµØÍ¼ÏÂ±ê£¬¼ÆËã
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
+	//å–å¾—çŽ°æ—¶çš„åœ°å›¾ä¸‹æ ‡ï¼Œè®¡ç®—
 	int curSel=m_pCbSelectMaps[0]->GetCurSel();
 
 }

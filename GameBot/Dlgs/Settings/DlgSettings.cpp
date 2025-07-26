@@ -1,4 +1,4 @@
-// ./Dlgs/Settings/DlgSettings.cpp : ÊµÏÖÎÄ¼ş
+// ./Dlgs/Settings/DlgSettings.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "../../StdAfx.h"
@@ -18,20 +18,20 @@
 // #include "DlgOtherTaskSettings.h"
 // #include "DlgSystemSettings.h"
 
-const int g_tabCount=5;//×Ü¹²ÊÇ8
+const int g_tabCount=5;//æ€»å…±æ˜¯8
 
-//const int g_tabCount=8;//×Ü¹²ÊÇ8
-const TCHAR* g_szTabSecretaryTitle[]={_T("¹¦ÄÜ1"),_T("¹¦ÄÜ2"),_T("¹¦ÄÜ3"),_T("¹¦ÄÜ4"),_T("¹¦ÄÜ5")
+//const int g_tabCount=8;//æ€»å…±æ˜¯8
+const TCHAR* g_szTabSecretaryTitle[]={_T("åŠŸèƒ½1"),_T("åŠŸèƒ½2"),_T("åŠŸèƒ½3"),_T("åŠŸèƒ½4"),_T("åŠŸèƒ½5")
 
 };
-// CDlgSettings ¶Ô»°¿ò
+// CDlgSettings å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CDlgSecretarySettings, CDialog)
 
 CDlgSecretarySettings::CDlgSecretarySettings(CWnd* pParent /*=NULL*/)
 	: CDialog(CDlgSecretarySettings::IDD, pParent)
 {
-	SetAddUser(true);	//Ä¬ÈÏÎªtrue
+	SetAddUser(true);	//é»˜è®¤ä¸ºtrue
 	SetMainHwnd(NULL);
 	SetIndex(-1);
 }
@@ -54,7 +54,7 @@ BEGIN_MESSAGE_MAP(CDlgSecretarySettings, CDialog)
 END_MESSAGE_MAP()
 
 
-// CDlgSettings ÏûÏ¢´¦Àí³ÌĞò
+// CDlgSettings æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 
 
@@ -141,7 +141,7 @@ void CDlgSecretarySettings::DestroyAllChildDlgs()
 
 void CDlgSecretarySettings::OnTcnSelchangeTabSettings(NMHDR *pNMHDR, LRESULT *pResult)
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 
 	int curSel=m_pTab->GetCurSel();
 	int cmd=SW_SHOW;
@@ -164,7 +164,7 @@ void CDlgSecretarySettings::OnTcnSelchangeTabSettings(NMHDR *pNMHDR, LRESULT *pR
 
 void CDlgSecretarySettings::OnClose()
 {
-	// TODO: ÔÚ´ËÌí¼ÓÏûÏ¢´¦Àí³ÌĞò´úÂëºÍ/»òµ÷ÓÃÄ¬ÈÏÖµ
+	// TODO: åœ¨æ­¤æ·»åŠ æ¶ˆæ¯å¤„ç†ç¨‹åºä»£ç å’Œ/æˆ–è°ƒç”¨é»˜è®¤å€¼
 	DestroyAllChildDlgs();
 	CDialog::OnCancel();
 	CDialog::OnClose();
@@ -174,7 +174,7 @@ BOOL CDlgSecretarySettings::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// TODO:  ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯
+	// TODO:  åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–
 	InitCtrls();
 	
 
@@ -206,16 +206,16 @@ BOOL CDlgSecretarySettings::OnInitDialog()
 	ReadIniToCtrls();
 
 	return TRUE;  // return TRUE unless you set the focus to a control
-	// Òì³£: OCX ÊôĞÔÒ³Ó¦·µ»Ø FALSE
+	// å¼‚å¸¸: OCX å±æ€§é¡µåº”è¿”å› FALSE
 }
 
 
 
 
-void CDlgSecretarySettings::ReadIniToCtrls()	//´ÓiniÀï¶ÁÈ¡Öµµ½¸÷×Ó´°¿Ú
+void CDlgSecretarySettings::ReadIniToCtrls()	//ä»inié‡Œè¯»å–å€¼åˆ°å„å­çª—å£
 {
 	CGameConfig gameCfg(m_accountName,false);
-	if(!m_bAdd && GetAccountName().length()>0)	//µ÷ÓÃ¸÷×ÔµÄ¶ÁÈ¡
+	if(!m_bAdd && GetAccountName().length()>0)	//è°ƒç”¨å„è‡ªçš„è¯»å–
 	{
 		m_dlgSecretary1Settings.SetConfigObjectAndReadToCtrls(gameCfg.GetConfigSecretary1());
 		m_dlgSecretary2Settings.SetConfigObjectAndReadToCtrls(gameCfg.GetConfigSecretary2());
@@ -226,10 +226,10 @@ void CDlgSecretarySettings::ReadIniToCtrls()	//´ÓiniÀï¶ÁÈ¡Öµµ½¸÷×Ó´°¿Ú
 }
 
 
-void CDlgSecretarySettings::SaveCtrlsToIni()	//×Ó´°¿Ú¸÷×Ô±£´æÖµµ½ini
+void CDlgSecretarySettings::SaveCtrlsToIni()	//å­çª—å£å„è‡ªä¿å­˜å€¼åˆ°ini
 {
 	CGameConfig gameCfg(m_accountName,false);
-	//µ÷ÓÃ¸÷×ÔµÄĞ´Èë
+	//è°ƒç”¨å„è‡ªçš„å†™å…¥
  	STRING sectionName=m_accountName;
 	if(sectionName.length()>0)
 	{	
@@ -247,9 +247,9 @@ void CDlgSecretarySettings::SaveCtrlsToIni()	//×Ó´°¿Ú¸÷×Ô±£´æÖµµ½ini
 
 void CDlgSecretarySettings::OnBnClickedOk()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	CGameConfig gameCfg(m_accountName,false);
-	//µ÷ÓÃ¸÷×ÔµÄĞ´Èë
+	//è°ƒç”¨å„è‡ªçš„å†™å…¥
 	STRING sectionName=m_accountName;
 	CAccountInfo accountInfo;
 	if(sectionName.length()>0)
@@ -270,7 +270,7 @@ void CDlgSecretarySettings::OnBnClickedOk()
 		accountInfo.SetAccountName(gameCfg.GetUserConfig()->GetUserNameFromCfg());
 
 
-		AfxMessageBox(_T("±£´æ³É¹¦!"));
+		AfxMessageBox(_T("ä¿å­˜æˆåŠŸ!"));
 		if(IsAddUser())
 		{
 			SendMsgToMainWin(e_msg_type_add_account_info,(LPARAM)&accountInfo);

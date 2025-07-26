@@ -13,7 +13,7 @@ public:
 	vector<CInfoRoleToOtherInfo>& GetRoleList(){return roleList;}
 private:
 	INT64 userId;// = 1;
-	vector<CInfoRoleToOtherInfo> roleList;// = 2; //½ÇÉ«ÁÐ±í
-	vector<CInfoRoleToOtherInfo> deleteRoleList;// = 3; //É¾³ýµÄ½ÇÉ«ÁÐ±í
+	vector<CInfoRoleToOtherInfo> roleList;// = 2; //è§’è‰²åˆ—è¡¨
+	vector<CInfoRoleToOtherInfo> deleteRoleList;// = 3; //åˆ é™¤çš„è§’è‰²åˆ—è¡¨
 
 };

@@ -1,21 +1,21 @@
 #pragma once
 #include "../Global/public.h"
-//½ÇÉ«Ä³Ğ©ÊôĞÔ¹éÀà
+//è§’è‰²æŸäº›å±æ€§å½’ç±»
 class CRole
 {
 public:
 	CRole(void);
 	~CRole(void);
-	bool ParseInfoRoleToRoleStruct(void *pInfoRole);	//½âÎöĞ­ÒéÖĞµÄ½ÇÉ«ĞÅÏ¢
+	bool ParseInfoRoleToRoleStruct(void *pInfoRole);	//è§£æåè®®ä¸­çš„è§’è‰²ä¿¡æ¯
 
 	UINT64 GetRoleId(){return m_roleId;}
-//get set½Ó¿Ú:
+//get setæ¥å£:
 public:
 
 
 private:
 	void Reset();
 private:
-	UINT64 m_roleId;	//·şÎñÆ÷ÖĞµÄÎ¨Ò»id
+	UINT64 m_roleId;	//æœåŠ¡å™¨ä¸­çš„å”¯ä¸€id
 	
 };

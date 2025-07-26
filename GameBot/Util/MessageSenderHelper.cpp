@@ -42,14 +42,14 @@ void CMessageSenderHelper::DeleteInstance()
 char* CMessageSenderHelper::CompactData(CBaseMessage *pMsg,int &len)
 {
 	char *pData=NULL;
-	//»ù´¡´óĞ¡£¬´ú±í°ü´óĞ¡£¬4×Ö½Ú+1×Ö½Ú(sign_byte)£¬Ôò×Ü°ü³¤ÊÇ5+°üÌå³¤¶È
-	//°üµÄÄÚÈİÊÇ°ü³¤4+flag(4×Ö½Ú0)+Ô­À´µÄ°üÄÚÈİ
-	int totalLength=4+pMsg->GetProtocolBufLength();	//ÕâÀïĞèÒªÖØĞÂĞ´Ò»¸ö³¤¶È
+	//åŸºç¡€å¤§å°ï¼Œä»£è¡¨åŒ…å¤§å°ï¼Œ4å­—èŠ‚+1å­—èŠ‚(sign_byte)ï¼Œåˆ™æ€»åŒ…é•¿æ˜¯5+åŒ…ä½“é•¿åº¦
+	//åŒ…çš„å†…å®¹æ˜¯åŒ…é•¿4+flag(4å­—èŠ‚0)+åŸæ¥çš„åŒ…å†…å®¹
+	int totalLength=4+pMsg->GetProtocolBufLength();	//è¿™é‡Œéœ€è¦é‡æ–°å†™ä¸€ä¸ªé•¿åº¦
 	int packageFlag=0;
 	len=totalLength;
 	char *pNew=new char[totalLength];
 	pData=pNew;
-	*(int*)pNew=(totalLength-4);	//°üÌå³¤¶È,-4ÊÇ¼õÈ¥Í·²¿4×Ö½Ú
+	*(int*)pNew=(totalLength-4);	//åŒ…ä½“é•¿åº¦,-4æ˜¯å‡å»å¤´éƒ¨4å­—èŠ‚
 	pNew+=sizeof(int);
 
 	memcpy(pNew,pMsg->GetProtocolBuf(),pMsg->GetProtocolBufLength());
@@ -58,7 +58,7 @@ char* CMessageSenderHelper::CompactData(CBaseMessage *pMsg,int &len)
 }
 
 
-//¿Í»§¶Ë·¢ËÍ
+//å®¢æˆ·ç«¯å‘é€
 bool CMessageSenderHelper::SendHeartbeatReq(CClient *pClient)
 {
 	bool ret=true;
@@ -84,7 +84,7 @@ bool CMessageSenderHelper::SendHeartbeatReq(CClient *pClient)
 		pdata=CompactData(pMsg,len);
 		m_pThreadLock->UnLock();
 
-		cs.dwData=(DWORD)pClient->GetSelfWindow();	//dwData±êÊ¶Îª×Ó´°¿Ú
+		cs.dwData=(DWORD)pClient->GetSelfWindow();	//dwDataæ ‡è¯†ä¸ºå­çª—å£
 		cs.cbData=len;
 		cs.lpData=pdata;
 		CMisc::GetInstance()->SendDataToOtherWindow((HWND)pClient->GetMainWindow(),&cs);
@@ -120,7 +120,7 @@ bool CMessageSenderHelper::SendHeartbeatRes(int index,int code)
 	return ret;
 }
 
-//¿Í»§¶Ë·¢ËÍ¹ıÀ´
+//å®¢æˆ·ç«¯å‘é€è¿‡æ¥
 bool CMessageSenderHelper::SendLoginReq(CClient *pClient)
 {
 	bool ret=true;
@@ -138,7 +138,7 @@ bool CMessageSenderHelper::SendLoginReq(CClient *pClient)
 		m_pThreadLock->UnLock();
 
 		//CClient *pClient=m_pServer->GetClientById(playerIndex);
-		cs.dwData=(DWORD)pClient->GetSelfWindow();	//dwData±êÊ¶Îª×Ó´°¿Ú
+		cs.dwData=(DWORD)pClient->GetSelfWindow();	//dwDataæ ‡è¯†ä¸ºå­çª—å£
 		cs.cbData=len;
 		cs.lpData=pdata;
 		CMisc::GetInstance()->SendDataToOtherWindow(pClient->GetMainWindow(),&cs);
@@ -180,7 +180,7 @@ bool CMessageSenderHelper::SendLoginRes(int index,int code)
 }
 
 
-bool CMessageSenderHelper::SendClientStatus(CClient *pClient,int isOnline)	//´ı¶¨
+bool CMessageSenderHelper::SendClientStatus(CClient *pClient,int isOnline)	//å¾…å®š
 {
 	bool ret=false;
 	return ret;
@@ -213,7 +213,7 @@ bool CMessageSenderHelper::SendPlayerInfoStatus(CClient *pClient,CInfoPlayerInfo
 		m_pThreadLock->UnLock();
 
 		//CClient *pClient=;m_pServer->GetClientById(index);
-		cs.dwData=(DWORD)pClient->GetSelfWindow();	//dwData±êÊ¶Îª×Ó´°¿Ú
+		cs.dwData=(DWORD)pClient->GetSelfWindow();	//dwDataæ ‡è¯†ä¸ºå­çª—å£
 		cs.cbData=len;
 		cs.lpData=pdata;
 		CMisc::GetInstance()->SendDataToOtherWindow(pClient->GetMainWindow(),&cs);
@@ -240,7 +240,7 @@ bool CMessageSenderHelper::SendPlayerTaskStatus(CClient *pClient,STRING &taskNam
 		m_pThreadLock->UnLock();
 
 		//CClient *pClient=m_pServer->GetClientById(index);
-		cs.dwData=(DWORD)pClient->GetSelfWindow();	//dwData±êÊ¶Îª×Ó´°¿Ú;
+		cs.dwData=(DWORD)pClient->GetSelfWindow();	//dwDataæ ‡è¯†ä¸ºå­çª—å£;
 		cs.cbData=len;
 		cs.lpData=pdata;
 		CMisc::GetInstance()->SendDataToOtherWindow(pClient->GetMainWindow(),&cs);
@@ -267,7 +267,7 @@ bool CMessageSenderHelper::SendQuitReq(CClient *pClient)
 		m_pThreadLock->UnLock();
 
 		//CClient *pClient=m_pServer->GetClientById(playerIndex);
-		cs.dwData=(DWORD)pClient->GetSelfWindow();	//dwData±êÊ¶Îª×Ó´°¿Ú
+		cs.dwData=(DWORD)pClient->GetSelfWindow();	//dwDataæ ‡è¯†ä¸ºå­çª—å£
 		cs.cbData=len;
 		cs.lpData=pdata;
 		CMisc::GetInstance()->SendDataToOtherWindow(pClient->GetMainWindow(),&cs);
@@ -370,7 +370,7 @@ bool CMessageSenderHelper::SendControlClientReq(int playerIndex,int op)
 }
 
 
-//·¢ËÍµ½×Ó´°¿Ú
+//å‘é€åˆ°å­çª—å£
 bool CMessageSenderHelper::SendDoGameOperationReq(int playerIndex,int gameOperationProtocolId,int paramLength,char *cmdData)
 {
 	bool ret=true;
@@ -402,7 +402,7 @@ bool CMessageSenderHelper::SendDoGameOperationReq(int playerIndex,int gameOperat
 }
 
 
-//·¢ËÍµ½Ö÷´°¿ÚµÄ
+//å‘é€åˆ°ä¸»çª—å£çš„
 bool CMessageSenderHelper::SendToWriteData(CClient *pClient,int type,const STRING &account,char *buf,int len)
 {
 	bool ret=true;
@@ -414,7 +414,7 @@ bool CMessageSenderHelper::SendToWriteData(CClient *pClient,int type,const STRIN
 		m_pThreadLock->Lock();
 		CMessageWriteText *pReq=(CMessageWriteText*)pMsg;
 		pReq->MakeWriteDataMessage(type,account,buf,len);
-		pMsg->Encode(pClient->GetStreamBufEncode());	//¿Í»§¶ËÒªÓÃ×Ô¼ºµÄ·¢ËÍ»º³å
+		pMsg->Encode(pClient->GetStreamBufEncode());	//å®¢æˆ·ç«¯è¦ç”¨è‡ªå·±çš„å‘é€ç¼“å†²
 		pdata=CompactData(pMsg,len);
 		m_pThreadLock->UnLock();
 
@@ -423,7 +423,7 @@ bool CMessageSenderHelper::SendToWriteData(CClient *pClient,int type,const STRIN
 			cs.dwData=(DWORD)pClient->GetSelfWindow();
 			cs.cbData=len;
 			cs.lpData=pdata;
-			CMisc::GetInstance()->SendDataToOtherWindow(pClient->GetMainWindow(),&cs);	//Ö÷´°¿Ú
+			CMisc::GetInstance()->SendDataToOtherWindow(pClient->GetMainWindow(),&cs);	//ä¸»çª—å£
 		}
 
 		SAFE_DELETE_ARRAY(pdata);

@@ -1,4 +1,4 @@
-// ./Dlgs/Other/DlgProcessList.cpp : ÊµÏÖÎÄ¼þ
+// ./Dlgs/Other/DlgProcessList.cpp : å®žçŽ°æ–‡ä»¶
 //
 
 #include "../../stdafx.h"
@@ -6,13 +6,13 @@
 #include "DlgProcessList.h"
 #include <TLHELP32.H>
 
-//Ä£ÄâÆ÷½ø³ÌÃû×Ö,ÒÀ´ÎÊÇÀ×µç£¬º£Âí£¬ºóÐøÔÙ¼ÓÈë
+//æ¨¡æ‹Ÿå™¨è¿›ç¨‹åå­—,ä¾æ¬¡æ˜¯é›·ç”µï¼Œæµ·é©¬ï¼ŒåŽç»­å†åŠ å…¥
 const TCHAR *g_szEmuProcName[]={_T("LdvBoxHeadless.exe"),_T("LdBoxHeadless.exe")_T("MemuHeadless.exe"),_T("Ld9BoxHeadless.exe"),_T("NemuHeadless.exe"),
 					_T("NoxVMHandle.exe"),_T("MuMuVMMHeadless.exe"),_T("LEmuHeadless.exe"),_T("Mu.exe")
 };
 
 
-// CDlgProcessList ¶Ô»°¿ò
+// CDlgProcessList å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CDlgProcessList, CDialog)
 
@@ -20,7 +20,7 @@ CDlgProcessList::CDlgProcessList(CWnd* pParent /*=NULL*/)
 	: CDialog(CDlgProcessList::IDD, pParent)
 {
 	m_pidSelect=-1;
-	m_bShowEmuOnly=true;	//Ä¬ÈÏÖ»ÏÔÊ¾Ä£ÄâÆ÷½ø³Ì
+	m_bShowEmuOnly=true;	//é»˜è®¤åªæ˜¾ç¤ºæ¨¡æ‹Ÿå™¨è¿›ç¨‹
 }
 
 CDlgProcessList::~CDlgProcessList()
@@ -40,11 +40,11 @@ BEGIN_MESSAGE_MAP(CDlgProcessList, CDialog)
 END_MESSAGE_MAP()
 
 
-// CDlgProcessList ÏûÏ¢´¦Àí³ÌÐò
+// CDlgProcessList æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 void CDlgProcessList::OnClose()
 {
-	// TODO: ÔÚ´ËÌí¼ÓÏûÏ¢´¦Àí³ÌÐò´úÂëºÍ/»òµ÷ÓÃÄ¬ÈÏÖµ
+	// TODO: åœ¨æ­¤æ·»åŠ æ¶ˆæ¯å¤„ç†ç¨‹åºä»£ç å’Œ/æˆ–è°ƒç”¨é»˜è®¤å€¼
 	CDialog::OnCancel();
 	CDialog::OnClose();
 }
@@ -53,13 +53,13 @@ BOOL CDlgProcessList::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// TODO:  ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯
+	// TODO:  åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–
 	InitCtrls();
 	InitListHeader();
 	InitFilterMap();
 	GetAllProcessList();
 	return TRUE;  // return TRUE unless you set the focus to a control
-	// Òì³£: OCX ÊôÐÔÒ³Ó¦·µ»Ø FALSE
+	// å¼‚å¸¸: OCX å±žæ€§é¡µåº”è¿”å›ž FALSE
 }
 
 void CDlgProcessList::GetAllProcessList()
@@ -133,10 +133,10 @@ void CDlgProcessList::InitCtrls()
 void CDlgProcessList::InitListHeader()
 {
 	int i=0;
-	m_pList->InsertColumn(i++,_T("EXEÃû³Æ"),LVCFMT_CENTER,100);
-	m_pList->InsertColumn(i++,_T("½ø³ÌID"),LVCFMT_CENTER,50);
-	//m_pList->InsertColumn(i++,_T("ÃèÊö"),LVCFMT_CENTER,150);
-	m_pList->InsertColumn(i++,_T("½ø³ÌÂ·¾¶"),LVCFMT_LEFT,350);
+	m_pList->InsertColumn(i++,_T("EXEåç§°"),LVCFMT_CENTER,100);
+	m_pList->InsertColumn(i++,_T("è¿›ç¨‹ID"),LVCFMT_CENTER,50);
+	//m_pList->InsertColumn(i++,_T("æè¿°"),LVCFMT_CENTER,150);
+	m_pList->InsertColumn(i++,_T("è¿›ç¨‹è·¯å¾„"),LVCFMT_LEFT,350);
 
 }
 
@@ -192,14 +192,14 @@ bool CDlgProcessList::IsProcNeedToBeShown(PROCESS_INFO &info)
 
 void CDlgProcessList::OnBnClickedBtnRefresh()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	GetAllProcessList();
 
 }
 
 void CDlgProcessList::OnBnClickedBtnSel()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	int index=-1;
 	if(m_pList->GetItemCount()>0)
 	{

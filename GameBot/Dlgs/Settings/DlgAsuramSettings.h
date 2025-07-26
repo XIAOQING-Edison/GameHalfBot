@@ -2,17 +2,17 @@
 
 #include "../../Config/DailyTaskConfig.h"
 #include "../../resource.h"
-// CDlgAsuramSettings ¶Ô»°¿ò
+// CDlgAsuramSettings å¯¹è¯æ¡†
 
 class CDlgSettingSecretary3 : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgSettingSecretary3)
 
 public:
-	CDlgSettingSecretary3(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgSettingSecretary3(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgSettingSecretary3();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_SETTING_SECRETARY3 };
 
 	void SetConfigObject(CConfigSecretary1 *p){m_pSecretary1Config=p;}
@@ -40,7 +40,7 @@ private:
 
 	CListBox *m_pListSkillAll;
 	CListBox *m_pListSkillSelected;
-	vector<int> m_bloodCastleTimeSelectedList;	//ÒÑÑ¡ÔñÊ±¼ä¶ÎµÄÏÂ±ê
+	vector<int> m_bloodCastleTimeSelectedList;	//å·²é€‰æ‹©æ—¶é—´æ®µçš„ä¸‹æ ‡
 
 private:
 	CEdit *m_pEdtBloodCastleAutoHungUpPointX;
@@ -55,7 +55,7 @@ private:
 	CConfigSecretary1 *m_pSecretary1Config;
 	CBrush m_brush;
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:

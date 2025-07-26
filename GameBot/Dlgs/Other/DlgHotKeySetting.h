@@ -4,17 +4,17 @@
 #include "../../resource.h"
 #include "../../Msg.h"
 
-// CDlgHotKeySetting ¶Ô»°¿ò
+// CDlgHotKeySetting å¯¹è¯æ¡†
 
 class CDlgHotKeySetting : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgHotKeySetting)
 
 public:
-	CDlgHotKeySetting(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgHotKeySetting(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgHotKeySetting();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_ACCERLATE_SETTING };
 	virtual void OnOK(){}
 	virtual void OnCancel(){}
@@ -26,9 +26,9 @@ public:
 private:
 	CStatic *m_pEdtHotKey;
 	CEdit *m_pEdtTips;
-	CComboBox *m_pCbHotkeyType;	//¿ªÊ¼»¹ÊÇÔİÍ£
+	CComboBox *m_pCbHotkeyType;	//å¼€å§‹è¿˜æ˜¯æš‚åœ
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:

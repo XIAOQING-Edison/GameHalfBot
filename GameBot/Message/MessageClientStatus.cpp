@@ -16,7 +16,7 @@ bool CMessageClientStatus::Encode(CStreamReadWrite *pStreamBuf)
 }
 
 
-//Õâ¸öÓÎÏ·µ½ÕâÀï¾ÍÊÇ³ö´í
+//è¿™ä¸ªæ¸¸æˆåˆ°è¿™é‡Œå°±æ˜¯å‡ºé”™
 int CMessageClientStatus::Decode(CStreamReadWrite *pStreamBuf)
 {
 	int handleLength=0;

@@ -3,11 +3,11 @@
 #include "../MemoryStream/StreamReadWrite.h"
 class CPlayer;
 class CProtocol;
-//·â°üĞÍµÄ²ÅĞèÒªÕâ¸öÀà£¬ÍÑ»ú²»ĞèÒª
-//ĞèÒªĞŞ¸ÄÒ»´ÎµÄ°ü·ÅÔÚÕâÀï
+//å°åŒ…å‹çš„æ‰éœ€è¦è¿™ä¸ªç±»ï¼Œè„±æœºä¸éœ€è¦
+//éœ€è¦ä¿®æ”¹ä¸€æ¬¡çš„åŒ…æ”¾åœ¨è¿™é‡Œ
 enum E_MODIFY_PACKAGE_INDEX
 {
-	e_modify_package_secretary_time=0,	//Ğ¡ÃØÊéÊ±¼ä
+	e_modify_package_secretary_time=0,	//å°ç§˜ä¹¦æ—¶é—´
 };
 
 
@@ -48,53 +48,53 @@ public:
 	SOCKET GetCrossServerSocket(){return m_crossServerSocket;}
 
 
-	void Reset();	//ÊµÊ¼»¯¸÷ÖÖ±äÁ¿£¬ÕâÀï¿ÉÄÜĞèÒªÍâ²¿µ÷ÓÃ
+	void Reset();	//å®å§‹åŒ–å„ç§å˜é‡ï¼Œè¿™é‡Œå¯èƒ½éœ€è¦å¤–éƒ¨è°ƒç”¨
 	
 	bool IsHooked(){return m_bHooked;}
 	void SetHooked(bool b){m_bHooked=b;}
 
-	//------------ÊÔÑéĞÔĞŞ¸Ä,¿ªÊ¼
-	//·¢ËÍµÄĞŞ¸Ä
-	int ModifyRecycleItemMessage(const char *data,int len,char **newBuf,bool &bModify);	//ĞŞ¸Ä·¢ËÍ»ØÊÕÏûÏ¢,·µ»ØĞÂ³¤¶È,newBuf·µ»ØĞÂbuf
-	int CheckIsSendVipMemberInfoMessage(const char *data,int len,char **newBuf,bool &bModify);	//Èç¹ûÎ´Âú×ãÌõ¼ş¶ø·¢ËÍ»ñÈ¡vip»áÔ±ĞÅÏ¢¾ÍĞŞ¸ÄÎªÆäËü¶«Î÷
-	int CheckAndModifyCreateRoleMessage(const char *data,int len,char **newBuf,bool &bModify);	//ĞŞ¸Ä´´½¨½ÇÉ«Êı¾İ
+	//------------è¯•éªŒæ€§ä¿®æ”¹,å¼€å§‹
+	//å‘é€çš„ä¿®æ”¹
+	int ModifyRecycleItemMessage(const char *data,int len,char **newBuf,bool &bModify);	//ä¿®æ”¹å‘é€å›æ”¶æ¶ˆæ¯,è¿”å›æ–°é•¿åº¦,newBufè¿”å›æ–°buf
+	int CheckIsSendVipMemberInfoMessage(const char *data,int len,char **newBuf,bool &bModify);	//å¦‚æœæœªæ»¡è¶³æ¡ä»¶è€Œå‘é€è·å–vipä¼šå‘˜ä¿¡æ¯å°±ä¿®æ”¹ä¸ºå…¶å®ƒä¸œè¥¿
+	int CheckAndModifyCreateRoleMessage(const char *data,int len,char **newBuf,bool &bModify);	//ä¿®æ”¹åˆ›å»ºè§’è‰²æ•°æ®
 
-	//½ÓÊÕµÄĞŞ¸Ä,ËùÓĞĞŞ¸ÄµÄº¯Êı¶¼²»ÄÜ³¬¹ıbufLength!!!!!
-	//-------------ÊÔÑéĞÔĞŞ¸Ä£¬½áÊø
+	//æ¥æ”¶çš„ä¿®æ”¹,æ‰€æœ‰ä¿®æ”¹çš„å‡½æ•°éƒ½ä¸èƒ½è¶…è¿‡bufLength!!!!!
+	//-------------è¯•éªŒæ€§ä¿®æ”¹ï¼Œç»“æŸ
 
 
-	//×¢Òâ!!ÀïÃæĞŞ¸ÄµÄ³¤¶È²»ÄÜ³¬¹ıbufLength,·ñÔòÒı·¢±ÀÀ£
-	int HandleRecv(SOCKET s,char *buf,int len,int bufLength,char **newBuf,bool &bIsModify);	//ÕâÀï»á½øĞĞĞŞ¸Ä»ò½âÎö²Ù×÷,·µ»Ønewlen,bisModify=trueÊ±¾ÍÊÇĞŞ¸ÄÁË·µ»Ø
+	//æ³¨æ„!!é‡Œé¢ä¿®æ”¹çš„é•¿åº¦ä¸èƒ½è¶…è¿‡bufLength,å¦åˆ™å¼•å‘å´©æºƒ
+	int HandleRecv(SOCKET s,char *buf,int len,int bufLength,char **newBuf,bool &bIsModify);	//è¿™é‡Œä¼šè¿›è¡Œä¿®æ”¹æˆ–è§£ææ“ä½œ,è¿”å›newlen,bisModify=trueæ—¶å°±æ˜¯ä¿®æ”¹äº†è¿”å›
 
-	int HandleSend(SOCKET s,char *buf,int len,char **newBuf,bool &bIsModify);	//ÕâÀï»áĞŞ¸Ä·¢ËÍ²Ù×÷,·µ»Ønewlen
+	int HandleSend(SOCKET s,char *buf,int len,char **newBuf,bool &bIsModify);	//è¿™é‡Œä¼šä¿®æ”¹å‘é€æ“ä½œ,è¿”å›newlen
 
 	int DecodeBuffer(SOCKET s,char *buf,int len);
 
-	void ResetCrossServerStreamBuffer();	//ÖØÖÃ
+	void ResetCrossServerStreamBuffer();	//é‡ç½®
 
-	void ResetCrossServerSocket();	//ÍË³ö¿ç·şÊ±ÖØÖÃ
+	void ResetCrossServerSocket();	//é€€å‡ºè·¨æœæ—¶é‡ç½®
 
-	void ResetSocketAndStreamBuf();	//¶Ï¿ªÊ±ËùÓĞ¶«Î÷ÖØÖÃ
+	void ResetSocketAndStreamBuf();	//æ–­å¼€æ—¶æ‰€æœ‰ä¸œè¥¿é‡ç½®
 
-	void CheckSocketState(SOCKET s);	//¼ì²âsocket×´Ì¬
+	void CheckSocketState(SOCKET s);	//æ£€æµ‹socketçŠ¶æ€
 
-	bool IsMainGameRedirectUrl(STRING &url);	//ÊÇ·ñÊÇÖ÷ÓÎÏ·URL
+	bool IsMainGameRedirectUrl(STRING &url);	//æ˜¯å¦æ˜¯ä¸»æ¸¸æˆURL
 	
-	void CheckAndSetSocket(SOCKET s,const char *ip,WORD port);	//Éè¶¨ËùĞèÒªµÄsocket
+	void CheckAndSetSocket(SOCKET s,const char *ip,WORD port);	//è®¾å®šæ‰€éœ€è¦çš„socket
 
-	//¼ì²ésendÊı¾İ
-	bool CheckIsSendLoginMessage(const char *data,int len);	//¼ì²éÊÇ·ñÊÇµÇÂ½°ü
-	bool CheckSendChooseRoleMessage(const char *data,int len);//¼ì²é·¢ËÍµÄ½ÇÉ«Ñ¡Ôñ°ü
+	//æ£€æŸ¥sendæ•°æ®
+	bool CheckIsSendLoginMessage(const char *data,int len);	//æ£€æŸ¥æ˜¯å¦æ˜¯ç™»é™†åŒ…
+	bool CheckSendChooseRoleMessage(const char *data,int len);//æ£€æŸ¥å‘é€çš„è§’è‰²é€‰æ‹©åŒ…
 
-	bool IsSameMainGameSocket(SOCKET s);	//ÊÇ·ñÊÇÖ÷socket,ÕâÀïÊÇµÇÂ½ÓÃµÄsocket
+	bool IsSameMainGameSocket(SOCKET s);	//æ˜¯å¦æ˜¯ä¸»socket,è¿™é‡Œæ˜¯ç™»é™†ç”¨çš„socket
 private:
-	int MakeNewRecvData(CProtocol *pProtocol,char **newBuf,int preLength,const char *orgRecvData,int orgRecvLength);	//Éú³ÉÒ»¸önew recv data,·µ»ØĞÂ³¤¶È
+	int MakeNewRecvData(CProtocol *pProtocol,char **newBuf,int preLength,const char *orgRecvData,int orgRecvLength);	//ç”Ÿæˆä¸€ä¸ªnew recv data,è¿”å›æ–°é•¿åº¦
 	char *GetRecvBuf(){return m_pRecvBuf;}
 	char *GetSendBuf(){return m_pSendBuf;}
 private:
 	SOCKET m_mainServerSocket;
 	SOCKET m_crossServerSocket;
-	SOCKET m_duplicateSocket;	//¸´ÖÆ¹ıÀ´µÄsockect
+	SOCKET m_duplicateSocket;	//å¤åˆ¶è¿‡æ¥çš„sockect
 	CPlayer *m_pPlayer;
 	string m_mainServerIp;
 	WORD m_mainServerPort;
@@ -104,12 +104,12 @@ private:
 	static CHookHelper *s_pHookHelperInstance;
 	CStreamReadWrite *m_pStreamBufRecv;
 	CStreamReadWrite *m_pStreamBufSend;
-	char *m_pRecvBuf;	//ĞŞ¸Ä½ÓÊÕµÄ»º³å
-	char *m_pSendBuf;	//ĞŞ¸Ä·¢ËÍµÄ»º³å
-	char *m_pTmpRecvBuf;	//ÁÙÊ±´æ·ÅĞŞ¸ÄºóµÄ»º³å
+	char *m_pRecvBuf;	//ä¿®æ”¹æ¥æ”¶çš„ç¼“å†²
+	char *m_pSendBuf;	//ä¿®æ”¹å‘é€çš„ç¼“å†²
+	char *m_pTmpRecvBuf;	//ä¸´æ—¶å­˜æ”¾ä¿®æ”¹åçš„ç¼“å†²
 
-	WSAPROTOCOL_INFO m_duplicateSocketInfo;	//ÓÃÀ´´æÒª¸´ÖÆµÄsocketĞÅÏ¢
+	WSAPROTOCOL_INFO m_duplicateSocketInfo;	//ç”¨æ¥å­˜è¦å¤åˆ¶çš„socketä¿¡æ¯
 
-	bool m_bHooked;	//ÊÇ·ñÒÑ¹Ò¹³
-	bool m_bSecetaryWorkFine;	//Ğ¡ÃØÊé¹¤×÷ÊÇ·ñÕı³£
+	bool m_bHooked;	//æ˜¯å¦å·²æŒ‚é’©
+	bool m_bSecetaryWorkFine;	//å°ç§˜ä¹¦å·¥ä½œæ˜¯å¦æ­£å¸¸
 };

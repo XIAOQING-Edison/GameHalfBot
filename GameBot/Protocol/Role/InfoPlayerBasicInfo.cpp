@@ -21,11 +21,11 @@ int CInfoPlayerBasicInfo::Decode(CStreamReadWrite *pStreamBuf)
 
 	int orgPos=pStreamBuf->GetHandlePos();
 	Reset();
-	TRACE_OUTPUT(_T("½âÎöCInfoPlayerBasicInfo\n"));
+	TRACE_OUTPUT(_T("è§£æCInfoPlayerBasicInfo\n"));
 
 
 	bool bFinish=false;
-	int restBytes=m_packageLengthInRes;	//¶ÁÈ¡¹Ì¶¨³¤¶ÈµÄ×Ö½Ú¾Í½âÎöÍê
+	int restBytes=m_packageLengthInRes;	//è¯»å–å›ºå®šé•¿åº¦çš„å­—èŠ‚å°±è§£æå®Œ
 	int objLength=0;
 
 	while(!bFinish)
@@ -159,6 +159,6 @@ int CInfoPlayerBasicInfo::Decode(CStreamReadWrite *pStreamBuf)
 	}
 EXT:
 	handleLength=pStreamBuf->GetHandlePos()-orgPos;
-	//TRACE_OUTPUT(_T("CInfoPlayerBasicInfo ½âÎö³¤¶È:%d\n"),handleLength);
+	//TRACE_OUTPUT(_T("CInfoPlayerBasicInfo è§£æé•¿åº¦:%d\n"),handleLength);
 	return handleLength;
 }

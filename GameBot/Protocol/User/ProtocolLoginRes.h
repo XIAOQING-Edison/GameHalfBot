@@ -15,13 +15,13 @@ private:
 	UINT64 m_openServerTime;
 	UINT64 m_combineServerTime;
 	UINT64 m_serverCurTime;
-	bool m_bNeedInviteCode;	//暂时未见
+	bool m_bNeedInviteCode;	//鏆傛椂鏈
 #if (_GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_MOBILE_) ||(_GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_PC_)
-	int combineServerCount;// = 5; //合服次数
+	int combineServerCount;// = 5; //鍚堟湇娆℃暟
 	vector<int> unlockCareer;	//6
 #elif (_GAME_VERSION_ == _YONG_HENG_LIAN_MENG_)
 #elif (_GAME_VERSION_ == _TIAN_SHI_SHEN_YU_)
-	int combineServerCount;// = 5; //合服次数
+	int combineServerCount;// = 5; //鍚堟湇娆℃暟
 #elif _GAME_VERSION_ == _YONG_HENG_ZHI_DIAN_
 
 #endif

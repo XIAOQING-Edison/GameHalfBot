@@ -12,7 +12,7 @@
 #pragma comment(lib,"StreamReadWrite.lib")
 
 static const TCHAR* g_szMaterialNameArray[]={
-	_T("½ð±Ò"),_T("×êÊ¯"),_T("Áé»ê±¦Ê¯"),_T("´´Ôì±¦Ê¯"),_T("´òÔìÊ¯Ëé¿é"),_T("ÆÆËéµÄÂå¿ËÖ®Óð")
+	_T("é‡‘å¸"),_T("é’»çŸ³"),_T("çµé­‚å®çŸ³"),_T("åˆ›é€ å®çŸ³"),_T("æ‰“é€ çŸ³ç¢Žå—"),_T("ç ´ç¢Žçš„æ´›å…‹ä¹‹ç¾½")
 };
 CClient::CClient(void)
 {
@@ -25,12 +25,12 @@ CClient::CClient(void)
 	m_hThreadMessage=NULL;
 	m_hThreadTimer=NULL;
 	m_liveTime=1;
-	SetIndex(-1);	//-1±íÊ¾ÎÞÏÂ±ê
+	SetIndex(-1);	//-1è¡¨ç¤ºæ— ä¸‹æ ‡
 	memset(m_materialData,0,sizeof(m_materialData));
 	m_materialCount=0;
 }
 
-CClient::~CClient(void)//µ÷ÊÔ·¢ÏÖdllÀïÃæÓÃwaitForÊ±¼äÌî´óÁË»áËÀËø£¬²»¹ÜÏß³Ìº¯ÊýÊÇ·ñÒÑÍË³ö¶¼µÈ²»µ½£¬ËùÒÔÖ±½Óterminate
+CClient::~CClient(void)//è°ƒè¯•å‘çŽ°dllé‡Œé¢ç”¨waitForæ—¶é—´å¡«å¤§äº†ä¼šæ­»é”ï¼Œä¸ç®¡çº¿ç¨‹å‡½æ•°æ˜¯å¦å·²é€€å‡ºéƒ½ç­‰ä¸åˆ°ï¼Œæ‰€ä»¥ç›´æŽ¥terminate
 {	
 	::PostThreadMessage(m_messageThreadId,WM_QUIT,0,0);
 	if(WaitForSingleObject(m_hThreadTimer,50)==WAIT_TIMEOUT)
@@ -77,7 +77,7 @@ bool CClient::CreateMessageThread()
 	{
 		m_hThreadMessage=CreateThread(NULL,0,CClient::ThreadMessage,this,0,&m_messageThreadId);
 	}
-	TRACE_OUTPUT(_T("---------------ClientÏûÏ¢Ïß³Ì¾ä±ú:0x%x,id:0x%x------------------\n"),m_hThreadMessage,m_messageThreadId);
+	TRACE_OUTPUT(_T("---------------Clientæ¶ˆæ¯çº¿ç¨‹å¥æŸ„:0x%x,id:0x%x------------------\n"),m_hThreadMessage,m_messageThreadId);
 	ret=(m_hThreadMessage != NULL);
 	return ret;
 }
@@ -91,16 +91,16 @@ bool  CClient::CreateTimerThread()
 	{
 		m_hThreadTimer=CreateThread(NULL,0,CClient::ThredTimer,this,0,&tid);
 	}
-	//TRACE_OUTPUT(_T("-----------------Client¶¨Ê±Ïß³Ì¾ä±ú:0x%x------------------\n"),m_hThreadTimer);
+	//TRACE_OUTPUT(_T("-----------------Clientå®šæ—¶çº¿ç¨‹å¥æŸ„:0x%x------------------\n"),m_hThreadTimer);
 	ret=(m_hThreadTimer != NULL);
 	return ret;
 }
 
 
-bool CClient::DoReadyWork()	//´´½¨Ïß³ÌÀà
+bool CClient::DoReadyWork()	//åˆ›å»ºçº¿ç¨‹ç±»
 {
 	bool ret=false;
-	OutputDebugStr(_T("------------ClientÔ¤±¸´´½¨ÏûÏ¢Ïß³ÌºÍ¶¨Ê±Ïß³Ì------------------\n"));
+	OutputDebugStr(_T("------------Clienté¢„å¤‡åˆ›å»ºæ¶ˆæ¯çº¿ç¨‹å’Œå®šæ—¶çº¿ç¨‹------------------\n"));
 	ret=CreateMessageThread()&&CreateTimerThread();
 	return ret;
 }
@@ -119,7 +119,7 @@ void CClient::UpdatePlayerInfoStatus(CInfoPlayerInfoStatus *pInfo)
 
 }
 
-void CClient::UpdatePlayerInfoToPlayerInfoStatus()	//½«CPlayerÀïµÄ×´Ì¬¸³Öµµ½m_playerInfoStatusÀïÃæ
+void CClient::UpdatePlayerInfoToPlayerInfoStatus()	//å°†CPlayeré‡Œçš„çŠ¶æ€èµ‹å€¼åˆ°m_playerInfoStatusé‡Œé¢
 {
 	if(m_pPlayer)
 	{		
@@ -128,21 +128,21 @@ void CClient::UpdatePlayerInfoToPlayerInfoStatus()	//½«CPlayerÀïµÄ×´Ì¬¸³Öµµ½m_pl
 		m_playerStatus.roleName=m_pPlayer->GetRoleName();
 		m_playerStatus.job=m_pPlayer->GetCareer();
 		m_playerStatus.level=m_pPlayer->GetLevel();
-		//m_playerStatus.mapName=m_pPlayer->GetMapId();//ºóÃæ°ÑµØÍ¼Êý¾ÝÕûÀí³öÀ´¾ÍÄÜµÃµ½
-		m_playerStatus.taskName=_T("");	//ÔÝÊ±ÖÃ¿Õ to do..
+		//m_playerStatus.mapName=m_pPlayer->GetMapId();//åŽé¢æŠŠåœ°å›¾æ•°æ®æ•´ç†å‡ºæ¥å°±èƒ½å¾—åˆ°
+		m_playerStatus.taskName=_T("");	//æš‚æ—¶ç½®ç©º to do..
 		m_playerStatus.SetX(m_pPlayer->GetX());
 		m_playerStatus.SetY(m_pPlayer->GetY());
 	}
 }
 
 
-//ÓÃÓÚ½ÓÊÕµ½·þÎñ¶ËÊ±Éè¶¨cmd£¬ÔÙ¸ù¾ÝcmdÀàÐÍ·¢ËÍ¸ø·þÎñ¶Ë»ò×öÆäËü²Ù×÷
- DWORD WINAPI CClient::ThreadMessage(LPVOID p)	//ÏûÏ¢Ïß³Ì
+//ç”¨äºŽæŽ¥æ”¶åˆ°æœåŠ¡ç«¯æ—¶è®¾å®šcmdï¼Œå†æ ¹æ®cmdç±»åž‹å‘é€ç»™æœåŠ¡ç«¯æˆ–åšå…¶å®ƒæ“ä½œ
+ DWORD WINAPI CClient::ThreadMessage(LPVOID p)	//æ¶ˆæ¯çº¿ç¨‹
  {
 	 MSG msg;
 	 CClient *pClient=(CClient*)p;
 
-	 //TRACE_OUTPUT(_T("----------------------Client½øÈëMessageThread-----------------------\n"));
+	 //TRACE_OUTPUT(_T("----------------------Clientè¿›å…¥MessageThread-----------------------\n"));
 	 while (::GetMessage(&msg, NULL, 0, 0))
 	 {
 		 switch(msg.message)
@@ -155,7 +155,7 @@ void CClient::UpdatePlayerInfoToPlayerInfoStatus()	//½«CPlayerÀïµÄ×´Ì¬¸³Öµµ½m_pl
 			 break;
 		 }
 	 }
-	 TRACE_OUTPUT(_T("----------------------ClientÍË³öMessageThread-----------------------\n"));
+	 TRACE_OUTPUT(_T("----------------------Clienté€€å‡ºMessageThread-----------------------\n"));
 EXT:
 	//ExitThread(0xaa);
 	return 0xaa;
@@ -163,11 +163,11 @@ EXT:
 
 
 
- DWORD WINAPI CClient::ThredTimer(LPVOID p)	//¶¨Ê±Æ÷Ïß³Ì
+ DWORD WINAPI CClient::ThredTimer(LPVOID p)	//å®šæ—¶å™¨çº¿ç¨‹
  {
 	 CClient *pClient=(CClient*)p;
 	 int timeInteval=50;
-	 //TRACE_OUTPUT(_T("------------------Client½øÈë¶¨Ê±Ïß³Ì----------------------------\n"));
+	 //TRACE_OUTPUT(_T("------------------Clientè¿›å…¥å®šæ—¶çº¿ç¨‹----------------------------\n"));
 	 CPlayer *player=pClient->GetPlayer();
 	 static DWORD tick=0;
 	 while(!pClient->IsPlayerQuit())
@@ -177,9 +177,9 @@ EXT:
 			break;
 		if(player->IsLoginAlready() && player->IsRoleChosenAlready()&& player->IsInGameAlready())
 		{
-			//ÏÈÆÁ±Îµô
+			//å…ˆå±è”½æŽ‰
 			player->GetGameLogicHelper()->DoTimerTask(player->GetSocketHelper());
-			//test,¼ä¸ô·¢ËÍ
+			//test,é—´éš”å‘é€
 			if(tick>0 && tick%20==0)
 			{
 				CMessageSenderHelper::GetInstance()->SendHeartbeatReq(pClient);
@@ -192,6 +192,6 @@ EXT:
 		}
 		Sleep(timeInteval);
 	 }
-	 //TRACE_OUTPUT(_T("------------------ClientÍË³ö¶¨Ê±Ïß³Ì----------------------------\n"));
+	 //TRACE_OUTPUT(_T("------------------Clienté€€å‡ºå®šæ—¶çº¿ç¨‹----------------------------\n"));
 	 return 0xbb;
  }

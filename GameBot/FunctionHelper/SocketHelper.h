@@ -3,7 +3,7 @@
 #include "../ProtocolMap.h"
 
 
-#include "../MemoryStream/StreamReadWrite.h"	//ÓÃÀ´´úÌæÔ­À´µÄ×Ö½Ú¶ÁÈ¡
+#include "../MemoryStream/StreamReadWrite.h"	//ç”¨æ¥ä»£æ›¿åŸæ¥çš„å­—èŠ‚è¯»å–
 
 
 #include<WinSock.h>
@@ -12,9 +12,9 @@
 #pragma comment(lib,"ws2_32.lib")
 class CPlayer;
 
-//#define USE_WSS_SOCKET	//Ê¹ÄÜWSS
+//#define USE_WSS_SOCKET	//ä½¿èƒ½WSS
 
-#define  USE_SOCKET_NON_BLOCK	//ÊÇ·ñÊ¹ÓÃ×èÈûµÄsocket,¶¨ÒåÁËÕâ¸ö»áÊ¹ÄÜioctl
+#define  USE_SOCKET_NON_BLOCK	//æ˜¯å¦ä½¿ç”¨é˜»å¡çš„socket,å®šä¹‰äº†è¿™ä¸ªä¼šä½¿èƒ½ioctl
 
 class CSocketHelper
 {
@@ -44,49 +44,49 @@ public://test
 	void SetCaptureNow(bool b){m_bCaptureNow=b;}
 	bool IsCaptureNow(){return m_bCaptureNow;}
 private:
-	//ÊÇ·ñ¶¨Ê±×¥°üµÄ±êÖ¾
+	//æ˜¯å¦å®šæ—¶æŠ“åŒ…çš„æ ‡å¿—
 	bool m_bCaptureNow;
 public:
-	//ÆÕÍ¨socket
-	void SetSocket(SOCKET s){m_playerSocket=s;}	//°ÑÓÎÏ·socket¸´ÖÆÏÂÀ´
+	//æ™®é€šsocket
+	void SetSocket(SOCKET s){m_playerSocket=s;}	//æŠŠæ¸¸æˆsocketå¤åˆ¶ä¸‹æ¥
 	SOCKET GetSocket(){return m_playerSocket;}
 
-	bool SetSocketOptBlock(bool bNonBlock);	//Éè¶¨socketÊÇ·ñ×èÈû
+	bool SetSocketOptBlock(bool bNonBlock);	//è®¾å®šsocketæ˜¯å¦é˜»å¡
 
-public:	//ÆäËüÀà½Ó¿Ú
+public:	//å…¶å®ƒç±»æ¥å£
 		
 	void ClosePlayerSocket(){SAFE_CLOSE_SOCKET(m_playerSocket);}
 public:
 
 
 public:	//send functions
-	bool SendSetPkMode(int mode);	//Éè¶¨pkÄ£Ê½
+	bool SendSetPkMode(int mode);	//è®¾å®špkæ¨¡å¼
 	//bool Send
-public://ÊÕ·¢°üÓÃµÄº¯Êı
-	bool SendData(char *pData,int totalLength);	//ÕâÀïÑ­»·µ÷ÓÃsendÖ±µ½·¢ËÍÍê³É
+public://æ”¶å‘åŒ…ç”¨çš„å‡½æ•°
+	bool SendData(char *pData,int totalLength);	//è¿™é‡Œå¾ªç¯è°ƒç”¨sendç›´åˆ°å‘é€å®Œæˆ
 
-	char *CompactData(CProtocol *p,int &len);	//ÕâÀï¼ÆËãprotocolÔ­Ê¼³¤¶È£¬ÔÚ·¢ËÍÕâÇ°¼ÆËã×Ü³¤¶ÈºÍ¼ÓÈësign_byte
+	char *CompactData(CProtocol *p,int &len);	//è¿™é‡Œè®¡ç®—protocolåŸå§‹é•¿åº¦ï¼Œåœ¨å‘é€è¿™å‰è®¡ç®—æ€»é•¿åº¦å’ŒåŠ å…¥sign_byte
 
-	bool ReceiveServerMessage();	//ÓÃÓÚ½ÓÊÕ·şÎñÆ÷·µ»ØµÄÊı¾İ°ü
+	bool ReceiveServerMessage();	//ç”¨äºæ¥æ”¶æœåŠ¡å™¨è¿”å›çš„æ•°æ®åŒ…
 
 public://static functions;
 
-	static DWORD WINAPI ThreadProcessTask(LPVOID pParam);	//ÓÃÓÚ¶ÁÈ¡²¢´¦ÀíÈÎÎñµÄÏß³Ì
+	static DWORD WINAPI ThreadProcessTask(LPVOID pParam);	//ç”¨äºè¯»å–å¹¶å¤„ç†ä»»åŠ¡çš„çº¿ç¨‹
 
-private:	//¸¨ÖúÀà¶ÔÏó
+private:	//è¾…åŠ©ç±»å¯¹è±¡
 
 private:
-	SOCKET m_playerSocket;	//ÆÕÍ¨socket
+	SOCKET m_playerSocket;	//æ™®é€šsocket
 	short m_port;
 
-	CPlayer *m_pThisPlayer;	//µ±Ç°½ÇÉ«
-private:	//¸÷ÖÖÏß³Ì£¬ÊÂ¼ş¶ÔÏó
+	CPlayer *m_pThisPlayer;	//å½“å‰è§’è‰²
+private:	//å„ç§çº¿ç¨‹ï¼Œäº‹ä»¶å¯¹è±¡
 // 	HANDLE m_hEvtPlay;
-	// 	HANDLE m_hEvtRecv;	//ÊÕµ½ÏûÏ¢ÔÙ»½ĞÑ½ÓÊÕÏß³Ì
+	// 	HANDLE m_hEvtRecv;	//æ”¶åˆ°æ¶ˆæ¯å†å”¤é†’æ¥æ”¶çº¿ç¨‹
 	HANDLE m_hThreadPlay;
 	HANDLE m_hThreadRecv;
 private:
-	CStreamReadWrite *m_pStreamBufRecv;	//ÓÃÀ´´¦Àí½ÓÊÕ
-	CStreamReadWrite *m_pStreamBufEncode;	//ÓÃÀ´±àÂëĞ­Òé
+	CStreamReadWrite *m_pStreamBufRecv;	//ç”¨æ¥å¤„ç†æ¥æ”¶
+	CStreamReadWrite *m_pStreamBufEncode;	//ç”¨æ¥ç¼–ç åè®®
 
 };

@@ -1,4 +1,4 @@
-// ./Dlgs/Settings/DlgOtherSetting.cpp : ÊµÏÖÎÄ¼þ
+// ./Dlgs/Settings/DlgOtherSetting.cpp : å®žçŽ°æ–‡ä»¶
 //
 
 #include "../../stdafx.h"
@@ -8,9 +8,9 @@
 const int g_tab_count=3;
 
 TCHAR *g_szTabOther[]={
-	_T("¼¼ÄÜÉè¶¨"),_T("¸£Àû´óÌü"),_T("ÏµÍ³Éè¶¨"),_T("")
+	_T("æŠ€èƒ½è®¾å®š"),_T("ç¦åˆ©å¤§åŽ…"),_T("ç³»ç»Ÿè®¾å®š"),_T("")
 };
-// CDlgOtherSetting ¶Ô»°¿ò
+// CDlgOtherSetting å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CDlgOtherSetting, CDialog)
 
@@ -37,7 +37,7 @@ BEGIN_MESSAGE_MAP(CDlgOtherSetting, CDialog)
 END_MESSAGE_MAP()
 
 
-// CDlgOtherSetting ÏûÏ¢´¦Àí³ÌÐò
+// CDlgOtherSetting æ¶ˆæ¯å¤„ç†ç¨‹åº
 BOOL CDlgOtherSetting::OnInitDialog()
 {
 	BOOL ret=TRUE;
@@ -75,13 +75,13 @@ BOOL CDlgOtherSetting::OnInitDialog()
 }
 void CDlgOtherSetting::OnBnClickedBtnSave()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	SaveCtrlsToIni();
 }
 
 void CDlgOtherSetting::OnTcnSelchangeTabOtherSetting(NMHDR *pNMHDR, LRESULT *pResult)
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	int curSel=m_pTab->GetCurSel();
 	int cmd=SW_SHOW;
 	for(int i=0;i<g_tab_count;++i)
@@ -126,12 +126,12 @@ void CDlgOtherSetting::InitCtrls()
 void CDlgOtherSetting::InitChildDlgs()
 {
 	int i=0;
-	m_dlgSkillSetting.SetCareer(m_index);	//index×÷Îªcareer×Ö¶Î
+	m_dlgSkillSetting.SetCareer(m_index);	//indexä½œä¸ºcareerå­—æ®µ
 	m_pDlg[i++]=(CDialog*)&m_dlgSkillSetting;
 	m_pDlg[i++]=(CDialog*)&m_dlgGiftHallSettings;
 	m_pDlg[i++]=(CDialog*)&m_dlgSystemSettings;
-// 	m_pDlg[i++]=(CDialog*)&m_dlgOtherTaskSettings;//´ý¶¨
-// 	m_pDlg[i++]=(CDialog*)&m_dlgBossSettings;	//´ý¶¨
+// 	m_pDlg[i++]=(CDialog*)&m_dlgOtherTaskSettings;//å¾…å®š
+// 	m_pDlg[i++]=(CDialog*)&m_dlgBossSettings;	//å¾…å®š
 
 }
 
@@ -159,7 +159,7 @@ void CDlgOtherSetting::SaveCtrlsToIni()
 	m_dlgSystemSettings.SetConfigObjectAndSaveCtrlsToIni(gameCfg.GetSystemConfig());
 // m_dlgOtherTaskSettings.SetConfigObjectAndSaveCtrlsToIni(gameCfg.GetOtherTaskConfig());
 
-	AfxMessageBox(_T("±£´æ³É¹¦!"));
+	AfxMessageBox(_T("ä¿å­˜æˆåŠŸ!"));
 	EndDialog(0);
 }
 

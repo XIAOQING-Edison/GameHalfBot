@@ -2,17 +2,17 @@
 
 #include "../../Config/SystemConfig.h"
 #include "../../resource.h"
-// CDlgSystemSettings ¶Ô»°¿ò
+// CDlgSystemSettings å¯¹è¯æ¡†
 
 class CDlgSystemSettings : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgSystemSettings)
 
 public:
-	CDlgSystemSettings(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgSystemSettings(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgSystemSettings();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_SYSTEM_SETTINGS };
 
 	void SetConfigObject(CSystemConfig *p){m_pSystemConfig=p;}
@@ -38,7 +38,7 @@ private:
 	CSystemConfig *m_pSystemConfig;
 	CBrush m_brush;
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:

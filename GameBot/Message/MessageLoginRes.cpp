@@ -15,14 +15,14 @@ bool CMessageLoginRes::Encode(CStreamReadWrite *pStreamBuf)
 	CBaseMessage::Encode(pStreamBuf);
 	ResetWritePostion();
 
-	pStreamBuf->WriteShort(GetProtocolId());	//Ğ­ÒéID
+	pStreamBuf->WriteShort(GetProtocolId());	//åè®®ID
 	pStreamBuf->WriteFixedInt32(m_assignedId);
 	pStreamBuf->WriteFixedInt32(m_resCode);
 	return true;
 }
 
 
-//Õâ¸öÓÎÏ·µ½ÕâÀï¾ÍÊÇ³ö´í
+//è¿™ä¸ªæ¸¸æˆåˆ°è¿™é‡Œå°±æ˜¯å‡ºé”™
 int CMessageLoginRes::Decode(CStreamReadWrite *pStreamBuf)
 {
 	int handleLength=0;

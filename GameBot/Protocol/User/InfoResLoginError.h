@@ -13,6 +13,6 @@ public:
 
 private:
 	int code;// = 1;
-	int ext_ClientVersion;// = 2; //ÍØÕ¹²ÎÊı ¿Í»§¶Ë°æ±¾
+	int ext_ClientVersion;// = 2; //æ‹“å±•å‚æ•° å®¢æˆ·ç«¯ç‰ˆæœ¬
 
 };

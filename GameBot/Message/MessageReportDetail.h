@@ -2,15 +2,15 @@
 #include "basemessage.h"
 
 enum E_REPORT_TYPE{
-	e_report_coin=0,//±Ò
-	e_report_diamond,//×ê
-	e_report_creativeStone,//´´
-	e_report_feather,//Óğ
-	e_report_soulStone,//Áé»ê
-	e_report_refineStone,//´òÔìÊ¯
-	e_report_anglesTear,//ÌìÊ¹Àá
-	e_report_regeneration_stone,	//ÔÙÉúÔ­Ê¯
-	e_report_rev//±£Áô
+	e_report_coin=0,//å¸
+	e_report_diamond,//é’»
+	e_report_creativeStone,//åˆ›
+	e_report_feather,//ç¾½
+	e_report_soulStone,//çµé­‚
+	e_report_refineStone,//æ‰“é€ çŸ³
+	e_report_anglesTear,//å¤©ä½¿æ³ª
+	e_report_regeneration_stone,	//å†ç”ŸåŸçŸ³
+	e_report_rev//ä¿ç•™
 
 };
 
@@ -38,7 +38,7 @@ public:
 	int GetReportDataCount(){return CalcCount();}
 	INT64* GetReportData(){return m_reportData;}
 	static int CalcCount(){return e_report_rev-e_report_coin+1;}
-private:	//ÒÔÏÂÉÏ±¨·Ç°ó¶¨µÄÊıÁ¿
+private:	//ä»¥ä¸‹ä¸ŠæŠ¥éç»‘å®šçš„æ•°é‡
 	int m_playerIndex;
-	INT64 m_reportData[64];	//±£Áô
+	INT64 m_reportData[64];	//ä¿ç•™
 };

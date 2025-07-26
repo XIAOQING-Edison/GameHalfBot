@@ -23,10 +23,10 @@ int CProtocolConstellationBagInfoRes::Decode(CStreamReadWrite *pStreamBuf)
 
 	bool bFinish=false;
 	int restBytes=m_packageLengthInRes-protocol_header_length;
-	//µ½ÕâÀïÓÎÏ·»ù±¾¼ÓÔØÍê³É
+	//åˆ°è¿™é‡Œæ¸¸æˆåŸºæœ¬åŠ è½½å®Œæˆ
 	m_pPlayer->SetInGameAlready(true);
 	m_pPlayer->ReadyForPlaying();
-	TRACE_OUTPUT(_T("CProtocolConstellationBagInfoRes Ìø¹ý×Ö½Ú:%d\n"),restBytes);
+	TRACE_OUTPUT(_T("CProtocolConstellationBagInfoRes è·³è¿‡å­—èŠ‚:%d\n"),restBytes);
 	pStreamBuf->SetHandlePos(orgPos+restBytes);
 
 	// 	while(!bFinish)

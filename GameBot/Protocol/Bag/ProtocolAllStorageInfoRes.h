@@ -1,7 +1,7 @@
 #pragma once
 #include "../protocol.h"
-//天使之战PC使用，其它版本不使用
-//这里只为了登陆完成判断，所以关键的字段没作解析
+//澶╀娇涔嬫垬PC浣跨敤锛屽叾瀹冪増鏈笉浣跨敤
+//杩欓噷鍙负浜嗙櫥闄嗗畬鎴愬垽鏂紝鎵�浠ュ叧閿殑瀛楁娌′綔瑙ｆ瀽
 
 class CProtocolAllStorageInfoRes :
 	public CProtocol

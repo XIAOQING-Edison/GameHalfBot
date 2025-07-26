@@ -16,7 +16,7 @@ bool CMessageReportDetail::Encode(CStreamReadWrite *pStreamBuf)
 	CBaseMessage::Encode(pStreamBuf);
 	ResetWritePostion();
 
-	pStreamBuf->WriteShort(GetProtocolId());	//Ð­ÒéID
+	pStreamBuf->WriteShort(GetProtocolId());	//åè®®ID
 	int count=e_report_rev-e_report_coin;
 	pStreamBuf->WriteFixedInt32(m_playerIndex);
 	for(int i=0;i<count;++i)
@@ -27,7 +27,7 @@ bool CMessageReportDetail::Encode(CStreamReadWrite *pStreamBuf)
 }
 
 
-//Õâ¸öÓÎÏ·µ½ÕâÀï¾ÍÊÇ³ö´í
+//è¿™ä¸ªæ¸¸æˆåˆ°è¿™é‡Œå°±æ˜¯å‡ºé”™
 int CMessageReportDetail::Decode(CStreamReadWrite *pStreamBuf)
 {
 	int handleLength=0;

@@ -18,20 +18,20 @@ public:
 
 	void AddPlayerToClientList(CPlayer *p);
 
-	int UpdateClientHwnd(HWND hClient,int index);	//·µ»ØÒ»¸ö·ÖÅäµÄÏÂ±ê£¬¿ÉÄÜÊÇÖØĞÂ·ÖÅäÒ²¿ÉÄÜÊÇÓÃÉêÇëµÄ
+	int UpdateClientHwnd(HWND hClient,int index);	//è¿”å›ä¸€ä¸ªåˆ†é…çš„ä¸‹æ ‡ï¼Œå¯èƒ½æ˜¯é‡æ–°åˆ†é…ä¹Ÿå¯èƒ½æ˜¯ç”¨ç”³è¯·çš„
 
 	void DeleteClient(int index);
 	
 	void ClearClients();
 
-	void SendToMainWindowToWriteText(int type,const STRING &account,char *msg,int len);	//¸ù¾İtypeÀ´¾ö¶¨Ğ´Ê²Ã´
-	void SendToMainWindowToWriteLog(const STRING &account,char *msg,int len);	//Ğ´ÈÕÖ¾
-	void SendToUpdateReportData(int index,int *data,int count);	//¸üĞÂÊı¾İ
+	void SendToMainWindowToWriteText(int type,const STRING &account,char *msg,int len);	//æ ¹æ®typeæ¥å†³å®šå†™ä»€ä¹ˆ
+	void SendToMainWindowToWriteLog(const STRING &account,char *msg,int len);	//å†™æ—¥å¿—
+	void SendToUpdateReportData(int index,int *data,int count);	//æ›´æ–°æ•°æ®
 
-	CClient *GetClientById(int index);	//È¡µÃ¶ÔÓ¦ÏÂ±êµÄÕÊºÅ½ÇÉ«Ö¸Õë
-	int GetAvailableClientIndex();	//ÕÒµ½Ò»¸öºÏÊÊµÄÏÂ±ê·ÖÅä
+	CClient *GetClientById(int index);	//å–å¾—å¯¹åº”ä¸‹æ ‡çš„å¸å·è§’è‰²æŒ‡é’ˆ
+	int GetAvailableClientIndex();	//æ‰¾åˆ°ä¸€ä¸ªåˆé€‚çš„ä¸‹æ ‡åˆ†é…
 
-	CClient *GetClientByHwnd(HWND hwnd);	//ÕÒ³ö¿Í»§¾ä±ú
+	CClient *GetClientByHwnd(HWND hwnd);	//æ‰¾å‡ºå®¢æˆ·å¥æŸ„
 
 	void DecAllPlayerLiveTime();
 
@@ -44,7 +44,7 @@ public:
 
 	static DWORD WINAPI ThreadHeartBeat(LPVOID p);
 
-	bool ExecuteClientApp(const TCHAR *szAppName,TCHAR *szCommandLine);	//Ö´ĞĞ
+	bool ExecuteClientApp(const TCHAR *szAppName,TCHAR *szCommandLine);	//æ‰§è¡Œ
 
 	CStreamReadWrite *GetStreamBufWrite(){return m_pStreamBufWrite;}
 	CStreamReadWrite *GetStreamBufRead(){return m_pStreamBufRead;}
@@ -53,34 +53,34 @@ public:
 
 	void CopyMsgToStreamRead(HWND hClient,char *data,int len);
 
-	static DWORD WINAPI ThreadMessageHandle(LPVOID p);	//´¦ÀíÏûÏ¢µÄÏß³Ì
-	static DWORD WINAPI ThreadTask(LPVOID p);	//Ö´ĞĞÈÎÎñµÄÏß³Ì
+	static DWORD WINAPI ThreadMessageHandle(LPVOID p);	//å¤„ç†æ¶ˆæ¯çš„çº¿ç¨‹
+	static DWORD WINAPI ThreadTask(LPVOID p);	//æ‰§è¡Œä»»åŠ¡çš„çº¿ç¨‹
 
 	void WakeupToHandleMessage(){SetEvent(m_hEvtMessageDecode);}
 	void WakeupToDoTask(){SetEvent(m_hEvtDoTask);}
 
-	void CreateEvents();	//´´½¨ÊÂ¼ş±äÁ¿
-	bool CreateMessageHandleThread();//´´½¨ÏûÏ¢´¦ÀíÏß³Ì
-	bool CreateTaskThread();	//´´½¨ÈÎÎñÏß³Ì
+	void CreateEvents();	//åˆ›å»ºäº‹ä»¶å˜é‡
+	bool CreateMessageHandleThread();//åˆ›å»ºæ¶ˆæ¯å¤„ç†çº¿ç¨‹
+	bool CreateTaskThread();	//åˆ›å»ºä»»åŠ¡çº¿ç¨‹
 
 	HANDLE GetEvtTask(){return m_hEvtDoTask;}
 	HANDLE GetEvtMessageHandle(){return m_hEvtMessageDecode;}
 
-	void Decode();	//½âÂëÏûÏ¢
+	void Decode();	//è§£ç æ¶ˆæ¯
 
 	void Init();
 
 	void SetExeFullPath(STRING &path){m_appPath=path;}
 	//void SetListCtrl(CListCtrl *pList){m_pListPlayers=pList;}
 private:
-	void CheckClientExist();	//¼ì²â¿Í»§¶ËÊÇ·ñ»¹´æÔÚ
+	void CheckClientExist();	//æ£€æµ‹å®¢æˆ·ç«¯æ˜¯å¦è¿˜å­˜åœ¨
 
 	bool RunClientApp();
 
 private:
 	vector<CClient*> m_clientList;
 	CThreadLock *m_pThreadLock;
-	CThreadLock *m_pThreadDataLock;	//ÕâÀïÓÃÀ´±£»¤cserverµÄÄÚ²¿±äÁ¿
+	CThreadLock *m_pThreadDataLock;	//è¿™é‡Œç”¨æ¥ä¿æŠ¤cserverçš„å†…éƒ¨å˜é‡
 	CStreamReadWrite *m_pStreamBufWrite;
 	CStreamReadWrite *m_pStreamBufRead;
 	HANDLE m_hEvtMessageDecode;
@@ -90,8 +90,8 @@ private:
 	HANDLE m_hThreadMessageHandle;
 	bool m_bQuit;
 
-// 	vector<int> m_runAppIndexs;	//½«ÒªÆô¶¯µÄAPPÏÂ±ê´æÏÂÀ´
-	STRING m_appPath;	//Éè¶¨Â·¾¶
-	//CListCtrl *m_pListPlayers;	//Íæ¼Ò¿Ø¼ş
+// 	vector<int> m_runAppIndexs;	//å°†è¦å¯åŠ¨çš„APPä¸‹æ ‡å­˜ä¸‹æ¥
+	STRING m_appPath;	//è®¾å®šè·¯å¾„
+	//CListCtrl *m_pListPlayers;	//ç©å®¶æ§ä»¶
 
 };

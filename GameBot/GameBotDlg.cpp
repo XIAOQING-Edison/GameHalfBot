@@ -1,4 +1,4 @@
-// GongShaBotDlg.cpp : ÊµÏÖÎÄ¼ş
+// GongShaBotDlg.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "StdAfx.h"
@@ -13,14 +13,14 @@
 
 #include "./FileTools/FileHelper.h"
 
-///////////////////////////////////ÏÂÃæÎªÕæÕıĞèÒª°üº¬µÄÍ·£¬ÉÏÃæµÄÍ·ÎÄ¼şĞèÒªÔÚÒÔºó¸ü¸Ä///////////////////////////////////////
+///////////////////////////////////ä¸‹é¢ä¸ºçœŸæ­£éœ€è¦åŒ…å«çš„å¤´ï¼Œä¸Šé¢çš„å¤´æ–‡ä»¶éœ€è¦åœ¨ä»¥åæ›´æ”¹///////////////////////////////////////
 #include "./Dlgs/Settings/DlgSettings.h"
 #include "./Dlgs/Settings/DlgOtherSetting.h"
 #include "./Dlgs/Settings/DlgBossSettings.h"
 
-#include "./Dlgs/Other/DlgProcessList.h"	//½ø³ÌÁĞ±í
+#include "./Dlgs/Other/DlgProcessList.h"	//è¿›ç¨‹åˆ—è¡¨
 
-#include "./Dlgs/Other/DlgHotKeySetting.h"	//ÈÈ¼ü
+#include "./Dlgs/Other/DlgHotKeySetting.h"	//çƒ­é”®
 
 #include "./Config/GameConfig.h"
 #include "./Config/PlatformConfig.h"
@@ -43,14 +43,14 @@
 //tool object
 #include "./Inject/InjectorRemoteThead.h"
 
-//test,ÏÂÃæ¼¸¸öÎªÁË²âÊÔ¶ø¼ÓµÄÍ·ÎÄ¼ş
+//test,ä¸‹é¢å‡ ä¸ªä¸ºäº†æµ‹è¯•è€ŒåŠ çš„å¤´æ–‡ä»¶
 #include "FunctionHelper/SocketHelper.h"
 #include "FunctionHelper/GameLogicHelper.h"
 #include "Player.h"
 
-// #define _TEST_	//²âÊÔ¿ªÆô±ê¼Ç
+// #define _TEST_	//æµ‹è¯•å¼€å¯æ ‡è®°
 
-#include <locale.h>	//ÎªÁËTRACEÖĞÎÄ
+#include <locale.h>	//ä¸ºäº†TRACEä¸­æ–‡
 
 char* g_old_locale=NULL;	//local
 
@@ -63,8 +63,8 @@ const int g_inject_method_count=3;
 const int g_platform_width[]={185,100,80,100
 };
 
-//Æ½Ì¨Ãû£¬·şÎñÆ÷IDµÈ
-TCHAR *g_szListColumnInfoPlatForm[]={_T("Ä£ÄâÆ÷´°¿Ú"),_T("Ä£ÄâÆ÷×´Ì¬"),_T(""),_T(""),
+//å¹³å°åï¼ŒæœåŠ¡å™¨IDç­‰
+TCHAR *g_szListColumnInfoPlatForm[]={_T("æ¨¡æ‹Ÿå™¨çª—å£"),_T("æ¨¡æ‹Ÿå™¨çŠ¶æ€"),_T(""),_T(""),
 };
 
 
@@ -74,47 +74,47 @@ const int g_player_info_width[]={180,80,80,100,100,150,150
 
 };
 
-const char g_gameVersionSupport[]={0,5,10,11,20};	//ÏÖÊ±°æ±¾
+const char g_gameVersionSupport[]={0,5,10,11,20};	//ç°æ—¶ç‰ˆæœ¬
 
-//Ä¬ÈÏÊÇyong_heng_lian_meng_
+//é»˜è®¤æ˜¯yong_heng_lian_meng_
 int g_gameVersionCount=1;
 #if (_GAME_VERSION_ == _TIAN_SHI_SHEN_YU_)
 // int g_gameVersionCount=1;
 const int g_gameVersionValueArray[]={11,11,11,11,5,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10};
-TCHAR *g_szGameVersion[]={_T("ÌìÊ¹ÉñÚÍ(ÓÀºãÖ®áÛ")};
+TCHAR *g_szGameVersion[]={_T("å¤©ä½¿ç¥è°•(æ°¸æ’ä¹‹å·…")};
 #elif (_GAME_VERSION_ == _YONG_HENG_LIAN_MENG_)
 // int g_gameVersionCount=1;
 const int g_gameVersionValueArray[]={10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10};
-TCHAR *g_szGameVersion[]={_T("Ææ¼£2")};
+TCHAR *g_szGameVersion[]={_T("å¥‡è¿¹2")};
 #elif (_GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_MOBILE_)
 const int g_gameVersionValueArray[]={0,0,0,0,0,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10};
-TCHAR *g_szGameVersion[]={_T("Ææ¼£1")};
+TCHAR *g_szGameVersion[]={_T("å¥‡è¿¹1")};
 #elif (_GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_PC_)
 const int g_gameVersionValueArray[]={5,5,5,5,5,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10};
-TCHAR *g_szGameVersion[]={_T("Ææ¼£1PC")};
+TCHAR *g_szGameVersion[]={_T("å¥‡è¿¹1PC")};
 #elif (_GAME_VERSION_ == _YONG_HENG_ZHI_DIAN_)
 const int g_gameVersionValueArray[]={20,20,20,20,20,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10};
-TCHAR *g_szGameVersion[]={_T("Éñ±øÆæ¼£")};
+TCHAR *g_szGameVersion[]={_T("ç¥å…µå¥‡è¿¹")};
 #endif
 
 
-//Íæ¼ÒÊôĞÔ£¬°üÀ¨×ÔÉí,typeNameÊÇ´Óini²éµÃtypeÖµµÃµ½µÄÃû³Æ
+//ç©å®¶å±æ€§ï¼ŒåŒ…æ‹¬è‡ªèº«,typeNameæ˜¯ä»iniæŸ¥å¾—typeå€¼å¾—åˆ°çš„åç§°
 TCHAR *g_szListColumnInfoRoleAttr[]={
-	_T("½ÇÉ«Ãû"),_T("Ö°Òµ"),_T("µÈ¼¶"),_T("Õ½ÃË"),_T("ËùÔÚµØÍ¼"),_T("×ø±ê(x,y)")
+	_T("è§’è‰²å"),_T("èŒä¸š"),_T("ç­‰çº§"),_T("æˆ˜ç›Ÿ"),_T("æ‰€åœ¨åœ°å›¾"),_T("åæ ‡(x,y)")
 };
-//_T("½ÇÉ«×´Ì¬"),
+//_T("è§’è‰²çŠ¶æ€"),
 
 
 #ifdef _M_IX86
-// const TCHAR *g_szTitle=_T("MuÖúÊÖ\t\t      ¹ºÂò:vÎ¢15915901852");
-const TCHAR *g_szTitle=_T("MuÖúÊÖ\t\t     ¹ºÂò:¿Û¿Û493150845");//test
-// const TCHAR *g_szTitle=_T("MuÖúÊÖ\t\t");//test
+// const TCHAR *g_szTitle=_T("MuåŠ©æ‰‹\t\t      è´­ä¹°:vå¾®15915901852");
+const TCHAR *g_szTitle=_T("MuåŠ©æ‰‹\t\t     è´­ä¹°:æ‰£æ‰£493150845");//test
+// const TCHAR *g_szTitle=_T("MuåŠ©æ‰‹\t\t");//test
 #else
-const TCHAR *g_szTitle=_T("Ææ¼£ÊÖÓÎ  ¼«¿ÍÖúÊÖ 0.%d°æ\t\t     ½»Á÷Èº:832921609");
-// const TCHAR *g_szTitle=_T("Ææ¼£ÊÖÓÎ  ¼«¿ÍÖúÊÖ 0.%d°æ\t\t");//     ½»Á÷Èº:832921609");
+const TCHAR *g_szTitle=_T("å¥‡è¿¹æ‰‹æ¸¸  æå®¢åŠ©æ‰‹ 0.%dç‰ˆ\t\t     äº¤æµç¾¤:832921609");
+// const TCHAR *g_szTitle=_T("å¥‡è¿¹æ‰‹æ¸¸  æå®¢åŠ©æ‰‹ 0.%dç‰ˆ\t\t");//     äº¤æµç¾¤:832921609");
 #endif
 
-//ÕâÀïÊ¹ÓÃpostmessage×÷Îª·¢ËÍ£¬²»Ê¹ÓÃÇ°Ì¨Ä£Ê½
+//è¿™é‡Œä½¿ç”¨postmessageä½œä¸ºå‘é€ï¼Œä¸ä½¿ç”¨å‰å°æ¨¡å¼
 
 char *TestReadFile(const TCHAR *szPath,int &fileLength)
 {
@@ -140,20 +140,20 @@ char *TestReadFile(const TCHAR *szPath,int &fileLength)
 }
 //////////////////////////////////////////////////////////////////////////
 
-// ÓÃÓÚÓ¦ÓÃ³ÌĞò¡°¹ØÓÚ¡±²Ëµ¥ÏîµÄ CAboutDlg ¶Ô»°¿ò
+// ç”¨äºåº”ç”¨ç¨‹åºâ€œå…³äºâ€èœå•é¡¹çš„ CAboutDlg å¯¹è¯æ¡†
 
 class CAboutDlg : public CDialog
 {
 public:
 	CAboutDlg();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_ABOUTBOX };
 
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
-// ÊµÏÖ
+// å®ç°
 protected:
 	DECLARE_MESSAGE_MAP()
 };
@@ -171,7 +171,7 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 END_MESSAGE_MAP()
 
 
-// CGongShaBotDlg ¶Ô»°¿ò
+// CGongShaBotDlg å¯¹è¯æ¡†
 
 
 
@@ -222,15 +222,15 @@ BEGIN_MESSAGE_MAP(CGameBotDlg, CDialog)
 END_MESSAGE_MAP()
 
 
-// CGongShaBotDlg ÏûÏ¢´¦Àí³ÌĞò
+// CGongShaBotDlg æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CGameBotDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// ½«¡°¹ØÓÚ...¡±²Ëµ¥ÏîÌí¼Óµ½ÏµÍ³²Ëµ¥ÖĞ¡£
+	// å°†â€œå…³äº...â€èœå•é¡¹æ·»åŠ åˆ°ç³»ç»Ÿèœå•ä¸­ã€‚
 
-	// IDM_ABOUTBOX ±ØĞëÔÚÏµÍ³ÃüÁî·¶Î§ÄÚ¡£
+	// IDM_ABOUTBOX å¿…é¡»åœ¨ç³»ç»Ÿå‘½ä»¤èŒƒå›´å†…ã€‚
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
 
@@ -246,17 +246,17 @@ BOOL CGameBotDlg::OnInitDialog()
 		}
 	}
 
-	// ÉèÖÃ´Ë¶Ô»°¿òµÄÍ¼±ê¡£µ±Ó¦ÓÃ³ÌĞòÖ÷´°¿Ú²»ÊÇ¶Ô»°¿òÊ±£¬¿ò¼Ü½«×Ô¶¯
-	//  Ö´ĞĞ´Ë²Ù×÷
-	SetIcon(m_hIcon, TRUE);			// ÉèÖÃ´óÍ¼±ê
-	SetIcon(m_hIcon, FALSE);		// ÉèÖÃĞ¡Í¼±ê
+	// è®¾ç½®æ­¤å¯¹è¯æ¡†çš„å›¾æ ‡ã€‚å½“åº”ç”¨ç¨‹åºä¸»çª—å£ä¸æ˜¯å¯¹è¯æ¡†æ—¶ï¼Œæ¡†æ¶å°†è‡ªåŠ¨
+	//  æ‰§è¡Œæ­¤æ“ä½œ
+	SetIcon(m_hIcon, TRUE);			// è®¾ç½®å¤§å›¾æ ‡
+	SetIcon(m_hIcon, FALSE);		// è®¾ç½®å°å›¾æ ‡
 	
 #ifdef ACTIVE_ENCRYPT
 	m_workerThread.Create();
-	TryToRepairConfigInInit();	//test,²âÊÔ½×¶Î£¬·ÅÔÚ×î¿ªÊ¼
+	TryToRepairConfigInInit();	//test,æµ‹è¯•é˜¶æ®µï¼Œæ”¾åœ¨æœ€å¼€å§‹
 #endif // ACTIVE_ENCRYPT
 
-	// TODO: ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–ä»£ç 
 #ifdef _DEBUG
 	g_old_locale = _strdup( setlocale(LC_CTYPE,NULL) );
 	setlocale( LC_CTYPE, "chs" );
@@ -270,12 +270,12 @@ BOOL CGameBotDlg::OnInitDialog()
 
 	SetInit(true);
 
-	m_server.Init();	//ÕâÀï³õÊ¼»¯ÊÇÒòÎª¿ÉÒÔ¿´µ½Êä³ö
+	m_server.Init();	//è¿™é‡Œåˆå§‹åŒ–æ˜¯å› ä¸ºå¯ä»¥çœ‹åˆ°è¾“å‡º
 
 #ifdef _M_IX86
 	//ChangeToBasicTheme();
 #else
-	//64Î»²»ĞèÒª×ª»»Ö÷Ìâ
+	//64ä½ä¸éœ€è¦è½¬æ¢ä¸»é¢˜
 #endif // _M_IX86
 
 	this->ShowWindow(SW_HIDE);
@@ -293,7 +293,7 @@ BOOL CGameBotDlg::OnInitDialog()
 	InitCtrls();
 
 	//GenConsoleWindow();
-	int version=31;	//ÕûÊı°æ±¾	
+	int version=31;	//æ•´æ•°ç‰ˆæœ¬	
 	TCHAR buf[MAX_PATH];
 
 #ifdef _M_IX86
@@ -314,12 +314,12 @@ BOOL CGameBotDlg::OnInitDialog()
 
 	if(!m_pSharedMemory->CreateShareMemory(g_szSharedMemoryName))
 	{
-		MessageBox(_T("´´½¨ÄÚ´æÊ§°Ü£¡£¡£¡"));
+		MessageBox(_T("åˆ›å»ºå†…å­˜å¤±è´¥ï¼ï¼ï¼"));
 		return FALSE;
 	}
 	HWND hMain=this->GetSafeHwnd();
-	m_pSharedMemory->WriteSharedMemoryByOffset((char*)&hMain,0,sizeof(HWND));	//0ºÅĞ´Èë¾ä±ú£¬Ê¹¿ÉÒÔ·¢ËÍÏûÏ¢
-	m_pSharedMemory->WriteSharedMemoryByOffset((char*)&g_maxCount,1*sizeof(int),sizeof(int));	//1ºÅĞ´ÈëÊıÁ¿
+	m_pSharedMemory->WriteSharedMemoryByOffset((char*)&hMain,0,sizeof(HWND));	//0å·å†™å…¥å¥æŸ„ï¼Œä½¿å¯ä»¥å‘é€æ¶ˆæ¯
+	m_pSharedMemory->WriteSharedMemoryByOffset((char*)&g_maxCount,1*sizeof(int),sizeof(int));	//1å·å†™å…¥æ•°é‡
 
 	this->ShowWindow(SW_SHOW);
 	m_dlgLoading.DestroyWindow();
@@ -330,7 +330,7 @@ BOOL CGameBotDlg::OnInitDialog()
 
 
 	RegisterGlobalHotKey();
-	return TRUE;  // ³ı·Ç½«½¹µãÉèÖÃµ½¿Ø¼ş£¬·ñÔò·µ»Ø TRUE
+	return TRUE;  // é™¤éå°†ç„¦ç‚¹è®¾ç½®åˆ°æ§ä»¶ï¼Œå¦åˆ™è¿”å› TRUE
 }
 
 void CGameBotDlg::OnSysCommand(UINT nID, LPARAM lParam)
@@ -354,19 +354,19 @@ void CGameBotDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	}
 }
 
-// Èç¹ûÏò¶Ô»°¿òÌí¼Ó×îĞ¡»¯°´Å¥£¬ÔòĞèÒªÏÂÃæµÄ´úÂë
-//  À´»æÖÆ¸ÃÍ¼±ê¡£¶ÔÓÚÊ¹ÓÃÎÄµµ/ÊÓÍ¼Ä£ĞÍµÄ MFC Ó¦ÓÃ³ÌĞò£¬
-//  Õâ½«ÓÉ¿ò¼Ü×Ô¶¯Íê³É¡£
+// å¦‚æœå‘å¯¹è¯æ¡†æ·»åŠ æœ€å°åŒ–æŒ‰é’®ï¼Œåˆ™éœ€è¦ä¸‹é¢çš„ä»£ç 
+//  æ¥ç»˜åˆ¶è¯¥å›¾æ ‡ã€‚å¯¹äºä½¿ç”¨æ–‡æ¡£/è§†å›¾æ¨¡å‹çš„ MFC åº”ç”¨ç¨‹åºï¼Œ
+//  è¿™å°†ç”±æ¡†æ¶è‡ªåŠ¨å®Œæˆã€‚
 
 void CGameBotDlg::OnPaint()
 {
 	if (IsIconic())
 	{
-		CPaintDC dc(this); // ÓÃÓÚ»æÖÆµÄÉè±¸ÉÏÏÂÎÄ
+		CPaintDC dc(this); // ç”¨äºç»˜åˆ¶çš„è®¾å¤‡ä¸Šä¸‹æ–‡
 
 		SendMessage(WM_ICONERASEBKGND, reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
 
-		// Ê¹Í¼±êÔÚ¹¤×÷Çø¾ØĞÎÖĞ¾ÓÖĞ
+		// ä½¿å›¾æ ‡åœ¨å·¥ä½œåŒºçŸ©å½¢ä¸­å±…ä¸­
 		int cxIcon = GetSystemMetrics(SM_CXICON);
 		int cyIcon = GetSystemMetrics(SM_CYICON);
 		CRect rect;
@@ -374,7 +374,7 @@ void CGameBotDlg::OnPaint()
 		int x = (rect.Width() - cxIcon + 1) / 2;
 		int y = (rect.Height() - cyIcon + 1) / 2;
 
-		// »æÖÆÍ¼±ê
+		// ç»˜åˆ¶å›¾æ ‡
 		dc.DrawIcon(x, y, m_hIcon);
 	}
 	else
@@ -383,8 +383,8 @@ void CGameBotDlg::OnPaint()
 	}
 }
 
-//µ±ÓÃ»§ÍÏ¶¯×îĞ¡»¯´°¿ÚÊ±ÏµÍ³µ÷ÓÃ´Ëº¯ÊıÈ¡µÃ¹â±ê
-//ÏÔÊ¾¡£
+//å½“ç”¨æˆ·æ‹–åŠ¨æœ€å°åŒ–çª—å£æ—¶ç³»ç»Ÿè°ƒç”¨æ­¤å‡½æ•°å–å¾—å…‰æ ‡
+//æ˜¾ç¤ºã€‚
 HCURSOR CGameBotDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
@@ -393,7 +393,7 @@ HCURSOR CGameBotDlg::OnQueryDragIcon()
 
 void CGameBotDlg::OnClose()
 {
-	// TODO: ÔÚ´ËÌí¼ÓÏûÏ¢´¦Àí³ÌĞò´úÂëºÍ/»òµ÷ÓÃÄ¬ÈÏÖµ
+	// TODO: åœ¨æ­¤æ·»åŠ æ¶ˆæ¯å¤„ç†ç¨‹åºä»£ç å’Œ/æˆ–è°ƒç”¨é»˜è®¤å€¼
 #ifdef _DEBUG
 	setlocale( LC_CTYPE, g_old_locale);
 	free(g_old_locale);
@@ -402,12 +402,12 @@ void CGameBotDlg::OnClose()
 
 	SAFE_DELETE_POINTER(m_pSharedMemory);
 
-	//m_pInjector->Uninject();	//ÊÍ·Ådll
-	m_server.SendQuitMessageToClients();//ÕâÀïÏÈÈÃ¿Í»§¶Ë±ä³Équit×´Ì¬£¬ÏÈ²»Ö±½ÓÊÍ·Ådll
+	//m_pInjector->Uninject();	//é‡Šæ”¾dll
+	m_server.SendQuitMessageToClients();//è¿™é‡Œå…ˆè®©å®¢æˆ·ç«¯å˜æˆquitçŠ¶æ€ï¼Œå…ˆä¸ç›´æ¥é‡Šæ”¾dll
 
 	ClearPlayers();
 
-	m_server.ClearClients();	//ÊÍ·ÅÕÊºÅÏà¹Ø¶ÔÏó
+	m_server.ClearClients();	//é‡Šæ”¾å¸å·ç›¸å…³å¯¹è±¡
 
 	ClearHelperObjects();
 	DeleteToolObjects();
@@ -418,7 +418,7 @@ void CGameBotDlg::OnClose()
 
 void CGameBotDlg::OnBnClickedBtnLogin()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	
 
 }
@@ -426,7 +426,7 @@ void CGameBotDlg::OnBnClickedBtnLogin()
 void CGameBotDlg::InitCtrls()
 {
 	CFont font;
-	font.CreatePointFont(90, _T("ºÚÌå"));
+	font.CreatePointFont(90, _T("é»‘ä½“"));
 	CButton *pBtnAddOrModify=(CButton*)GetDlgItem(IDC_BTN_TEST);
 	pBtnAddOrModify->SetFont(&font);
 	m_hyperLink1.SetURL(_T("https://www.baidu.com"));
@@ -445,7 +445,7 @@ void CGameBotDlg::InitListCtrl()
 {
 	m_pListCtrlInfo=(CListCtrl*)GetDlgItem(IDC_LIST_INFO);
 	m_pListCtrlInfo->ModifyStyle(0, LVS_SINGLESEL, 0);
-	m_pListCtrlInfo->SetExtendedStyle(LVS_EX_FULLROWSELECT|LVS_EX_GRIDLINES|LVS_EX_CHECKBOXES);	//¸´Ñ¡¿ò·ç¸ñ
+	m_pListCtrlInfo->SetExtendedStyle(LVS_EX_FULLROWSELECT|LVS_EX_GRIDLINES|LVS_EX_CHECKBOXES);	//å¤é€‰æ¡†é£æ ¼
 	int i;
 	int j=0;
 	for(i=0;i<g_platform_info_count;++i)
@@ -470,7 +470,7 @@ void CGameBotDlg::InitListCtrl()
 }
 
 
-void CGameBotDlg::InitCombo()	//³õÊ¼»¯infoType
+void CGameBotDlg::InitCombo()	//åˆå§‹åŒ–infoType
 {
 // 	m_pCbInfoType=(CComboBox*)GetDlgItem(IDC_CB_INFO_TYPE);
 // 	for(int i=0;i<g_type_info_count;++i)
@@ -489,13 +489,13 @@ void CGameBotDlg::InitCombo()	//³õÊ¼»¯infoType
 	{
 		m_pCbGameVersion->InsertString(i,g_szGameVersion[i]);
 	}
-	m_pCbGameVersion->SetCurSel(sel);	//test,ÏÈÄ¬ÈÏÆæ¼£2
-	m_pCbInjectType->SetCurSel(1);	//Ä¬ÈÏ·½Ê½2
+	m_pCbGameVersion->SetCurSel(sel);	//test,å…ˆé»˜è®¤å¥‡è¿¹2
+	m_pCbInjectType->SetCurSel(1);	//é»˜è®¤æ–¹å¼2
 
 }
 
 
-void CGameBotDlg::InitPlayers()	//³õÊ¼»¯ÕÊºÅµÄ½ÇÉ«,ÓÃÒÔµÇÂ½
+void CGameBotDlg::InitPlayers()	//åˆå§‹åŒ–å¸å·çš„è§’è‰²,ç”¨ä»¥ç™»é™†
 {
 	//CPlayerMap::GetInstance();
 	ClearPlayers();
@@ -505,7 +505,7 @@ void CGameBotDlg::InitPlayers()	//³õÊ¼»¯ÕÊºÅµÄ½ÇÉ«,ÓÃÒÔµÇÂ½
 }
 
 
-void CGameBotDlg::ClearPlayers()	//É¾³ıÒÔÇ°µÄÕÊºÅĞÅÏ¢
+void CGameBotDlg::ClearPlayers()	//åˆ é™¤ä»¥å‰çš„å¸å·ä¿¡æ¯
 {
 	//CPlayerMap::DelInstance();
 	vector<CPlayer*>::iterator it=m_playerList.begin();
@@ -528,7 +528,7 @@ void CGameBotDlg::ClearPlayers()	//É¾³ıÒÔÇ°µÄÕÊºÅĞÅÏ¢
 	m_playerList.clear();
 }
 
-CPlayer *CGameBotDlg::GetPlayerById(int index)	//È¡µÃ¶ÔÓ¦ÏÂ±êµÄÕÊºÅ½ÇÉ«Ö¸Õë
+CPlayer *CGameBotDlg::GetPlayerById(int index)	//å–å¾—å¯¹åº”ä¸‹æ ‡çš„å¸å·è§’è‰²æŒ‡é’ˆ
 {
 	CPlayer *p=NULL;
 	vector<CPlayer*>::iterator it=m_playerList.begin();
@@ -550,7 +550,7 @@ CPlayer *CGameBotDlg::GetPlayerById(int index)	//È¡µÃ¶ÔÓ¦ÏÂ±êµÄÕÊºÅ½ÇÉ«Ö¸Õë
 
 
 
-///////////////////////////¸üĞÂchange map///////////////////////////////////////
+///////////////////////////æ›´æ–°change map///////////////////////////////////////
 void CGameBotDlg::ShowChangeMap(int id)
 {
 // 	CEdit *pEdt=(CEdit*)GetDlgItem(IDC_EDT_MAP_NAME);
@@ -566,7 +566,7 @@ void CGameBotDlg::ShowChangeMap(int id)
 // 	}
 // 	else
 // 	{
-// 		str=_T("Î´ÖªµØÍ¼:id=")+str;
+// 		str=_T("æœªçŸ¥åœ°å›¾:id=")+str;
 // 	}
 // 	pEdt->SetWindowText(str);
 
@@ -582,9 +582,9 @@ LRESULT CGameBotDlg::OnHandleSelfMessage(WPARAM wParam,LPARAM lParam)
 	CAccountInfo *pInfo=(CAccountInfo*)lParam;
 	switch(msgType)
 	{
-	case e_msg_type_report_player_status:	//¸üĞÂ½ÇÉ«×´Ì¬£¬ÔİÊ±Ö»ÏÔÊ¾Áì¶Ó½ÇÉ«µÄĞÅÏ¢
+	case e_msg_type_report_player_status:	//æ›´æ–°è§’è‰²çŠ¶æ€ï¼Œæš‚æ—¶åªæ˜¾ç¤ºé¢†é˜Ÿè§’è‰²çš„ä¿¡æ¯
 		UpdateRoleInfoToList(pClient->GetIndex(),pClient);
-		//UpdatePlayerConnectInfo(pClient->GetIndex(),pClient);	//¸üĞÂÔÚÏß×´Ì¬ÔÚÕâÀï
+		//UpdatePlayerConnectInfo(pClient->GetIndex(),pClient);	//æ›´æ–°åœ¨çº¿çŠ¶æ€åœ¨è¿™é‡Œ
 		UpdateCurrentOperation(pClient->GetIndex(),pClient);
 		break;
 	case e_msg_type_add_account_info:
@@ -596,7 +596,7 @@ LRESULT CGameBotDlg::OnHandleSelfMessage(WPARAM wParam,LPARAM lParam)
 	case e_msg_type_write_log:
 		WriteLogMsg((_GAME_LOG_MSG_*)lParam);
 		break;
-	case e_msg_type_report_current_operation:	//µ±Ç°½øĞĞµÄ²Ù×÷
+	case e_msg_type_report_current_operation:	//å½“å‰è¿›è¡Œçš„æ“ä½œ
 		UpdateCurrentOperation(pClient->GetIndex(),pClient);
 		break;
 	case e_msg_type_do_game_operation:
@@ -630,7 +630,7 @@ void CGameBotDlg::OnBnClickedBtnLoginGameServ()
 		0x32, 0x37, 0x38, 0x35, 0x37, 0x37, 0x31, 0x35, 0x32, 0x18, 0xC4, 0xA8, 0xFD, 0xD8, 0xED, 0x30
 	};
 	CSocketHelper *pSocket=m_playerList.at(0)->GetSocketHelper();
-	pSocket->DecodeNormalPlayload(data,sizeof(data));	//½âÂëÕı³£
+	pSocket->DecodeNormalPlayload(data,sizeof(data));	//è§£ç æ­£å¸¸
 #endif
 #if 0
 	INT64 targetId=0;
@@ -638,7 +638,7 @@ void CGameBotDlg::OnBnClickedBtnLoginGameServ()
 	int tareetY=125;
 	int skillId=12120107;
 	CSocketHelper *pSocket=m_playerList.at(0)->GetSocketHelper();
-	pSocket->SendUseSkillMessage(skillId,targetId,targetX,tareetY);	//±àÂëÕıÈ·
+	pSocket->SendUseSkillMessage(skillId,targetId,targetX,tareetY);	//ç¼–ç æ­£ç¡®
 #endif
 #if 0
 	int index=m_pListCtrlInfo->GetSelectionMark();
@@ -647,7 +647,7 @@ void CGameBotDlg::OnBnClickedBtnLoginGameServ()
 
 	if(index != -1 && bSelected)
 	{
-		STRING accountName=m_pListCtrlInfo->GetItemText(index,0);	//È¡µÚ0ĞĞ×÷ÎªÃû×Ö
+		STRING accountName=m_pListCtrlInfo->GetItemText(index,0);	//å–ç¬¬0è¡Œä½œä¸ºåå­—
 		userDlg.SetIndex(index);
 		userDlg.SetUserName(accountName);
 		userDlg.SetAddUser(false);
@@ -667,7 +667,7 @@ void CGameBotDlg::OnBnClickedBtnLoginGameServ()
 void CGameBotDlg::OnLvnItemchangedListInfo(NMHDR *pNMHDR, LRESULT *pResult)
 {
 	LPNMLISTVIEW pNMListView = reinterpret_cast<LPNMLISTVIEW>(pNMHDR);
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 
 	if(pNMListView->uChanged == LVIF_STATE)
 	{
@@ -679,12 +679,12 @@ void CGameBotDlg::OnLvnItemchangedListInfo(NMHDR *pNMHDR, LRESULT *pResult)
 	}
 
 
-	//Õâ¸ö·½·¨µã»÷Ê±´¥·¢¶à´Î£¬Ôİ²»Ê¹ÓÃ
+	//è¿™ä¸ªæ–¹æ³•ç‚¹å‡»æ—¶è§¦å‘å¤šæ¬¡ï¼Œæš‚ä¸ä½¿ç”¨
 // 	LPNMITEMACTIVATE   pNMLV   =   (LPNMITEMACTIVATE)pNMHDR;
 // 	CString str;
 // 	if((pNMLV->uOldState & INDEXTOSTATEIMAGEMASK(1)) /* old state : unchecked */  && (pNMLV->uNewState & INDEXTOSTATEIMAGEMASK(2)) /* new state : checked */)  
 // 	{  
-// 		str.Format(_T("Item£¨ĞĞ£© %d subItem£¨ÁĞ£© %d is checked\n"), pNMLV->iItem,pNMLV->iSubItem);
+// 		str.Format(_T("Itemï¼ˆè¡Œï¼‰ %d subItemï¼ˆåˆ—ï¼‰ %d is checked\n"), pNMLV->iItem,pNMLV->iSubItem);
 // 	}  
 // 	else if((pNMLV->uOldState & INDEXTOSTATEIMAGEMASK(2)) /* old state : checked */  && (pNMLV->uNewState & INDEXTOSTATEIMAGEMASK(1)) /* new state : unchecked */)
 // 	{  
@@ -701,7 +701,7 @@ void CGameBotDlg::OnLvnItemchangedListInfo(NMHDR *pNMHDR, LRESULT *pResult)
 void CGameBotDlg::OnNMRClickListInfo(NMHDR *pNMHDR, LRESULT *pResult)
 {
 	LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 
 	NMLISTVIEW* pNMListView = (NM_LISTVIEW*)pNMHDR;
 	DWORD dwPos = GetMessagePos();
@@ -723,7 +723,7 @@ void CGameBotDlg::OnNMRClickListInfo(NMHDR *pNMHDR, LRESULT *pResult)
 		ASSERT( popup != NULL );
 		printf("no item in the listctrl\n");
 	}
-	//test,ÓĞÎ´Íê³ÉµÄ¹¦ÄÜ£¬²Ëµ¥ÏÈÈ¥µô
+	//test,æœ‰æœªå®Œæˆçš„åŠŸèƒ½ï¼Œèœå•å…ˆå»æ‰
  	popup->TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON, point.x, point.y, this );
 
 	*pResult = 0;
@@ -744,7 +744,7 @@ void CGameBotDlg::OnListPopupMenu(UINT nId)
 	CPlayer *pPlayer=NULL;
 	CClient *pClient=NULL;
 
-	accountName=m_playerList.at(index)->GetAccountName();	//È¡µÚ0ĞĞ×÷ÎªÃû×Ö
+	accountName=m_playerList.at(index)->GetAccountName();	//å–ç¬¬0è¡Œä½œä¸ºåå­—
 	dlgOtherSettings.SetAccountName(accountName);
 	dlgSettings.SetAccountName(accountName);
 	dlgBossSettings.SetAccountName(accountName);
@@ -800,7 +800,7 @@ void CGameBotDlg::OnListPopupMenu(UINT nId)
 }
 
 
-void CGameBotDlg::ReadGameConfigFileToList()	//¶ÁÈ¡INIÀïµÄ×Ö¶Îµ½LISTCTRL
+void CGameBotDlg::ReadGameConfigFileToList()	//è¯»å–INIé‡Œçš„å­—æ®µåˆ°LISTCTRL
 {
 	CGameConfig gameCfg(STRING(_T("")),false);
 	CUserConfig *pUserConfig=NULL;
@@ -827,7 +827,7 @@ void CGameBotDlg::ReadGameConfigFileToList()	//¶ÁÈ¡INIÀïµÄ×Ö¶Îµ½LISTCTRL
 // 		p->SetClient(pClient);
 		m_pListCtrlInfo->InsertItem(i,it->c_str());
 		//m_pListCtrlInfo->SetItemText(i,j++,it->c_str());	//account name
-		m_pListCtrlInfo->SetItemText(i,j++,_T(""));	//ÕâÀïÏÔÊ¾½ÇÉ«Ãû×Ö,µÇ½øÓÎÏ·²ÅÓĞ
+		m_pListCtrlInfo->SetItemText(i,j++,_T(""));	//è¿™é‡Œæ˜¾ç¤ºè§’è‰²åå­—,ç™»è¿›æ¸¸æˆæ‰æœ‰
 		TCHAR buf[MAX_PATH];
 		CPlatformConfig cfg(false);
 		gameCfg.SetUserName(*it);	//section name;
@@ -903,11 +903,11 @@ void CGameBotDlg::DeleteAccountInfoFromList(int index)
 
 
 
-void CGameBotDlg::UpdateRoleInfoToList(int index,CClient *pClient)	//¸üĞÂ½ÇÉ«ĞÅÏ¢,Ö°ÒµµÈ¼¶Ö®Àà
+void CGameBotDlg::UpdateRoleInfoToList(int index,CClient *pClient)	//æ›´æ–°è§’è‰²ä¿¡æ¯,èŒä¸šç­‰çº§ä¹‹ç±»
 {
 	int count=m_pListCtrlInfo->GetItemCount();
 	CString str;
-	int i=1;	//1¿ªÊ¼ÊÇ½ÇÉ«Ãû
+	int i=1;	//1å¼€å§‹æ˜¯è§’è‰²å
 	TCHAR buf[MAX_PATH];
 	STRING strTmp;
 	int mapId=0;
@@ -919,7 +919,7 @@ void CGameBotDlg::UpdateRoleInfoToList(int index,CClient *pClient)	//¸üĞÂ½ÇÉ«ĞÅÏ
 		pPlayer=m_playerList.at(index);
 		pPlayer->SetX(pStatus->GetX());
 		pPlayer->SetY(pStatus->GetY());
-		//È¡µÃ´Ó·şÎñÆ÷È¡µÃµÄskillList;
+		//å–å¾—ä»æœåŠ¡å™¨å–å¾—çš„skillList;
 		//role name
 		m_pListCtrlInfo->SetItemText(index,i++,pStatus->roleName.c_str());	//
 
@@ -929,7 +929,7 @@ void CGameBotDlg::UpdateRoleInfoToList(int index,CClient *pClient)	//¸üĞÂ½ÇÉ«ĞÅÏ
 
 		//level
 		_stprintf(buf,_T("%d"),pStatus->level);
-		m_pListCtrlInfo->SetItemText(index,i++,buf);	//ÕâÀïĞèÒª×ª³É´óÊ¦¶àÉÙ¼¶»òÆäËü
+		m_pListCtrlInfo->SetItemText(index,i++,buf);	//è¿™é‡Œéœ€è¦è½¬æˆå¤§å¸ˆå¤šå°‘çº§æˆ–å…¶å®ƒ
 
 
 		//asuram
@@ -946,18 +946,18 @@ void CGameBotDlg::UpdateRoleInfoToList(int index,CClient *pClient)	//¸üĞÂ½ÇÉ«ĞÅÏ
 	}
 	else
 	{
-		TRACE(_T("¸üĞÂ½ÇÉ«Ë÷ÒıÏÂ±ê:%d²»ÕıÈ·!\n"),index);
+		TRACE(_T("æ›´æ–°è§’è‰²ç´¢å¼•ä¸‹æ ‡:%dä¸æ­£ç¡®!\n"),index);
 	}
 }
 
 
-void CGameBotDlg::UpdatePlayerConnectInfo(int index,CClient *pClient)	//¸üĞÂ½ÇÉ«ÔÚÏßĞÅÏ¢
+void CGameBotDlg::UpdatePlayerConnectInfo(int index,CClient *pClient)	//æ›´æ–°è§’è‰²åœ¨çº¿ä¿¡æ¯
 {
 
 }
 
 
-void CGameBotDlg::InitHelperObjects()	//ÊµÊ¼»¯µØÍ¼¶ÔÏó£¬´«ËÍµã¶ÔÏó£¬µ¥Î»¶ÔÏó£¬ÎïÆ·¶ÔÏóµÈÁĞ±í
+void CGameBotDlg::InitHelperObjects()	//å®å§‹åŒ–åœ°å›¾å¯¹è±¡ï¼Œä¼ é€ç‚¹å¯¹è±¡ï¼Œå•ä½å¯¹è±¡ï¼Œç‰©å“å¯¹è±¡ç­‰åˆ—è¡¨
 {
 	CFileHelper::GetInstance();
 	CMisc::GetInstance()->SetHwndMain(this->GetSafeHwnd());
@@ -968,7 +968,7 @@ void CGameBotDlg::InitHelperObjects()	//ÊµÊ¼»¯µØÍ¼¶ÔÏó£¬´«ËÍµã¶ÔÏó£¬µ¥Î»¶ÔÏó£¬Îï
 }
 
 
-void CGameBotDlg::ClearHelperObjects()	//ÊÍ·Å×ÊÔ´
+void CGameBotDlg::ClearHelperObjects()	//é‡Šæ”¾èµ„æº
 {
 	CMisc::DeleteInstance();
 	CFileHelper::DeleteInstance();
@@ -988,9 +988,9 @@ void CGameBotDlg::SetTestBtnVisible(bool b)
 }
 
 
-void CGameBotDlg::ResizeWindow(int cx,int cy)	//°Ñ¿í¸ßµ÷ÕûÒ»ÏÂ
+void CGameBotDlg::ResizeWindow(int cx,int cy)	//æŠŠå®½é«˜è°ƒæ•´ä¸€ä¸‹
 {
-	//ÏÈ²»×Ô¶¯µ÷Õû
+	//å…ˆä¸è‡ªåŠ¨è°ƒæ•´
 
 // 	int minX=800;
 // 	int minY=600;
@@ -1014,7 +1014,7 @@ void CGameBotDlg::ResizeWindow(int cx,int cy)	//°Ñ¿í¸ßµ÷ÕûÒ»ÏÂ
 }
 
 
-void CGameBotDlg::OnMinimize()	//×îĞ¡»¯µ½ÍĞÅÌ
+void CGameBotDlg::OnMinimize()	//æœ€å°åŒ–åˆ°æ‰˜ç›˜
 {
 	m_notifyData.cbSize=sizeof(m_notifyData);
 	m_notifyData.hIcon=AfxGetApp()->LoadIcon(IDR_MAINFRAME);
@@ -1042,7 +1042,7 @@ LRESULT CGameBotDlg::OnClickTray(WPARAM wParam,LPARAM IParam)
 
 void CGameBotDlg::OnBnClickedBtnPlayAll()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 // 	STRING path=GetCurrentAppPath()+_T("as.bin");
 // 	TCHAR *appName=(TCHAR*)path.c_str();
 // 	m_server.SetListCtrl(m_pListCtrlInfo);
@@ -1071,7 +1071,7 @@ void CGameBotDlg::WriteLogMsg(_GAME_LOG_MSG_ *pMsg)
 }
 
 
-void CGameBotDlg::UpdateCurrentOperation(int index,CClient *pClient)	//Ôİ¶¨Îªtchar*
+void CGameBotDlg::UpdateCurrentOperation(int index,CClient *pClient)	//æš‚å®šä¸ºtchar*
 {
 	int subIndex=11;
 	//int index=index;
@@ -1091,15 +1091,15 @@ void CGameBotDlg::SendOperation(_OPERATION_MSG_* pOperation)
 
 BOOL CGameBotDlg::OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct)
 {
-	// TODO: ÔÚ´ËÌí¼ÓÏûÏ¢´¦Àí³ÌĞò´úÂëºÍ/»òµ÷ÓÃÄ¬ÈÏÖµ
-	//HWND hwnd=pCopyDataStruct->dwData;	//×÷ÎªÏÂ±ê
+	// TODO: åœ¨æ­¤æ·»åŠ æ¶ˆæ¯å¤„ç†ç¨‹åºä»£ç å’Œ/æˆ–è°ƒç”¨é»˜è®¤å€¼
+	//HWND hwnd=pCopyDataStruct->dwData;	//ä½œä¸ºä¸‹æ ‡
 	int len=pCopyDataStruct->cbData;
 	char *data=(char*)pCopyDataStruct->lpData;
-	HWND hClient=(HWND)pCopyDataStruct->dwData;	//dwData×°¿Í»§µÄhwnd
+	HWND hClient=(HWND)pCopyDataStruct->dwData;	//dwDataè£…å®¢æˆ·çš„hwnd
 	m_hWndTest=hClient;
 	TCHAR szWindow[MAX_PATH];
 	::GetWindowText(hClient,szWindow,MAX_PATH-1);
-	TRACE_OUTPUT(_T("¶Ô·½´°¿Ú¾ä±ú:0x%x£¬´°¿Ú±êÌâ:%s\n"),hClient,szWindow);
+	TRACE_OUTPUT(_T("å¯¹æ–¹çª—å£å¥æŸ„:0x%xï¼Œçª—å£æ ‡é¢˜:%s\n"),hClient,szWindow);
 // 	m_server.CopyMsgToStreamRead(hClient,data,len);
 // 	m_server.WakeupToHandleMessage();
 	m_server.DecodeMessage(hClient,data,len);
@@ -1113,7 +1113,7 @@ void CGameBotDlg::OnSize(UINT nType, int cx, int cy)
 	{
 		ResizeWindow(cx,cy);
 	}
-	// TODO: ÔÚ´Ë´¦Ìí¼ÓÏûÏ¢´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤å¤„æ·»åŠ æ¶ˆæ¯å¤„ç†ç¨‹åºä»£ç 
 }
 
 
@@ -1135,7 +1135,7 @@ void CGameBotDlg::ChangeDisplaySolution(int width,int height)
 }
 
 
-void CGameBotDlg::TryToRepairConfigInInit()	//³õÊ¼»¯Ê±³¢ÊÔĞŞ¸´ÎÄ¼ş,Ö÷ÒªÊÇ±ÀÀ£ºóÎÄ¼şÃ»ÖØĞÂ¼ÓÃÜ
+void CGameBotDlg::TryToRepairConfigInInit()	//åˆå§‹åŒ–æ—¶å°è¯•ä¿®å¤æ–‡ä»¶,ä¸»è¦æ˜¯å´©æºƒåæ–‡ä»¶æ²¡é‡æ–°åŠ å¯†
 {
 	
 
@@ -1145,7 +1145,7 @@ void CGameBotDlg::TryToRepairConfigInInit()	//³õÊ¼»¯Ê±³¢ÊÔĞŞ¸´ÎÄ¼ş,Ö÷ÒªÊÇ±ÀÀ£ºóÎ
 void CGameBotDlg::OnNMClickListInfo(NMHDR *pNMHDR, LRESULT *pResult)
 {
 	LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 // 	CGameConfig gameCfg;
 	CUserConfig *pUserConfig=NULL;
 	DWORD dwPos = GetMessagePos();
@@ -1166,7 +1166,7 @@ void CGameBotDlg::OnNMClickListInfo(NMHDR *pNMHDR, LRESULT *pResult)
 
 
 
-void CGameBotDlg::InitToolObjects()	//¹¤¾ßÀà
+void CGameBotDlg::InitToolObjects()	//å·¥å…·ç±»
 {
 	if(!m_pInjector)
 	{
@@ -1195,13 +1195,13 @@ void CGameBotDlg::DeleteToolObjects()
 
 
 
-void CGameBotDlg::OnBnClickedBtnConnect()	//¿ªÊ¼
+void CGameBotDlg::OnBnClickedBtnConnect()	//å¼€å§‹
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	int count=m_pListCtrlInfo->GetItemCount();
 	for(int i=0;i<count;++i)
 	{
-		BOOL bClickToCheck=m_pListCtrlInfo->GetCheck(i);	//ÕâÀïÊÇ·´¹ıÀ´µÄ£¬µãÒ»´ÎÊÇÎŞµ½ÓĞ£¬ÏÈµÚ¶ş´ÎÊÇÓĞµ½ÎŞ£¬µ«ÕâÀï»ñÈ¡µÄcheckÊÇµã»÷Ç°µÄ×´Ì¬
+		BOOL bClickToCheck=m_pListCtrlInfo->GetCheck(i);	//è¿™é‡Œæ˜¯åè¿‡æ¥çš„ï¼Œç‚¹ä¸€æ¬¡æ˜¯æ— åˆ°æœ‰ï¼Œå…ˆç¬¬äºŒæ¬¡æ˜¯æœ‰åˆ°æ— ï¼Œä½†è¿™é‡Œè·å–çš„checkæ˜¯ç‚¹å‡»å‰çš„çŠ¶æ€
 		if(bClickToCheck)
 			CMessageSenderHelper::GetInstance()->SendControlClientReq(i,false);
 
@@ -1210,21 +1210,21 @@ void CGameBotDlg::OnBnClickedBtnConnect()	//¿ªÊ¼
 }
 
 
-void CGameBotDlg::OnBnClickedBtnTestMisc()	//ÔİÍ£
+void CGameBotDlg::OnBnClickedBtnTestMisc()	//æš‚åœ
 {
 
 }
 
 void CGameBotDlg::OnBnClickedBtnClickMe()
 {
-	STRING title=_T("¸÷ÓÎÏ·°æ±¾ËµÃ÷");
+	STRING title=_T("å„æ¸¸æˆç‰ˆæœ¬è¯´æ˜");
 	CDlgShowReadMe dlg(title);
 	dlg.DoModal();
 }
 
 void CGameBotDlg::OnCbnSelchangeCbGameVersion()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	int curSel=m_pCbGameVersion->GetCurSel();
 	g_gameVersion=g_gameVersionValueArray[curSel];
 }
@@ -1237,7 +1237,7 @@ void CGameBotDlg::RegisterGlobalHotKey()
 }
 
 
-void CGameBotDlg::RegisterGlobalHotKeyInternal(bool bStart)	//×¢²áÈ«¾ÖÈÈ¼ü
+void CGameBotDlg::RegisterGlobalHotKeyInternal(bool bStart)	//æ³¨å†Œå…¨å±€çƒ­é”®
 {
 	
 	
@@ -1263,13 +1263,13 @@ void CGameBotDlg::OnHotKey(UINT nHotKeyId, UINT nKey1, UINT nKey2)
 }
 void CGameBotDlg::OnCbnSelchangeCbInjectType()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
-	//¿ÉÔÚÕâÀïĞ´¼ÇÂ¼×¢ÈëÀàĞÍ
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
+	//å¯åœ¨è¿™é‡Œå†™è®°å½•æ³¨å…¥ç±»å‹
 }
 
 void CGameBotDlg::OnBnClickedBtnAccerlateSetting()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	
 }
 

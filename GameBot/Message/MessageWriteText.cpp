@@ -15,24 +15,24 @@ bool CMessageWriteText::Encode(CStreamReadWrite *pStreamBuf)
 	CBaseMessage::Encode(pStreamBuf);
 	ResetWritePostion();
 
-	pStreamBuf->WriteShort(GetProtocolId());	//Ğ­ÒéID
+	pStreamBuf->WriteShort(GetProtocolId());	//åè®®ID
 	pStreamBuf->WriteBigString(m_accountName.c_str());
 	pStreamBuf->WriteFixedInt32(m_type);
 	pStreamBuf->WriteBigString((TCHAR*)m_buf);
 	//test
-	//TRACE_OUTPUT(_T("±àÂë¿Í»§Ğ´Êı¾İ:%s\n"),HexArrayToString(pStreamBuf->GetBufHead(),pStreamBuf->GetCurWritePostion()).c_str());
+	//TRACE_OUTPUT(_T("ç¼–ç å®¢æˆ·å†™æ•°æ®:%s\n"),HexArrayToString(pStreamBuf->GetBufHead(),pStreamBuf->GetCurWritePostion()).c_str());
 	return true;
 }
 
 
-//Õâ¸öÊÇutf8±àÂë£¬ÒòÎªÎÄ±¾ÊÇÓÃutf8À´´æ£¬ÕâÀï¾Í²»ÓÃreadBigString×ª»»£¬Ö±½Ó¶ÁÈ¡utf8±àÂë
+//è¿™ä¸ªæ˜¯utf8ç¼–ç ï¼Œå› ä¸ºæ–‡æœ¬æ˜¯ç”¨utf8æ¥å­˜ï¼Œè¿™é‡Œå°±ä¸ç”¨readBigStringè½¬æ¢ï¼Œç›´æ¥è¯»å–utf8ç¼–ç 
 int CMessageWriteText::Decode(CStreamReadWrite *pStreamBuf)
 {
 	int handleLength=0;
 
 	int orgPos=pStreamBuf->GetHandlePos();
 	
-	//ÊÕµ½ĞÅÏ¢ºóĞèÒª·¢ËÍµ½Ö÷´°¿ÚĞ´¶«Î÷
+	//æ”¶åˆ°ä¿¡æ¯åéœ€è¦å‘é€åˆ°ä¸»çª—å£å†™ä¸œè¥¿
 	m_accountName=pStreamBuf->ReadBigString();
 	m_type=pStreamBuf->ReadFixedInt32();
 // 	int total=pStreamBuf->ReadFixedInt32();
@@ -56,7 +56,7 @@ void CMessageWriteText::MakeWriteDataMessage(int type,const STRING &account,cons
 	m_type=type;
 	m_accountName=account;
 	memcpy(m_buf,szBuf,bufSize);
-	m_length=bufSize;	//±àÂëÊ±Ã»ÓÃµ½
+	m_length=bufSize;	//ç¼–ç æ—¶æ²¡ç”¨åˆ°
 	m_buf[bufSize]=0;
 	m_buf[bufSize+1]=0;
 

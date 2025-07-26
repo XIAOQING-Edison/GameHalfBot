@@ -26,7 +26,7 @@ public:
 	bool SendHeartbeatRes(int index,int code);
 	bool SendLoginReq(CClient *pClient);
 	bool SendLoginRes(int index,int code);
-	bool SendClientStatus(CClient *pClient,int isOnline);	//´ı¶¨
+	bool SendClientStatus(CClient *pClient,int isOnline);	//å¾…å®š
 	bool SendPlayerInfoStatus(CClient *pClient,CInfoPlayerInfoStatus *playerInfo);
 	bool SendPlayerTaskStatus(CClient *pClient,STRING &taskName);
 	bool SendQuitReq(CClient *pClient);
@@ -34,7 +34,7 @@ public:
 	bool SendForceQuitRes(int playerIndex);
 	bool SendControlClientReq(int playerIndex,int op);
 	bool SendDoGameOperationReq(int playerIndex,int gameOperationProtocolId,int paramLength,char *cmdData);
-	bool SendToWriteData(CClient *pClient,int type,const STRING &account,char *buf,int len);	//·¢ËÍµ½Ö÷´°¿Ú
+	bool SendToWriteData(CClient *pClient,int type,const STRING &account,char *buf,int len);	//å‘é€åˆ°ä¸»çª—å£
 private:
 
 	CClient *m_pClient;

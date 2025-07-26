@@ -1,4 +1,4 @@
-// ./Dlgs/Settings/DlgSystemSettings.cpp : ÊµÏÖÎÄ¼ş
+// ./Dlgs/Settings/DlgSystemSettings.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "../../StdAfx.h"
@@ -6,7 +6,7 @@
 #include "DlgSystemSettings.h"
 
 
-// CDlgSystemSettings ¶Ô»°¿ò
+// CDlgSystemSettings å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CDlgSystemSettings, CDialog)
 
@@ -31,26 +31,26 @@ BEGIN_MESSAGE_MAP(CDlgSystemSettings, CDialog)
 END_MESSAGE_MAP()
 
 
-// CDlgSystemSettings ÏûÏ¢´¦Àí³ÌĞò
+// CDlgSystemSettings æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CDlgSystemSettings::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// TODO:  ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯
+	// TODO:  åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–
 	m_brush.CreateSolidBrush(RGB(255,255,255));//while brush
 	InitCtrls();
 	return TRUE;  // return TRUE unless you set the focus to a control
-	// Òì³£: OCX ÊôĞÔÒ³Ó¦·µ»Ø FALSE
+	// å¼‚å¸¸: OCX å±æ€§é¡µåº”è¿”å› FALSE
 }
 
 HBRUSH CDlgSystemSettings::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 {
 	HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
 
-	// TODO:  ÔÚ´Ë¸ü¸Ä DC µÄÈÎºÎÊôĞÔ
+	// TODO:  åœ¨æ­¤æ›´æ”¹ DC çš„ä»»ä½•å±æ€§
 	hbr=(HBRUSH)m_brush;
-	// TODO:  Èç¹ûÄ¬ÈÏµÄ²»ÊÇËùĞè»­±Ê£¬Ôò·µ»ØÁíÒ»¸ö»­±Ê
+	// TODO:  å¦‚æœé»˜è®¤çš„ä¸æ˜¯æ‰€éœ€ç”»ç¬”ï¼Œåˆ™è¿”å›å¦ä¸€ä¸ªç”»ç¬”
 	return hbr;
 }
 

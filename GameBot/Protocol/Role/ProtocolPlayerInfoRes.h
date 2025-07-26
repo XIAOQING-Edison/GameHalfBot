@@ -1,6 +1,6 @@
 #pragma once
 #include "../protocol.h"
-#include "InfoPlayerInfo.h"	//охйтуБ╦Ж
+#include "InfoPlayerInfo.h"	//Е┘┬Х╞∙Х©≥Д╦╙
 class CProtocolPlayerInfoRes :
 	public CProtocol
 {

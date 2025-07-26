@@ -1,4 +1,4 @@
-// Proxy.cpp : ¶¨Òå DLL Ó¦ÓÃ³ÌĞòµÄµ¼³öº¯Êı¡£
+// Proxy.cpp : å®šä¹‰ DLL åº”ç”¨ç¨‹åºçš„å¯¼å‡ºå‡½æ•°ã€‚
 //
 #include "Proxy.h"
 
@@ -7,13 +7,13 @@
 
 
 
-#include "Misc/HookHelper.h"	//·â°üĞÍĞèÒªÕâ¸ö¶«Î÷
+#include "Misc/HookHelper.h"	//å°åŒ…å‹éœ€è¦è¿™ä¸ªä¸œè¥¿
 #include "Misc/Misc.h"
 #include "Util/ShareMemory.h"
 #include "FileTools/FileHelper.h"
 #include "ProtocolMap.h"
 #include "Player.h"
-#include "Client.h"	//ÓÃÀ´ÏòÖ÷´°¿Ú·¢ËÍÏûÏ¢
+#include "Client.h"	//ç”¨æ¥å‘ä¸»çª—å£å‘é€æ¶ˆæ¯
 #include "IPCWindow/IPCWindow.h"
 #include "CrashHelper/CrashHelper.h"
 #pragma comment(lib,"ws2_32.lib")
@@ -21,44 +21,44 @@
 CALLBAK_DATA g_recvCallback;
 CALLBAK_DATA g_sendCallback;
 
-//È«¾Ö¶ÔÏó
+//å…¨å±€å¯¹è±¡
 CPlayer *g_pPlayer=NULL;
 CShareMemory *g_pShareMemory=NULL;
 CClient *g_pClient=NULL;
-HWND g_IPCWindow= NULL;	//Í¨Ñ¶´°¿Ú
-HHOOK g_msgHook=NULL;	//ÏûÏ¢¹³×Ó
-DWORD WINAPI ThreadCreateIPCWindow(LPVOID p);	//º¯ÊıÉùÃ÷
+HWND g_IPCWindow= NULL;	//é€šè®¯çª—å£
+HHOOK g_msgHook=NULL;	//æ¶ˆæ¯é’©å­
+DWORD WINAPI ThreadCreateIPCWindow(LPVOID p);	//å‡½æ•°å£°æ˜
 
 #ifdef __cplusplus
 extern "C"{
 	PROXY_API  CALLBAK_DATA* WINAPI RecvCallback(SOCKET s,char* payload,DWORD payloadLength,DWORD bufLength)
 	{
-		bool bIsModify=false;	//ÕâÀïµ÷ÓÃÀàµÄĞŞ¸ÄÀ´¾ö¶¨ÊÇ·ñĞŞ¸Ä
-		//ÔİÊ±²»×÷ĞŞ¸Ä
-		//½«°üÄÚÈİ·Åµ½½ÓÊÕ»º³åÇø´¦Àí
-		//ÊÇÒÑÕÒµ½ĞèÒªµÄsocket²Å´¦Àí
+		bool bIsModify=false;	//è¿™é‡Œè°ƒç”¨ç±»çš„ä¿®æ”¹æ¥å†³å®šæ˜¯å¦ä¿®æ”¹
+		//æš‚æ—¶ä¸ä½œä¿®æ”¹
+		//å°†åŒ…å†…å®¹æ”¾åˆ°æ¥æ”¶ç¼“å†²åŒºå¤„ç†
+		//æ˜¯å·²æ‰¾åˆ°éœ€è¦çš„socketæ‰å¤„ç†
 
 		if(CHookHelper::GetInstance()->IsSameMainGameSocket(s))
 		{
-			//TRACE_OUTPUT(_T("HookÊÕ°ü³¤¶È:%d\n"),payloadLength);
-			//TRACE_OUTPUT(_T("HookÊÕ°üÄÚÈİ:%s\n"),HexArrayToString(payLoad,payloadLength).c_str());
+			//TRACE_OUTPUT(_T("Hookæ”¶åŒ…é•¿åº¦:%d\n"),payloadLength);
+			//TRACE_OUTPUT(_T("Hookæ”¶åŒ…å†…å®¹:%s\n"),HexArrayToString(payLoad,payloadLength).c_str());
 			g_recvCallback.newPayloadLength=CHookHelper::GetInstance()->HandleRecv(s,payload,payloadLength,bufLength,&g_recvCallback.newPayload,bIsModify);
 		}
 		if(!bIsModify)
 		{
 			return NULL;
 		}
-		//TRACE_OUTPUT(_T("½ÓÊÕ°ü±»ĞŞ¸ÄÁË!!ÄÚÈİ:%s\n"),HexArrayToString(g_recvCallback.newPayload,g_recvCallback.newPayloadLength).c_str());
+		//TRACE_OUTPUT(_T("æ¥æ”¶åŒ…è¢«ä¿®æ”¹äº†!!å†…å®¹:%s\n"),HexArrayToString(g_recvCallback.newPayload,g_recvCallback.newPayloadLength).c_str());
 		return &g_recvCallback;
 	}
 
 
-	//Ò»°ãÕâÀïÓÃ×÷½ØÈ¡µÇÂ½°üÀ´»ñµÃÊ¹ÓÃÄÄ¸ösocketÀ´·¢ËÍ
+	//ä¸€èˆ¬è¿™é‡Œç”¨ä½œæˆªå–ç™»é™†åŒ…æ¥è·å¾—ä½¿ç”¨å“ªä¸ªsocketæ¥å‘é€
 	PROXY_API  CALLBAK_DATA* WINAPI SendCallback(SOCKET s,char* payload,DWORD payLoadLength)
 	{
-		bool bIsModify=false;	//ÕâÀïµ÷ÓÃÀàµÄĞŞ¸ÄÀ´¾ö¶¨ÊÇ·ñĞŞ¸Ä
-		//ÔİÊ±²»×÷ĞŞ¸Ä´¦Àí
-		//½«°üÊı¾İ·Åµ½socketHelperÀïÅĞ¶Ï°üÄÚÈİ
+		bool bIsModify=false;	//è¿™é‡Œè°ƒç”¨ç±»çš„ä¿®æ”¹æ¥å†³å®šæ˜¯å¦ä¿®æ”¹
+		//æš‚æ—¶ä¸ä½œä¿®æ”¹å¤„ç†
+		//å°†åŒ…æ•°æ®æ”¾åˆ°socketHelperé‡Œåˆ¤æ–­åŒ…å†…å®¹
 		if(payLoadLength>0)
 		{
 			g_sendCallback.newPayloadLength=CHookHelper::GetInstance()->HandleSend(s,payload,payLoadLength,&g_sendCallback.newPayload,bIsModify);		
@@ -66,7 +66,7 @@ extern "C"{
 		
 		if(!bIsModify)
 			return NULL;
-		//TRACE_OUTPUT(_T("·¢ËÍ°ü±»ĞŞ¸ÄÁË!!ÄÚÈİ:%s\n"),HexArrayToString(g_sendCallback.newPayload,g_sendCallback.newPayloadLength).c_str());
+		//TRACE_OUTPUT(_T("å‘é€åŒ…è¢«ä¿®æ”¹äº†!!å†…å®¹:%s\n"),HexArrayToString(g_sendCallback.newPayload,g_sendCallback.newPayloadLength).c_str());
 		return &g_sendCallback;
 	}
 #endif // cplusplus
@@ -81,19 +81,19 @@ extern "C"{
 #ifdef __cplusplus
 extern "C"{
 
-PROXY_API void Start()	//¿ªÊ¼»ò¼ÌĞø
+PROXY_API void Start()	//å¼€å§‹æˆ–ç»§ç»­
 {
 	if(g_pPlayer)
 		g_pPlayer->SetStop(false);
 }
 
-PROXY_API void Quit()	//ÍË³ö
+PROXY_API void Quit()	//é€€å‡º
 {
 	if(g_pPlayer)
 		g_pPlayer->SetQuit(true);
 }
 
-PROXY_API void Pause()	//ÔİÍ£
+PROXY_API void Pause()	//æš‚åœ
 {
 	if(g_pPlayer)
 		g_pPlayer->SetStop(true);
@@ -142,13 +142,13 @@ BOOL InitObjects()
 
 	HWND hwndMain;
 	g_pShareMemory->ReadShreadMemoryByOffset((char*)&hwndMain,0,sizeof(HWND));
-	g_pClient->SetMainWindow(hwndMain);	//»ñµÃÖ÷´°¿Ú¾ä±ú
+	g_pClient->SetMainWindow(hwndMain);	//è·å¾—ä¸»çª—å£å¥æŸ„
 
 	int count;
 	g_pShareMemory->ReadShreadMemoryByOffset((char*)&count,1*sizeof(int),sizeof(int));
 // 	if(count != g_maxCount)
 // 	{
-// 		//TRACE_OUTPUT(_T("Ö°Òµ:%dºÍ%d²»·ûºÏ?????????????????\n"),g_maxCount,count);
+// 		//TRACE_OUTPUT(_T("èŒä¸š:%då’Œ%dä¸ç¬¦åˆ?????????????????\n"),g_maxCount,count);
 // 		return FALSE;
 // 	}
 // 
@@ -158,17 +158,17 @@ BOOL InitObjects()
 // 	}
 // 
 	CFileHelper::GetInstance();
-	CProtocolMap::GetInstance()->InitProtocolMap();	//Ğ­Òé
-	CHookHelper::GetInstance()->SetPlayer(g_pPlayer);	//Éè¶¨Íæ¼ÒÖ¸Õë
-	CMisc::GetInstance()->SetHwndMain(hwndMain);	//Éè¶¨Ö÷¿Ø´°¿Ú
+	CProtocolMap::GetInstance()->InitProtocolMap();	//åè®®
+	CHookHelper::GetInstance()->SetPlayer(g_pPlayer);	//è®¾å®šç©å®¶æŒ‡é’ˆ
+	CMisc::GetInstance()->SetHwndMain(hwndMain);	//è®¾å®šä¸»æ§çª—å£
 
 	CMessageMapList::GetInstance()->InitMessageList();
-	CMessageSenderHelper::GetInstance();	//½ø³ÌÍ¨ĞÅ
+	CMessageSenderHelper::GetInstance();	//è¿›ç¨‹é€šä¿¡
 	return TRUE;
 }
 
 
-//´´½¨Ïß³Ì½¨Á¢´°¿Ú
+//åˆ›å»ºçº¿ç¨‹å»ºç«‹çª—å£
 BOOL CreateIPCWindow(HINSTANCE hInst)
 {
 	STRING clsName=_T("MUEditor");
@@ -179,11 +179,11 @@ BOOL CreateIPCWindow(HINSTANCE hInst)
 	g_pClient->SetSelfWindow(g_IPCWindow);
 	if(!g_IPCWindow)
 	{
-		TRACE_OUTPUT(_T("´´½¨´°¿ÚÊ§°Ü!´íÎóºÅ:%d\n"),GetLastError());
+		TRACE_OUTPUT(_T("åˆ›å»ºçª—å£å¤±è´¥!é”™è¯¯å·:%d\n"),GetLastError());
 	}
 	else
 	{
-		TRACE_OUTPUT(_T("·¢ËÍµ½Ö÷´°¿Ú\n"));
+		TRACE_OUTPUT(_T("å‘é€åˆ°ä¸»çª—å£\n"));
 		::SendMessage(g_IPCWindow,WM_SELF_HANDLE_MSG,0,0);
 	}
 	return MessageLoop(hInst);
@@ -255,14 +255,14 @@ HWND CreateMessageWindow(HMODULE hModule,STRING &title,STRING &szClassName,int w
 	HINSTANCE hInst=(HINSTANCE)hModule;
 	if(!RegisterMessageWindow(hModule,szClassName))
 	{
-		TRACE_OUTPUT(_T("×¢²á´°¿ÚÊ§°Ü!!´íÎó:%d\n"),GetLastError());
+		TRACE_OUTPUT(_T("æ³¨å†Œçª—å£å¤±è´¥!!é”™è¯¯:%d\n"),GetLastError());
 		return false;
 	}
 	hwnd = CreateWindow(szClassName.c_str(),title.c_str(),
 		WS_EX_APPWINDOW|WS_POPUP,CW_USEDEFAULT,CW_USEDEFAULT,w,h,NULL,NULL,hInst,NULL);
 
 
-	//ÏÔÊ¾²¢¸üĞÂ´°¿Ú 
+	//æ˜¾ç¤ºå¹¶æ›´æ–°çª—å£ 
 	ShowWindow(hwnd,SW_SHOW);
 	UpdateWindow(hwnd);
 	return hwnd;
@@ -273,7 +273,7 @@ HWND CreateMessageWindow(HMODULE hModule,STRING &title,STRING &szClassName,int w
 bool RegisterMessageWindow(HINSTANCE hInst,STRING &szClassName)
 {
 	WNDCLASS       wndclass;
-	//Éè¼Æ´°¿ÚÀà
+	//è®¾è®¡çª—å£ç±»
 	wndclass.style          = CS_HREDRAW | CS_VREDRAW;
 	wndclass.lpfnWndProc    = WndProc;
 	wndclass.cbClsExtra     = 0;
@@ -285,7 +285,7 @@ bool RegisterMessageWindow(HINSTANCE hInst,STRING &szClassName)
 	wndclass.lpszMenuName   = NULL;
 	wndclass.lpszClassName  = szClassName.c_str();
 
-	//×¢²á´°¿Ú
+	//æ³¨å†Œçª—å£
 	if(!RegisterClass(&wndclass))
 	{
 		return false;
@@ -305,7 +305,7 @@ bool UnRegisterWindow(HINSTANCE hInst)
 WPARAM MessageLoop(HINSTANCE hInst)
 {
 	MSG msg;
-	TRACE_OUTPUT(_T("½øÈëÏûÏ¢Ñ­»·\n"));
+	TRACE_OUTPUT(_T("è¿›å…¥æ¶ˆæ¯å¾ªç¯\n"));
 	while(GetMessage(&msg, NULL,0,0))
 	{
 		TranslateMessage(&msg);
@@ -324,21 +324,21 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 	HDC         hdc;
 	PAINTSTRUCT ps;
 	RECT        rect;
-	COPYDATASTRUCT *pCopyData;	//COPY DATAÏûÏ¢Õâ¸öÖ÷Òª½á¹¹
+	COPYDATASTRUCT *pCopyData;	//COPY DATAæ¶ˆæ¯è¿™ä¸ªä¸»è¦ç»“æ„
 	switch(message)
 	{
 	case WM_CREATE:
-		//TRACE_OUTPUT(_T("ÊÕµ½´´½¨ÏûÏ¢!\n"));
+		//TRACE_OUTPUT(_T("æ”¶åˆ°åˆ›å»ºæ¶ˆæ¯!\n"));
 		return 0;
-	case WM_SELF_HANDLE_MSG:	//Õâ¸öÊÇ×Ô¼º¶¨ÒåµÄÏûÏ¢£¬´´½¨Íê³É¾Í·¢ËÍÕâ¸öÏûÏ¢
-		//TRACE_OUTPUT(_T("ÊÕµ½×Ô¶¨ÒåÏûÏ¢\n"));
+	case WM_SELF_HANDLE_MSG:	//è¿™ä¸ªæ˜¯è‡ªå·±å®šä¹‰çš„æ¶ˆæ¯ï¼Œåˆ›å»ºå®Œæˆå°±å‘é€è¿™ä¸ªæ¶ˆæ¯
+		//TRACE_OUTPUT(_T("æ”¶åˆ°è‡ªå®šä¹‰æ¶ˆæ¯\n"));
 		CMessageSenderHelper::GetInstance()->SendLoginReq(g_pClient);
 		return 0;
 	case WM_PAINT:
 		{
 			hdc = BeginPaint(hwnd,&ps);
 			GetClientRect(hwnd, &rect);
-			DrawText(hdc, TEXT("PCÎ¢¶ËÖúÊÖ"), -1, &rect, DT_SINGLELINE|DT_CENTER|DT_VCENTER);
+			DrawText(hdc, TEXT("PCå¾®ç«¯åŠ©æ‰‹"), -1, &rect, DT_SINGLELINE|DT_CENTER|DT_VCENTER);
 			EndPaint(hwnd,&ps);
 			return 0;
 		}
@@ -352,11 +352,11 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 		}
 		return 0;
 	case WM_CLOSE:
-		//TRACE_OUTPUT(_T("ÊÕµ½¹Ø±ÕÏûÏ¢\n"));
+		//TRACE_OUTPUT(_T("æ”¶åˆ°å…³é—­æ¶ˆæ¯\n"));
 		return 0;
 		break;
 	case WM_DESTROY:
-		//TRACE_OUTPUT(_T("ÊÕµ½Ïú»ÙÏûÏ¢\n"));
+		//TRACE_OUTPUT(_T("æ”¶åˆ°é”€æ¯æ¶ˆæ¯\n"));
 		PostQuitMessage(0);
 		return 0;
 	default:

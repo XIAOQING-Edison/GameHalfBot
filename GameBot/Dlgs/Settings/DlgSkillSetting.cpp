@@ -1,4 +1,4 @@
-// ./Dlgs/Settings/DlgSkillSetting.cpp : ÊµÏÖÎÄ¼ş
+// ./Dlgs/Settings/DlgSkillSetting.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "../../stdafx.h"
@@ -6,7 +6,7 @@
 #include "../../Config/SkillConfig.h"
 
 
-// CDlgSkillSetting ¶Ô»°¿ò
+// CDlgSkillSetting å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CDlgSkillSetting, CDialog)
 
@@ -34,7 +34,7 @@ BEGIN_MESSAGE_MAP(CDlgSkillSetting, CDialog)
 END_MESSAGE_MAP()
 
 
-// CDlgSkillSetting ÏûÏ¢´¦Àí³ÌĞò
+// CDlgSkillSetting æ¶ˆæ¯å¤„ç†ç¨‹åº
 void CDlgSkillSetting::InitCtrls()
 {
 	m_pCbListJobSel=(CComboBox*)GetDlgItem(IDC_CB_SKILL_JOB);
@@ -104,7 +104,7 @@ void CDlgSkillSetting::InitComboBox()
 
 void CDlgSkillSetting::OnBnClickedBtnDel()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	int selCount=m_pListSkillAll->GetSelCount();
 	
 	
@@ -112,19 +112,19 @@ void CDlgSkillSetting::OnBnClickedBtnDel()
 
 void CDlgSkillSetting::OnBnClickedBtnAdd()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	int selCount=m_pListSkillSelected->GetSelCount();
 	
 }
 
 void CDlgSkillSetting::OnCbnSelchangeCbSkillJob()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	InitListBox();
 }
 
 
-//ÕâÊ±ÓÃskillId×÷Îª±È½ÏÖµ
+//è¿™æ—¶ç”¨skillIdä½œä¸ºæ¯”è¾ƒå€¼
 int CDlgSkillSetting::GetInsertIndexInList(int orgIndex,CListBox *pList)
 {
 	int findIndex=-1;
@@ -137,11 +137,11 @@ BOOL CDlgSkillSetting::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// TODO:  ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯
+	// TODO:  åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–
 
 	InitCtrls();
 	return TRUE;  // return TRUE unless you set the focus to a control
-	// Òì³£: OCX ÊôĞÔÒ³Ó¦·µ»Ø FALSE
+	// å¼‚å¸¸: OCX å±æ€§é¡µåº”è¿”å› FALSE
 }
 
 

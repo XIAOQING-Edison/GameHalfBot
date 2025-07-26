@@ -17,8 +17,8 @@ public:
 private:
 
 	CInfoRoleSimpleInfo info;//= 1 ;
-	int mapId;//= 2; //ËùÔÚµØÍ¼
-	int line;//= 3; //ËùÔÚ·ÖÏß
+	int mapId;//= 2; //æ‰€åœ¨åœ°å›¾
+	int line;//= 3; //æ‰€åœ¨åˆ†çº¿
 	int hostId;//= 5;
 	bool isDel;//= 7;
 	INT64 delTime;//= 8;

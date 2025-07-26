@@ -25,7 +25,7 @@ CCommentConfig::CCommentConfig(const TCHAR *szFileName,const TCHAR *szComment,bo
 	SetComment(szComment);
 }
 
-//Õâ¸öÓÃÒÔ¼ÓÔØÄ³ÌØ¶¨°æ±¾µÄini
+//è¿™ä¸ªç”¨ä»¥åŠ è½½æŸç‰¹å®šç‰ˆæœ¬çš„ini
 CCommentConfig::CCommentConfig(const TCHAR *szPath,const TCHAR *szFileName,int gameVersion,const TCHAR *szComment,bool bUseEncrypDecrypt):CConfig(szPath,szFileName,gameVersion,
 																														   bUseEncrypDecrypt)
 {
@@ -41,7 +41,7 @@ CCommentConfig::~CCommentConfig()
 
 
 
-BOOL CCommentConfig::WriteComment()	//Ğ´µ½Í·Àï
+BOOL CCommentConfig::WriteComment()	//å†™åˆ°å¤´é‡Œ
 {
 	BOOL ret=TRUE;
 	STRING str=_T(";")+m_comment+_T("\r\n");
@@ -72,7 +72,7 @@ EXT:
 }
 
 
-const TCHAR* CCommentConfig::ReadComment()	//´ÓÎÄ¼şÀï¶Á³ö×¢ÊÍ
+const TCHAR* CCommentConfig::ReadComment()	//ä»æ–‡ä»¶é‡Œè¯»å‡ºæ³¨é‡Š
 {
 	TCHAR buf[256];
 	memset(buf,0,sizeof(buf));
@@ -96,7 +96,7 @@ const TCHAR* CCommentConfig::ReadComment()	//´ÓÎÄ¼şÀï¶Á³ö×¢ÊÍ
 	pos=readStr.find(_T("\r\n"));
 	if(pos!=STRING::npos)
 	{
-		m_comment=readStr.substr(1,pos);	//È¥µô×îÇ°ÃæµÄ";"
+		m_comment=readStr.substr(1,pos);	//å»æ‰æœ€å‰é¢çš„";"
 	}
 	else
 	{
@@ -149,7 +149,7 @@ map<STRING,STRING>	CCommentConfig::GetAllKeyValueBySetionName(const TCHAR *szSec
 	DWORD high=0;
 	DWORD size=0;
 
-	TCHAR szKey[1024]={0};	//´æ·ÅÁÙÊ±µÄkey-value
+	TCHAR szKey[1024]={0};	//å­˜æ”¾ä¸´æ—¶çš„key-value
 
 	if(hFile==INVALID_HANDLE_VALUE)
 	{
@@ -166,7 +166,7 @@ EXT:
 
 
 
-vector<pair<STRING,STRING> > CCommentConfig::GetAllKeyValueBySetionNameNoSorted(const TCHAR *szSection)//²»»áÅÅĞò
+vector<pair<STRING,STRING> > CCommentConfig::GetAllKeyValueBySetionNameNoSorted(const TCHAR *szSection)//ä¸ä¼šæ’åº
 {
 	vector<pair<STRING,STRING> > result;
 	CFileHelper::GetInstance()->LockFile(m_bUseEncryptDecrypt);

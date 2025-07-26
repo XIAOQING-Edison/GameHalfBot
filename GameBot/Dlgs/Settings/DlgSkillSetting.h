@@ -2,14 +2,14 @@
 
 #include "../../resource.h"
 #include "../../Config/GameConfig.h"
-// CDlgSkillSetting ¶Ô»°¿ò
+// CDlgSkillSetting å¯¹è¯æ¡†
 class CPlayer;
 class CDlgSkillSetting : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgSkillSetting)
 
 public:
-	CDlgSkillSetting(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgSkillSetting(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgSkillSetting();
 
 	void SetConfigObject(CSkillConfig *p){m_pSkillConfig=p;}
@@ -32,8 +32,8 @@ public:
 
 	void SetPlayerSkillList(vector<int>& skillList){m_playerSkillList=skillList;}
 
-	void SetPlayerPointer(CPlayer *player){m_pPlyaer=player;}//ÎªÁË·½±ãÈ¡µÃÊı¾İ
-// ¶Ô»°¿òÊı¾İ
+	void SetPlayerPointer(CPlayer *player){m_pPlyaer=player;}//ä¸ºäº†æ–¹ä¾¿å–å¾—æ•°æ®
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_SKILL_SETTINGS };
 private:
 	CListBox *m_pListSkillAll;
@@ -45,11 +45,11 @@ private:
 	CSkillConfig *m_pSkillConfig;
 	vector<int> m_playerSkillList;
 private:
-	int m_career;	//Íæ¼ÒÉúÑÄÖ°Òµ
-	STRING m_accountName;	//ÕÊ»§
-	CPlayer *m_pPlyaer;	//Íæ¼ÒÊı¾İ
+	int m_career;	//ç©å®¶ç”Ÿæ¶¯èŒä¸š
+	STRING m_accountName;	//å¸æˆ·
+	CPlayer *m_pPlyaer;	//ç©å®¶æ•°æ®
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:

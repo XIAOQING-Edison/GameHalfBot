@@ -5,7 +5,7 @@ typedef struct _CALLBACK_DATA{
 	DWORD newPayloadLength;
 }CALLBAK_DATA;
 
-typedef CALLBAK_DATA* (WINAPI *RECVCALLBACKFUNC)(SOCKET s,char* payLoad,DWORD payLoadLength,DWORD bufLength);	//ÀïÃæĞèÒª¼ÆËã²»ÄÜ³¬¹ıbufLengthËù´ú±íµÄ³¤¶È
+typedef CALLBAK_DATA* (WINAPI *RECVCALLBACKFUNC)(SOCKET s,char* payLoad,DWORD payLoadLength,DWORD bufLength);	//é‡Œé¢éœ€è¦è®¡ç®—ä¸èƒ½è¶…è¿‡bufLengthæ‰€ä»£è¡¨çš„é•¿åº¦
 typedef CALLBAK_DATA* (WINAPI *SENDCALLBACKFUNC)(SOCKET s,char* payLoad,DWORD payLoadLength);
 
 

@@ -3,7 +3,7 @@
 #include "../MemoryStream/StreamReadWrite.h"
 #include "ProtocolValue.h"
 
-const int protocol_header_length=4+4+2;//×îĞ¡Îª10×Ö½Ú:length+sign(4×Ö½Ú0)+protocolId(2×Ö½Ú)
+const int protocol_header_length=4+4+2;//æœ€å°ä¸º10å­—èŠ‚:length+sign(4å­—èŠ‚0)+protocolId(2å­—èŠ‚)
 
 
 
@@ -19,7 +19,7 @@ public:
 	virtual int Decode(CStreamReadWrite *pStreamBuf){return 0;}
 
 
-	virtual void Clone(CProtocol **p);	//ÓÃĞéº¯ÊıÀ´·µ»Ø×ÓÀà¶ÔÏó,ÕâÀïµÄÖ¸ÕëĞèÒªÊÖ¶¯ÊÍ·Å
+	virtual void Clone(CProtocol **p);	//ç”¨è™šå‡½æ•°æ¥è¿”å›å­ç±»å¯¹è±¡,è¿™é‡Œçš„æŒ‡é’ˆéœ€è¦æ‰‹åŠ¨é‡Šæ”¾
 
 	void Init();
 	BYTE *GetProtocolBuf(){return (BYTE*)m_pProtocolEncodeStreamBuf->GetBufHead();}
@@ -34,7 +34,7 @@ public:
 	void SetProtocolIdResOrSyn(DWORD id){m_protocolIdResOrSyn=id;}
 	DWORD GetProtocolIdResOrSyn(){return m_protocolIdResOrSyn;}
 	
-	int DecodeFirst(CStreamReadWrite *pStreamBuf);	//ÏÈ½âÂë³ö³¤¶È,protocolIdÕâÀà,·µ»ØĞ­Òé³¤¶È
+	int DecodeFirst(CStreamReadWrite *pStreamBuf);	//å…ˆè§£ç å‡ºé•¿åº¦,protocolIdè¿™ç±»,è¿”å›åè®®é•¿åº¦
 
 
 	void SetCurrentPlayer(CPlayer *p){m_pPlayer=p;}
@@ -42,14 +42,14 @@ public:
 	void ResetWritePostion(){m_pProtocolEncodeStreamBuf->ResetCurWritePosition();}
 
 public:
-	//ÌØ¶¨Ğ­Òé
+	//ç‰¹å®šåè®®
 public:
 	void SetPackageLengthInRes(int len){m_packageLengthInRes=len;}
 protected:
 	CPlayer *m_pPlayer;
-	DWORD m_protocolIdReq;	//ÇëÇóµÄprotocolId,ÓÃ×÷·¢ËÍ
-	DWORD m_protocolIdResOrSyn;	//µÃµ½µÄprotocolId,½ÓÊÕºó²ÅÅĞ¶ÏÊÇ·ñÊÇres»òsynÕâÁ½ÀàÏìÓ¦
+	DWORD m_protocolIdReq;	//è¯·æ±‚çš„protocolId,ç”¨ä½œå‘é€
+	DWORD m_protocolIdResOrSyn;	//å¾—åˆ°çš„protocolId,æ¥æ”¶åæ‰åˆ¤æ–­æ˜¯å¦æ˜¯resæˆ–synè¿™ä¸¤ç±»å“åº”
 	CStreamReadWrite *m_pProtocolEncodeStreamBuf;
-	int m_packageLengthInRes;	//»ØÓ¦Ê±µÃµ½µÄÊµ¼Ê³¤¶È
+	int m_packageLengthInRes;	//å›åº”æ—¶å¾—åˆ°çš„å®é™…é•¿åº¦
 
 };

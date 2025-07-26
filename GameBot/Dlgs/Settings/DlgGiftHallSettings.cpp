@@ -1,4 +1,4 @@
-// ./Dlgs/Settings/DlgGiftHallSettings.cpp : ÊµÏÖÎÄ¼þ
+// ./Dlgs/Settings/DlgGiftHallSettings.cpp : å®žçŽ°æ–‡ä»¶
 //
 
 #include "../../StdAfx.h"
@@ -6,7 +6,7 @@
 #include "DlgGiftHallSettings.h"
 
 
-// CDlgGiftHallSettings ¶Ô»°¿ò
+// CDlgGiftHallSettings å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CDlgGiftHallSettings, CDialog)
 
@@ -32,26 +32,26 @@ BEGIN_MESSAGE_MAP(CDlgGiftHallSettings, CDialog)
 END_MESSAGE_MAP()
 
 
-// CDlgGiftHallSettings ÏûÏ¢´¦Àí³ÌÐò
+// CDlgGiftHallSettings æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CDlgGiftHallSettings::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// TODO:  ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯
+	// TODO:  åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–
 	m_brush.CreateSolidBrush(RGB(255,255,255));//while brush
 	InitCtrls();
 	return TRUE;  // return TRUE unless you set the focus to a control
-	// Òì³£: OCX ÊôÐÔÒ³Ó¦·µ»Ø FALSE
+	// å¼‚å¸¸: OCX å±žæ€§é¡µåº”è¿”å›ž FALSE
 }
 
 HBRUSH CDlgGiftHallSettings::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 {
 	HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
 
-	// TODO:  ÔÚ´Ë¸ü¸Ä DC µÄÈÎºÎÊôÐÔ
+	// TODO:  åœ¨æ­¤æ›´æ”¹ DC çš„ä»»ä½•å±žæ€§
 	hbr=(HBRUSH)m_brush;
-	// TODO:  Èç¹ûÄ¬ÈÏµÄ²»ÊÇËùÐè»­±Ê£¬Ôò·µ»ØÁíÒ»¸ö»­±Ê
+	// TODO:  å¦‚æžœé»˜è®¤çš„ä¸æ˜¯æ‰€éœ€ç”»ç¬”ï¼Œåˆ™è¿”å›žå¦ä¸€ä¸ªç”»ç¬”
 	return hbr;
 }
 
@@ -64,13 +64,13 @@ void CDlgGiftHallSettings::InitCtrls()
 	m_pChkAutoComposeTicket=(CButton*)GetDlgItem(IDC_CHK_AUTO_COMPOSE_TICKET);
 	m_pChkAutoRecycleEquipment=(CButton*)GetDlgItem(IDC_CHK_AUTO_RECYCYLE);
 
-	m_pChkAutoSendGetVipMemberInfo=(CButton*)GetDlgItem(IDC_CHK_ACCUMULATE_SIGN_REWARD);//¶¨Ê±·¢ËÍ»áÔ±
-	m_pChkAutoGetActivityReward=(CButton*)GetDlgItem(IDC_CHK_ACTIVITY_REWARD);;	//»îÔ¾¶ÈÁì½±
+	m_pChkAutoSendGetVipMemberInfo=(CButton*)GetDlgItem(IDC_CHK_ACCUMULATE_SIGN_REWARD);//å®šæ—¶å‘é€ä¼šå‘˜
+	m_pChkAutoGetActivityReward=(CButton*)GetDlgItem(IDC_CHK_ACTIVITY_REWARD);;	//æ´»è·ƒåº¦é¢†å¥–
 
-	m_pChkAutoUpdateMagicNuclear=(CButton*)GetDlgItem(IDC_CHK_AUTO_UPDATE_MAGIC_NUCLEAR);;	//Ä§ºË³äÄÜ
+	m_pChkAutoUpdateMagicNuclear=(CButton*)GetDlgItem(IDC_CHK_AUTO_UPDATE_MAGIC_NUCLEAR);;	//é­”æ ¸å……èƒ½
 
 	m_pChkAutoReadMail=(CButton*)GetDlgItem(IDC_CHK_AUTO_READ_MAIL);;
-	m_pChkAutoDeleteMailWhenRead=(CButton*)GetDlgItem(IDC_CHK_AUTO_DELETE_READ_MAIL);;	//É¾³ýÒÑ¶ÁÓÊ¼þ
+	m_pChkAutoDeleteMailWhenRead=(CButton*)GetDlgItem(IDC_CHK_AUTO_DELETE_READ_MAIL);;	//åˆ é™¤å·²è¯»é‚®ä»¶
 
 	m_pCbRecycleEquipmentStar=(CComboBox*)GetDlgItem(IDC_CB_STAR);
 	m_pCbRecycleEquipmentStepLv=(CComboBox*)GetDlgItem(IDC_CB_STEP_LV);
@@ -125,7 +125,7 @@ void CDlgGiftHallSettings::SaveCtrlsToIni()
 	m_pGiftHallConfig->SetAutoOnlineRewardToCfg(m_pChkAutoGetOnlineReward->GetCheck());
 	m_pGiftHallConfig->SetAutoOfflineExpToCfg(m_pChkAutoGetOfflineExp->GetCheck());	
 
-	m_pGiftHallConfig->SetIsAutoSendGetVipMemberInfoToCfg(m_pChkAutoSendGetVipMemberInfo->GetCheck());	//¶¨Ê±·¢ËÍ»ñÈ¡»áÔ±
+	m_pGiftHallConfig->SetIsAutoSendGetVipMemberInfoToCfg(m_pChkAutoSendGetVipMemberInfo->GetCheck());	//å®šæ—¶å‘é€èŽ·å–ä¼šå‘˜
 	m_pGiftHallConfig->SetIsAutoAcitivityGetRewardToCfg(m_pChkAutoGetActivityReward->GetCheck());
 
 	m_pGiftHallConfig->SetIsAutoReadMailToCfg(m_pChkAutoReadMail->GetCheck());
@@ -173,6 +173,6 @@ void CDlgGiftHallSettings::CheckAll(bool bSelect)
 
 void CDlgGiftHallSettings::OnBnClickedChkGiftHallSelAll()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	CheckAll(m_pChkAll->GetCheck());
 }

@@ -13,6 +13,6 @@ public:
 	void Reset();
 
 private:
-	int x;	//当前坐标x
-	int y;	//汉前坐标y
+	int x;	//褰撳墠鍧愭爣x
+	int y;	//姹夊墠鍧愭爣y
 };

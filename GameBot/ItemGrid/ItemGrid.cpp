@@ -38,12 +38,12 @@ CItemList *CItemGrid::GetItemListByType(E_ITEM_GRID_TYPE type)
 	}
 	else
 	{
-		TRACE_OUTPUT(_T("±³°üÀàĞÍ:%dÃ»ÕÒµ½!!²é¿´µ÷ÓÃÕß!!\n"),type);
+		TRACE_OUTPUT(_T("èƒŒåŒ…ç±»å‹:%dæ²¡æ‰¾åˆ°!!æŸ¥çœ‹è°ƒç”¨è€…!!\n"),type);
 	}
 	return pItemList;
 }
 
-void CItemGrid::AddItemToItemList(E_ITEM_GRID_TYPE type,void *pInfoItem)	//typeËµÃ÷ÊÇÄÄ¸öÎïÆ·¸ñÀàĞÍ
+void CItemGrid::AddItemToItemList(E_ITEM_GRID_TYPE type,void *pInfoItem)	//typeè¯´æ˜æ˜¯å“ªä¸ªç‰©å“æ ¼ç±»å‹
 {
 	CItemList *pItemList=GetItemListByType(type);
 	if(pItemList)
@@ -52,7 +52,7 @@ void CItemGrid::AddItemToItemList(E_ITEM_GRID_TYPE type,void *pInfoItem)	//typeË
 	}
 	else
 	{
-		TRACE_OUTPUT(_T("±³°üÀàĞÍ:%d²»ÔÚÕâÀï´¦Àí!!²é¿´µ÷ÓÃÕß!!\n"),type);
+		TRACE_OUTPUT(_T("èƒŒåŒ…ç±»å‹:%dä¸åœ¨è¿™é‡Œå¤„ç†!!æŸ¥çœ‹è°ƒç”¨è€…!!\n"),type);
 	}
 }
 

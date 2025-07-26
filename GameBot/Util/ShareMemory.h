@@ -29,11 +29,11 @@ public:
 	bool WriteSharedMemoryByOffset(void *data,int offset,int len);
 	bool ReadShreadMemoryByOffset(void *data,int offset,int len);
 protected:
-	void FillSharedMemory(int value);	//½«ÄÚ´æÄ¬ÈÏÖÃÄ³Öµ
+	void FillSharedMemory(int value);	//å°†å†…å­˜é»˜è®¤ç½®æŸå€¼
 	void Init();
 private:
 	HANDLE m_hFileMap;
 	int m_memorySize;
 	char *m_pMemoryAddress;
-	bool m_bCreator;	//ÊÇ·ñÊÇ´´½¨Õß£¬´´½¨ÕßĞèÒª×îºóÊÍ·ÅÕâ¸ömemory
+	bool m_bCreator;	//æ˜¯å¦æ˜¯åˆ›å»ºè€…ï¼Œåˆ›å»ºè€…éœ€è¦æœ€åé‡Šæ”¾è¿™ä¸ªmemory
 };

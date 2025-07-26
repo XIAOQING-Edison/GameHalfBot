@@ -3,17 +3,17 @@
 
 #include "../../Config/BossAssistConfig.h"
 #include "../../resource.h"
-// CDlgOtherTaskSettings ¶Ô»°¿ò
+// CDlgOtherTaskSettings å¯¹è¯æ¡†
 
 class CDlgBossAssistSettings : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgBossAssistSettings)
 
 public:
-	CDlgBossAssistSettings(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgBossAssistSettings(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgBossAssistSettings();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_ASSIST_SETTINGS };
 
 	void SetConfigObject(CBossAssistConfig *p){m_pBossAssistConfig=p;}
@@ -42,34 +42,34 @@ private:
 	CButton *m_pChk[14];
 	CButton *m_pChkAll;
 private:
-	CEdit *m_pEdtBeastBossAssistMaxTimeout;	//Ğ­Öú×î³¤Ê±¼ä
-	CButton *m_pChkBeastBossAutoAssistOther;	//Ğ­ÖúËûÈË
-	CButton *m_pChkBeastBossAutoSendAssist;	//»÷É±Ê±·¢ËÍĞ­Öú
-	CButton *m_pChkBeastBossAssistAutoSendAssist;//Ğ­ÖúÊ±·¢ËÍĞ­Öú
-	CButton *m_pChkBeastBossOnlyAssistSelfMaxCount;	//Ö»Ğ­Öú±¾Éí×î´ó´ÎÊı
+	CEdit *m_pEdtBeastBossAssistMaxTimeout;	//ååŠ©æœ€é•¿æ—¶é—´
+	CButton *m_pChkBeastBossAutoAssistOther;	//ååŠ©ä»–äºº
+	CButton *m_pChkBeastBossAutoSendAssist;	//å‡»æ€æ—¶å‘é€ååŠ©
+	CButton *m_pChkBeastBossAssistAutoSendAssist;//ååŠ©æ—¶å‘é€ååŠ©
+	CButton *m_pChkBeastBossOnlyAssistSelfMaxCount;	//åªååŠ©æœ¬èº«æœ€å¤§æ¬¡æ•°
 
-	CEdit *m_pEdtCorpsBossAssistMaxTimout;//Ğ­Öú×î³¤Ê±¼ä
-	CButton *m_pChkCorpsBossAutoAssistOther;//Ğ­ÖúËûÈË
-	CButton *m_pChkCorpsBossAusoSendAssist;//»÷É±Ê±·¢ËÍĞ­Öú
-	CButton *m_pChkCorpsBossAssistAutoSendAssist;//Ğ­ÖúÊ±·¢ËÍĞ­Öú
-	CButton *m_pChkCorpsBossOnlyAssistSelfMaxCount;//Ö»Ğ­Öú±¾Éí×î´ó´ÎÊı
+	CEdit *m_pEdtCorpsBossAssistMaxTimout;//ååŠ©æœ€é•¿æ—¶é—´
+	CButton *m_pChkCorpsBossAutoAssistOther;//ååŠ©ä»–äºº
+	CButton *m_pChkCorpsBossAusoSendAssist;//å‡»æ€æ—¶å‘é€ååŠ©
+	CButton *m_pChkCorpsBossAssistAutoSendAssist;//ååŠ©æ—¶å‘é€ååŠ©
+	CButton *m_pChkCorpsBossOnlyAssistSelfMaxCount;//åªååŠ©æœ¬èº«æœ€å¤§æ¬¡æ•°
 // 
-// 	CButton *m_pChkSpaceCorridor;	//Ê±¹â»ØÀÈ
+// 	CButton *m_pChkSpaceCorridor;	//æ—¶å…‰å›å»Š
 // 	CButton *m_pChkSpecialSpace;
 // 	CButton *m_pChkFastFight;
-// 	CButton *m_pChkCampWar;	//±ùÔ¨Õ½³¡
-// 	CButton *m_pChkCertificate;	//ÌìÊ¹Õ½Áî
-// 	CButton *m_pChkPinkDiamond;	//·Û×ê
-// 	CButton *m_pChkHorcrux;	//»êÆ÷
-// 	CButton *m_pChkOriginalSin;	//Ô­×ïxxxx
-// 	CButton *m_pChkFairyLand;	//»Ã¾³
+// 	CButton *m_pChkCampWar;	//å†°æ¸Šæˆ˜åœº
+// 	CButton *m_pChkCertificate;	//å¤©ä½¿æˆ˜ä»¤
+// 	CButton *m_pChkPinkDiamond;	//ç²‰é’»
+// 	CButton *m_pChkHorcrux;	//é­‚å™¨
+// 	CButton *m_pChkOriginalSin;	//åŸç½ªxxxx
+// 	CButton *m_pChkFairyLand;	//å¹»å¢ƒ
 // 	CEdit	*m_pEdtFairyLandCount;
-// 	CButton *m_pChkOrcGodBless;	//ÊŞÉñÆíÔ¸
+// 	CButton *m_pChkOrcGodBless;	//å…½ç¥ç¥ˆæ„¿
 private:
 	CBossAssistConfig *m_pBossAssistConfig;
 	CBrush m_brush;
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:

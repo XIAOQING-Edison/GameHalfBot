@@ -3,17 +3,17 @@
 #include "../../Global/public.h"
 #include "../../resource.h"
 
-// CDlgShowReadMe ¶Ô»°¿ò
+// CDlgShowReadMe å¯¹è¯æ¡†
 
 class CDlgShowReadMe : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgShowReadMe)
 
 public:
-	CDlgShowReadMe(STRING &title,CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgShowReadMe(STRING &title,CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgShowReadMe();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_READ_ME };
 public:
 	void InitCtrls();
@@ -22,7 +22,7 @@ private:
 	STRING m_titleName;
 	CEdit *m_pEdtShowLog;
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:

@@ -36,7 +36,7 @@ CSocketHelper::~CSocketHelper(void)
 
 void CSocketHelper::CloseAllObjects()
 {
-	TRACE_OUTPUT(_T("------------SocketHelperÇåÀí¿ªÊ¼------------\n"));
+	TRACE_OUTPUT(_T("------------SocketHelperæ¸…ç†å¼€å§‹------------\n"));
 	SAFE_CLOSE_SOCKET(m_playerSocket);
 
 // 	WaitForSingleObject(m_hEvtPlay,200);
@@ -44,11 +44,11 @@ void CSocketHelper::CloseAllObjects()
 // 	SAFE_CLOSE_HANDLE(m_hEvtPlay);
 	SAFE_CLOSE_HANDLE(m_hThreadPlay);
 
-	//É¾³ýÄÚ´æ»º³å
+	//åˆ é™¤å†…å­˜ç¼“å†²
 	SAFE_DELETE_POINTER(m_pStreamBufEncode);
 	SAFE_DELETE_POINTER(m_pStreamBufRecv);
 
-	TRACE_OUTPUT(_T("------------SocketHelperÇåÀí½áÊø------------\n"));
+	TRACE_OUTPUT(_T("------------SocketHelperæ¸…ç†ç»“æŸ------------\n"));
 }
 
 void CSocketHelper::Init()
@@ -63,13 +63,13 @@ void CSocketHelper::Init()
 	m_hThreadRecv=NULL;
 	m_playerSocket=INVALID_SOCKET;
 
-	//m_encryptMethod.InitEncrypt();	//ÔÚ³õÊ¼»¯Ê±µ÷ÓÃinit sbox
+	//m_encryptMethod.InitEncrypt();	//åœ¨åˆå§‹åŒ–æ—¶è°ƒç”¨init sbox
 	SetPlayer(NULL);
-	m_pStreamBufRecv=new CStreamReadWrite(E_ENDIAN_TYPE_LITTLE_ENDIAN,0x100000);	//Ê¹ÓÃÄ¬ÈÏ»º³å³¤¶È,´«0¾ÍÊÇÓÃÄ¬ÈÏ
+	m_pStreamBufRecv=new CStreamReadWrite(E_ENDIAN_TYPE_LITTLE_ENDIAN,0x100000);	//ä½¿ç”¨é»˜è®¤ç¼“å†²é•¿åº¦,ä¼ 0å°±æ˜¯ç”¨é»˜è®¤
 	m_pStreamBufEncode=new CStreamReadWrite(E_ENDIAN_TYPE_LITTLE_ENDIAN,0);
 
 	//test
-	SetCaptureNow(false);	//Ä¬ÈÏ²»¿ªÆô
+	SetCaptureNow(false);	//é»˜è®¤ä¸å¼€å¯
 }
 
 
@@ -83,39 +83,39 @@ bool CSocketHelper::IsPlayerQuit()
 
 
 /************************************************************************/
-/* ·¢°üÇ°ÖØÐÂ¼ÓÈë°üÍ·³¤¶ÈÐ´µ½»º³å                                       */
+/* å‘åŒ…å‰é‡æ–°åŠ å…¥åŒ…å¤´é•¿åº¦å†™åˆ°ç¼“å†²                                       */
 /************************************************************************/
-//·¢ËÍÇ°µ÷ÓÃµÄº¯Êý:
-char *CSocketHelper::CompactData(CProtocol *pProtocol,int &len)	//ÕâÀï¼ÆËãprotocolÔ­Ê¼³¤¶È£¬ÔÚ·¢ËÍÕâÇ°¼ÆËã×Ü³¤¶ÈºÍ¼ÓÈësign_byte
+//å‘é€å‰è°ƒç”¨çš„å‡½æ•°:
+char *CSocketHelper::CompactData(CProtocol *pProtocol,int &len)	//è¿™é‡Œè®¡ç®—protocolåŽŸå§‹é•¿åº¦ï¼Œåœ¨å‘é€è¿™å‰è®¡ç®—æ€»é•¿åº¦å’ŒåŠ å…¥sign_byte
 {
 	char *pData=NULL;
-	//»ù´¡´óÐ¡£¬´ú±í°ü´óÐ¡£¬4×Ö½Ú+1×Ö½Ú(sign_byte)£¬Ôò×Ü°ü³¤ÊÇ5+°üÌå³¤¶È
-	//°üµÄÄÚÈÝÊÇ°ü³¤4+flag(4×Ö½Ú0)+Ô­À´µÄ°üÄÚÈÝ
-	CStreamReadWrite byteWriter(E_ENDIAN_TYPE_BIG_ENDIAN,64);	//Ö÷ÒªÓÃÓÚÐ´Ç°Ãæ10×Ö½Ú
-	int headerLength=protocol_header_length;	//Êý¾ÝÇ°ÓÐ10×Ö½ÚÃèÊö
+	//åŸºç¡€å¤§å°ï¼Œä»£è¡¨åŒ…å¤§å°ï¼Œ4å­—èŠ‚+1å­—èŠ‚(sign_byte)ï¼Œåˆ™æ€»åŒ…é•¿æ˜¯5+åŒ…ä½“é•¿åº¦
+	//åŒ…çš„å†…å®¹æ˜¯åŒ…é•¿4+flag(4å­—èŠ‚0)+åŽŸæ¥çš„åŒ…å†…å®¹
+	CStreamReadWrite byteWriter(E_ENDIAN_TYPE_BIG_ENDIAN,64);	//ä¸»è¦ç”¨äºŽå†™å‰é¢10å­—èŠ‚
+	int headerLength=protocol_header_length;	//æ•°æ®å‰æœ‰10å­—èŠ‚æè¿°
 	
-	int totalLength=headerLength+pProtocol->GetProtocolBufLength();	//ÕâÀïÐèÒªÖØÐÂÐ´Ò»¸ö³¤¶È
+	int totalLength=headerLength+pProtocol->GetProtocolBufLength();	//è¿™é‡Œéœ€è¦é‡æ–°å†™ä¸€ä¸ªé•¿åº¦
 	int packageFlag=0;
 	len=totalLength;
 	char *pNew=new char[totalLength];
 	pData=pNew;
 
-	//ÏÈÐ´°üÍ·ÃèÊö
+	//å…ˆå†™åŒ…å¤´æè¿°
 	byteWriter.WriteFixedInt32(totalLength);
 	byteWriter.WriteFixedInt32(pProtocol->GetProtocolIdReq());
 	byteWriter.WriteShort(packageFlag);
 	memcpy(pNew,byteWriter.GetBufHead(),byteWriter.GetCurWritePostion());
 	pNew +=byteWriter.GetCurWritePostion();
 
-	//ÔÙ½«°üÄÚÈÝÐ´Èëµ½Ê£ÓàµÄµØÖ·Àï
+	//å†å°†åŒ…å†…å®¹å†™å…¥åˆ°å‰©ä½™çš„åœ°å€é‡Œ
 	memcpy(pNew,pProtocol->GetProtocolBuf(),pProtocol->GetProtocolBufLength());
 
-	//TRACE_OUTPUT(_T("×îÖÕ·¢ËÍÊý¾Ý:%s\n"),HexArrayToString(pData,totalLength).c_str());
+	//TRACE_OUTPUT(_T("æœ€ç»ˆå‘é€æ•°æ®:%s\n"),HexArrayToString(pData,totalLength).c_str());
 	return pData;
 }
 
 
-bool CSocketHelper::SendData(char *pData,int totalLength)	//ÕâÀïÑ­»·µ÷ÓÃsendÖ±µ½·¢ËÍÍê³É
+bool CSocketHelper::SendData(char *pData,int totalLength)	//è¿™é‡Œå¾ªçŽ¯è°ƒç”¨sendç›´åˆ°å‘é€å®Œæˆ
 {
 	bool ret=true;
 	int sentDataLength=0;
@@ -126,10 +126,10 @@ bool CSocketHelper::SendData(char *pData,int totalLength)	//ÕâÀïÑ­»·µ÷ÓÃsendÖ±µ½
 
 
 /************************************************************************/
-/*                   ÏÂÃæÊÇµ÷ÓÃ·¢°üÊµÏÖ¹¦ÄÜµÄº¯Êý                       */
+/*                   ä¸‹é¢æ˜¯è°ƒç”¨å‘åŒ…å®žçŽ°åŠŸèƒ½çš„å‡½æ•°                       */
 /************************************************************************/
 
-bool CSocketHelper::SendSetPkMode(int mode)	//Éè¶¨pkÄ£Ê½
+bool CSocketHelper::SendSetPkMode(int mode)	//è®¾å®špkæ¨¡å¼
 {
 	bool ret=true;
 	CProtocol *p=NULL;
@@ -145,7 +145,7 @@ bool CSocketHelper::SendSetPkMode(int mode)	//Éè¶¨pkÄ£Ê½
 		g_pThreadSendLock->UnLock();
 		if(!SendData(pData,totalLength))
 		{
-			TRACE_OUTPUT(_T("--------------------------------·¢ËÍÉèÖÃpkÄ£Ê½Ê§°Ü,´íÎóºÅ:%d---------------------------!!\n"),WSAGetLastError());
+			TRACE_OUTPUT(_T("--------------------------------å‘é€è®¾ç½®pkæ¨¡å¼å¤±è´¥,é”™è¯¯å·:%d---------------------------!!\n"),WSAGetLastError());
 			ret=false;
 		}
 		SAFE_DELETE_ARRAY(pData);
@@ -163,7 +163,7 @@ bool CSocketHelper::SendSetPkMode(int mode)	//Éè¶¨pkÄ£Ê½
 //////////////////////////////////////////////////////////////////////////
 ////////////////////////////////static functions//////////////////////////////////////////
 
-// DWORD WINAPI CSocketHelper::ThreadReceive(LPVOID pParam)	//ÓÃÓÚ½ÓÊÕ°üÒÔ¼°½âÊÍ
+// DWORD WINAPI CSocketHelper::ThreadReceive(LPVOID pParam)	//ç”¨äºŽæŽ¥æ”¶åŒ…ä»¥åŠè§£é‡Š
 // {
 // 	CSocketHelper *socketHelper=(CSocketHelper*)pParam;
 // 	while(!socketHelper->IsPlayerQuit())

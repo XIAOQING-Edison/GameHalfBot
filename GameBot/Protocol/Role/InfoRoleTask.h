@@ -2,8 +2,8 @@
 #include "../protocol.h"
 #include "../Task/InfoTasks.h"
 #include "../Task/InfoAuxiliaryTask.h"
-//这个类用来包装infoTasks
-//为方便解析和游戏中的数据一样处理了
+//杩欎釜绫荤敤鏉ュ寘瑁卛nfoTasks
+//涓烘柟渚胯В鏋愬拰娓告垙涓殑鏁版嵁涓�鏍峰鐞嗕簡
 class CInfoRoleTask :
 	public CProtocol
 {

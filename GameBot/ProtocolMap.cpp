@@ -43,10 +43,10 @@ CProtocol *CProtocolMap::GetProtocolById(DWORD id)
 
 }
 
-int CProtocolMap::DecodeProtocol(BYTE *p,int len)	//ÀûÓÃmapÀ´´¦Àí,Ñ­»·´¦ÀíÊı¾İ£¬ÄÜ½âÎöµÄĞ­Òé¶¼½âÎöÁË
+int CProtocolMap::DecodeProtocol(BYTE *p,int len)	//åˆ©ç”¨mapæ¥å¤„ç†,å¾ªç¯å¤„ç†æ•°æ®ï¼Œèƒ½è§£æçš„åè®®éƒ½è§£æäº†
 {
 	int handleLength=0;
-	int pos=0;	//Ö¸Ïò»º³åÎ»ÖÃ	
+	int pos=0;	//æŒ‡å‘ç¼“å†²ä½ç½®	
 	CProtocol protocol;
 	if(len<protocol_header_length)
 	{
@@ -59,11 +59,11 @@ int CProtocolMap::DecodeProtocol(BYTE *p,int len)	//ÀûÓÃmapÀ´´¦Àí,Ñ­»·´¦ÀíÊı¾İ£¬
 	return handleLength;
 }
 
-//lenÊÇµ÷ÓÃdecodeFirst·µ»ØµÄ°ü³¤¶È
-int CProtocolMap::DecodeProtocolOnce(DWORD protocolId,int len,CStreamReadWrite *pStreamBuf)	//ÀûÓÃmapÀ´´¦Àí,Ã¿´ÎÖ»´¦ÀíÒ»¸öĞ­Òé³¤¶È
+//lenæ˜¯è°ƒç”¨decodeFirstè¿”å›çš„åŒ…é•¿åº¦
+int CProtocolMap::DecodeProtocolOnce(DWORD protocolId,int len,CStreamReadWrite *pStreamBuf)	//åˆ©ç”¨mapæ¥å¤„ç†,æ¯æ¬¡åªå¤„ç†ä¸€ä¸ªåè®®é•¿åº¦
 {
 	int handleLength=0;
-	int pos=0;	//Ö¸Ïò»º³åÎ»ÖÃ	
+	int pos=0;	//æŒ‡å‘ç¼“å†²ä½ç½®	
 	
 	CProtocol *pProtocol=GetProtocolById(protocolId);
 	CProtocol *pProtocolDst=NULL;
@@ -72,17 +72,17 @@ int CProtocolMap::DecodeProtocolOnce(DWORD protocolId,int len,CStreamReadWrite *
 	if(pProtocol)
 	{
 		//pProtocol->Clone(&pProtocolDst);
-		//TRACE_OUTPUT(_T("ÕÒµ½Ğ­Òéid:%dµÄ¶ÔÏó½øĞĞ½âÎö\n"),protocolId);
+		//TRACE_OUTPUT(_T("æ‰¾åˆ°åè®®id:%dçš„å¯¹è±¡è¿›è¡Œè§£æ\n"),protocolId);
 		CProtocol *pProtocolDst=pProtocol;
-		pProtocol->SetPackageLengthInRes(len);	//µÃµ½Êµ¼Ê°ü³¤¶È
+		pProtocol->SetPackageLengthInRes(len);	//å¾—åˆ°å®é™…åŒ…é•¿åº¦
 		pProtocolDst->SetCurrentPlayer(m_pPlayer);
 		pos=pProtocolDst->Decode(pStreamBuf);
 	}
-	else	//ÕÒ²»µ½Ğ­Òé´¦Àí£¬¿ÉÄÜÎ´Íê³É£¬ÔòÌø¹ıÊ£ÏÂµÄ×Ö½Ú
+	else	//æ‰¾ä¸åˆ°åè®®å¤„ç†ï¼Œå¯èƒ½æœªå®Œæˆï¼Œåˆ™è·³è¿‡å‰©ä¸‹çš„å­—èŠ‚
 	{
-		//TRACE_OUTPUT(_T("Ìø¹ıĞ­Òé%d\n"),protocolId);
+		//TRACE_OUTPUT(_T("è·³è¿‡åè®®%d\n"),protocolId);
 		pos=len-protocol_header_length;	//
-		pStreamBuf->SetHandlePos(pStreamBuf->GetHandlePos()+pos);	//Ìø¹ı
+		pStreamBuf->SetHandlePos(pStreamBuf->GetHandlePos()+pos);	//è·³è¿‡
 		//TRACE(_T("unhandle protocol id:%d\n"),(short)protocolId);
 	}
 	
@@ -108,7 +108,7 @@ bool CProtocolMap::InitProtocolMap()
 	pProtocol=new CProtocolEnterGameRes;
 	m_protolcolMap[pProtocol->GetProtocolIdResOrSyn()]=pProtocol;
 
-	pProtocol=new CProtocolGetRoleListRes;	//½âÎöok£¬ÏÈÆÁ±Îµô
+	pProtocol=new CProtocolGetRoleListRes;	//è§£æokï¼Œå…ˆå±è”½æ‰
 	m_protolcolMap[pProtocol->GetProtocolIdResOrSyn()]=pProtocol;
 
 
@@ -133,7 +133,7 @@ bool CProtocolMap::InitProtocolMap()
 }
 
 
-void CProtocolMap::AddToProtocolMap(DWORD id,CProtocol *p)	//½«protocolIdºÍÖ¸Õë´æµ½mapÖĞ
+void CProtocolMap::AddToProtocolMap(DWORD id,CProtocol *p)	//å°†protocolIdå’ŒæŒ‡é’ˆå­˜åˆ°mapä¸­
 {
 	if(p)
 	{
@@ -159,7 +159,7 @@ bool CProtocolMap::DeleteProtocolMap()
 
 
 
-bool CProtocolMap::InitProtocolMapInTianShiZhiZhan()	//ÕâÀï³õÊ¼»¯Ò»Ğ©MU1²ÅÓÃµ½µÄĞ­Òé
+bool CProtocolMap::InitProtocolMapInTianShiZhiZhan()	//è¿™é‡Œåˆå§‹åŒ–ä¸€äº›MU1æ‰ç”¨åˆ°çš„åè®®
 {
 	bool ret=true;
 	CProtocol *pProtocol=NULL;
@@ -172,7 +172,7 @@ bool CProtocolMap::InitProtocolMapInTianShiZhiZhan()	//ÕâÀï³õÊ¼»¯Ò»Ğ©MU1²ÅÓÃµ½µÄ
 }
 
 
-bool  CProtocolMap::InitProtocolMapInTianShiZhiZhanPc()	//ÌìÊ¹Ö®Õ½PC¶Ë²ÅÓÃµ½µÄ
+bool  CProtocolMap::InitProtocolMapInTianShiZhiZhanPc()	//å¤©ä½¿ä¹‹æˆ˜PCç«¯æ‰ç”¨åˆ°çš„
 {
 	bool ret=true;
 	CProtocol *pProtocol=NULL;

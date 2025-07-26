@@ -1,7 +1,7 @@
 #pragma once
 
 
-// CDlgLoading ¶Ô»°¿ò
+// CDlgLoading å¯¹è¯æ¡†
 #include "../../resource.h"
 
 class CDlgLoading : public CDialog
@@ -9,15 +9,15 @@ class CDlgLoading : public CDialog
 	DECLARE_DYNAMIC(CDlgLoading)
 
 public:
-	CDlgLoading(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgLoading(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgLoading();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_LOADING };
 
-	void PlayAnimation();	//ÏÔÊ¾¶¯»­
+	void PlayAnimation();	//æ˜¾ç¤ºåŠ¨ç”»
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 	virtual BOOL OnInitDialog();
 
 	DECLARE_MESSAGE_MAP()

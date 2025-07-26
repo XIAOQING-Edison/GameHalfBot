@@ -21,27 +21,27 @@ void CBaseMessage::Init()
 
 
 
-int CBaseMessage::DecodeFirst(CStreamReadWrite *pStreamBuf)	//ÏÈ½âÂë³ö³¤¶È,protocolIdÕâÀà,·µ»ØĞ­Òé³¤¶È
+int CBaseMessage::DecodeFirst(CStreamReadWrite *pStreamBuf)	//å…ˆè§£ç å‡ºé•¿åº¦,protocolIdè¿™ç±»,è¿”å›åè®®é•¿åº¦
 {
-	int orgHandlePos=pStreamBuf->GetHandlePos();	//×î³õµÄÎ»ÖÃ´æÆğÀ´£¬ºóÃæ³¤¶È²»¹»Ê±¾ÍÔÙ
+	int orgHandlePos=pStreamBuf->GetHandlePos();	//æœ€åˆçš„ä½ç½®å­˜èµ·æ¥ï¼Œåé¢é•¿åº¦ä¸å¤Ÿæ—¶å°±å†
 	int packageLen=0;
 	int protocolId=0;
-	int minLen=0;	//°ü½á¹¹ÊÇ4×Ö½Ú³¤¶È+4×Ö½Ú0+2×Ö½ÚĞ­ÒéID,°üµÄ×Ü³¤¶ÈÊÇ°ü³¤¶È+4×Ö½Ú
-	int packageFlag;//4×Ö½Ú0ÎÒÃüÁîÎªpackageFlag
+	int minLen=0;	//åŒ…ç»“æ„æ˜¯4å­—èŠ‚é•¿åº¦+4å­—èŠ‚0+2å­—èŠ‚åè®®ID,åŒ…çš„æ€»é•¿åº¦æ˜¯åŒ…é•¿åº¦+4å­—èŠ‚
+	int packageFlag;//4å­—èŠ‚0æˆ‘å‘½ä»¤ä¸ºpackageFlag
 
 	packageLen=pStreamBuf->ReadFixedInt32();
-	//TRACE_OUTPUT(_T("½âÂëµÃ°ü³¤:%d\n"),packageLen);
+	//TRACE_OUTPUT(_T("è§£ç å¾—åŒ…é•¿:%d\n"),packageLen);
 	if((packageLen+minLen)<=pStreamBuf->GetRestBytesLength())
 	{
 
 		protocolId=(WORD)pStreamBuf->ReadShort()&0xffff;
-		//TRACE_OUTPUT(_T("½âÂëµÃĞ­Òéid:%d\n"),protocolId);
+		//TRACE_OUTPUT(_T("è§£ç å¾—åè®®id:%d\n"),protocolId);
 		SetProtocolId(protocolId);
 	}
 	else
 	{
-		//°üĞèÒªµÄ³¤¶È´óÓÚ½ÓÊÕ³¤¶È£¬ÔòĞèÒª¼ÌĞø½ÓÊÕ
-		TRACE_OUTPUT(_T("ËùĞè°ü³¤´óÓÚ½ÓÊÕµÄ³¤¶È£¬¼ÌĞø½ÓÊÕ!!!\n"));
+		//åŒ…éœ€è¦çš„é•¿åº¦å¤§äºæ¥æ”¶é•¿åº¦ï¼Œåˆ™éœ€è¦ç»§ç»­æ¥æ”¶
+		TRACE_OUTPUT(_T("æ‰€éœ€åŒ…é•¿å¤§äºæ¥æ”¶çš„é•¿åº¦ï¼Œç»§ç»­æ¥æ”¶!!!\n"));
 		pStreamBuf->SetHandlePos(orgHandlePos);
 		packageLen=0;
 	}
@@ -70,10 +70,10 @@ void CBaseMessage::WriteBean(CStreamReadWrite *pStreamBuf,CBaseMessage *pMsg)
 
 	pMsg->Encode(&tempBuf);
 	int len=pMsg->GetProtocolBufLength();
-	int sizeofProtocolId=sizeof(WORD);	//ÕâÀïĞ­ÒéID¹Ì¶¨2×Ö½Ú
+	int sizeofProtocolId=sizeof(WORD);	//è¿™é‡Œåè®®IDå›ºå®š2å­—èŠ‚
 
 	pStreamBuf->WriteShort(pMsg->GetProtocolId());//ID
-	pStreamBuf->WriteBytes((char*)tempBuf.GetBufHead()+sizeofProtocolId,len-sizeofProtocolId);//Ö±½ÓĞ´ÄÚÈİ,ÂÔ¹ı4×Ö½ÚID
+	pStreamBuf->WriteBytes((char*)tempBuf.GetBufHead()+sizeofProtocolId,len-sizeofProtocolId);//ç›´æ¥å†™å†…å®¹,ç•¥è¿‡4å­—èŠ‚ID
 
 	//return len;
 }

@@ -42,7 +42,7 @@ void CCrashHelper::SetupExceptionHandler(PEXCEPTION_POINTERS pExceptionPointers)
 }
 
 
-//ÖØÆô³ÌĞò
+//é‡å¯ç¨‹åº
 BOOL CCrashHelper::RestartPrograme(TCHAR *szExePath)
 {
 	BOOL ret=FALSE;

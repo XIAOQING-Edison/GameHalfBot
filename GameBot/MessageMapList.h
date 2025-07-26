@@ -12,16 +12,16 @@
 #include "./Message/MessageLoginReq.h"
 #include "./Message/MessageLoginRes.h"
 #include "./Message/MessageClientPlayerTaskStatus.h"
-#include "./Message/MessageControlClientReq.h"	//¿ØÖÆ¿Í»§¶Ë
-#include "./Message/MessageDoGameOperationReq.h"	//¿ØÖÆ·¢ËÍĞ­Òé
-#include "./Message/MessageWriteText.h"	//Ğ´ÎÄ¼ş
+#include "./Message/MessageControlClientReq.h"	//æ§åˆ¶å®¢æˆ·ç«¯
+#include "./Message/MessageDoGameOperationReq.h"	//æ§åˆ¶å‘é€åè®®
+#include "./Message/MessageWriteText.h"	//å†™æ–‡ä»¶
 class CMessageMapList
 {
 public:
 	CMessageMapList(void);
 	~CMessageMapList(void);
 
-	bool InitMessageList();	//³õÊ¼»¯Í¨ĞÅ
+	bool InitMessageList();	//åˆå§‹åŒ–é€šä¿¡
 	void AddToMessageMapList(CBaseMessage *pMsg);
 
 	CBaseMessage *GetMessageById(int id);

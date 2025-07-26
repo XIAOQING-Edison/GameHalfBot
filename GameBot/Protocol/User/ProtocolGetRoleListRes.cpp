@@ -11,14 +11,14 @@ CProtocolGetRoleListRes::~CProtocolGetRoleListRes(void)
 }
 
 
-//到这里就只剩下包体直接解析了，没有头部信息或者其它flag
+//鍒拌繖閲屽氨鍙墿涓嬪寘浣撶洿鎺ヨВ鏋愪簡锛屾病鏈夊ご閮ㄤ俊鎭垨鑰呭叾瀹僨lag
 int CProtocolGetRoleListRes::Decode(CStreamReadWrite *pStreamBuf)
 {
 	int handleLength=0;
 
 	int orgPos=pStreamBuf->GetHandlePos();
 
-	TRACE_OUTPUT(_T("解析CProtocolGetRoleListRes\n"));
+	TRACE_OUTPUT(_T("瑙ｆ瀽CProtocolGetRoleListRes\n"));
 	int restBytes=m_packageLengthInRes-protocol_header_length;
 	
 	infoResGetRoleList.SetPackageLengthInRes(restBytes);

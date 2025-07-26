@@ -10,7 +10,7 @@ const TCHAR *g_szAutoComposeTicket=_T("AutoComposeTicket");
 const TCHAR *g_szAutoRecycleEquipment=_T("AutoRecycleEquipment");
 const TCHAR *g_szRecycleEquipmentStar=_T("RecycleEquipmentStar");
 const TCHAR *g_szRecycleEquipmentStepLv=_T("RecycleEquipmentStepLv");
-const TCHAR *g_szAutoSendGetVipMemberInfo=_T("utoSendGetVipMemberInfo");	//×Ô¶¯·¢ËÍ»áÔ±ÏûÏ¢
+const TCHAR *g_szAutoSendGetVipMemberInfo=_T("utoSendGetVipMemberInfo");	//è‡ªåŠ¨å‘é€ä¼šå‘˜æ¶ˆæ¯
 const TCHAR *g_szAutoGetAcivitityReward=_T("AutoGetAcivitityReward");
 const TCHAR *g_szAutoReadMail=_T("AutoReadMail");
 const TCHAR *g_szAutoDeleteReadMail=_T("AutoDeleteReadMail");
@@ -170,7 +170,7 @@ void CGiftHallConfig::SetIsAutoSendGetVipMemberInfoToCfg(BOOL b)
 }
 
 
-BOOL CGiftHallConfig::IsAutoActivityGetRewardFromCfg()	//×Ô¶¯»îÔ¾¶È½±ÀøÁìÈ¡
+BOOL CGiftHallConfig::IsAutoActivityGetRewardFromCfg()	//è‡ªåŠ¨æ´»è·ƒåº¦å¥–åŠ±é¢†å–
 {
 	return (BOOL)CConfig::ReadInt(m_sectionName.c_str(),g_szAutoGetAcivitityReward);
 
@@ -182,7 +182,7 @@ void CGiftHallConfig::SetIsAutoAcitivityGetRewardToCfg(BOOL b)
 }
 
 
-BOOL CGiftHallConfig::IsAutoReadMailFromCfg()	//×Ô¶¯¶ÁÈ¡ÓÊ¼ş
+BOOL CGiftHallConfig::IsAutoReadMailFromCfg()	//è‡ªåŠ¨è¯»å–é‚®ä»¶
 {
 	return (BOOL)CConfig::ReadInt(m_sectionName.c_str(),g_szAutoReadMail);
 }
@@ -193,7 +193,7 @@ void CGiftHallConfig::SetIsAutoReadMailToCfg(BOOL b)
 	CConfig::WriteInt(m_sectionName.c_str(),g_szAutoReadMail,FALSE,b);
 }
 
-BOOL CGiftHallConfig::IsAutoDeleteReadMailFromCfg()	//×Ô¶¯É¾³ıÒÑ¶ÁÓÊ¼ş
+BOOL CGiftHallConfig::IsAutoDeleteReadMailFromCfg()	//è‡ªåŠ¨åˆ é™¤å·²è¯»é‚®ä»¶
 {
 	return (BOOL)CConfig::ReadInt(m_sectionName.c_str(),g_szAutoDeleteReadMail);
 }
@@ -205,7 +205,7 @@ void CGiftHallConfig::SetIsAutoDeleteReadMailToCfg(BOOL b)
 }
 
 
-BOOL CGiftHallConfig::IsAutoUpdateMagicNuclearFromCfg()	//×Ô¶¯Ä§ºË³äÄÜ
+BOOL CGiftHallConfig::IsAutoUpdateMagicNuclearFromCfg()	//è‡ªåŠ¨é­”æ ¸å……èƒ½
 {
 	return (BOOL)CConfig::ReadInt(m_sectionName.c_str(),g_szAutoUpdateMagicNeclear);
 }
@@ -217,7 +217,7 @@ void CGiftHallConfig::SetIsAutoUpdateMagicNuclearToCfg(BOOL b)
 }
 
 
-BOOL CGiftHallConfig::IsAutoTidyBagFromCfg()	//×Ô¶¯ÕûÀí±³°ü
+BOOL CGiftHallConfig::IsAutoTidyBagFromCfg()	//è‡ªåŠ¨æ•´ç†èƒŒåŒ…
 {
 	return (BOOL)CConfig::ReadInt(m_sectionName.c_str(),g_szAutoTidyBag);
 }

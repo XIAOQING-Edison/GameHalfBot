@@ -3,7 +3,7 @@
 #include "HyperLink.h"
 //test
 // #include "./Global/public.h"
-//ÉÏÃæÈý¸öÍ·ÎÄ¼þÀûÓÃÀàÏòµ¼´´½¨µÄ»°»á×Ô¶¯Éú³É£¬Èç¹ûÊÇÊÖ¶¯´´½¨£¬ÐèÒªÌí¼Ó
+//ä¸Šé¢ä¸‰ä¸ªå¤´æ–‡ä»¶åˆ©ç”¨ç±»å‘å¯¼åˆ›å»ºçš„è¯ä¼šè‡ªåŠ¨ç”Ÿæˆï¼Œå¦‚æžœæ˜¯æ‰‹åŠ¨åˆ›å»ºï¼Œéœ€è¦æ·»åŠ 
 // CHyperLink
 
 IMPLEMENT_DYNAMIC(CHyperLink, CStatic)
@@ -56,7 +56,7 @@ void CHyperLink::OnMouseMove(UINT nFlags, CPoint point)
 	//  CStatic::OnMouseMove(nFlags, point);
 }
 
-//Êó±êÔÚÉÏÃæ
+//é¼ æ ‡åœ¨ä¸Šé¢
 LRESULT CHyperLink::OnMouseHover(WPARAM wParam, LPARAM lParam)
 {
 	if (!m_bHot)
@@ -67,7 +67,7 @@ LRESULT CHyperLink::OnMouseHover(WPARAM wParam, LPARAM lParam)
 	return TRUE;
 }
 
-//Êó±êÀë¿ª
+//é¼ æ ‡ç¦»å¼€
 LRESULT CHyperLink::OnMouseLeave(WPARAM wParam, LPARAM lParam)
 {
 	m_bHot = FALSE;
@@ -131,18 +131,18 @@ void CHyperLink::OnPaint()
 		dc.SetTextColor(m_clrNor);
 	}
 	dc.SetBkMode(TRANSPARENT);
-	///×¼±¸¹¤×÷
+	///å‡†å¤‡å·¥ä½œ
 	CRect rect;
 	CBrush BGBrush, *pOldBrush;
-	int nTextLeft = 4, nTextTop = 2; //ÎÄ×ÖÊä³öµÄÎ»ÖÃ
+	int nTextLeft = 4, nTextTop = 2; //æ–‡å­—è¾“å‡ºçš„ä½ç½®
 	this->GetClientRect(&rect);
-	//»­±³¾°
+	//ç”»èƒŒæ™¯
 	BGBrush.CreateSolidBrush(m_clrBG);
 	pOldBrush = dc.SelectObject(&BGBrush);
 	dc.FillRect(&rect, &BGBrush);
 	dc.SelectObject(pOldBrush);
 	BGBrush.DeleteObject();
-	///Êä³öÎÄ×Ö
+	///è¾“å‡ºæ–‡å­—
 	TEXTMETRIC tm;
 	dc.GetTextMetrics(&tm);
 	CString strText;

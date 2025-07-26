@@ -7,19 +7,19 @@
 #include "DlgLocalCorpsBossSettings.h"
 #include "DlgCrossCorpsBossSettings.h"
 #include "DlgBeastBossSettings.h"
-#include "DlgOtherTaskSettings.h"	//×÷ÎªĞ­Öú½çÃæ
+#include "DlgOtherTaskSettings.h"	//ä½œä¸ºååŠ©ç•Œé¢
 #include "../../resource.h"
-// CDlgBossSettings ¶Ô»°¿ò
+// CDlgBossSettings å¯¹è¯æ¡†
 
 class CDlgBossSettings : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgBossSettings)
 
 public:
-	CDlgBossSettings(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgBossSettings(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgBossSettings();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_BOSS_SETTTINGS };
 
 	void SetConfigObject(CBossConfig *p){m_pBossConfig=p;}
@@ -29,8 +29,8 @@ public:
 
 	void InitCtrls();
 
-	void ReadIniToCtrls();	//´ÓiniÀï¶ÁÈ¡Öµµ½¸÷×Ó´°¿Ú
-	void SaveCtrlsToIni();	//×Ó´°¿Ú¸÷×Ô±£´æÖµµ½ini
+	void ReadIniToCtrls();	//ä»inié‡Œè¯»å–å€¼åˆ°å„å­çª—å£
+	void SaveCtrlsToIni();	//å­çª—å£å„è‡ªä¿å­˜å€¼åˆ°ini
 
 	virtual void OnOK(){}
 	virtual void OnCancel(){}
@@ -43,7 +43,7 @@ private:
 	void DestroyAllChildDlgs();
 	void AddDlgsToTab();
 private:
-	CDialog *m_pDlg[7];	//·ÅdlgÖ¸Õë·½±ã²Ù×÷,ÏÈÉèÎª³£Á¿£¬ºóÃæÔÙ¸ü¸Ä
+	CDialog *m_pDlg[7];	//æ”¾dlgæŒ‡é’ˆæ–¹ä¾¿æ“ä½œ,å…ˆè®¾ä¸ºå¸¸é‡ï¼Œåé¢å†æ›´æ”¹
 	CTabCtrl *m_pTabCtrl;
 	CDlgNeutralBossSetting m_dlgNeutralBossSettings;
 	CDlgWorldBossSetting m_dlgWorldBossSettings;
@@ -67,7 +67,7 @@ private:
 	CBossConfig *m_pBossConfig;
 	CBrush m_brush;
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:

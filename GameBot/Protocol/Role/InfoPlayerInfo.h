@@ -1,7 +1,7 @@
 #pragma once
 #include "../protocol.h"
 #include "InfoPlayerBasicInfo.h"
-//Íæ¼Ò»ù±¾Êı¾İ
+//ç©å®¶åŸºæœ¬æ•°æ®
 class CInfoPlayerInfo :
 	public CProtocol
 {
@@ -18,19 +18,19 @@ public:
 	INT64 GetRoleId(){return basic.GetRoleId();}
 	STRING GetName(){return basic.GetName();};
 	int GetLevel(){return basic.GetLevel();;}
-	STRING GetUnionName(){return basic.GetUnionName();}	//Õ½ÃËÃû×Ö
-	int GetTotalFight(){return basic.GetTotalFight();}	//Õ½Á¦
+	STRING GetUnionName(){return basic.GetUnionName();}	//æˆ˜ç›Ÿåå­—
+	int GetTotalFight(){return basic.GetTotalFight();}	//æˆ˜åŠ›
 	int GetServerId(){return basic.GetServerId();}
 	int GetMapId(){return basic.GetMapId();}
 	int GetCareer(){return basic.GetCareer();}
 	
 	int GetPkMode(){return basic.GetPkMode();}
-	int GetAttributePoint(){return basic.GetAttributePoint();}//È¡µÃÊ£ÓàÎ´¼ÓµãÊı
+	int GetAttributePoint(){return basic.GetAttributePoint();}//å–å¾—å‰©ä½™æœªåŠ ç‚¹æ•°
 
 
 
 private:	
-	//ÌìÊ¹Ö®Õ½ºÍÆäËü°æ±¾ÉÔÓĞ²»Í¬
+	//å¤©ä½¿ä¹‹æˆ˜å’Œå…¶å®ƒç‰ˆæœ¬ç¨æœ‰ä¸åŒ
 	CInfoPlayerBasicInfo basic;
 #if (_GAME_VERSION_ == _YONG_HENG_LIAN_MENG_) || (_GAME_VERSION_ == _TIAN_SHI_SHEN_YU_) ||(_GAME_VERSION_ == _YONG_HENG_ZHI_DIAN_)||(_GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_PC_)
 	
@@ -44,7 +44,7 @@ private:
 
 #if _GAME_VERSION_== _TIAN_SHI_ZHI_ZHAN_MOBILE_
 #elif _GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_PC_
-	bool unionVoiceOpen;//=12;//ÓïÒôÈ¨ÏŞÊÇ·ñ¿ªÆô
+	bool unionVoiceOpen;//=12;//è¯­éŸ³æƒé™æ˜¯å¦å¼€å¯
 #elif _GAME_VERSION_ ==_YONG_HENG_LIAN_MENG_	
 #elif _GAME_VERSION_ == _TIAN_SHI_SHEN_YU_
 #elif (_GAME_VERSION_ == _YONG_HENG_ZHI_DIAN_)

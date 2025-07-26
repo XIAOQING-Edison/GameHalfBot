@@ -1,21 +1,21 @@
 #ifndef _ENUM_H_
 #define _ENUM_H_
 
-//ÁÄÌìÆµµÀ
+//èŠå¤©é¢‘é“
 enum E_CHAT_CHANNEL
 {
 	e_chat_msg_channel_private=0,
-	e_chat_msg_channel_near,	//¸½½ü
-	e_chat_msg_channel_team,	//¶ÓÎé
-	e_chat_msg_channel_banghui,//°ï»á
-	e_chat_msg_channel_world	//ÊÀ½ç
+	e_chat_msg_channel_near,	//é™„è¿‘
+	e_chat_msg_channel_team,	//é˜Ÿä¼
+	e_chat_msg_channel_banghui,//å¸®ä¼š
+	e_chat_msg_channel_world	//ä¸–ç•Œ
 };
 
 
 
 
 
-//µÇÂ½Æ½Ì¨,ÓĞºÜ¶àÔİÊ±ÏÈ¼ÓÁËÕâ¸ö
+//ç™»é™†å¹³å°,æœ‰å¾ˆå¤šæš‚æ—¶å…ˆåŠ äº†è¿™ä¸ª
 enum E_LOGIN_PLATFORM{
 	e_login_platform_none=-1,
 	e_login_platform_37=0,
@@ -35,7 +35,7 @@ enum E_LOGIN_PLATFORM{
 	e_login_platform_ku25,
 	e_login_platform_ludashi,
 	e_login_platform_sogou,
-	e_login_platform_swjoy,	//Ë³Íø
+	e_login_platform_swjoy,	//é¡ºç½‘
 	e_login_platform_zixia,
 	e_login_platform_37tang,
 	e_login_platform_yy,
@@ -45,36 +45,36 @@ enum E_LOGIN_PLATFORM{
 
 
 
-//¶ÏÏß´íÎóÀàĞÍ
+//æ–­çº¿é”™è¯¯ç±»å‹
 enum E_DISCONNECT_ERROR_REASON{
-	e_disconnect_no_error=-1,	//±íÊ¾Ã»ÓĞ´íÎó
+	e_disconnect_no_error=-1,	//è¡¨ç¤ºæ²¡æœ‰é”™è¯¯
 	e_disconnect_by_server=0,
-	e_disconnect_by_another_login,	//ÕÊºÅÔÚ±ğ´¦µÇÂ½
-	e_disconnect_by_local_error		//±¾ÉíµÄ´íÎó
+	e_disconnect_by_another_login,	//å¸å·åœ¨åˆ«å¤„ç™»é™†
+	e_disconnect_by_local_error		//æœ¬èº«çš„é”™è¯¯
 };
 
 
 
-//cmdÀàĞÍÃèÊö:--------------
+//cmdç±»å‹æè¿°:--------------
 enum
 {
-	e_cmd_heartbeat_req=0x1,	//¿Í»§¶ËÏò·şÎñ¶Ë·¢ËÍµÄĞÄÌø
-	e_cmd_heartbeat_res=0x2,	//·şÎñ¶ËÏò¿Í»§¶Ë»ØµÄĞÄÌø
-	e_cmd_login_req=0x3,	//¿Í»§¶ËÏò·şÎñ¶Ë·¢ËÍµÇÂ½ÇëÇó,ÕâÀï¿ÉĞ¯´øÒ»Ğ©Êı¾İÑéÖ¤¿Í»§¶ËÊÇ·ñ³£
-	e_cmd_login_res=0x4,	//·şÎñÍÄÏò¿Í»§¶Ë·¢ËÍµÇÂ½»ØÓ¦,¸ù¾İ»ØÓ¦µÄcodeÀ´ÅĞ¶¨ÊÇ·ñ¿ÉÒÔµÇÂ½
-	e_cmd_client_status=0x5,	//¿Í»§¶ËÏò·şÎñ¶Ë±¨¸æ×´Ì¬,ÔÚÏß»¹ÀëÏß(¸ù¾İÓÎÏ·Á¬½Ó×´Ì¬¶ø¶¨)
-	e_cmd_client_player_info_status=0x6,	//¿Í»§¶ËÏò·şÎñ¶Ë±¨¸æÍæ¼Ò×´Ì¬(Æ½Ì¨£¬·şÎñÆ÷ID£¬Ãû×Ö£¬µØÍ¼Ãû£¬Õ½ÃËÃû×Ö)
-	e_cmd_client_player_task_status=0x7,	//¿Í»§¶ËÏò·şÎñ¶Ë±¨¸æÈÎÎñ×´Ì¬(Ë¢¹Ö£¬¸±±¾µÈ)
+	e_cmd_heartbeat_req=0x1,	//å®¢æˆ·ç«¯å‘æœåŠ¡ç«¯å‘é€çš„å¿ƒè·³
+	e_cmd_heartbeat_res=0x2,	//æœåŠ¡ç«¯å‘å®¢æˆ·ç«¯å›çš„å¿ƒè·³
+	e_cmd_login_req=0x3,	//å®¢æˆ·ç«¯å‘æœåŠ¡ç«¯å‘é€ç™»é™†è¯·æ±‚,è¿™é‡Œå¯æºå¸¦ä¸€äº›æ•°æ®éªŒè¯å®¢æˆ·ç«¯æ˜¯å¦å¸¸
+	e_cmd_login_res=0x4,	//æœåŠ¡æ¹å‘å®¢æˆ·ç«¯å‘é€ç™»é™†å›åº”,æ ¹æ®å›åº”çš„codeæ¥åˆ¤å®šæ˜¯å¦å¯ä»¥ç™»é™†
+	e_cmd_client_status=0x5,	//å®¢æˆ·ç«¯å‘æœåŠ¡ç«¯æŠ¥å‘ŠçŠ¶æ€,åœ¨çº¿è¿˜ç¦»çº¿(æ ¹æ®æ¸¸æˆè¿æ¥çŠ¶æ€è€Œå®š)
+	e_cmd_client_player_info_status=0x6,	//å®¢æˆ·ç«¯å‘æœåŠ¡ç«¯æŠ¥å‘Šç©å®¶çŠ¶æ€(å¹³å°ï¼ŒæœåŠ¡å™¨IDï¼Œåå­—ï¼Œåœ°å›¾åï¼Œæˆ˜ç›Ÿåå­—)
+	e_cmd_client_player_task_status=0x7,	//å®¢æˆ·ç«¯å‘æœåŠ¡ç«¯æŠ¥å‘Šä»»åŠ¡çŠ¶æ€(åˆ·æ€ªï¼Œå‰¯æœ¬ç­‰)
 
-	e_cmd_info_player_info_status=0x8,	//infoÀà²»ĞèÒªÖ±½Ó½âÎö£¬ÔÚÀàÀï¶Á³öÀ´£¬²»ÄÜ×÷Îªµ¥¶ÀµÄÀà½âÎö
-	//ÖĞ¼äµÄÖ¸Áî´ı¼ÓÈë...
-	e_cmd_client_quit_req=0x10,	//¿Í»§¶ËÏò·şÎñ¶Ë·¢ËÍÍË³öÇëÇó
-	e_cmd_client_quit_res=0x11,	//·şÎñ¶ËÏò¿Í»§¶Ë·¢ËÍÍË³ö»ØÓ¦
-	e_cmd_client_minimize=0x12,	//×îĞ¡»¯
-	e_cmd_client_restore=0x13,	//»¹Ô­
+	e_cmd_info_player_info_status=0x8,	//infoç±»ä¸éœ€è¦ç›´æ¥è§£æï¼Œåœ¨ç±»é‡Œè¯»å‡ºæ¥ï¼Œä¸èƒ½ä½œä¸ºå•ç‹¬çš„ç±»è§£æ
+	//ä¸­é—´çš„æŒ‡ä»¤å¾…åŠ å…¥...
+	e_cmd_client_quit_req=0x10,	//å®¢æˆ·ç«¯å‘æœåŠ¡ç«¯å‘é€é€€å‡ºè¯·æ±‚
+	e_cmd_client_quit_res=0x11,	//æœåŠ¡ç«¯å‘å®¢æˆ·ç«¯å‘é€é€€å‡ºå›åº”
+	e_cmd_client_minimize=0x12,	//æœ€å°åŒ–
+	e_cmd_client_restore=0x13,	//è¿˜åŸ
 
-	//ÖĞ¼äµÄÖ¸Áî´ı¼ÓÈë
-	e_cmd_force_quit_res=0x20	//·şÎñ¶Ë·¢ËÍ¸ø¿Í»§¶ËÇ¿ÖÆÍË³ö
+	//ä¸­é—´çš„æŒ‡ä»¤å¾…åŠ å…¥
+	e_cmd_force_quit_res=0x20	//æœåŠ¡ç«¯å‘é€ç»™å®¢æˆ·ç«¯å¼ºåˆ¶é€€å‡º
 };
 
 

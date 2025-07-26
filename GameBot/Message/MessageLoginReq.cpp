@@ -16,7 +16,7 @@ bool CMessageLoginReq::Encode(CStreamReadWrite *pStreamBuf)
 	CBaseMessage::Encode(pStreamBuf);
 	ResetWritePostion();
 
-	pStreamBuf->WriteShort(GetProtocolId());	//Ð­ÒéID
+	pStreamBuf->WriteShort(GetProtocolId());	//åè®®ID
 	pStreamBuf->WriteFixedInt32(m_playerIndex);
 	return true;
 }

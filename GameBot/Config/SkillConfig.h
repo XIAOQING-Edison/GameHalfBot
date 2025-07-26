@@ -25,9 +25,9 @@ public:
 	int GetSkillSendIntervalFromCfg();
 	void SetSkillSendIntervalToCfg(int intval);
 private:
-	TCHAR *m_szSkillList;	//skillÁĞ±í×Ö¶Î,»áÔÚ³õÊ¼»¯¸³Öµ
-	TCHAR *m_szJobType;	//Ñ¡ÔñµÄÖ°ÒµÀàĞÍ
-	TCHAR *g_szTargetX;	//x×ø±ê
-	TCHAR *g_szTargetY;	//y×ø±ê
+	TCHAR *m_szSkillList;	//skillåˆ—è¡¨å­—æ®µ,ä¼šåœ¨åˆå§‹åŒ–èµ‹å€¼
+	TCHAR *m_szJobType;	//é€‰æ‹©çš„èŒä¸šç±»å‹
+	TCHAR *g_szTargetX;	//xåæ ‡
+	TCHAR *g_szTargetY;	//yåæ ‡
 
 };

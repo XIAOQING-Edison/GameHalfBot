@@ -9,17 +9,17 @@
 #include "DlgGiftHallSettings.h"
 #include "DlgSkillSetting.h"
 
-// CDlgOtherSetting ¶Ô»°¿ò
+// CDlgOtherSetting å¯¹è¯æ¡†
 class CPlayer;
 class CDlgOtherSetting : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgOtherSetting)
 
 public:
-	CDlgOtherSetting(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgOtherSetting(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgOtherSetting();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_OTHER_SETTING };
 
 	virtual void OnOK(){}
@@ -34,8 +34,8 @@ public:
 	void DestroyAllChildDlgs();
 
 
-	void ReadIniToCtrls();	//´ÓiniÀï¶ÁÈ¡Öµµ½¸÷×Ó´°¿Ú
-	void SaveCtrlsToIni();	//×Ó´°¿Ú¸÷×Ô±£´æÖµµ½ini
+	void ReadIniToCtrls();	//ä»inié‡Œè¯»å–å€¼åˆ°å„å­çª—å£
+	void SaveCtrlsToIni();	//å­çª—å£å„è‡ªä¿å­˜å€¼åˆ°ini
 
 	void SetIndex(int i){m_index=i;}
 	int GetIndex(){return m_index;}
@@ -43,12 +43,12 @@ public:
 	void SetPlayerSkillList(vector<int> &skills){m_dlgSkillSetting.SetPlayerSkillList(skills);}
 
 private:
-	CDialog *m_pDlg[5];	//·ÅdlgÖ¸Õë·½±ã²Ù×÷,ÏÈÉèÎª³£Á¿£¬ºóÃæÔÙ¸ü¸Ä
+	CDialog *m_pDlg[5];	//æ”¾dlgæŒ‡é’ˆæ–¹ä¾¿æ“ä½œ,å…ˆè®¾ä¸ºå¸¸é‡ï¼Œåé¢å†æ›´æ”¹
 
 
 	CDlgSystemSettings m_dlgSystemSettings;
 	CDlgGiftHallSettings m_dlgGiftHallSettings;
-	CDlgSkillSetting m_dlgSkillSetting;	//¼¼ÄÜÉè¶¨
+	CDlgSkillSetting m_dlgSkillSetting;	//æŠ€èƒ½è®¾å®š
 	STRING m_accountName;
 	int m_index;
 
@@ -56,7 +56,7 @@ private:
 
 	CTabCtrl *m_pTab;
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:

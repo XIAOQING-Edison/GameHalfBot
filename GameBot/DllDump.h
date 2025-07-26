@@ -3,7 +3,7 @@
 #include "Global/public.h"
 typedef void (*CRASH_CALL_BACK)(const TCHAR *szMsg);
 
-//以C方式导出方便使用
+//浠鏂瑰紡瀵煎嚭鏂逛究浣跨敤
 #ifdef DLLDUMP_EXPORTS
 #define DLLDUMP_API extern "C"__declspec(dllexport)
 #else

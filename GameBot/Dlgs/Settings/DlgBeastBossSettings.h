@@ -3,17 +3,17 @@
 #include "../../Config/BeastBossConfig.h"
 #include "../../resource.h"
 
-// CDlgBeastBossSettings ¶Ô»°¿ò
+// CDlgBeastBossSettings å¯¹è¯æ¡†
 
 class CDlgBeastBossSetting : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgBeastBossSetting)
 
 public:
-	CDlgBeastBossSetting(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgBeastBossSetting(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgBeastBossSetting();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DLG_CROSS_BOSS };
 
 	void SetConfigObject(CBeastBossConfig *p){m_pBeastBossConfig=p;}
@@ -45,7 +45,7 @@ private:
 	CBeastBossConfig *m_pBeastBossConfig;
 	CBrush m_brush;
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 

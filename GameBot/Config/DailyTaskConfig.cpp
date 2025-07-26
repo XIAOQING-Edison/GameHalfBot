@@ -3,13 +3,13 @@
 
 
 //daily task
-TCHAR *g_szIsAutoHungUp=_T("IsAutoHungUp");	//ÊÇ·ñ×Ô¶¯¹Ò»ú
-TCHAR *g_szAutoHungUpPointX=_T("AutoHungUpPointX");//¹Ò»úµãx
-TCHAR *g_szAutoHungUpPointY=_T("AutoHungUpPointY");//¹Ò»úµãy
-TCHAR *g_szAutoHungUpMapId=_T("AutoHungUpMapId");//¹Ò»úµãµØÍ¼id
-TCHAR *g_szHungUpMapType=_T("HungUpMapType");	//µØÍ¼ÀàĞÍ
-TCHAR *g_szBloodCastleHungUpPointX=_T("BloodCastleHungUpPointX");	//ÑªÉ«¹Ò»úµãx
-TCHAR *g_szBloodCastleHungUpPointY=_T("BloodCastleHungUpPointY");	//ÑªÉ«¹Ò»úµãy
+TCHAR *g_szIsAutoHungUp=_T("IsAutoHungUp");	//æ˜¯å¦è‡ªåŠ¨æŒ‚æœº
+TCHAR *g_szAutoHungUpPointX=_T("AutoHungUpPointX");//æŒ‚æœºç‚¹x
+TCHAR *g_szAutoHungUpPointY=_T("AutoHungUpPointY");//æŒ‚æœºç‚¹y
+TCHAR *g_szAutoHungUpMapId=_T("AutoHungUpMapId");//æŒ‚æœºç‚¹åœ°å›¾id
+TCHAR *g_szHungUpMapType=_T("HungUpMapType");	//åœ°å›¾ç±»å‹
+TCHAR *g_szBloodCastleHungUpPointX=_T("BloodCastleHungUpPointX");	//è¡€è‰²æŒ‚æœºç‚¹x
+TCHAR *g_szBloodCastleHungUpPointY=_T("BloodCastleHungUpPointY");	//è¡€è‰²æŒ‚æœºç‚¹y
 
 
 TCHAR *g_szBloodCastleTimeSelected=_T("BloodCastleTimeSelected");
@@ -45,45 +45,45 @@ BOOL CConfigSecretary1::SetIsAutoHungUpToCfg(BOOL b)
 	return (BOOL)CConfig::WriteInt(m_sectionName.c_str(),g_szIsAutoHungUp,FALSE,b);;
 }
 
-int CConfigSecretary1::GetAutoHungUpPointXFromCfg()//¹Ò»úµãx
+int CConfigSecretary1::GetAutoHungUpPointXFromCfg()//æŒ‚æœºç‚¹x
 {
 	return CConfig::ReadInt(m_sectionName.c_str(),g_szAutoHungUpPointX);
 }
 
-BOOL CConfigSecretary1::SetAutoHungUpPointXToCfg(int count)//¹Ò»úµãx
+BOOL CConfigSecretary1::SetAutoHungUpPointXToCfg(int count)//æŒ‚æœºç‚¹x
 {
 	return CConfig::WriteInt(m_sectionName.c_str(),g_szAutoHungUpPointX,FALSE,count);
 }	
 
-int CConfigSecretary1::GetAutoHungUpPointYFromCfg()//¹Ò»úµãy
+int CConfigSecretary1::GetAutoHungUpPointYFromCfg()//æŒ‚æœºç‚¹y
 {
 	return CConfig::ReadInt(m_sectionName.c_str(),g_szAutoHungUpPointY);
 }
 
-BOOL CConfigSecretary1::SetAutoHungUpPointYToCfg(int count)//¹Ò»úµãy
+BOOL CConfigSecretary1::SetAutoHungUpPointYToCfg(int count)//æŒ‚æœºç‚¹y
 {
 	return CConfig::WriteInt(m_sectionName.c_str(),g_szAutoHungUpPointY,FALSE,count);
 }
 
 
-int CConfigSecretary1::GetHungUpMapTypeFromCfg()	//¹Ò»úµØÍ¼ÀàĞÍ
+int CConfigSecretary1::GetHungUpMapTypeFromCfg()	//æŒ‚æœºåœ°å›¾ç±»å‹
 {
 	return CConfig::ReadInt(m_sectionName.c_str(),g_szHungUpMapType);
 
 }
 
-BOOL CConfigSecretary1::SetHungUpMapTypeToCfg(int sel)	//¹Ò»úµØÍ¼ÀàĞÍ
+BOOL CConfigSecretary1::SetHungUpMapTypeToCfg(int sel)	//æŒ‚æœºåœ°å›¾ç±»å‹
 {
 	return CConfig::WriteInt(m_sectionName.c_str(),g_szHungUpMapType,FALSE,sel);
 
 }
 
-int CConfigSecretary1::GetAutoHungUpMapIndexCfg()	//×Ô¶¯Áì½±
+int CConfigSecretary1::GetAutoHungUpMapIndexCfg()	//è‡ªåŠ¨é¢†å¥–
 {
 	return CConfig::ReadInt(m_sectionName.c_str(),g_szAutoHungUpMapId);
 }
 
-BOOL CConfigSecretary1::SetAutoHungUpMapIdToCfg(int mapId)	//×Ô¶¯Áì½±
+BOOL CConfigSecretary1::SetAutoHungUpMapIdToCfg(int mapId)	//è‡ªåŠ¨é¢†å¥–
 {
 	return CConfig::WriteInt(m_sectionName.c_str(),g_szAutoHungUpMapId,FALSE,mapId);
 }
@@ -182,7 +182,7 @@ BOOL CConfigSecretary1::SetIsAutoCounterStrikeToCfg(BOOL b)
 }
 
 
-BOOL CConfigSecretary1::IsAutoCounterStrikeUsingConfigSkillsFromCfg()	//ÊÇ·ñÊ¹ÓÃÅäÖÃÀïµÄ¼¼ÄÜ
+BOOL CConfigSecretary1::IsAutoCounterStrikeUsingConfigSkillsFromCfg()	//æ˜¯å¦ä½¿ç”¨é…ç½®é‡Œçš„æŠ€èƒ½
 {
 	return (BOOL)CConfig::ReadInt(m_sectionName.c_str(),g_szIsAutoCounterStrikeUsingConfigSkills);
 

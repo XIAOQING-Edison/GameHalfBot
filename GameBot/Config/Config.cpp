@@ -23,7 +23,7 @@ CConfig::CConfig(const TCHAR *szFileName,bool bUseEncryptDecrypt)
 }
 
 
-CConfig::CConfig(const TCHAR *szPath,const TCHAR *szFileName,int gameVersion,bool bUseEncryptDecrypt)	//Õâ¸öÓÃÒÔ¼ÓÔØÄ³ÌØ¶¨°æ±¾µÄini
+CConfig::CConfig(const TCHAR *szPath,const TCHAR *szFileName,int gameVersion,bool bUseEncryptDecrypt)	//è¿™ä¸ªç”¨ä»¥åŠ è½½æŸç‰¹å®šç‰ˆæœ¬çš„ini
 {
 	TCHAR buf[MAX_PATH];
 	_stprintf(buf,_T("%s%d\\%s%s"),szPath,gameVersion,g_szConfigPath,szFileName);//game version
@@ -98,7 +98,7 @@ BOOL CConfig::WriteInt(const TCHAR *szSection,const TCHAR *szKey,UINT def,UINT v
 }
 
 
-vector<int> CConfig::ReadIntArray(const TCHAR* szSection,const TCHAR *szKey)	//¶ÁintÊı×é
+vector<int> CConfig::ReadIntArray(const TCHAR* szSection,const TCHAR *szKey)	//è¯»intæ•°ç»„
 {
 	vector<int> result;
 	STRING strList=CConfig::Read(szSection,szKey);
@@ -107,7 +107,7 @@ vector<int> CConfig::ReadIntArray(const TCHAR* szSection,const TCHAR *szKey)	//¶
 }
 
 
-BOOL CConfig::WriteIntArray(const TCHAR *szSection,const TCHAR *szKey,vector<int> &arr)	//Ğ´intÊı×é
+BOOL CConfig::WriteIntArray(const TCHAR *szSection,const TCHAR *szKey,vector<int> &arr)	//å†™intæ•°ç»„
 {
 	TCHAR buf[MAX_PATH];
 	STRING result;

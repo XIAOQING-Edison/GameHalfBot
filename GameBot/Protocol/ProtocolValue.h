@@ -1,10 +1,10 @@
 #ifndef _PROTOTOLS_H_
 #define _PROTOTOLS_H_
 
-//Ìí¼ÓÊµ¼ÊµÄĞ­Òé
-//smelt:¾«Á¶
-//melt:ÈÜ½â
-//fuse:ÈÛ½â£¬ÈÚºÏ
+//æ·»åŠ å®é™…çš„åè®®
+//smelt:ç²¾ç‚¼
+//melt:æº¶è§£
+//fuse:ç†”è§£ï¼Œèåˆ
 
 //user
 const int ReqLogin = 1001;
@@ -63,7 +63,7 @@ const int ResCheckSwitchRecharge = 20015;
 const int ResSwitchRechargeInfo = 20016;
 const int ResTotalRechargeRMB = 20017;
 
-//ÒÔÏÂÊÇÆæ¼£3Ê¹ÓÃ
+//ä»¥ä¸‹æ˜¯å¥‡è¿¹3ä½¿ç”¨
 const int ResVIPInfo = 20020;
 const int ReqVIPInfo = 20021;
 const int ReqBuyVIPGift = 20022;
@@ -102,7 +102,7 @@ const int RemoteMapServerLinkLink = 200005;
 // map
 const int ResUpdateView = 100001;
 const int ResExitView = 100002;
-const int ResPlayerEnterView = 100003;	//¿ÉÄÜĞèÒª¸üĞÂÍæ¼ÒĞÅÏ¢
+const int ResPlayerEnterView = 100003;	//å¯èƒ½éœ€è¦æ›´æ–°ç©å®¶ä¿¡æ¯
 const int ResMonsterEnterView = 100004;
 const int ResBuildView = 100005;
 const int ResNpcEnterView = 100006;
@@ -113,7 +113,7 @@ const int ResTransmitEnterView = 100010;
 const int ResGraveEnterView = 100011;
 const int ResAuctionEnterView = 100012;
 const int ResMapEffectsPoint = 100013;
-const int ResUpdateRoundPlayer = 100100;	//¿ÉÄÜÒ²ĞèÒª¸üĞÂÍæ¼ÒĞÅÏ¢
+const int ResUpdateRoundPlayer = 100100;	//å¯èƒ½ä¹Ÿéœ€è¦æ›´æ–°ç©å®¶ä¿¡æ¯
 const int ResUpdateRoundMonster = 100101;
 const int ResUpdateRoundNpc = 100102;
 const int ResUpdateRoundItem = 100103;
@@ -160,11 +160,11 @@ const int ResInstanceRewardMessage_LuoLanXiaGuGongCheng = 100404;
 const int ReqSubmitInstanceTask = 100405;
 const int ReqInviteJoinInstance = 100406;
 const int ResInviteJoinInstance = 100407;
-const int InstanceSettle = 100408;	//¸±±¾ÍË³öºóÕâ¸ö»áÏÔÊ¾Í³¼Æ½á¹û
+const int InstanceSettle = 100408;	//å‰¯æœ¬é€€å‡ºåè¿™ä¸ªä¼šæ˜¾ç¤ºç»Ÿè®¡ç»“æœ
 const int ResSystemInstanceGodDeity = 100409;
 const int ResPersonInstance_PersonBoss = 100410;
 const int ResPersonInstance_PersonResource = 100411;
-const int ResPersonInstance_BloodCastle = 100412;	//¸±±¾ÍË³öÊ±»áÊÕµ½Õâ¸ö
+const int ResPersonInstance_BloodCastle = 100412;	//å‰¯æœ¬é€€å‡ºæ—¶ä¼šæ”¶åˆ°è¿™ä¸ª
 const int ReqSkipWait = 100413;
 const int ResPersonInstance_DemonSquare = 100414;
 const int ResPersonInstance_Tower = 100415;
@@ -187,8 +187,8 @@ const int ResSystemUnionInstance_LangHunYaoSai = 100600;
 const int ResUnionSystemInstance_BangHuiBoss = 100601;
 const int ResSystemInstance_LuoLanXiaGuGongChengActivity_Trap = 100900;
 const int ResGoldBoxSpecialEffects = 100901;
-const int ReqShowMapLinePlayer = 100902;	//»ñÈ¡µØÍ¼ÏßÊı£¿
-const int ResShowMapLinePlayer = 100903;	//»ØÓ¦µÃµ½µØÍ¼ÏßÊı
+const int ReqShowMapLinePlayer = 100902;	//è·å–åœ°å›¾çº¿æ•°ï¼Ÿ
+const int ResShowMapLinePlayer = 100903;	//å›åº”å¾—åˆ°åœ°å›¾çº¿æ•°
 const int ReqCanJoinRemoteMap = 100904;
 const int ResCanJoinRemoteMap = 100905;
 const int ReqFixView = 100906;
@@ -333,14 +333,14 @@ const int ResStorageGridExtend = 203018;
 const int ReqDestroyItem = 203019;
 const int ReqUseCDKey = 203020;
 #if (_GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_MOBILE_) ||(_GAME_VERSION_ == _TIAN_SHI_ZHI_ZHAN_PC_)
-const int ResAllStorageInfo = 203021;//ÌìÊ¹Ö®Õ½PCÊÇÕâ¸ö¼ÓÔØÍêÊÕµ½
+const int ResAllStorageInfo = 203021;//å¤©ä½¿ä¹‹æˆ˜PCæ˜¯è¿™ä¸ªåŠ è½½å®Œæ”¶åˆ°
 const int ReqChangeStorageName = 203022;
 const int ReqExtendStorage = 203023;
 const int ReqRefineCell = 203024;
 const int ReqRefineBreach = 203025;
 const int ReqBagTypeInfo = 203026;
-const int ResConstellationBagInfo = 203027;	//ÌìÊ¹Ö®Õ½ÀïÕâ¸öÊÇ¼ÓÔØÍêÊÕµ½µÄ
-const int ResMintmarkBagInfo = 203028;////ÌìÊ¹Ö®Õ½ÀïÕâ¸öÊÇ¼ÓÔØÍêÊÕµ½µÄ
+const int ResConstellationBagInfo = 203027;	//å¤©ä½¿ä¹‹æˆ˜é‡Œè¿™ä¸ªæ˜¯åŠ è½½å®Œæ”¶åˆ°çš„
+const int ResMintmarkBagInfo = 203028;////å¤©ä½¿ä¹‹æˆ˜é‡Œè¿™ä¸ªæ˜¯åŠ è½½å®Œæ”¶åˆ°çš„
 #elif (_GAME_VERSION_ == _TIAN_SHI_SHEN_YU_)
 const int ReqRuneStorageInfo = 203021;
 const int ResRuneStorageInfo = 203022;
@@ -369,7 +369,7 @@ const int ReqLightStoneLevelUp = 203025;
 const int ResLightStoneChange = 203026;
 #endif
 
-//buy,ÀàËÆÉÌ³Çmall
+//buy,ç±»ä¼¼å•†åŸmall
 const int ReqBuy = 210001;
 const int ReqBossRewardBuy = 210002;
 
@@ -382,7 +382,7 @@ const int ReqOpenWeek = 303003;
 const int ResOpenWeek = 303004;
 const int ReqReport = 303005;
 const int ReqResolution = 303006;
-const int ReqService = 303007;	//¹Ò»ú»á·¢ËÍÕâ¸öĞÅÏ¢,µ«Ö±½Ó·¢ËÍÃ»ÓĞĞ§¹û
+const int ReqService = 303007;	//æŒ‚æœºä¼šå‘é€è¿™ä¸ªä¿¡æ¯,ä½†ç›´æ¥å‘é€æ²¡æœ‰æ•ˆæœ
 const int ResClientVersionUpdate = 303008;
 const int ResCloseServerToClientRole = 303009;
 const int ReqCurrentClientVersion = 303010;
@@ -408,13 +408,13 @@ const int ResFriendIntimacyInfo = 13014;
 const int ResFriendRelationInfo = 13015;
 
 
-//on hook,ÕâÀïÖ¸¹Ò»úÏà¹ØµÄ¾­ÑéÊ±³¤µÈĞÅÏ¢
+//on hook,è¿™é‡ŒæŒ‡æŒ‚æœºç›¸å…³çš„ç»éªŒæ—¶é•¿ç­‰ä¿¡æ¯
 const int ReqGetOnHookInfo = 211001;
 const int ResGetOnHookInfo = 211002;
 const int ReqGetOnHookReward = 211003;
 
 
-//count,¸÷ÖÖ´ÎÊıÍ³¼Æ£¿ÅäÖÃÀïÓĞ´óÌìÊ¹ºÏ³É´ÎÊı£¬ÓÂÆøÊÔÁ¶´ÎÊı
+//count,å„ç§æ¬¡æ•°ç»Ÿè®¡ï¼Ÿé…ç½®é‡Œæœ‰å¤§å¤©ä½¿åˆæˆæ¬¡æ•°ï¼Œå‹‡æ°”è¯•ç‚¼æ¬¡æ•°
 const int ResCounts = 6001;
 const int ResCount = 6002;
 const int ReqCountByType = 6003;
@@ -433,7 +433,7 @@ const int ReqDeleteMail = 3008;
 const int ResDeleteMail = 3009;
 
 
-//activity,»î¶¯
+//activity,æ´»åŠ¨
 const int ReqGetLuoLanXiaGuGongChengActivityWinUnion = 15001;
 const int ResGetLuoLanXiaGuGongChengActivityWinUnion = 15002;
 const int ResActivityUnions = 15003;
@@ -464,7 +464,7 @@ const int ResGongChengSafe = 15028;
 const int ReqReceiveEvaluateGift = 15029;
 
 
-//back,¿ÉÄÜÊÇºóÌ¨
+//back,å¯èƒ½æ˜¯åå°
 const int ReqBackLogin = 202001;
 const int ResBackLogin = 202002;
 const int ReqBackPing = 202003;

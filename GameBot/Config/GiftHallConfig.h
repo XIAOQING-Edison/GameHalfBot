@@ -45,19 +45,19 @@ public:
 	BOOL IsAutoSendGetVipMemberInfoFromCfg();
 	void SetIsAutoSendGetVipMemberInfoToCfg(BOOL b);
 	
-	BOOL IsAutoActivityGetRewardFromCfg();	//×Ô¶¯»îÔ¾¶È½±ÀøÁìÈ¡
+	BOOL IsAutoActivityGetRewardFromCfg();	//è‡ªåŠ¨æ´»è·ƒåº¦å¥–åŠ±é¢†å–
 	void SetIsAutoAcitivityGetRewardToCfg(BOOL b);
 
-	BOOL IsAutoReadMailFromCfg();	//×Ô¶¯¶ÁÈ¡ÓÊ¼ş
+	BOOL IsAutoReadMailFromCfg();	//è‡ªåŠ¨è¯»å–é‚®ä»¶
 	void SetIsAutoReadMailToCfg(BOOL b);
 
-	BOOL IsAutoDeleteReadMailFromCfg();	//×Ô¶¯É¾³ıÒÑ¶ÁÓÊ¼ş
+	BOOL IsAutoDeleteReadMailFromCfg();	//è‡ªåŠ¨åˆ é™¤å·²è¯»é‚®ä»¶
 	void SetIsAutoDeleteReadMailToCfg(BOOL b);
 
-	BOOL IsAutoUpdateMagicNuclearFromCfg();	//×Ô¶¯Ä§ºË³äÄÜ
+	BOOL IsAutoUpdateMagicNuclearFromCfg();	//è‡ªåŠ¨é­”æ ¸å……èƒ½
 	void SetIsAutoUpdateMagicNuclearToCfg(BOOL b);
 
-	BOOL IsAutoTidyBagFromCfg();	//×Ô¶¯ÕûÀí±³°ü
+	BOOL IsAutoTidyBagFromCfg();	//è‡ªåŠ¨æ•´ç†èƒŒåŒ…
 	void SetIsAutoTidyBagToCfg(BOOL b);
 
 

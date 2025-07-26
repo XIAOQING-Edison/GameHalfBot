@@ -13,13 +13,13 @@ public:
 	virtual int Decode(CStreamReadWrite *pStreamBuf);
 
 private:
-	STRING loginName;//= 1; //µÇÂ¼ÕË»§
-	int version;//= 2; //°æ±¾ºÅ
-	INT64 time;//= 3; //µÇÂ¼ÑéÖ¤·µ»ØµÄÊ±¼ä´Á
-	STRING sign;//= 4; //µÇÂ¼ÑéÖ¤·µ»ØµÄ sign
-	int reconnect;//= 5; //ÊÇ·ñÖØÁ¬ 1:ÊÇ 0: ·ñ
-	int serverId;//= 6; //·şÎñÆ÷Id
-	STRING token;//= 7;//ÑéÖ¤Âë
+	STRING loginName;//= 1; //ç™»å½•è´¦æˆ·
+	int version;//= 2; //ç‰ˆæœ¬å·
+	INT64 time;//= 3; //ç™»å½•éªŒè¯è¿”å›çš„æ—¶é—´æˆ³
+	STRING sign;//= 4; //ç™»å½•éªŒè¯è¿”å›çš„ sign
+	int reconnect;//= 5; //æ˜¯å¦é‡è¿ 1:æ˜¯ 0: å¦
+	int serverId;//= 6; //æœåŠ¡å™¨Id
+	STRING token;//= 7;//éªŒè¯ç 
 
 
 };

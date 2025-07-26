@@ -18,8 +18,8 @@ public:
 	void MakeHeartBeatMessage(int playerIndex);
 private:
 	int m_playerIndex;
-	char m_reserveBytes[64];	//后面
-	int m_bytesLength;	//后面
+	char m_reserveBytes[64];	//鍚庨潰
+	int m_bytesLength;	//鍚庨潰
 
 
 };
