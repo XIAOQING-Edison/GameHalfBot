@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameBot", "GameBot\GameBot.vcproj", "{3EB58F1E-2585-42F8-88B3-B173D353D22C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Proxy", "Proxy\Proxy\Proxy.vcproj", "{5201F319-E03E-4456-8DE1-AFEC14E36E46}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3EB58F1E-2585-42F8-88B3-B173D353D22C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3EB58F1E-2585-42F8-88B3-B173D353D22C}.Debug|Win32.Build.0 = Debug|Win32
+		{3EB58F1E-2585-42F8-88B3-B173D353D22C}.Debug|x64.ActiveCfg = Debug|x64
+		{3EB58F1E-2585-42F8-88B3-B173D353D22C}.Debug|x64.Build.0 = Debug|x64
+		{3EB58F1E-2585-42F8-88B3-B173D353D22C}.Release|Win32.ActiveCfg = Release|Win32
+		{3EB58F1E-2585-42F8-88B3-B173D353D22C}.Release|Win32.Build.0 = Release|Win32
+		{3EB58F1E-2585-42F8-88B3-B173D353D22C}.Release|x64.ActiveCfg = Release|x64
+		{3EB58F1E-2585-42F8-88B3-B173D353D22C}.Release|x64.Build.0 = Release|x64
+		{5201F319-E03E-4456-8DE1-AFEC14E36E46}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5201F319-E03E-4456-8DE1-AFEC14E36E46}.Debug|Win32.Build.0 = Debug|Win32
+		{5201F319-E03E-4456-8DE1-AFEC14E36E46}.Debug|x64.ActiveCfg = Debug|Win32
+		{5201F319-E03E-4456-8DE1-AFEC14E36E46}.Release|Win32.ActiveCfg = Release|Win32
+		{5201F319-E03E-4456-8DE1-AFEC14E36E46}.Release|Win32.Build.0 = Release|Win32
+		{5201F319-E03E-4456-8DE1-AFEC14E36E46}.Release|x64.ActiveCfg = Release|x64
+		{5201F319-E03E-4456-8DE1-AFEC14E36E46}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

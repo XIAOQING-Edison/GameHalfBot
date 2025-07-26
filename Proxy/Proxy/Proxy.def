@@ -1,0 +1,4 @@
+LIBRARY Proxy
+EXPORTS
+	RecvCallback
+	SendCallback
